@@ -1,979 +1,706 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 <head>
+  <meta charset="utf-8">
+  <title>Hidrógeno Verde Turquesa - Proyectos Sostenibless</title>
+  <meta name="description" content="Empresa en energías renovables, investigación en hidrógeno verde, diseño de casas sostenibles y producción de abonos ecológicos.">
+  <meta name="author" content="Hidrógeno Verde Turquesa">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Hidrógeno Verde Turquesa - Proyectos Sostenibles</title>
-    <meta name="description" content="Empresa en energías renovables, investigación en hidrógeno verde, diseño de casas sostenibles y producción de abonos ecológicos.">
-    <meta name="author" content="Hidrógeno Verde Turquesa">
+  <!-- Preloads clave -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <!-- vendor.css diferido para no bloquear -->
+  <link rel="stylesheet" href="css/vendor.css" media="print" onload="this.media='all'">
+  <!-- Preload de imagen de hero (mejor si subes AVIF/WebP) -->
+  <link rel="preload" as="image" href="images/hero-bg.jpg">
 
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/vendor.css">
+  <!-- Scripts (defer) -->
+  <!-- Elimina modernizr si no lo usas explícitamente -->
+  <script src="js/modernizr.js" defer></script>
+  <script defer src="js/fontawesome/all.min.js"></script>
 
-    <!-- script
-    ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script defer src="js/fontawesome/all.min.js"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-
+  <!-- Critical CSS mínimo para primer paint y preloader a prueba de fallos -->
+  <style>
+    :root{
+      --color-1:#15a26e;
+      --vspace-0_5:.5rem; --vspace-1:1rem; --vspace-1_5:1.5rem; --vspace-2:2rem; --vspace-3:3rem;
+      --color-text-light:#6b7280;
+    }
+    /* Layout rápido del header/hero */
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;background:#fff;color:#111}
+    .s-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
+    .s-header .row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
+    .s-header__logo img{height:40px;width:auto}
+    .s-header__nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    .s-header__nav a{text-decoration:none;color:#111;font-weight:600}
+    #home{min-height:80vh;display:flex;align-items:center;justify-content:center;background:#f5f5f5}
+    .s-home__content{max-width:1100px;margin:0 auto;padding:2rem 1rem}
+    .lead{font-size:1.1rem;line-height:1.6}
+    /* Preloader fallback: si el JS tarda, igual se oculta */
+    #preloader{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .3s ease;z-index:9999}
+    #loader{width:48px;height:48px;border-radius:50%;border:4px solid #e5e7eb;border-top-color:var(--color-1);animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    html.preload-done #preloader{opacity:0;pointer-events:none}
+    /* Parallax “off” en móvil: mucho más fluido */
+    @media (max-width:1024px){
+      [data-parallax]{background-attachment:scroll !important;background-position:center center !important;background-size:cover !important}
+    }
+  </style>
 </head>
 
 <body id="top">
 
+  <!-- preloader -->
+  <div id="preloader"><div id="loader"></div></div>
 
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader"></div>
+  <!-- header -->
+  <header class="s-header">
+    <div class="row">
+      <div class="s-header__logo">
+        <a href="index.html" aria-label="Inicio">
+          <img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" width="160" height="40" decoding="async">
+        </a>
+      </div>
+
+      <nav class="s-header__nav" aria-label="Principal">
+        <ul>
+          <li class="current"><a class="smoothscroll" href="#home">Inicio</a></li>
+          <li><a href="investors.html">Inversionistas</a></li>
+          <li><a class="smoothscroll" href="#services">Servicios</a></li>
+          <li><a class="smoothscroll" href="#portfolio">Proyectos</a></li>
+          <li><a class="smoothscroll" href="#blog">Noticias</a></li>
+          <li><a class="smoothscroll" href="#about">Nosotros</a></li>
+          <li><a class="smoothscroll" href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="s-header__menu-toggle" href="#0" title="Menu" aria-label="Abrir menú">
+        <span class="s-header__menu-icon"></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- home -->
+  <section id="home" class="s-home target-section"
+           data-parallax="scroll"
+           data-image-src="images/hero-bg.jpg"
+           data-natural-width="3000"
+           data-natural-height="2000"
+           style="background-image:url('images/hero-bg.jpg');background-size:cover;background-position:center">
+    <div class="s-home__content">
+      <div class="s-home__slider">
+        <div class="s-home__slide s-home__slide--1">
+          <div class="row">
+            <div class="column large-12 s-home__slide-text">
+              <h2>Somos <span>Hidrógeno Verde Turquesa</span>. Especialistas en energías renovables y sostenibilidad.</h2>
+              <p>Desarrollamos proyectos innovadores en hidrógeno verde, energías renovables, diseño de viviendas sostenibles y producción de abonos ecológicos para un futuro más limpio.</p>
+            </div>
+          </div>
+        </div>
+        <div class="s-home__slide s-home__slide--2">
+          <div class="row">
+            <div class="column large-12 s-home__slider-text">
+              <h2>Conoce nuestros <a href="#portfolio" title="">proyectos</a> o <a href="#contact" title="">contáctanos</a> para crear juntos un mundo más sostenible.</h2>
+              <p>Innovación, sostenibilidad y compromiso ambiental guían nuestros desarrollos tecnológicos y proyectos verdes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- flechas -->
+    <div class="s-home__nav-arrows" aria-hidden="true">
+      <div class="s-home__arrow-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/></svg>
+      </div>
+      <div class="s-home__arrow-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/></svg>
+      </div>
+    </div>
 
-    <!-- header
-    ================================================== -->
-    <header class="s-header">
+    <div class="s-home__line"></div>
+  </section>
+
+  <!-- impact -->
+  <section id="impact" class="s-metrics target-section">
+    <div class="row section-head">
+      <div class="column large-12" data-aos="fade-up">
+        <h2 style="text-align:center;color:var(--color-1);margin-bottom:var(--vspace-2);">Nuestro Impacto Ambiental</h2>
+      </div>
+    </div>
+
+    <div class="row block-large-1-4 block-medium-1-2 block-tab-full" style="margin-bottom:var(--vspace-3);">
+      <div class="column" data-aos="fade-up">
+        <div style="text-align:center;padding:var(--vspace-1_5);background:white;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="font-size:3.6rem;color:var(--color-1);margin:0;">5+</h3>
+          <p style="font-weight:600;margin:0;">Proyectos Ejecutados</p>
+          <small style="color:var(--color-text-light);">En Colombia y LATAM</small>
+        </div>
+      </div>
+      <div class="column" data-aos="fade-up">
+        <div style="text-align:center;padding:var(--vspace-1_5);background:white;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="font-size:3.6rem;color:var(--color-1);margin:0;">260</h3>
+          <p style="font-weight:600;margin:0;">Toneladas CO₂ Evitadas</p>
+          <small style="color:var(--color-text-light);">Anualmente</small>
+        </div>
+      </div>
+      <div class="column" data-aos="fade-up">
+        <div style="text-align:center;padding:var(--vspace-1_5);background:white;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="font-size:3.6rem;color:var(--color-1);margin:0;">135KW</h3>
+          <p style="font-weight:600;margin:0;">Capacidad Instalada</p>
+          <small style="color:var(--color-text-light);">Energías renovables</small>
+        </div>
+      </div>
+      <div class="column" data-aos="fade-up">
+        <div style="text-align:center;padding:var(--vspace-1_5);background:white;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="font-size:3.6rem;color:var(--color-1);margin:0;">8+</h3>
+          <p style="font-weight:600;margin:0;">Familias Beneficiadas</p>
+          <small style="color:var(--color-text-light);">Viviendas sostenibles</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column large-12" data-aos="fade-up">
+        <div style="text-align:center;background:var(--color-1);color:white;padding:var(--vspace-1_5);border-radius:8px;">
+          <h4 style="margin:0;color:white;">¿Quieres invertir en nuestro crecimiento?</h4>
+          <p style="margin:var(--vspace-0_5) 0 0;opacity:.9;">Conoce nuestra oportunidad de inversión Serie A</p>
+          <a href="investors.html" class="btn btn--primary" style="background:white;color:var(--color-1);margin-top:var(--vspace-1);">💼 Ver Oportunidad de Inversión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- services -->
+  <section id="services" class="s-services target-section s-dark">
+    <div class="row section-head">
+      <div class="column large-3 medium-12" data-aos="fade-up">
+        <h2>Soluciones</h2>
+        <p class="desc">Tecnologías disruptivas para la transición energética.</p>
+      </div>
+      <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
+        <p class="lead">
+          Desarrollamos tecnologías avanzadas en hidrógeno verde y energías renovables para la transición energética en Colombia y Latinoamérica. Nuestras soluciones integrales reducen costos operativos y maximizan la eficiencia.
+        </p>
+      </div>
+    </div>
+
+    <div class="row block-large-1-3 block-medium-1-2 block-tab-full services-list">
+      <div class="column services-item" data-aos="fade-up">
+        <h5>Hidrógeno Verde</h5>
+        <p>Desarrollamos prototipos escalables con tecnología de biofermentación. Nuestros ensayos producen hidrógeno con ~64% de pureza para aplicaciones industriales y almacenamiento energético.</p>
+      </div>
+      <div class="column services-item" data-aos="fade-up">
+        <h5>Energías Renovables</h5>
+        <p>Soluciones con paneles solares y generadores eólicos con IoT para optimización en tiempo real. Incluye almacenamiento en baterías y conexión a red.</p>
+      </div>
+      <div class="column services-item" data-aos="fade-up">
+        <h5>Construcción Sostenible</h5>
+        <p>Diseño bioclimático, materiales ecológicos, gestión de aguas lluvias y certificaciones. Hasta 70% de reducción en consumo energético.</p>
+      </div>
+      <div class="column services-item" data-aos="fade-up">
+        <h5>Consultoría Ambiental</h5>
+        <p>Estrategias de descarbonización, evaluación de impacto y planes de implementación de energías limpias.</p>
+      </div>
+      <div class="column services-item" data-aos="fade-up">
+        <h5>Abonos Ecológicos</h5>
+        <p>Fertilizantes orgánicos y bioabonos por compostaje controlado. Soluciones personalizadas para distintos cultivos.</p>
+      </div>
+      <div class="column services-item" data-aos="fade-up">
+        <h5>I+D Sostenible</h5>
+        <p>Colaboramos con universidades en tecnologías verdes, biomateriales y procesos industriales ecológicos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- portfolio -->
+  <section id="portfolio" class="s-portfolio target-section">
+    <div class="row section-head">
+      <div class="column large-3 medium-12" data-aos="fade-up">
+        <h2>Portafolio de Proyectos</h2>
+        <p class="desc">Nuestros diseños más recientes.</p>
+      </div>
+      <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
+        <p class="lead">Desde prototipos de plantas de hidrógeno verde hasta comunidades autosuficientes, nuestro portafolio demuestra el potencial de las energías limpias.</p>
+      </div>
+    </div>
+
+    <div class="row block-large-1-3 block-medium-1-2 block-mob-full folio-list">
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-01" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/planta.jpg"
+               srcset="images/portfolio/planta.jpg 1x, images/portfolio/planta@2x.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="Prototipo escalable de planta de hidrógeno">
+          <span class="folio-item__text">Prototipo escalable de planta Hidrógeno</span>
+        </a>
+      </div>
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-02" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/parque.jpg"
+               srcset="images/portfolio/parque.jpg 1x, images/portfolio/parque@2x.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="Parque Solar Comunitario">
+          <span class="folio-item__text">Parque Solar Comunitario</span>
+        </a>
+      </div>
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-03" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/paneles.jpg"
+               srcset="images/portfolio/paneles.jpg 1x, images/portfolio/paneles@2x.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="Ecoaldea Sostenible">
+          <span class="folio-item__text">Ecoaldea Sostenible</span>
+        </a>
+      </div>
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-04" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/HidroEcoCaja.jpg"
+               srcset="images/portfolio/HidroEcoCaja.jpg 1x, images/portfolio/HidroEcoCaja.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="HidroEcoCaja">
+          <span class="folio-item__text">Biofertilizantes y Bioremediadores</span>
+        </a>
+      </div>
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-05" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/fuji.jpg"
+               srcset="images/portfolio/fuji.jpg 1x, images/portfolio/fuji@2x.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="Hogares eficientes">
+          <span class="folio-item__text">Hogares eficientes</span>
+        </a>
+      </div>
+
+      <div class="column folio-item" data-aos="fade-up">
+        <a href="#modal-06" class="folio-item__thumb" data-lity>
+          <img src="images/portfolio/skaterboy.jpg"
+               srcset="images/portfolio/skaterboy.jpg 1x, images/portfolio/skaterboy@2x.jpg 2x"
+               width="600" height="400" loading="lazy" decoding="async" alt="MicroGranja Eólica">
+          <span class="folio-item__text">MicroGranja Eólica</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Modales -->
+    <div id="modal-01" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/g-planta.jpg" alt="Planta de hidrógeno" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>Prototipo de Planta Hidrógeno</h5>
+        <p>Primer prototipo de producción de hidrógeno verde turquesa a partir de residuos orgánicos, con capacidad piloto y tecnología de fermentación oscura (~60% pureza).</p>
+        <ul class="modal-popup__cat"><li>Hidrógeno Verde</li><li>Energía Solar</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20el%20prototipo%20de%20planta%20de%20hidr%C3%B3geno" class="modal-popup__details">Project link</a>
+    </div>
+
+    <div id="modal-02" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/solar-power.jpg" alt="Parque solar" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>Parque Solar Comunitario</h5>
+        <p>Diseño de parques solares compartidos donde múltiples usuarios se benefician de una misma instalación fotovoltaica.</p>
+        <ul class="modal-popup__cat"><li>Energía Solar Fotovoltaica</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20el%20parque%20solar%20comunitario" class="modal-popup__details">Project link</a>
+    </div>
+
+    <div id="modal-03" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/g-minimalismo.jpg" alt="Ecoaldea" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>Comunidades sostenibles</h5>
+        <p>Proyecto para soberanía alimentaria y energética en zonas rurales, integrando recursos locales y energías limpias.</p>
+        <ul class="modal-popup__cat"><li>Comunidades sostenibles</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20comunidades%20sostenibles" class="modal-popup__details">Project link</a>
+    </div>
+
+    <div id="modal-04" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/hidroEcoCajag.jpg" alt="HidroEcoCaja" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>HidroEcoCaja</h5>
+        <p>Sistema de vermicompostaje que convierte desechos de cocina en humus de alta calidad, sin malos olores y con mínimo mantenimiento.</p>
+        <ul class="modal-popup__cat"><li>Product Design</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20HidroEcoCaja" class="modal-popup__details">Project link</a>
+    </div>
+
+    <div id="modal-05" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/g-fuji.jpg" alt="Hogar eficiente" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>Fuji</h5>
+        <p>Soluciones residenciales eficientes energéticamente, integrando solar, almacenamiento y diseño pasivo.</p>
+        <ul class="modal-popup__cat"><li>Product Design</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20hogares%20eficientes" class="modal-popup__details">Project link</a>
+    </div>
+
+    <div id="modal-06" class="modal-popup lity-hide">
+      <img src="images/portfolio/gallery/g-skaterboy.jpg" alt="Microgranja eólica" width="960" height="640" loading="lazy" decoding="async">
+      <div class="modal-popup__desc">
+        <h5>Skaterboy</h5>
+        <p>Microgeneración eólica para autoconsumo y microgranjas.</p>
+        <ul class="modal-popup__cat"><li>Branding</li><li>Product Design</li></ul>
+      </div>
+      <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20microgranja%20e%C3%B3lica" class="modal-popup__details">Project link</a>
+    </div>
+  </section>
+
+  <!-- blog -->
+  <section id="blog" class="s-blog target-section s-dark">
+    <div class="row section-head">
+      <div class="column large-3 medium-12" data-aos="fade-up">
+        <h2>Noticias</h2>
+        <p class="desc">Últimas noticias y avances.</p>
+      </div>
+    </div>
+
+    <div class="blog-entries">
+      <article class="blog-entry" data-aos="fade-up">
+        <div class="row blog-entry__header">
+          <div class="blog-entry__avatar">
+            <img src="images/avatars/Usuario 6.jpg" alt="Oscar Torres" width="80" height="80" loading="lazy" decoding="async" />
+          </div>
+          <div class="column large-9 w-1000-stack blog-entry__title">
+            <h3 class="h2"><a href="blog-single.html">El hidrógeno como estilo de vida y Solarpunk.</a></h3>
+          </div>
+          <div class="column large-3 w-1000-stack blog-entry__meta">
+            <span class="blog-entry__date">June 10, 2025</span>
+            <span class="blog-entry__byline">By Oscar Torres</span>
+          </div>
+        </div>
         <div class="row">
-
-            <div class="s-header__logo">
-                <a href="index.html">
-                    <img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height: 40px; width: auto;">
-                </a>
-            </div>
-
-            <nav class="s-header__nav">
-                <ul>
-                    <li class="current"><a class="smoothscroll" href="#home">Inicio</a></li>
-                    <li><a href="investors.html">Inversionistas</a></li>
-                    <li><a class="smoothscroll" href="#services">Servicios</a></li>
-                    <li><a class="smoothscroll" href="#portfolio">Proyectos</a></li>
-                    <li><a class="smoothscroll" href="#blog">Noticias</a></li>
-                    <li><a class="smoothscroll" href="#about">Nosotros</a></li>
-                    <li><a class="smoothscroll" href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-
-            <a class="s-header__menu-toggle" href="#0" title="Menu">
-                <span class="s-header__menu-icon"></span>
-            </a>
-
-        </div> <!-- end row -->
-    </header> <!-- end s-header -->
-
-
-    <!-- home
-    ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width="3000" data-natural-height="2000">
-
-        <div class="s-home__content">
-
-            <div class="s-home__slider">
-
-                <div class="s-home__slide s-home__slide--1">
-                    <div class="row">
-                        <div class="column large-12 s-home__slide-text">
-                            <h2>
-                            Somos <span>Hidrógeno Verde Turquesa</span>.
-                            Especialistas en energías renovables y sostenibilidad.
-                            </h2>
-                            <p>
-                            Desarrollamos proyectos innovadores en hidrógeno verde, 
-                            energías renovables, diseño de viviendas sostenibles y 
-                            producción de abonos ecológicos para un futuro más limpio.
-                            </p>
-                        </div>
-                    </div>
-                </div> <!-- end s-home__slide -->
-
-                <div class="s-home__slide s-home__slide--2">
-                    <div class="row">
-                        <div class="column large-12 s-home__slider-text">
-                            <h2>
-                            Conoce nuestros <a href="#portfolio" title="">proyectos</a> o 
-                            <a href="#contact" title="">contáctanos</a> para crear juntos 
-                            un mundo más sostenible.
-                            </h2>
-                            <p>
-                            Innovación, sostenibilidad y compromiso ambiental son 
-                            los pilares que guían cada uno de nuestros desarrollos 
-                            tecnológicos y proyectos verdes.
-                            </p>
-                        </div>
-                    </div>
-                </div> <!-- end s-home__slide -->
-
-            </div> <!-- end s-home__slider -->
-
-        </div> <!-- end s-home__content -->
-
-        <div class="s-home__nav-arrows">
-            <div class="s-home__arrow-prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/></svg>
-            </div>
-            <div class="s-home__arrow-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/></svg>
-            </div>
-        </div> <!-- end s-home__nav-arrows -->
-
-        <div class="s-home__line"></div>
-
-    </section> <!-- end s-home -->
-
-
-    <!-- impact section -->
-    <section id="impact" class="s-metrics target-section">
-        <div class="row section-head">
-            <div class="column large-12" data-aos="fade-up">
-                <h2 style="text-align: center; color: var(--color-1); margin-bottom: var(--vspace-2);">
-                    Nuestro Impacto Ambiental
-                </h2>
-            </div>
+          <div class="column large-9 w-1000-stack blog-entry__content">
+            <p>El Solarpunk va más allá de la estética. La integración de hidrógeno permite almacenar energía y aprovecharla como electricidad o poder calorífico. <a href="blog-single.html" class="more-link">Read More</a></p>
+          </div>
         </div>
+      </article>
 
-        <div class="row block-large-1-4 block-medium-1-2 block-tab-full" style="margin-bottom: var(--vspace-3);">
-            <div class="column" data-aos="fade-up">
-                <div style="text-align: center; padding: var(--vspace-1_5); background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h3 style="font-size: 3.6rem; color: var(--color-1); margin: 0;">5+</h3>
-                    <p style="font-weight: 600; margin: 0;">Proyectos Ejecutados</p>
-                    <small style="color: var(--color-text-light);">En Colombia y LATAM</small>
-                </div>
-            </div>
-            <div class="column" data-aos="fade-up">
-                <div style="text-align: center; padding: var(--vspace-1_5); background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h3 style="font-size: 3.6rem; color: var(--color-1); margin: 0;">260</h3>
-                    <p style="font-weight: 600; margin: 0;">Toneladas CO₂ Evitadas</p>
-                    <small style="color: var(--color-text-light);">Anualmente</small>
-                </div>
-            </div>
-            <div class="column" data-aos="fade-up">
-                <div style="text-align: center; padding: var(--vspace-1_5); background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h3 style="font-size: 3.6rem; color: var(--color-1); margin: 0;">135KW</h3>
-                    <p style="font-weight: 600; margin: 0;">Capacidad Instalada</p>
-                    <small style="color: var(--color-text-light);">Energías renovables</small>
-                </div>
-            </div>
-            <div class="column" data-aos="fade-up">
-                <div style="text-align: center; padding: var(--vspace-1_5); background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h3 style="font-size: 3.6rem; color: var(--color-1); margin: 0;">8+</h3>
-                    <p style="font-weight: 600; margin: 0;">Familias Beneficiadas</p>
-                    <small style="color: var(--color-text-light);">Viviendas sostenibles</small>
-                </div>
-            </div>
+      <article class="blog-entry" data-aos="fade-up">
+        <div class="row blog-entry__header">
+          <div class="blog-entry__avatar">
+            <img src="images/avatars/user-07.jpg" alt="Jhon Avella" width="80" height="80" loading="lazy" decoding="async" />
+          </div>
+          <div class="column large-9 w-1000-stack blog-entry__title">
+            <h3 class="h2"><a href="blog-single.html">Hic nisi quibusdam illum dolor...</a></h3>
+          </div>
+          <div class="column large-3 w-1000-stack blog-entry__meta">
+            <span class="blog-entry__date">June 08, 2025</span>
+            <span class="blog-entry__byline">By Shikamaru Nara</span>
+          </div>
         </div>
-
         <div class="row">
-            <div class="column large-12" data-aos="fade-up">
-                <div style="text-align: center; background: var(--color-1); color: white; padding: var(--vspace-1_5); border-radius: 8px;">
-                    <h4 style="margin: 0; color: white;">¿Quieres invertir en nuestro crecimiento?</h4>
-                    <p style="margin: var(--vspace-0_5) 0 0; opacity: 0.9;">
-                        Conoce nuestra oportunidad de inversión Serie A
-                    </p>
-                    <a href="investors.html" class="btn btn--primary" style="background: white; color: var(--color-1); margin-top: var(--vspace-1);">
-                        💼 Ver Oportunidad de Inversión
-                    </a>
-                </div>
-            </div>
+          <div class="column large-9 w-1000-stack blog-entry__content">
+            <p>Dolores quia sit quisquam esse nemo sit. Porro ipsum totam vel doloribus a voluptatem… <a href="blog-single.html" class="more-link">Read More</a></p>
+          </div>
         </div>
-    </section>
-
-    <!-- services
-    ================================================== -->
-    <section id="services" class="s-services target-section s-dark">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Soluciones</h2>
-                <p class="desc">Tecnologías disruptivas para la transición energética.</p>
-            </div>
-
-            <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
-                <p class="lead">
-                Desarrollamos tecnologías avanzadas en hidrógeno verde y energías renovables 
-                para la transición energética en Colombia y Latinoamérica. Nuestras soluciones 
-                integrales reducen costos operativos y maximizan la eficiencia energética.
-                </p>
-            </div>
-        </div> <!-- end section-head -->
-
-        <div class="row block-large-1-3 block-medium-1-2 block-tab-full services-list">
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>Hidrógeno Verde</h5>
-                <p>
-                Desarrollamos prototipos escalables de plantas de producción de hidrógeno verde utilizando tecnología 
-                de biofermentación. Nuestros ensayos
-                producen hidrógeno con un 64% de pureza para aplicaciones industriales, transporte y 
-                almacenamiento de energía, contribuyendo significativamente a la descarbonización 
-                de sectores industriales.
-                </p>
-            </div> <!-- end services-item -->
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>Energías Renovables</h5>
-                <p>
-                Diseñamos e implementamos soluciones energéticas  con paneles solares y generadores eólicos con tecnología IoT integrada 
-                para optimización en tiempo real. Nuestros proyectos incluyen sistemas de 
-                almacenamiento en baterías y conexión a red inteligente, garantizando suministro 
-                confiable y reducción significativa de costos energéticos para nuestros clientes.
-                </p>
-            </div> <!-- end services-item -->
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>Construcción Sostenible</h5>
-                <p>
-                Ofrecemos soluciones integrales para construcción sostenible incluyendo diseño 
-                bioclimático, sistemas de energía renovable residencial, materiales ecológicos, sistemas de gestión de aguas lluvias 
-                y certificaciones ambientales. Nuestros proyectos logran hasta 70% de reducción 
-                en consumo energético y mayor valorización inmobiliaria.
-                </p>
-            </div> <!-- end services-item -->
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>Consultoría Ambiental</h5>
-                <p>
-                Asesoramiento especializado en sostenibilidad empresarial, generación de valor y transición energética. 
-                Evaluamos el impacto ambiental de proyectos, desarrollamos estrategias de reducción 
-                de huella de carbono y diseñamos planes de implementación de energías limpias. 
-                Acompañamos a empresas en su transformación hacia modelos de negocio más sostenibles 
-                y responsables con el medio ambiente.
-                </p>
-            </div> <!-- end services-item -->
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>Abonos Ecológicos</h5>
-                <p>
-                Producción de fertilizantes orgánicos y bioabonos a partir de residuos vegetales 
-                y procesos de compostaje controlado. Nuestros productos mejoran la fertilidad del 
-                suelo sin químicos dañinos, promoviendo la agricultura sostenible. Ofrecemos 
-                soluciones personalizadas para diferentes tipos de cultivos y sistemas de 
-                producción agrícola ecológica.
-                </p>
-            </div> <!-- end services-item -->
-
-            <div class="column services-item" data-aos="fade-up">
-                <h5>I+D Sostenible</h5>
-                <p>
-                Investigación y desarrollo de nuevas tecnologías verdes y soluciones innovadoras 
-                para la sostenibilidad. Colaboramos con universidades y centros de investigación 
-                en proyectos de vanguardia en energías limpias, biomateriales y procesos 
-                industriales ecológicos. Nuestro laboratorio trabaja constantemente en la 
-                mejora de tecnologías existentes y el desarrollo de nuevas aplicaciones industriales.
-                </p>
-            </div> <!-- end services-item -->
-
-        </div> <!-- end services-list -->
-
-    </section> <!-- end s-services -->
-
-
-    <!-- portfolio
-    ================================================== -->
-    <section id="portfolio" class="s-portfolio target-section">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Portafolio de Proyectos</h2>
-                <p class="desc">Nuestros diseños más recientes.</p>
-            </div>
-
-            <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
-                <p class="lead">
-                Cada proyecto que desarrollamos representa nuestro compromiso con la sostenibilidad 
-                y la innovación tecnológica, desdeprototipos de plantas de hidrógeno verde hasta comunidades 
-                residenciales autosuficientes, nuestro portafolio demuestra el 
-                potencial de las energías limpias para transformar nuestra sociedad.
-                </p>
-            </div>
-        </div> <!-- end section-head -->
-
-        <div class="row block-large-1-3 block-medium-1-2 block-mob-full folio-list">
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-01" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/planta.jpg" 
-                         srcset="images/portfolio/planta.jpg 1x, 
-                                 images/portfolio/planta@2x.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        Prototipo escalable de planta Hidrógeno
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-02" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/parque.jpg" 
-                         srcset="images/portfolio/parque.jpg 1x, 
-                                 images/portfolio/parque@2x.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        Parque Solar Comunitario
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-03" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/paneles.jpg" 
-                         srcset="images/portfolio/paneles.jpg 1x, 
-                                 images/portfolio/paneles@2x.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        Ecoaldea Sostenible
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-04" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/HidroEcoCaja.jpg" 
-                         srcset="images/portfolio/HidroEcoCaja.jpg 1x, 
-                                 images/portfolio/HidroEcoCaja.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        Biofertilizantes y Bio remediadores
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-05" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/fuji.jpg" 
-                         srcset="images/portfolio/fuji.jpg 1x, 
-                                 images/portfolio/fuji@2x.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        Hogares eficientes
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item" data-aos="fade-up">
-                <a href="#modal-06" class="folio-item__thumb" data-lity>
-                    <img src="images/portfolio/skaterboy.jpg" 
-                         srcset="images/portfolio/skaterboy.jpg 1x, 
-                                 images/portfolio/skaterboy@2x.jpg 2x" alt="">
-                    <span class="folio-item__text">
-                        MicroGranja Eólica
-                    </span>
-                </a>
-            </div> <!-- end folio-item -->
-
-        </div> <!-- end folio-list -->
-
-
-        <!-- Modal Popup
-        =========================================================== -->
-        <div id="modal-01" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/g-planta.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>Prototipo de Planta Hidrógeno</h5>
-                <p>Primer prototipo de planta de producción de hidrógeno verde turquesa apartir de reciduos organicos en la región,
-                    con capacidad de 10 MW alimentada 100% por reciduos agroindustriales. Tecnología de fermentación oscura que produce 
-                    hidrógeno 60% de pureza para aplicaciones industriales.</p>
-                <ul class="modal-popup__cat">
-                    <li>Hidrógeno Verde</li>
-                    <li>Energía Solar</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20el%20propotipo%20de%20pplanta%20de%20hidrógeno" class="modal-popup__details">Project link</a>
-
-        </div> <!-- end modal-01 -->
-
-        <div id="modal-02" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/solar-power.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>Parque Solar Comunitario</h5>
-                <p>Nuestro servicio de diseño de parques solares comunitarios consiste en la planificación 
-                    y desarrollo de sistemas fotovoltaicos compartidos, donde múltiples usuarios—vecinos,
-                    empresas o instituciones—se benefician de una misma instalación solar.</p>
-                <ul class="modal-popup__cat">
-                    <li>Energía Solar Fotovoltaica</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20el%20proyecto%20de%20parque%20solar%20comunitario" class="modal-popup__details">Project link</a>
-            
-
-        </div><!-- end modal-02 -->
-
-        <div id="modal-03" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/g-minimalismo.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>Comuniades sostenibles</h5>
-                <p>Hemos diseñado un proyecto para beneficiar a una comunidad rural mediante programas gubernamentales y privados, con el objetivo de alcanzar soberanía alimentaria. Nos enfocamos en aprovechar todos los recursos disponibles en la zona para generar energía sostenible y mejorar la calidad de vida de las familias.</p>
-                <ul class="modal-popup__cat">
-                    <li>Comuniades sostenibles</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20el%20proyecto%20de%20parque%20solar%20comunitario" class="modal-popup__details">Project link</a>
-
-        </div><!-- end modal-03 -->
-
-        <div id="modal-04" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/hidroEcoCajag.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>HidroEcoCaja</h5>
-                <p>Se trata de un sistema de vermicompostaje (compost con lombrices) diseñado para convertir desechos de cocina, como cáscaras de frutas, verduras, restos de café o huevo en humus de alta calidad, sin malos olores y con mínimo mantenimiento.</p>
-                <ul class="modal-popup__cat">
-                    <li>Product Design</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20la%20HidroEcoCaja" class="modal-popup__details">Project link</a>
-
-        </div><!-- end modal-04 -->
-
-        <div id="modal-05" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/g-fuji.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>Fuji</h5>
-                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-                <ul class="modal-popup__cat">
-                    <li>Product Design</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20el%20proyecto%20de%20parque%20solar%20comunitario" class="modal-popup__details">Project link</a>
-
-        </div><!-- end modal-05 -->
-
-        <div id="modal-06" class="modal-popup lity-hide">
-
-            <img src="images/portfolio/gallery/g-skaterboy.jpg" alt="" />
-
-            <div class="modal-popup__desc">
-                <h5>Skaterboy</h5>
-                <p>Quisquam vel libero consequuntur autem voluptas. Qui aut vero. Omnis fugit mollitia cupiditate voluptas. Aenean sollicitudin, lorem quis bibendum auctor.</p>
-                <ul class="modal-popup__cat">
-                    <li>Branding</li>
-                    <li>Product Design</li>
-                </ul>
-            </div>
-
-            <a href="https://wa.me/573209574884?text=Hola,%20quiero%20saber%20más%20sobre%20el%20proyecto%20de%20parque%20solar%20comunitario" class="modal-popup__details">Project link</a>
-
-        </div><!-- end modal-06 -->
-
-    </section> <!-- end s-portfolio -->
-
-
-    <!-- blog
-    ================================================== -->
-    <section id="blog" class="s-blog target-section s-dark">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Noticias</h2>
-                <p class="desc">Últimas noticias y avances.</p>
-            </div>
-        </div> <!-- end section-head -->
-
-        <!-- Blog Entries -->
-        <div class="blog-entries">
-
-            <article class="blog-entry" data-aos="fade-up">
-
-                <div class="row blog-entry__header">
-                    <div class="blog-entry__avatar">
-                        <img src="images/avatars/Usuario 6.jpg" alt="Oscar Torres" />
-                    </div>
-
-                    <div class="column large-9 w-1000-stack blog-entry__title">
-                        <h3 class="h2"><a href="blog-single.html">EL hidrógeno como estilo de vida puede ser lo más cercano al Solarpunk.</a></h3>
-                    </div>
-
-                    <div class="column large-3 w-1000-stack blog-entry__meta">
-                        <span class="blog-entry__date">June 10, 2025</span>
-                        <span class="blog-entry__byline">By Oscar Torres</span> 
-                    </div>
-                </div> <!-- end blog-entry__header -->
-
-                <div class="row">
-
-                    <div class="column large-9 w-1000-stack blog-entry__content">
-                        <p>
-                        El Solarpunk no es solo una estética de paneles solares y jardines en paredes o techos. 
-                        Este concepto, aunque utópico, busca la forma de cohabitar en este planeta. 
-                        Para nosotros, la incorporación del hidrógeno hace reflexionar sobre que todo lo que nos mueve es energía. 
-                        Las comunidades deben aliarse o buscar esa alianza para poder almacenar energía
-                        en forma de hidrógeno y aprovecharla de ambas formas: en electricidad o en poder calorífico.
-                        <a href="blog-single.html" class="more-link">Read More</a></p>
-                    </div>
-
-                </div>
-
-            </article> <!-- end blog-entry -->
-
-            <article class="blog-entry" data-aos="fade-up">
-
-                <div class="row blog-entry__header">
-                    <div class="blog-entry__avatar">
-                        <img src="images/avatars/user-07.jpg" alt="Jhon Avella" />
-                    </div>
-
-                    <div class="column large-9 w-1000-stack blog-entry__title">
-                        <h3 class="h2"><a href="blog-single.html">
-                            Hic nisi quibusdam illum dolor et impedit et sit esse. 
-                        </a></h3>
-                    </div>
-
-                    <div class="column large-3 w-1000-stack blog-entry__meta">
-                        <span class="blog-entry__date">June 08, 2025</span>
-                        <span class="blog-entry__byline">By Shikamaru Nara</span> 
-                    </div>
-                </div> <!-- end blog-entry__header -->
-
-                <div class="row">
-
-                    <div class="column large-9 w-1000-stack blog-entry__content">
-                        <p>
-                        Dolores quia sit quisquam esse nemo sit. Porro ipsum totam vel doloribus porro a voluptatem. 
-                        Quisquam beatae commodi dolorem et vero pariatur ut expedita. Deleniti quidem numquam totam 
-                        temporibus dolorum excepturi sapiente modi delectus. Nisi reprehenderit est ea qui 
-                        est quia est rem quod.
-                        <a href="blog-single.html" class="more-link">Read More</a></p>
-                    </div>
-
-                </div>
-
-            </article> <!-- end blog-entry -->
-
-            <article class="blog-entry" data-aos="fade-up">
-
-                <div class="row blog-entry__header">
-                    <div class="blog-entry__avatar">
-                        <img src="images/avatars/user-01.jpg" alt="Sasuke Uchiha" />
-                    </div>
-
-                    <div class="column large-9 w-1000-stack blog-entry__title">
-                        <h3 class="h2"><a href="blog-single.html">
-                            Cadenas de Suministro Sostenibles: El Poder de las Energías Renovables 
-                        </a></h3>
-                    </div>
-
-                    <div class="column large-3 w-1000-stack blog-entry__meta">
-                        <span class="blog-entry__date">June 05, 2025</span>
-                        <span class="blog-entry__byline">By Lizeth Torres</span> 
-                    </div>
-                </div> <!-- end blog-entry__header -->
-
-                <div class="row">
-
-                    <div class="column large-9 w-1000-stack blog-entry__content">
-                        <p>
-                        La descarbonización de las cadenas de suministro ya no es una opción, sino una necesidad global. 
-                            Uno de los pilares fundamentales para lograrlo es la integración de energías renovables en cada 
-                            eslabón del proceso, desde la producción hasta la distribución. A diferencia de los combustibles 
-                            fósiles, las energías limpias como la solar, eólica e hidrógeno verde, no solo reducen las emisiones, 
-                            sino que también mejoran la eficiencia operativa y disminuyen la dependencia de mercados volátiles por lo tanto se debe auditar
-                            el consumo energético en cada fase de la cadena. 
-                            Grandes corporaciones ya están migrando a parques solares o eólicos para abastecer sus centros de producción,
-                            mientras que el transporte de mercancías comienza a electrificarse con flotas impulsadas por baterías o hidrógeno. 
-                            Sin embargo, el verdadero desafío está en la escalabilidad: las tecnologías renovables deben ser accesibles 
-                            para empresas de todos los tamaños y adaptarse a las particularidades geográficas y logísticas de cada sector.
-                            
-                        <a href="blog-single.html" class="more-link">Read More<i class="icon-angle-right"></i></a></p>
-                    </div>
-
-                </div>
-
-            </article> <!-- end blog-entry -->
-
-        </div> <!-- end blog entries -->
-
-    </section> <!-- end s-blog -->
-
-
-
-
-    <!-- about
-    ================================================== -->
-    <section id="about" class="s-about target-section">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Equipo</h2>
-                <p class="desc">Liderazgo ejecutivo y científico.</p>
-            </div>
-
-            <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
-                <p class="lead">
-                Equipo multidisciplinario con amplia experiencia en ingeniería, sostenibilidad 
-                y gestión de proyectos de energías renovables. Combinamos conocimiento técnico 
-                especializado con visión de negocio para crear soluciones efectivas y escalables.
-                </p>
-            </div>
-        </div> <!-- end section-head -->
-
+      </article>
+
+      <article class="blog-entry" data-aos="fade-up">
+        <div class="row blog-entry__header">
+          <div class="blog-entry__avatar">
+            <img src="images/avatars/user-01.jpg" alt="Lizeth Torres" width="80" height="80" loading="lazy" decoding="async" />
+          </div>
+          <div class="column large-9 w-1000-stack blog-entry__title">
+            <h3 class="h2"><a href="blog-single.html">Cadenas de Suministro Sostenibles</a></h3>
+          </div>
+          <div class="column large-3 w-1000-stack blog-entry__meta">
+            <span class="blog-entry__date">June 05, 2025</span>
+            <span class="blog-entry__byline">By Lizeth Torres</span>
+          </div>
+        </div>
         <div class="row">
-            <div class="column" data-aos="fade-up">
-                <h4>Nuestro Proceso de Trabajo.</h4>
-            </div>
+          <div class="column large-9 w-1000-stack blog-entry__content">
+            <p>Descarbonización de cadenas de suministro con energías renovables, auditoría energética por fase y escalabilidad tecnológica. <a href="blog-single.html" class="more-link">Read More<i class="icon-angle-right"></i></a></p>
+          </div>
         </div>
+      </article>
+    </div>
+  </section>
 
-        <div class="row block-large-1-4 block-medium-1-2 block-mob-full process-block">
+  <!-- about -->
+  <section id="about" class="s-about target-section">
+    <div class="row section-head">
+      <div class="column large-3 medium-12" data-aos="fade-up">
+        <h2>Equipo</h2>
+        <p class="desc">Liderazgo ejecutivo y científico.</p>
+      </div>
+      <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
+        <p class="lead">Equipo multidisciplinario con experiencia en ingeniería, sostenibilidad y gestión de proyectos de energías renovables.</p>
+      </div>
+    </div>
 
-            <div class="column process" data-aos="fade-up">
-                <h6>Investigar.</h6>
+    <div class="row">
+      <div class="column" data-aos="fade-up"><h4>Nuestro Proceso de Trabajo.</h4></div>
+    </div>
 
-                <p>
-                Analizamos las necesidades energéticas y ambientales específicas de cada proyecto. 
-                Realizamos estudios de viabilidad técnica y económica, evaluamos recursos renovables 
-                disponibles y diseñamos soluciones personalizadas que maximicen la eficiencia y 
-                minimicen el impacto ambiental.
-                </p>
-            </div>
+    <div class="row block-large-1-4 block-medium-1-2 block-mob-full process-block">
+      <div class="column process" data-aos="fade-up">
+        <h6>Investigar.</h6>
+        <p>Analizamos necesidades energéticas y ambientales, viabilidad técnica/económica y recursos disponibles.</p>
+      </div>
+      <div class="column process" data-aos="fade-up">
+        <h6>Diseñar.</h6>
+        <p>Diseños innovadores integrando tecnologías verdes con rendimiento óptimo y sostenibilidad a largo plazo.</p>
+      </div>
+      <div class="column process" data-aos="fade-up">
+        <h6>Implementar.</h6>
+        <p>Ejecución con altos estándares, instalación y puesta a punto de sistemas avanzados.</p>
+      </div>
+      <div class="column process" data-aos="fade-up">
+        <h6>Optimizar.</h6>
+        <p>Monitoreo, mantenimiento y mejora continua con base en datos de operación.</p>
+      </div>
+    </div>
 
-            <div class="column process" data-aos="fade-up">
-               <h6>Diseñar.</h6>
+    <div class="row">
+      <div class="column" data-aos="fade-up"><h4>Conoce Nuestro Equipo.</h4></div>
+    </div>
 
-                <p>
-                Desarrollamos diseños innovadores que integran las mejores tecnologías verdes disponibles. 
-                Nuestro equipo multidisciplinario crea soluciones arquitectónicas y de ingeniería que 
-                optimizan el rendimiento energético y garantizan la sostenibilidad a largo plazo de 
-                cada proyecto implementado.
-                </p>
-            </div>
-
-            <div class="column process" data-aos="fade-up">
-                <h6>Implementar.</h6>
-
-                <p>
-                Ejecutamos los proyectos con los más altos estándares de calidad y seguridad. 
-                Coordinamos equipos especializados, gestionamos la instalación de tecnologías 
-                avanzadas y aseguramos que cada componente funcione de manera óptima dentro del 
-                sistema integral diseñado para cada cliente.
-                </p>
-            </div>
-
-            <div class="column process" data-aos="fade-up">
-                <h6>Optimizar.</h6>
-
-                <p>
-                Proporcionamos monitoreo continuo y mantenimiento especializado para garantizar 
-                el máximo rendimiento de nuestras instalaciones. Implementamos mejoras tecnológicas, 
-                analizamos datos de operación y optimizamos constantemente los sistemas para 
-                asegurar la máxima eficiencia energética.
-                </p>
-            </div>
-
-         </div> <!-- end process-block -->
-
-         <div class="row">
-            <div class="column" data-aos="fade-up">
-                <h4>Conoce Nuestro Equipo.</h4>
-            </div>
+    <div class="row block-large-1-4 block-medium-1-3 block-tab-1-2 block-500-stack team-block">
+      <div class="column team-member" data-aos="fade-up">
+        <div class="team-member__pic">
+          <img src="images/team/team-member-01.jpg"
+               srcset="images/team/team-member-01.jpg 1x, images/team/team-member-01@2x.jpg 2x"
+               width="440" height="440" loading="lazy" decoding="async" alt="Ing. Oscar Torres">
         </div>
+        <div class="team-member__info">
+          <p class="team-member__name">Ing. Oscar Torres <span>Chief Project Officer | Ingeniero Industrial</span></p>
+          <ul class="team-member__social">
+            <li><a href="#0" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="#0" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#0" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#0" aria-label="Dribbble"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+            <li><a href="#0" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="row block-large-1-4 block-medium-1-3 block-tab-1-2 block-500-stack team-block">
+      <div class="column team-member" data-aos="fade-up">
+        <div class="team-member__pic">
+          <img src="images/team/team-member-02.jpg"
+               srcset="images/team/team-member-02.jpg 1x, images/team/team-member-02@2x.jpg 2x"
+               width="440" height="440" loading="lazy" decoding="async" alt="Ing. Lizeth Torres">
+        </div>
+        <div class="team-member__info">
+          <p class="team-member__name">Ing. Lizeth Torres <span>CTO | Ing. Industrial</span></p>
+          <ul class="team-member__social">
+            <li><a href="#0" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#0" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#0" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#0" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+            <li><a href="#0" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
 
-            <div class="column team-member" data-aos="fade-up">
-                <div class="team-member__pic">
-                    <img src="images/team/team-member-01.jpg" 
-                         srcset="images/team/team-member-01.jpg 1x, 
-                                 images/team/team-member-01@2x.jpg 2x" alt="">
-                </div>
-                <div class="team-member__info">
-                    <p class="team-member__name">
-                        Ing. Oscar Torres
-                        <span>Chief Project Officer | Ingeniero Industrial</span>
-                    </p>
-                    <ul class="team-member__social">
-                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
+      <div class="column team-member" data-aos="fade-up">
+        <div class="team-member__pic">
+          <img src="images/team/team-member-03.jpg"
+               srcset="images/team/team-member-03.jpg 1x, images/team/team-member-03@2x.jpg 2x"
+               width="440" height="440" loading="lazy" decoding="async" alt="Ing. Jhon Avella">
+        </div>
+        <div class="team-member__info">
+          <p class="team-member__name">Ing. Jhon Avella | MBA <span>Chief Operating Officer | Ingeniero Industrial</span></p>
+          <ul class="team-member__social">
+            <li><a href="#0" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#0" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#0" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#0" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+            <li><a href="#0" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonials -->
+  <section id="validation" class="s-testimonials">
+    <div class="row section-head">
+      <div class="column large-3 medium-12" data-aos="fade-up">
+        <h2>Testimonios</h2>
+        <p class="desc">Lo que dicen nuestros clientes.</p>
+      </div>
+    </div>
+
+    <div class="row collapse">
+      <div class="column testimonial-slider-outer">
+        <div class="testimonial-slider" data-aos="fade-up">
+
+          <div class="testimonial-slider__slide">
+            <div class="testimonial-slider__author">
+              <img src="images/avatars/user-02.jpg" alt="Henrik Andersen" class="testimonial-slider__avatar" width="80" height="80" loading="lazy" decoding="async">
+              <cite class="testimonial-slider__cite"><strong>Henrik Andersen</strong><span>CEO, Ørsted Energy</span></cite>
             </div>
+            <p>"Los proyectos de Hidrógeno Verde Turquesa han superado nuestras expectativas en eficiencia y reducción de costos."</p>
+          </div>
 
-            <div class="column team-member" data-aos="fade-up">
-                <div class="team-member__pic">
-                    <img src="images/team/team-member-02.jpg" 
-                         srcset="images/team/team-member-02.jpg 1x, 
-                                 images/team/team-member-02@2x.jpg 2x" alt="">
-                </div>
-                <div class="team-member__info">
-                    <p class="team-member__name">
-                        Ing. Lizeth Torres
-                        <span>CTO | Ing. Industrial</span>
-                    </p>
-                    <ul class="team-member__social">
-                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
+          <div class="testimonial-slider__slide">
+            <div class="testimonial-slider__author">
+              <img src="images/avatars/user-03.jpg" alt="Isabella Müller" class="testimonial-slider__avatar" width="80" height="80" loading="lazy" decoding="async">
+              <cite class="testimonial-slider__cite"><strong>Isabella Müller</strong><span>Director Innovation, E.ON</span></cite>
             </div>
+            <p>"Implementamos su solución SaaS con resultados excepcionales: -30% tiempo de certificación y +15% valoración."</p>
+          </div>
 
-            <div class="column team-member" data-aos="fade-up">
-                <div class="team-member__pic">
-                    <img src="images/team/team-member-03.jpg" 
-                         srcset="images/team/team-member-03.jpg 1x, 
-                                 images/team/team-member-03@2x.jpg 2x" alt="">
-                </div>
-                <div class="team-member__info">
-                    <p class="team-member__name">
-                        Ing. Jhon Avella|MBA
-                        <span>Chief Operating Officer | Ingeniero Industrial</span>
-                    </p>
-                    <ul class="team-member__social">
-                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
-                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
+          <div class="testimonial-slider__slide">
+            <div class="testimonial-slider__author">
+              <img src="images/avatars/user-04.jpg" alt="Jean-Pierre Dubois" class="testimonial-slider__avatar" width="80" height="80" loading="lazy" decoding="async">
+              <cite class="testimonial-slider__cite"><strong>Jean-Pierre Dubois</strong><span>Managing Partner, Eurazeo</span></cite>
             </div>
+            <p>"Equipo excepcional con enfoque sólido en el mercado de hidrógeno verde."</p>
+          </div>
 
-        </div> <!-- end team-block -->
-
-    </section> <!-- end s-about -->
-
-
-    <!-- client validation -->
-    <section id="validation" class="s-testimonials">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Testimonios</h2>
-                <p class="desc">Lo que dicen nuestros clientes.</p>
+          <div class="testimonial-slider__slide">
+            <div class="testimonial-slider__author">
+              <img src="images/avatars/user-05.jpg" alt="Dr. Sarah Chen" class="testimonial-slider__avatar" width="80" height="80" loading="lazy" decoding="async">
+              <cite class="testimonial-slider__cite"><strong>Dr. Sarah Chen</strong><span>Investment Director, EIT InnoEnergy</span></cite>
             </div>
+            <p>"Startup prometedora que combina innovación científica con ejecución comercial."</p>
+          </div>
 
-        </div> <!-- end section-head -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="row collapse">
+  <!-- CTA -->
+  <section class="s-cta ss-dark">
+    <div class="row heading-block heading-block--center" data-aos="fade-up">
+      <div class="column">
+        <h2 class="section-desc">¿Listo para ser parte del futuro sostenible?</h2>
+      </div>
+    </div>
+    <div class="row cta-content" data-aos="fade-up">
+      <div class="column">
+        <p>Desarrollemos juntos tu próximo proyecto de energía sostenible. <strong>Consulta gratuita y evaluación personalizada.</strong></p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:var(--vspace-1);">
+          <a href="https://wa.me/573209574884?text=Hola%2C%20me%20interesa%20iniciar%20un%20proyecto%20de%20energ%C3%ADa%20sostenible%20con%20Hidr%C3%B3geno%20Verde%20Turquesa" target="_blank" class="btn btn--primary">🌱 Iniciar Proyecto</a>
+          <a href="investors.html" class="btn btn--stroke" style="background:transparent;border:2px solid white;color:white;">💼 Oportunidades de Inversión</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="column testimonial-slider-outer">
+  <!-- contact -->
+  <section id="contact" class="s-contact target-section s-dark">
+    <div class="row section-head">
+      <div class="column large-3 medium-12">
+        <h2>Contacto</h2>
+        <p class="desc">Conecta con nosotros.</p>
+      </div>
+    </div>
 
-                <div class="testimonial-slider" data-aos="fade-up">
+    <div class="row s-contact__content">
+      <div class="column large-7 medium-12">
+        <h3 class="display-1">¿Tienes un proyecto de energía sostenible en mente? Conecta con nuestro equipo.</h3>
+        <div class="s-contact__email-us" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://wa.me/573209574884?text=Hola%2C%20me%20interesa%20iniciar%20un%20proyecto%20de%20energ%C3%ADa%20sostenible%20con%20Hidr%C3%B3geno%20Verde%20Turquesa" class="btn btn--primary" style="flex:1;min-width:200px;">🌱 Proyectos</a>
+          <a href="investors.html" class="btn btn--stroke" style="flex:1;min-width:200px;background:transparent;border:2px solid var(--color-1);color:var(--color-1);">💼 Inversores</a>
+        </div>
+      </div>
 
-                    <div class="testimonial-slider__slide">
-                        <div class="testimonial-slider__author">
-                            <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonial-slider__avatar">
-                            <cite class="testimonial-slider__cite">
-                                <strong>Henrik Andersen</strong>
-                                <span>CEO, Ørsted Energy</span>
-                            </cite>
-                        </div>
-                        <p>
-                        "Los proyectos de Hidrógeno Verde Turquesa han superado nuestras expectativas en eficiencia 
-                        y reducción de costos. Su tecnología de electrólisis es realmente innovadora y su equipo 
-                        demuestra gran profesionalismo en cada etapa del proyecto."
-                        </p>
-                    </div> <!-- end testimonials__slide -->
-
-                    <div class="testimonial-slider__slide">
-                        <div class="testimonial-slider__author">
-                            <img src="images/avatars/user-03.jpg" alt="Author image" class="testimonial-slider__avatar">
-                            <cite class="testimonial-slider__cite">
-                                <strong>Isabella Müller</strong>
-                                <span>Director Innovation, E.ON</span>
-                            </cite>
-                        </div>
-                        <p>
-                        "Implementamos su solución SaaS en 12 proyectos de construcción sostenible con resultados 
-                        excepcionales: -30% tiempo de certificación BREEAM y +15% valoración final. 
-                        ROI demostrado en menos de 18 meses."
-                        </p>
-                    </div> <!-- end testimonials__slide -->
-
-                    <div class="testimonial-slider__slide">
-                        <div class="testimonial-slider__author">
-                            <img src="images/avatars/user-04.jpg" alt="Author image" class="testimonial-slider__avatar">
-                            <cite class="testimonial-slider__cite">
-                                <strong>Jean-Pierre Dubois</strong>
-                                <span>Managing Partner, Eurazeo</span>
-                            </cite>
-                        </div>
-                        <p>
-                        "Equipo excepcional con track record probado en scaling de tecnologías deep-tech. 
-                        Su approach al mercado de hidrógeno verde es muy sólido y el timing perfecto 
-                        para capturar la oportunidad del Green Deal europeo."
-                        </p>
-                    </div> <!-- end testimonials__slide -->
-
-                    <div class="testimonial-slider__slide">
-                        <div class="testimonial-slider__author">
-                            <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonial-slider__avatar">
-                            <cite class="testimonial-slider__cite">
-                                <strong>Dr. Sarah Chen</strong>
-                                <span>Investment Director, EIT InnoEnergy</span>
-                            </cite>
-                        </div>
-                        <p>
-                        "Una de las startups más prometedoras en nuestro portfolio. Combina innovación 
-                        científica real con ejecución comercial excepcional. Su tecnología patentada 
-                        tiene potencial de transformar el sector energético europeo."
-                        </p>
-                    </div> <!-- end testimonials__slide -->
-
-                </div> <!-- end testimonial slider -->
-
-            </div> <!-- end column -->
-
-        </div> <!-- end row -->
-
-    </section> <!-- end s-testimonials -->
-
-
-    <!-- CTA -->
-    <section class="s-cta ss-dark">
-
-        <div class="row heading-block heading-block--center" data-aos="fade-up">
-            <div class="column">
-                <h2 class="section-desc">
-                    ¿Listo para ser parte del futuro sostenible?
-                </h2>
-            </div>
-        </div> <!-- end heading-block -->
-
-        <div class="row cta-content" data-aos="fade-up">
-            <div class="column">
-                <p>
-                Desarrollemos juntos tu próximo proyecto de energía sostenible.
-                <strong>Consulta gratuita y evaluación personalizada disponible.</strong>
-                </p>
-
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: var(--vspace-1);">
-                    <a href="https://wa.me/573209574884?text=Hola%2C%20me%20interesa%20iniciar%20un%20proyecto%20de%20energ%C3%ADa%20sostenible%20con%20Hidr%C3%B3geno%20Verde%20Turquesa" target="_blank" class="btn btn--primary">
-                        🌱 Iniciar Proyecto
-                    </a>
-                    <a href="investors.html" class="btn btn--stroke" style="background: transparent; border: 2px solid white; color: white;">
-                        💼 Oportunidades de Inversión
-                    </a>
-                </div>
-            </div>
-        </div> <!-- end ad-content -->
-
-    </section> <!-- end s-cta -->
-
-
-    <!-- contact
-    ================================================== -->
-    <section id="contact" class="s-contact target-section s-dark">
-
-        <div class="row section-head">
-            <div class="column large-3 medium-12">
-                <h2>Contacto</h2>
-                <p class="desc">Conecta con nosotros.</p>
-            </div>
-        </div> <!-- end section-head -->
-
-        <div class="row s-contact__content">
-
-            <div class="column large-7 medium-12">
-                <h3 class="display-1">
-                    ¿Tienes un proyecto de energía sostenible en mente? 
-                    Conecta con nuestro equipo para desarrollar soluciones 
-                    personalizadas que transformen tu operación.
-                </h3>
-
-                <div class="s-contact__email-us" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://wa.me/573209574884?text=Hola%2C%20me%20interesa%20iniciar%20un%20proyecto%20de%20energ%C3%ADa%20sostenible%20con%20Hidr%C3%B3geno%20Verde%20Turquesa" class="btn btn--primary" style="flex: 1; min-width: 200px;">🌱 Proyectos</a>
-                    <a href="investors.html" class="btn btn--stroke" style="flex: 1; min-width: 200px; background: transparent; border: 2px solid var(--color-1); color: var(--color-1);">💼 Inversores</a>
-                </div>
-            </div>
-
-            <div class="column large-4 medium-12 s-contact__info-blocks">
-                <div class="row">
-                    <div class="column large-12 medium-6 tab-12">
-                        <div class="s-contact__info-block">
-
-                            <span class="s-contact__info-block-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z"/><path d="M11.42 21.814a.998.998 0 001.16 0C12.884 21.599 20.029 16.44 20 10c0-4.411-3.589-8-8-8S4 5.589 4 9.995c-.029 6.445 7.116 11.604 7.42 11.819zM12 4c3.309 0 6 2.691 6 6.005.021 4.438-4.388 8.423-6 9.73-1.611-1.308-6.021-5.294-6-9.735 0-3.309 2.691-6 6-6z"/></svg>
-                            </span>
-
-                            <h5>Encuéntranos aquí</h5>
-                            <p>
-                            Pueblito Boyacense <br>
-                            Manzana Cocuy <br>
-                            Duitama, Colombia <br>
-                            </p>
-                        </div> <!-- end s-contact__info-block -->
-                    </div>
-
-                    <div class="column large-12 medium-6 tab-12">
-                        <div class="s-contact__info-block">
-                            <span class="s-contact__info-block-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M17.707 12.293a.999.999 0 00-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 000-1.414l-4-4a.999.999 0 00-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 000-1.414l-4-4.001zm-.127 6.712c-1.248-.021-5.518-.356-8.873-3.712-3.366-3.366-3.692-7.651-3.712-8.874L7 4.414 9.586 7 8.293 8.293a1 1 0 00-.272.912c.024.115.611 2.842 2.271 4.502s4.387 2.247 4.502 2.271a.991.991 0 00.912-.271L17 14.414 19.586 17l-2.006 2.005z"/></svg>
-                            </span>
-
-                            <h5>Contacto</h5>
-                            <p>
-                            <strong>Proyectos:</strong> hidrogenoverdeturquesa@gmail.com<br>
-                            <strong>Oficina:</strong> +57 3118645518<br>
-                            <strong>WhatsApp:</strong> +57 3209574884<br>
-                            <strong>Inversores:</strong> <a href="investors.html">Ver página de inversores</a>
-                            </p>
-                        </div> <!-- end s-contact__info-block -->
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end s-contact__info-blocks -->
-
-        </div> <!-- end s-contact__content -->
-
-    </section> <!-- end s-contact -->
-
-
-    <!-- footer
-    ================================================== -->
-    <footer class="s-footer">
+      <div class="column large-4 medium-12 s-contact__info-blocks">
         <div class="row">
-            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
-                <ul class="s-footer__social">
-                    <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                </ul>
+          <div class="column large-12 medium-6 tab-12">
+            <div class="s-contact__info-block">
+              <span class="s-contact__info-block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z"/><path d="M11.42 21.814a.998.998 0 001.16 0C12.884 21.599 20.029 16.44 20 10c0-4.411-3.589-8-8-8S4 5.589 4 9.995c-.029 6.445 7.116 11.604 7.42 11.819zM12 4c3.309 0 6 2.691 6 6.005.021 4.438-4.388 8.423-6 9.73-1.611-1.308-6.021-5.294-6-9.735 0-3.309 2.691-6 6-6z"/></svg>
+              </span>
+              <h5>Encuéntranos aquí</h5>
+              <p>Pueblito Boyacense<br>Manzana Cocuy<br>Duitama, Colombia</p>
             </div>
+          </div>
 
-            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
-                <span>© Copyright Hidrógeno Verde Turquesa 2025</span> 
-                <span>Energía limpia para un futuro sostenible</span>
+          <div class="column large-12 medium-6 tab-12">
+            <div class="s-contact__info-block">
+              <span class="s-contact__info-block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true"><path d="M17.707 12.293a.999.999 0 00-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 000-1.414l-4-4a.999.999 0 00-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 000-1.414l-4-4.001zm-.127 6.712c-1.248-.021-5.518-.356-8.873-3.712-3.366-3.366-3.692-7.651-3.712-8.874L7 4.414 9.586 7 8.293 8.293a1 1 0 00-.272.912c.024.115.611 2.842 2.271 4.502s4.387 2.247 4.502 2.271a.991.991 0 00.912-.271L17 14.414 19.586 17l-2.006 2.005z"/></svg>
+              </span>
+              <h5>Contacto</h5>
+              <p>
+                <strong>Proyectos:</strong> hidrogenoverdeturquesa@gmail.com<br>
+                <strong>Oficina:</strong> +57 3118645518<br>
+                <strong>WhatsApp:</strong> +57 3209574884<br>
+                <strong>Inversores:</strong> <a href="investors.html">Ver página de inversores</a>
+              </p>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="ss-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
-            </a>
-        </div> <!-- end ss-go-top -->
-    </footer>
+    </div>
+  </section>
 
+  <!-- footer -->
+  <footer class="s-footer">
+    <div class="row">
+      <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+        <ul class="s-footer__social">
+          <li><a href="#0" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+          <li><a href="#0" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#0" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="#0" aria-label="Dribbble"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+          <li><a href="#0" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
 
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+      <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+        <span>© Copyright Hidrógeno Verde Turquesa 2025</span>
+        <span>Energía limpia para un futuro sostenible</span>
+      </div>
+    </div>
 
+    <div class="ss-go-top">
+      <a class="smoothscroll" title="Volver arriba" href="#top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- JavaScript (si puedes, concatena plugins.js + main.js en app.min.js) -->
+  <script src="js/jquery-3.2.1.min.js" defer></script>
+  <script src="js/plugins.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <!-- Fallback de preloader y mejoras de lazy a última hora -->
+  <script>
+    // Fallback del preloader: siempre se apaga al cargar o a los 4s
+    (function(){
+      function done(){ document.documentElement.classList.add('preload-done'); }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', done);
+      } else { done(); }
+      setTimeout(done, 4000);
+    })();
+
+    // Marca imágenes fuera del primer viewport como lazy si no lo están
+    (function(){
+      var imgs = document.querySelectorAll('img:not([loading])');
+      var vh = window.innerHeight || 800;
+      imgs.forEach(function(img){
+        var rect = img.getBoundingClientRect();
+        if (rect.top > vh * 0.9) {
+          img.setAttribute('loading','lazy');
+          img.setAttribute('decoding','async');
+        }
+      });
+    })();
+
+    // Respeta usuarios con "reduced motion" y desactiva animaciones pesadas
+    (function(){
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        document.documentElement.classList.add('reduce-motion');
+        // Aquí puedes desactivar inicialización de AOS/slider/parallax si aplica
+      }
+    })();
+  </script>
 </body>
-
 </html>
