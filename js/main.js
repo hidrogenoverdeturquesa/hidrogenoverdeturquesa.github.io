@@ -270,16 +270,13 @@
     * ------------------------------------------------------ */
     const ssAOS = function() {
         
-        // Detect if device is mobile for better performance
-        const isMobile = window.innerWidth <= 768;
-        
         AOS.init( {
             offset: 100,
             duration: 600,
             easing: 'ease-in-out',
             delay: 300,
             once: true,
-            disable: isMobile ? true : false  // Disable animations on mobile devices
+            disable: 'mobile'
         });
 
     };
