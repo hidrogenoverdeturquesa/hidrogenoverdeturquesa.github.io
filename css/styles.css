@@ -3903,6 +3903,8 @@ body.search-is-visible {
 .folio-item__thumb {
     display: block;
     background-color: white;
+    overflow: hidden;
+    height: 100%;
     -webkit-transition: all .5s;
     transition: all .5s;
     -webkit-box-shadow: 0px 0px 16px rgba(17, 17, 26, 0.05);
@@ -3920,19 +3922,73 @@ body.search-is-visible {
 
 .folio-item img {
     display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
     margin: 0;
 }
 
 .folio-item__text {
-    display: block;
-    padding: var(--vspace-0_5) 2.4rem;
-    font-size: var(--text-sm);
-    color: var(--color-text-light);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    min-height: 12.8rem;
+    padding: var(--vspace-0_75) 2.4rem;
+    color: var(--color-text);
     -webkit-transition: all .5s;
     transition: all .5s;
+}
+
+.folio-item__category {
+    font-family: var(--font-2);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-1);
+}
+
+.folio-item__text strong {
+    font-family: var(--font-2);
+    font-size: var(--text-md);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-black);
+}
+
+.folio-item__cta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-top: auto;
+    font-family: var(--font-2);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-1);
+}
+
+.folio-item__cta::after {
+    content: ">";
+    margin-left: .8rem;
+    -webkit-transition: transform .3s;
+    transition: transform .3s;
+}
+
+.folio-item__thumb:hover .folio-item__category,
+.folio-item__thumb:focus .folio-item__category,
+.folio-item__thumb:hover .folio-item__text strong,
+.folio-item__thumb:focus .folio-item__text strong,
+.folio-item__thumb:hover .folio-item__cta,
+.folio-item__thumb:focus .folio-item__cta {
+    color: white;
+}
+
+.folio-item__thumb:hover .folio-item__cta::after,
+.folio-item__thumb:focus .folio-item__cta::after {
+    -webkit-transform: translateX(.4rem);
+    transform: translateX(.4rem);
 }
 
 /* ------------------------------------------------------------------- 
