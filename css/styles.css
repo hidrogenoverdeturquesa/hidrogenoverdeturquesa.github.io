@@ -3168,7 +3168,7 @@ input::-moz-focus-inner {
     display: block;
     height: var(--header-height);
     line-height: var(--header-height);
-    padding: 0 16px;
+    padding: 0 12px;
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -3448,6 +3448,18 @@ body.search-is-visible {
  * responsive:
  * header
  * ------------------------------------------------------------------- */
+@media screen and (max-width: 1180px) {
+    .s-header__logo {
+        margin-right: 2rem;
+    }
+    .s-header__nav {
+        font-size: 1.3rem;
+    }
+    .s-header__nav a {
+        padding: 0 9px;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .s-header .row {
         display: block;
