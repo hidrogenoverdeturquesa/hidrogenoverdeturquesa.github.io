@@ -4448,7 +4448,19 @@ body.search-is-visible {
     margin-bottom: var(--vspace-1);
 }
 
+.team-member__pic {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: var(--vspace-0_75);
+    overflow: hidden;
+}
+
 .team-member img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     margin-bottom: 0;
 }
 
