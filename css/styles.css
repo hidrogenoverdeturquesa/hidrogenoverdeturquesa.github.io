@@ -4758,6 +4758,14 @@ body.search-is-visible {
     position: relative;
 }
 
+.s-contact__info-block p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.s-contact__info-block strong {
+    color: white;
+}
+
 .s-contact__info-block-icon {
     position: absolute;
     left: 0;
