@@ -3811,6 +3811,45 @@ body.search-is-visible {
 }
 
 /* -------------------------------------------------------------------
+ * ## foundation action lines
+ * ------------------------------------------------------------------- */
+.foundation-action-lines {
+    padding: var(--vspace-5) 0;
+    background: #101414;
+}
+
+.foundation-action-lines .section-head {
+    margin-bottom: var(--vspace-1_25);
+}
+
+.foundation-action-lines__grid .column {
+    margin-bottom: var(--vspace-1);
+}
+
+.foundation-action-card {
+    background: #f7f9f8;
+    border-top: 5px solid var(--color-1);
+    color: var(--color-text);
+    height: 100%;
+    min-height: 19rem;
+    padding: var(--vspace-1_25);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.foundation-action-card h5 {
+    color: var(--color-text-dark);
+    font-size: var(--text-md);
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: var(--vspace-0_5);
+}
+
+.foundation-action-card p {
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------
  * ## foundation courses
  * ------------------------------------------------------------------- */
 .foundation-courses {
