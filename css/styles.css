@@ -4379,6 +4379,52 @@ body.search-is-visible {
     font-size: var(--text-md);
 }
 
+.project-equation {
+    margin: var(--vspace-1) 0;
+    border-left: 6px solid var(--color-1);
+    background: #f4f6f6;
+    padding: var(--vspace-1);
+}
+
+.project-equation code {
+    display: block;
+    color: var(--color-text-dark);
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    white-space: normal;
+}
+
+.project-parameter-table {
+    width: 100%;
+    margin: var(--vspace-1) 0;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.project-parameter-table th,
+.project-parameter-table td {
+    border: 1px solid var(--color-border);
+    padding: 1rem;
+    text-align: left;
+}
+
+.project-parameter-table th {
+    background: var(--color-gray-1);
+    color: var(--color-text-dark);
+    font-weight: 900;
+}
+
+.project-warning {
+    margin: var(--vspace-1) 0;
+    border: 2px solid var(--color-1);
+    background: white;
+    padding: var(--vspace-1);
+}
+
+.project-warning strong {
+    color: var(--color-text-dark);
+}
+
 /* ------------------------------------------------------------------- 
  * responsive:
  * home
