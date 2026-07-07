@@ -4383,15 +4383,25 @@ body.search-is-visible {
     margin: var(--vspace-1) 0;
     border-left: 6px solid var(--color-1);
     background: #f4f6f6;
-    padding: var(--vspace-1);
+    padding: var(--vspace-1_25) var(--vspace-1);
+    text-align: center;
 }
 
-.project-equation code {
-    display: block;
+.project-equation code,
+.project-equation .math-display {
+    display: inline-block;
     color: var(--color-text-dark);
-    font-family: var(--font-mono);
-    font-size: var(--text-md);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: var(--text-xl);
+    font-style: italic;
+    line-height: 1.35;
     white-space: normal;
+}
+
+.project-equation .math-display sub,
+.project-equation .math-display sup {
+    font-size: 65%;
+    line-height: 0;
 }
 
 .project-parameter-table {
