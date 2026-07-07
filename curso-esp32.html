@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Cuadernillo ESP32 | Escuela de la República del Hidrógeno</title>
+    <meta name="description" content="Cuadernillo técnico para iniciar con ESP32, monitoreo y datos aplicados a energía.">
+    <meta name="author" content="Hidrógeno Verde Turquesa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css?v=cuadernillos-cursos-20260707">
+    <link rel="stylesheet" href="css/vendor.css">
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body id="top">
+    <div id="preloader"><div id="loader"></div></div>
+    <header class="s-header">
+        <div class="row">
+            <div class="s-header__logo"><a href="index.html"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height: 40px; width: auto;"></a></div>
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="fundacion.html">Fundación</a></li>
+                    <li class="current"><a href="fundacion.html#cursos">Cursos</a></li>
+                    <li><a href="investors.html">Inversionistas</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <a class="s-header__menu-toggle" href="#0" title="Menu"><span class="s-header__menu-icon"></span></a>
+        </div>
+    </header>
+
+    <main class="course-book">
+        <section class="course-book__hero">
+            <div class="row">
+                <div class="column large-7 medium-12">
+                    <p class="course-book__eyebrow">Cuadernillo 02 · Nivel básico</p>
+                    <h1>ESP32, monitoreo y datos</h1>
+                    <p class="course-book__lead">Aprende a usar ESP32 como cerebro de un sistema de medición: lectura de sensores, conexión WiFi, registro de datos y tablero básico para prototipos energéticos.</p>
+                    <div class="course-book__actions">
+                        <a href="#capitulo-1" class="btn btn--primary smoothscroll">Empezar</a>
+                        <a href="fundacion.html#cursos" class="btn btn--stroke">Volver al catálogo</a>
+                    </div>
+                </div>
+                <div class="column large-5 medium-12">
+                    <figure class="book-cover-figure">
+                        <img src="images/Esp32.png" alt="Tarjeta ESP32">
+                        <figcaption>Figura 1. Tarjeta ESP32 para monitoreo, conectividad y control.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-1">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 1</span><strong>ESP32 como nodo de medición</strong></aside>
+                <article class="book-page__content">
+                    <h2>Objetivo de la lección</h2>
+                    <p class="book-lead">Al terminar, el estudiante entiende qué hace un ESP32, distingue alimentación, entradas, salidas y comunicación, y diseña un primer nodo de monitoreo para energía sostenible.</p>
+                    <div class="book-learning-grid">
+                        <div>
+                            <h3>Aprenderás</h3>
+                            <ul>
+                                <li>Qué significa entrada analógica y entrada digital.</li>
+                                <li>Cómo conectar un sensor sin exceder el voltaje permitido.</li>
+                                <li>Cómo enviar datos por WiFi a un tablero simple.</li>
+                                <li>Cómo documentar una variable medida.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Materiales</h3>
+                            <ul>
+                                <li>1 tarjeta ESP32.</li>
+                                <li>Cable USB de datos.</li>
+                                <li>Sensor de temperatura o luz.</li>
+                                <li>Protoboard y cables Dupont.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <figure class="book-figure book-figure--wide">
+                        <img src="images/Esp32.png" alt="Vista de una tarjeta ESP32">
+                        <figcaption>Figura 1-1. El ESP32 integra microcontrolador, pines de conexión y módulo WiFi/Bluetooth.</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Concepto</span><strong>Dato, decisión y comunicación</strong></aside>
+                <article class="book-page__content">
+                    <h2>La idea central</h2>
+                    <p>Un sistema energético inteligente no solo produce energía: también mide, guarda datos y alerta cuando algo cambia. El ESP32 permite conectar el mundo físico con una interfaz digital.</p>
+                    <div class="book-flow">
+                        <div><span>1</span><strong>Sensor</strong><p>Convierte una variable física en señal eléctrica.</p></div>
+                        <div><span>2</span><strong>ESP32</strong><p>Lee, compara, calcula y decide.</p></div>
+                        <div><span>3</span><strong>Tablero</strong><p>Muestra datos para tomar decisiones.</p></div>
+                    </div>
+                    <div class="book-example">
+                        <p class="book-example__label">Ejemplo 2-1</p>
+                        <h3>Monitoreo de temperatura en una caja energética</h3>
+                        <p>Se quiere vigilar la temperatura interna de una caja con electrónica. Si la temperatura supera un límite, el sistema debe advertir que requiere ventilación.</p>
+                        <div class="book-solution">
+                            <strong>Solución</strong>
+                            <ol>
+                                <li>Definir la variable: temperatura en grados Celsius.</li>
+                                <li>Definir el límite inicial de alerta, por ejemplo 35 °C.</li>
+                                <li>Leer el sensor cada cierto intervalo.</li>
+                                <li>Mostrar estado normal o alerta en el tablero.</li>
+                            </ol>
+                        </div>
+                        <p class="book-comment">Comentario: medir no es acumular números; medir es convertir datos en decisiones útiles para seguridad, mantenimiento y eficiencia.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Práctica</span><strong>Primer nodo de monitoreo</strong></aside>
+                <article class="book-page__content">
+                    <h2>Construye una lectura básica</h2>
+                    <ol class="book-steps">
+                        <li><strong>Identifica alimentación.</strong> Conecta el ESP32 por USB y verifica que encienda correctamente.</li>
+                        <li><strong>Elige una variable.</strong> Usa temperatura, luz o humedad como primera variable de práctica.</li>
+                        <li><strong>Conecta el sensor.</strong> Revisa VCC, GND y señal antes de energizar.</li>
+                        <li><strong>Lee el dato.</strong> Programa una lectura periódica y muéstrala por monitor serial.</li>
+                        <li><strong>Define una alerta.</strong> Si la lectura supera el límite, escribe “ALERTA”.</li>
+                    </ol>
+                    <div class="book-code-card">
+                        <h3>Lógica del programa</h3>
+                        <pre><code>leer sensor
+si valor > limite:
+    mostrar "ALERTA"
+si no:
+    mostrar "NORMAL"</code></pre>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Actividad</span><strong>Evidencia de aprendizaje</strong></aside>
+                <article class="book-page__content">
+                    <h2>Diseña tu primer tablero energético</h2>
+                    <p>Representa en una hoja cómo se vería un tablero para una casa con panel solar, batería y caja de control.</p>
+                    <div class="book-task">
+                        <h3>Entrega</h3>
+                        <ul>
+                            <li>Dibuja tres variables que medirías.</li>
+                            <li>Define para cada una un estado normal y un estado de alerta.</li>
+                            <li>Explica qué acción tomarías si aparece una alerta.</li>
+                        </ul>
+                    </div>
+                    <div class="book-next">
+                        <div><span>Siguiente lección</span><strong>Conectividad WiFi y registro de datos</strong></div>
+                        <a href="fundacion.html#cursos" class="btn btn--primary">Volver al catálogo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="s-footer">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+                <ul class="s-footer__social">
+                    <li><a href="https://wa.me/573209574884" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/hidrogenoverdeturquesa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/hidr-geno-verde-turquesa/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright"><span>© Copyright Hidrógeno Verde Turquesa 2025</span><span>Escuela de la República del Hidrógeno</span></div>
+        </div>
+    </footer>
+    <script src="js/jquery-3.2.1.min.js"></script><script src="js/plugins.js"></script><script src="js/main.js"></script>
+</body>
+</html>
