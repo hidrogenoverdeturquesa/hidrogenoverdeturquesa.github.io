@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+
+    <meta charset="utf-8">
+    <title>Cuadernillo Micro:bit | Escuela de la República del Hidrógeno</title>
+    <meta name="description" content="Cuadernillo técnico inicial para aprender Micro:bit, sensores y energía desde cero.">
+    <meta name="author" content="Hidrógeno Verde Turquesa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/styles.css?v=cuadernillo-microbit-20260707">
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <header class="s-header">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="index.html">
+                    <img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height: 40px; width: auto;">
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="fundacion.html">Fundación</a></li>
+                    <li class="current"><a href="fundacion.html#cursos">Cursos</a></li>
+                    <li><a href="investors.html">Inversionistas</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+        </div>
+    </header>
+
+    <main class="course-book">
+        <section class="course-book__hero">
+            <div class="row">
+                <div class="column large-7 medium-12">
+                    <p class="course-book__eyebrow">Cuadernillo 01 · Nivel inicial</p>
+                    <h1>Micro:bit para energía y sensores</h1>
+                    <p class="course-book__lead">
+                    Aprende a usar una tarjeta Micro:bit como primer laboratorio de medición: entradas, salidas, sensores, alertas y pensamiento lógico aplicado a energía sostenible.
+                    </p>
+                    <div class="course-book__actions">
+                        <a href="#capitulo-1" class="btn btn--primary smoothscroll">Empezar</a>
+                        <a href="fundacion.html#cursos" class="btn btn--stroke">Volver al catálogo</a>
+                    </div>
+                </div>
+                <div class="column large-5 medium-12">
+                    <figure class="book-cover-figure">
+                        <img src="images/Microbit.png" alt="Tarjeta Micro:bit">
+                        <figcaption>Figura 1. Tarjeta Micro:bit usada como laboratorio educativo.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-1">
+            <div class="book-page">
+                <aside class="book-page__index">
+                    <span>Capítulo 1</span>
+                    <strong>Primer contacto con Micro:bit</strong>
+                </aside>
+
+                <article class="book-page__content">
+                    <h2>Objetivo de la lección</h2>
+                    <p class="book-lead">
+                    Al terminar esta lección, el estudiante entiende qué es una Micro:bit, identifica sus partes principales y programa una primera alerta visual que representa el estado de una variable de energía.
+                    </p>
+
+                    <div class="book-learning-grid">
+                        <div>
+                            <h3>Aprenderás</h3>
+                            <ul>
+                                <li>Qué es una entrada y una salida.</li>
+                                <li>Cómo usar la matriz LED como indicador.</li>
+                                <li>Cómo leer botones y tomar decisiones simples.</li>
+                                <li>Cómo convertir una medición en una alerta.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Materiales</h3>
+                            <ul>
+                                <li>1 tarjeta Micro:bit.</li>
+                                <li>Cable USB o batería.</li>
+                                <li>Computador con acceso al editor MakeCode.</li>
+                                <li>Cuaderno de observación.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <figure class="book-figure book-figure--wide">
+                        <img src="images/Microbit.png" alt="Vista frontal de una Micro:bit">
+                        <figcaption>Figura 1-1. Componentes visibles: botones A/B, matriz LED, pines 0, 1, 2, 3V y GND.</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index">
+                    <span>Concepto</span>
+                    <strong>Entrada, proceso y salida</strong>
+                </aside>
+
+                <article class="book-page__content">
+                    <h2>La idea central</h2>
+                    <p>
+                    Todo sistema de control básico funciona como una cadena: una entrada entrega información, el programa toma una decisión y una salida comunica o ejecuta una acción.
+                    </p>
+
+                    <div class="book-flow">
+                        <div>
+                            <span>1</span>
+                            <strong>Entrada</strong>
+                            <p>Botón, sensor, temperatura, luz o voltaje.</p>
+                        </div>
+                        <div>
+                            <span>2</span>
+                            <strong>Proceso</strong>
+                            <p>La Micro:bit compara, calcula y decide.</p>
+                        </div>
+                        <div>
+                            <span>3</span>
+                            <strong>Salida</strong>
+                            <p>LED, icono, sonido, radio o señal.</p>
+                        </div>
+                    </div>
+
+                    <div class="book-example">
+                        <p class="book-example__label">Ejemplo 1-1</p>
+                        <h3>Alerta visual de energía</h3>
+                        <p>
+                        Supón que queremos representar el estado de una batería con dos símbolos: un visto bueno cuando el estado es normal y una X cuando requiere atención. En esta primera práctica, el botón A simula estado normal y el botón B simula alerta.
+                        </p>
+                        <div class="book-solution">
+                            <strong>Solución</strong>
+                            <ol>
+                                <li>Si se presiona A, mostrar un símbolo de confirmación.</li>
+                                <li>Si se presiona B, mostrar una X.</li>
+                                <li>Registrar en el cuaderno qué representa cada estado.</li>
+                            </ol>
+                        </div>
+                        <p class="book-comment">
+                        Comentario: antes de medir variables reales, se entrena la lógica de decisión. Esta misma estructura servirá luego para sensores de temperatura, humedad, corriente o gas.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index">
+                    <span>Práctica</span>
+                    <strong>Paso a paso</strong>
+                </aside>
+
+                <article class="book-page__content">
+                    <h2>Construye tu primera alerta</h2>
+                    <ol class="book-steps">
+                        <li>
+                            <strong>Abre el editor.</strong>
+                            Entra a MakeCode para Micro:bit y crea un proyecto llamado <em>Alerta Energia 01</em>.
+                        </li>
+                        <li>
+                            <strong>Programa el botón A.</strong>
+                            Usa el bloque “al presionar botón A” y agrega “mostrar icono feliz” o un visto bueno.
+                        </li>
+                        <li>
+                            <strong>Programa el botón B.</strong>
+                            Usa el bloque “al presionar botón B” y agrega “mostrar icono X”.
+                        </li>
+                        <li>
+                            <strong>Prueba en el simulador.</strong>
+                            Verifica que los botones cambien la salida en la matriz LED.
+                        </li>
+                        <li>
+                            <strong>Descarga a la tarjeta.</strong>
+                            Conecta la Micro:bit y transfiere el programa.
+                        </li>
+                    </ol>
+
+                    <div class="book-code-card">
+                        <h3>Lógica del programa</h3>
+                        <pre><code>cuando botón A presionado:
+    mostrar "OK"
+
+cuando botón B presionado:
+    mostrar "X"</code></pre>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet">
+            <div class="book-page">
+                <aside class="book-page__index">
+                    <span>Actividad</span>
+                    <strong>Evidencia de aprendizaje</strong>
+                </aside>
+
+                <article class="book-page__content">
+                    <h2>Convierte la alerta en una historia energética</h2>
+                    <p>
+                    Imagina una casa que tiene panel solar, batería y un pequeño sistema de monitoreo. Tu Micro:bit será el primer tablero de estado.
+                    </p>
+
+                    <div class="book-task">
+                        <h3>Entrega</h3>
+                        <ul>
+                            <li>Dibuja en tu cuaderno una casa con una batería.</li>
+                            <li>Explica qué significa el botón A y qué significa el botón B.</li>
+                            <li>Escribe una frase sobre por qué medir ayuda a ahorrar energía.</li>
+                            <li>Toma una foto de tu Micro:bit mostrando los dos estados.</li>
+                        </ul>
+                    </div>
+
+                    <div class="book-next">
+                        <div>
+                            <span>Siguiente lección</span>
+                            <strong>Medición de luz y temperatura</strong>
+                        </div>
+                        <a href="fundacion.html#cursos" class="btn btn--primary">Volver al catálogo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="s-footer">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+                <ul class="s-footer__social">
+                    <li><a href="https://wa.me/573209574884" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/hidrogenoverdeturquesa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/hidr-geno-verde-turquesa/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.youtube.com/@H2VERDETURQUESA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61561226319044" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Hidrógeno Verde Turquesa 2025</span>
+                <span>Escuela de la República del Hidrógeno</span>
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
