@@ -28,8 +28,7 @@
 
         document.querySelector('html').classList.add('ss-preload');
         
-        window.addEventListener('load', function() {
-               
+        const revealPage = function() {
             document.querySelector('html').classList.remove('ss-preload');
             document.querySelector('html').classList.add('ss-loaded');
 
@@ -38,7 +37,20 @@
                     this.style.display = 'none';
                 }
             });
-        });
+
+            window.setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 700);
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', revealPage, { once: true });
+        } else {
+            revealPage();
+        }
+
+        // Never leave the interface blocked if a third-party resource is slow.
+        window.setTimeout(revealPage, 1200);
 
         // force page scroll position to top at page refresh
         window.addEventListener('beforeunload' , function () {
