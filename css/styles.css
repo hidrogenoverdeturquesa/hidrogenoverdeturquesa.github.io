@@ -6395,6 +6395,37 @@ body.search-is-visible {
     }
 }
 /* Investor team cards */
+.support-options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.support-options-grid > .column {
+    display: flex;
+    margin-bottom: var(--vspace-1);
+}
+
+.support-option-card {
+    width: 100%;
+    min-height: 33rem;
+    padding: var(--vspace-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 600px) {
+    .support-option-card {
+        min-height: 0;
+    }
+}
+
 #investors-hero h1,
 #investors-hero p {
     color: #ffffff !important;
