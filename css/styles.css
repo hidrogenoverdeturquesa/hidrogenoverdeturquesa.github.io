@@ -6394,3 +6394,38 @@ body.search-is-visible {
         padding-top: var(--vspace-1);
     }
 }
+/* Investor team cards */
+.investor-team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.investor-team-grid > .column {
+    display: flex;
+    margin-bottom: var(--vspace-1);
+}
+
+.investor-team-card {
+    width: 100%;
+    min-height: 32rem;
+    padding: var(--vspace-1_5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.investor-team-card p {
+    line-height: 1.65;
+}
+
+@media screen and (max-width: 600px) {
+    .investor-team-card {
+        min-height: 0;
+    }
+}
