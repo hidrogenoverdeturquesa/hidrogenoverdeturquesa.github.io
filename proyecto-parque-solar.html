@@ -1,8 +1,159 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es">
-<head><meta charset="utf-8"><title>Cuadernillo técnico | Parque solar comunitario</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="css/styles.css?v=ecuaciones-display-20260707"><link rel="stylesheet" href="css/vendor.css"><script src="js/modernizr.js"></script><script defer src="js/fontawesome/all.min.js"></script></head>
-<body id="top"><div id="preloader"><div id="loader"></div></div><header class="s-header"><div class="row"><div class="s-header__logo"><a href="index.html"><img src="images/logo-hvt.svg" alt="HVT" style="height:40px;width:auto;"></a></div><nav class="s-header__nav"><ul><li><a href="index.html">Inicio</a></li><li class="current"><a href="index.html#portfolio">Proyectos</a></li><li><a href="index.html#contact">Contacto</a></li></ul></nav><a class="s-header__menu-toggle" href="#0" title="Menu"><span class="s-header__menu-icon"></span></a></div></header>
-<main class="course-book"><section class="course-book__hero"><div class="row"><div class="column large-7 medium-12"><p class="course-book__eyebrow">Cuadernillo técnico 02 · Diseño integral del proyecto</p><h1>Parque Solar Comunitario</h1><p class="course-book__lead">Documento técnico del parque solar comunitario. Integra evaluación del recurso, diseño, dimensionamiento, componentes, instalación, operación, mantenimiento, seguridad, distribución de energía y escalamiento.</p><div class="course-book__actions"><a href="#capitulo-1" class="btn btn--primary smoothscroll">Explorar capítulos</a><a href="index.html#portfolio" class="btn btn--stroke">Volver a proyectos</a></div></div><div class="column large-5 medium-12"><figure class="book-cover-figure"><img src="images/portfolio/parque.jpg" alt="Parque solar"><figcaption>Figura 1. Sistema fotovoltaico comunitario con usuarios compartidos.</figcaption></figure></div></div></section>
-<section class="book-sheet" id="capitulo-1"><div class="book-page"><aside class="book-page__index"><span>Capítulo 1</span><strong>Recurso solar</strong></aside><article class="book-page__content"><h2>Objetivo técnico</h2><p class="book-lead">Estimar la energía útil de un parque solar a partir de irradiación, potencia instalada y pérdidas de sistema.</p><table class="project-parameter-table"><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr><tr><td>Irradiación diaria</td><td>H_d</td><td>kWh/m²·día</td></tr><tr><td>Potencia pico</td><td>P_pv</td><td>kWp</td></tr><tr><td>Performance ratio</td><td>PR</td><td>-</td></tr><tr><td>Energía anual</td><td>E_a</td><td>kWh/año</td></tr></table><div class="project-equation"><span class="math-display">E<sub>a</sub> = P<sub>pv</sub> · H<sub>d</sub> · 365 · PR</span></div><p>El PR agrupa pérdidas por temperatura, inversor, cableado, suciedad, sombras, disponibilidad y desajustes.</p></article></div></section>
-<section class="book-sheet"><div class="book-page"><aside class="book-page__index"><span>Ejemplo</span><strong>Predimensionamiento</strong></aside><article class="book-page__content"><div class="book-example"><p class="book-example__label">Ejemplo S-1</p><h3>Demanda comunitaria</h3><p>Una comunidad reporta consumo mensual. El diseño debe cubrir una fracción objetivo sin sobredimensionar la red interna.</p><div class="book-solution"><strong>Procedimiento</strong><ol><li>Consolidar consumos mensuales.</li><li>Definir porcentaje de cobertura solar.</li><li>Estimar P_pv usando H_d y PR.</li><li>Verificar área disponible y orientación.</li><li>Definir medición, reparto y mantenimiento.</li></ol></div></div><div class="book-task"><h3>Entregable técnico</h3><ul><li>Curva mensual de demanda.</li><li>Tabla de generación esperada.</li><li>Mapa de sombras.</li><li>Esquema de gobernanza comunitaria.</li></ul></div></article></div></section></main>
-<footer class="s-footer"><div class="row"><div class="column large-7 ss-copyright"><span>© Hidrógeno Verde Turquesa 2025</span><span>Cuadernillos técnicos de proyectos</span></div></div></footer><script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js"></script><script src="js/main.js"></script></body></html>
+<head>
+    <meta charset="utf-8">
+    <title>Parque Solar Comunitario | Cuadernillo técnico</title>
+    <meta name="description" content="Diseño integral y paso a paso del Parque Solar Comunitario: responsabilidad social, ubicación, medición del recurso solar, validación de datos y dimensionamiento fotovoltaico.">
+    <link rel="canonical" href="https://hidrogenoverdeturquesa.com/proyecto-parque-solar.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css?v=parque-solar-20260716">
+    <link rel="stylesheet" href="css/vendor.css">
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+</head>
+<body id="top">
+    <div id="preloader"><div id="loader"></div></div>
+    <header class="s-header"><div class="row"><div class="s-header__logo"><a href="index.html"><img src="images/logo-hvt.svg" alt="HVT" style="height:40px;width:auto;"></a></div><nav class="s-header__nav"><ul><li><a href="index.html">Inicio</a></li><li class="current"><a href="index.html#portfolio">Proyectos</a></li><li><a href="index.html#contact">Contacto</a></li></ul></nav><a class="s-header__menu-toggle" href="#0" title="Menú"><span class="s-header__menu-icon"></span></a></div></header>
+
+    <main class="course-book">
+        <section class="course-book__hero">
+            <div class="row">
+                <div class="column large-7 medium-12">
+                    <p class="course-book__eyebrow">Cuadernillo técnico 02 · Diseño integral del proyecto</p>
+                    <h1>Parque Solar Comunitario</h1>
+                    <p class="course-book__lead">Documento técnico para estructurar el proyecto desde la responsabilidad social y la selección del sitio hasta la medición del recurso, la validación de los datos y el dimensionamiento del sistema fotovoltaico.</p>
+                    <div class="course-book__actions"><a href="#contenido" class="btn btn--primary smoothscroll">Explorar capítulos</a><a href="index.html#portfolio" class="btn btn--stroke">Volver a proyectos</a></div>
+                </div>
+                <div class="column large-5 medium-12"><figure class="book-cover-figure"><img src="images/portfolio/parque.jpg" alt="Parque solar comunitario"><figcaption>Figura 1. Proyecto fotovoltaico articulado con el territorio y sus usuarios.</figcaption></figure></div>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="contenido">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Contenido</span><strong>Ruta del proyecto</strong></aside>
+                <article class="book-page__content">
+                    <h2>Primero comprender, después dimensionar</h2>
+                    <p class="book-lead">El tamaño del parque no se define únicamente con una fórmula. Antes se deben conocer la comunidad, el territorio, el punto de conexión, la demanda y la calidad del recurso solar disponible.</p>
+                    <div class="book-task"><h3>Secuencia de capítulos</h3><ol><li>Responsabilidad social y participación.</li><li>Ubicación y viabilidad territorial.</li><li>Recurso solar preliminar.</li><li>Piranómetro y campaña de medición.</li><li>Control y validación de datos.</li><li>Demanda y modelo comunitario.</li><li>Dimensionamiento fotovoltaico.</li></ol></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-1">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 1</span><strong>Responsabilidad social</strong></aside>
+                <article class="book-page__content">
+                    <h2>Participación antes de intervenir</h2>
+                    <p class="book-lead">Un parque comunitario debe partir de una relación transparente con las personas que pueden beneficiarse o verse afectadas. La participación temprana mejora la sostenibilidad social, la aceptación y el diseño del proyecto. <sup><a href="#ref-1">[1]</a></sup></p>
+                    <div class="book-flow"><div><span>1</span><strong>Identificar</strong><p>Usuarios, propietarios, vecinos, organizaciones, autoridades y grupos vulnerables.</p></div><div><span>2</span><strong>Escuchar</strong><p>Necesidades energéticas, expectativas, riesgos percibidos y condiciones del territorio.</p></div><div><span>3</span><strong>Acordar</strong><p>Beneficios, responsabilidades, comunicación, seguimiento y mecanismo de atención.</p></div></div>
+                    <div class="book-task"><h3>Entregables sociales</h3><ul><li>Mapa de actores y área de influencia.</li><li>Registro de reuniones y observaciones.</li><li>Principios para distribución de beneficios.</li><li>Canal de preguntas, quejas y respuestas.</li><li>Esquema preliminar de gobernanza, propiedad y mantenimiento.</li></ul></div>
+                    <div class="project-warning"><strong>Puerta de decisión 1:</strong> no se avanza con un sitio que tenga conflictos no evaluados sobre propiedad, uso del suelo, acceso, beneficios o impactos comunitarios.</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-2">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 2</span><strong>Ubicación</strong></aside>
+                <article class="book-page__content">
+                    <h2>Viabilidad territorial del sitio</h2>
+                    <p class="book-lead">La ubicación condiciona el recurso solar, la obra civil, el acceso, la conexión eléctrica, las pérdidas, los permisos y la relación con el entorno.</p>
+                    <table class="project-parameter-table"><tr><th>Grupo</th><th>Datos mínimos</th><th>Resultado</th></tr><tr><td>Territorio</td><td>Coordenadas, área, topografía, uso del suelo y propiedad</td><td>Polígono viable</td></tr><tr><td>Entorno</td><td>Vegetación, agua, viviendas, patrimonio y restricciones</td><td>Condicionantes</td></tr><tr><td>Infraestructura</td><td>Vías, seguridad, red eléctrica y distancia al punto de conexión</td><td>Alternativas técnicas</td></tr><tr><td>Geotecnia</td><td>Suelo, pendiente, drenaje y amenaza natural</td><td>Base para estructuras</td></tr></table>
+                    <div class="book-task"><h3>Visita técnica</h3><ul><li>Levantamiento fotográfico y georreferenciado.</li><li>Horizonte visible y obstáculos que producen sombras.</li><li>Zonas inundables, erosión y escorrentía.</li><li>Acceso de equipos y espacio de mantenimiento.</li><li>Ubicación posible de módulos, inversores, transformador y medición.</li></ul></div>
+                    <div class="project-warning"><strong>Puerta de decisión 2:</strong> comparar varias alternativas de ubicación antes de seleccionar el sitio de estudio detallado.</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-3">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 3</span><strong>Recurso preliminar</strong></aside>
+                <article class="book-page__content">
+                    <h2>Irradiancia e irradiación</h2>
+                    <p class="book-lead">El Atlas Climatológico del IDEAM permite consultar radiación global e insolación como referencia inicial para Colombia. Estos datos ayudan a comparar ubicaciones y formular la campaña de medición. <sup><a href="#ref-2">[2]</a></sup></p>
+                    <table class="project-parameter-table"><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad</th></tr><tr><td>Irradiancia instantánea</td><td>G</td><td>W/m²</td></tr><tr><td>Irradiación acumulada</td><td>H</td><td>kWh/m² por periodo</td></tr><tr><td>Irradiancia global horizontal</td><td>GHI</td><td>W/m²</td></tr><tr><td>Irradiación en plano de los módulos</td><td>H<sub>POA</sub></td><td>kWh/m² por periodo</td></tr></table>
+                    <div class="project-equation"><span class="math-display">H = ∫ G(t) · dt</span></div>
+                    <p>La irradiancia es una potencia por unidad de área en un instante; la irradiación es su acumulación durante un intervalo. No deben utilizarse como si fueran la misma variable.</p>
+                    <div class="book-task"><h3>Estudio de prefactibilidad</h3><ul><li>Serie mensual y anual de radiación.</li><li>Temperatura ambiente, lluvia, nubosidad y viento.</li><li>Horizonte y pérdidas preliminares por sombra.</li><li>Comparación entre fuentes disponibles.</li><li>Registro de resolución espacial, periodo histórico e incertidumbre.</li></ul></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-4">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 4</span><strong>Piranómetro</strong></aside>
+                <article class="book-page__content">
+                    <h2>Campaña de medición en sitio</h2>
+                    <p class="book-lead">El piranómetro mide irradiancia hemisférica y puede instalarse horizontalmente para GHI o en el plano previsto de los módulos para irradiancia global inclinada o POA. La selección del instrumento debe responder al objetivo y a la incertidumbre admisible. <sup><a href="#ref-3">[3]</a></sup> <sup><a href="#ref-4">[4]</a></sup></p>
+                    <div class="book-flow"><div><span>1</span><strong>Seleccionar</strong><p>Clase del sensor, registrador, intervalo de muestreo y variables meteorológicas.</p></div><div><span>2</span><strong>Instalar</strong><p>Nivelación, orientación, altura, horizonte despejado y puesta a tierra.</p></div><div><span>3</span><strong>Mantener</strong><p>Limpieza, inspección, verificación de nivel, reloj, cableado y alimentación.</p></div></div>
+                    <table class="project-parameter-table"><tr><th>Elemento</th><th>Verificación</th><th>Evidencia</th></tr><tr><td>Piranómetro</td><td>Clase ISO 9060, sensibilidad y calibración vigente</td><td>Certificado y ficha</td></tr><tr><td>Registrador</td><td>Resolución, reloj, memoria y respaldo</td><td>Configuración</td></tr><tr><td>Montaje</td><td>Nivel, orientación y ausencia de sombras</td><td>Fotografías y coordenadas</td></tr><tr><td>Mantenimiento</td><td>Limpieza e inspección programadas</td><td>Bitácora</td></tr></table>
+                    <p>La duración de la campaña se define según la etapa, escala y nivel de incertidumbre del proyecto. Los datos de campo deben relacionarse con series históricas de largo plazo; una medición corta aislada no representa por sí sola la variabilidad interanual. Las buenas prácticas de NREL recomiendan documentar selección, instalación, mantenimiento, calibración y control de calidad. <sup><a href="#ref-5">[5]</a></sup></p>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-5">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 5</span><strong>Datos</strong></aside>
+                <article class="book-page__content">
+                    <h2>Control, validación y estudio solar</h2>
+                    <p class="book-lead">Antes de calcular potencia se debe demostrar que los datos son trazables, completos y físicamente consistentes. La IEC 61724-1 establece terminología, equipos y métodos para el monitoreo del desempeño fotovoltaico. <sup><a href="#ref-6">[6]</a></sup></p>
+                    <div class="book-task"><h3>Proceso de calidad</h3><ol><li>Conservar los datos originales sin modificarlos.</li><li>Revisar marcas de tiempo, duplicados, vacíos y disponibilidad.</li><li>Aplicar límites físicos y pruebas de consistencia solar.</li><li>Contrastar eventos anómalos con la bitácora de campo.</li><li>Marcar datos válidos, sospechosos y faltantes.</li><li>Comparar y correlacionar con fuentes históricas.</li><li>Estimar incertidumbre y documentar el método de corrección.</li></ol></div>
+                    <div class="project-warning"><strong>Precisión técnica:</strong> el control posterior no puede corregir completamente un sensor sucio, desnivelado, sombreado o con calibración desconocida. NREL diferencia la evaluación de calidad de las actividades preventivas de aseguramiento y control durante la medición. <sup><a href="#ref-7">[7]</a></sup></div>
+                    <div class="project-warning"><strong>Puerta de decisión 3:</strong> solo se autoriza el dimensionamiento cuando exista una serie aceptada, su incertidumbre esté declarada y las hipótesis sean trazables.</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-6">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 6</span><strong>Demanda comunitaria</strong></aside>
+                <article class="book-page__content">
+                    <h2>Cuánta energía y para quién</h2>
+                    <p class="book-lead">El parque debe responder a una demanda documentada y a un acuerdo sobre quién recibe la energía, cómo se mide, quién opera el sistema y cómo se cubren sus costos.</p>
+                    <div class="book-task"><h3>Línea base</h3><ul><li>Facturas y consumos horarios, diarios y mensuales.</li><li>Cargas críticas y crecimiento esperado.</li><li>Usuarios participantes y porcentaje de cobertura acordado.</li><li>Calidad del suministro y capacidad de la red existente.</li><li>Medición individual o colectiva y reglas de reparto.</li><li>Presupuesto de operación, mantenimiento y reposición.</li></ul></div>
+                    <div class="project-equation"><span class="math-display">E<sub>objetivo</sub> = E<sub>demanda</sub> · f<sub>cobertura</sub></span></div>
+                    <p>El factor de cobertura debe acordarse y justificarse; no se asume automáticamente que el parque cubrirá el 100 % del consumo.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="capitulo-7">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Capítulo 7</span><strong>Dimensionamiento</strong></aside>
+                <article class="book-page__content">
+                    <h2>Dimensionar con datos validados</h2>
+                    <p class="book-lead">Con la demanda objetivo, la irradiación en el plano del arreglo y las pérdidas justificadas se realiza el predimensionamiento energético.</p>
+                    <table class="project-parameter-table"><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr><tr><td>Energía objetivo del periodo</td><td>E<sub>objetivo</sub></td><td>kWh</td></tr><tr><td>Potencia fotovoltaica DC</td><td>P<sub>DC</sub></td><td>kWp</td></tr><tr><td>Irradiación en plano del arreglo</td><td>H<sub>POA</sub></td><td>kWh/m²</td></tr><tr><td>Irradiancia de referencia</td><td>G<sub>STC</sub></td><td>1 kW/m²</td></tr><tr><td>Índice global de desempeño</td><td>PR</td><td>adimensional</td></tr></table>
+                    <div class="project-equation"><span class="math-display">E<sub>AC</sub> ≈ P<sub>DC</sub> · (H<sub>POA</sub> / G<sub>STC</sub>) · PR</span></div>
+                    <div class="project-equation"><span class="math-display">P<sub>DC</sub> ≈ E<sub>objetivo</sub> · G<sub>STC</sub> / (H<sub>POA</sub> · PR)</span></div>
+                    <p>El PR debe construirse con pérdidas explícitas por temperatura, suciedad, sombras, desajuste, cableado, conversión, disponibilidad y limitaciones de red. Estas expresiones sirven para predimensionamiento; el diseño definitivo requiere simulación temporal, selección de equipos, configuración eléctrica, estudios de conexión, protecciones, estructura y evaluación económica.</p>
+                    <div class="book-example"><p class="book-example__label">Procedimiento S-1</p><h3>Secuencia de cálculo</h3><div class="book-solution"><ol><li>Aprobar la serie solar y su incertidumbre.</li><li>Definir demanda y cobertura objetivo.</li><li>Estimar irradiación POA según orientación e inclinación.</li><li>Construir el balance de pérdidas y el PR.</li><li>Calcular potencia DC preliminar.</li><li>Verificar área, inversores, red, sombras y restricciones.</li><li>Comparar alternativas y realizar análisis de sensibilidad.</li></ol></div></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="referencias">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Fuentes</span><strong>Referencias técnicas</strong></aside>
+                <article class="book-page__content">
+                    <h2>Documentos de consulta</h2>
+                    <ol class="scientific-references">
+                        <li id="ref-1">Banco Mundial. <a href="https://www.worldbank.org/en/projects-operations/environmental-and-social-framework/brief/environmental-and-social-standards" target="_blank" rel="noopener"><em>Environmental and Social Standard 10: Stakeholder Engagement and Information Disclosure</em></a>.</li>
+                        <li id="ref-2">IDEAM. <a href="https://ideam.gov.co/nuestra-entidad/meteorologia" target="_blank" rel="noopener"><em>Atlas Climatológico y Atlas de Radiación Solar de Colombia</em></a>.</li>
+                        <li id="ref-3">ISO (2018). <a href="https://www.iso.org/standard/67464.html" target="_blank" rel="noopener"><em>ISO 9060:2018. Solar energy — Specification and classification of instruments for measuring hemispherical solar and direct solar radiation</em></a>.</li>
+                        <li id="ref-4">ISO (2021). <a href="https://www.iso.org/es/contents/data/standard/08/19/81937.html" target="_blank" rel="noopener"><em>ISO/TR 9901:2021. Solar energy — Pyranometers — Recommended practice for use</em></a>.</li>
+                        <li id="ref-5">Sengupta, M. et al. (2024). <a href="https://www.nrel.gov/docs/fy24osti/88300.pdf" target="_blank" rel="noopener"><em>Best Practices Handbook for the Collection and Use of Solar Resource Data for Solar Energy Applications, Fourth Edition</em></a>. NREL/TP-5D00-88300.</li>
+                        <li id="ref-6">IEC (2021). <a href="https://webstore.iec.ch/en/publication/65561" target="_blank" rel="noopener"><em>IEC 61724-1:2021. Photovoltaic system performance — Part 1: Monitoring</em></a>.</li>
+                        <li id="ref-7">National Renewable Energy Laboratory. <a href="https://www.nrel.gov/grid/solar-resource/seri-qc" target="_blank" rel="noopener"><em>Quality Assessment with SERI QC</em></a>.</li>
+                    </ol>
+                    <p class="book-comment">Este cuadernillo documenta el diseño integral del proyecto. Los valores definitivos se establecen con acuerdos verificables, estudios del sitio, mediciones trazables, análisis de incertidumbre y diseño especializado.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="s-footer"><div class="row"><div class="column large-7 ss-copyright"><span>© Hidrógeno Verde Turquesa 2025</span><span>Cuadernillos técnicos de proyectos</span></div></div></footer>
+    <script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js"></script><script src="js/main.js"></script>
+</body>
+</html>
