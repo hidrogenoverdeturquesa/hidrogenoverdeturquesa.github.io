@@ -6420,6 +6420,36 @@ body.search-is-visible {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+.support-option-card h3 {
+    margin: 0 0 var(--vspace-0_5);
+    color: var(--color-1);
+    font-size: 2.8rem;
+}
+
+.support-option-card p {
+    margin: 0;
+    color: var(--color-text-light);
+    line-height: 1.65;
+}
+
+.support-options-intro {
+    max-width: 100rem;
+    margin: 0 auto;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.support-options-note {
+    max-width: 100rem;
+    margin: var(--vspace-1) auto 0;
+    padding: var(--vspace-1);
+    color: var(--color-text);
+    text-align: center;
+    background: rgba(16, 178, 108, 0.08);
+    border-left: 4px solid var(--color-1);
+    border-radius: 8px;
+}
+
 @media screen and (max-width: 600px) {
     .support-option-card {
         min-height: 0;
