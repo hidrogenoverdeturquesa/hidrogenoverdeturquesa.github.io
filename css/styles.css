@@ -5066,7 +5066,8 @@ body.search-is-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.line-projects a {
+.line-projects a,
+.line-project-card {
     background: white;
     border-left: 3px solid var(--color-1);
     color: var(--color-text);
@@ -5075,6 +5076,36 @@ body.search-is-visible {
     min-height: 13rem;
     padding: 1.6rem;
     transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.line-project-card--protected {
+    background: linear-gradient(135deg, #ffffff 0%, #f2fbf9 100%);
+    border: 1px solid rgba(0, 158, 143, .24);
+    border-left: 5px solid var(--color-1);
+    grid-column: 1 / -1;
+    min-height: 0;
+}
+
+.line-project-card--protected strong {
+    font-size: 1.55rem;
+    overflow-wrap: anywhere;
+}
+
+.line-projects .line-project-card__meta {
+    color: var(--color-text-light);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    margin-top: 0;
+}
+
+.line-project-card__notice {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 1.2rem 0 0;
+    padding-top: 1.2rem;
 }
 
 .line-projects a:hover,
