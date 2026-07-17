@@ -340,7 +340,7 @@
 
    /* back to top
     * ------------------------------------------------------ */
-    const ssBackToTop = function() {
+   const ssBackToTop = function() {
 
         const pxShow = 800;
         const goTopButton = document.querySelector(".ss-go-top");
@@ -360,6 +360,63 @@
     };
 
 
+   /* work lines expandable details
+    * ------------------------------------------------------ */
+    const ssWorkLines = function() {
+
+        const triggers = Array.from(document.querySelectorAll('.services-item__trigger'));
+        const panels = Array.from(document.querySelectorAll('.line-detail'));
+
+        if (!triggers.length || !panels.length) return;
+
+        let activeTrigger = null;
+
+        const closeAll = function(returnFocus) {
+            triggers.forEach(function(trigger) {
+                trigger.setAttribute('aria-expanded', 'false');
+                trigger.closest('.services-item').classList.remove('is-active');
+                const symbol = trigger.querySelector('.services-item__action span');
+                if (symbol) symbol.textContent = '+';
+            });
+
+            panels.forEach(function(panel) {
+                panel.hidden = true;
+            });
+
+            if (returnFocus && activeTrigger) activeTrigger.focus({ preventScroll: true });
+            activeTrigger = null;
+        };
+
+        triggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+                const wasOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+                closeAll(false);
+                if (wasOpen || !panel) return;
+
+                trigger.setAttribute('aria-expanded', 'true');
+                trigger.closest('.services-item').classList.add('is-active');
+                const symbol = trigger.querySelector('.services-item__action span');
+                if (symbol) symbol.textContent = '×';
+                panel.hidden = false;
+                activeTrigger = trigger;
+                panel.focus({ preventScroll: true });
+            });
+        });
+
+        panels.forEach(function(panel) {
+            const closeButton = panel.querySelector('[data-close-line]');
+            if (closeButton) closeButton.addEventListener('click', function() { closeAll(true); });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && activeTrigger) closeAll(true);
+        });
+
+    };
+
+
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -374,6 +431,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssBackToTop();
+        ssWorkLines();
 
     })();
 
