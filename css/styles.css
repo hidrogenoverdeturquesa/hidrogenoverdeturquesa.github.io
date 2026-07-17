@@ -4993,32 +4993,71 @@ body.search-is-visible {
 }
 
 .line-service__equation {
-    background: var(--color-dark-bg);
-    color: white;
-    margin-top: 1.4rem;
+    background: #f4f6f6;
+    border-left: 6px solid var(--color-1);
+    color: var(--color-text-dark);
+    display: block;
+    margin: 2rem 0 .4rem;
     overflow-x: auto;
-    padding: 1.4rem 1.6rem;
+    padding: 2.2rem 1.8rem;
+    text-align: center;
+    width: 100%;
+}
+
+.line-service__equation::before {
+    color: var(--color-1);
+    content: "FUNCIÓN OBJETIVO";
+    display: block;
+    font-family: var(--font-2);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
 .line-service__equation span,
 .line-service__equation small {
     display: block;
-    font-family: var(--font-mono, monospace);
     white-space: normal;
 }
 
 .line-service__equation span {
-    color: var(--color-1-lighter);
-    font-size: 1.55rem;
-    font-weight: 700;
-    line-height: 1.4;
+    color: var(--color-text-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    padding: .4rem 0 1.4rem;
 }
 
 .line-service__equation small {
-    color: rgba(255, 255, 255, .76);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-top: .6rem;
+    border-top: 1px solid rgba(0, 0, 0, .14);
+    color: var(--color-text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.55rem;
+    line-height: 1.55;
+    padding-top: 1.4rem;
+}
+
+.line-service__equation small::before {
+    color: var(--color-text-light);
+    content: "RESTRICCIONES";
+    display: block;
+    font-family: var(--font-2);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    margin-bottom: .6rem;
+    text-transform: uppercase;
+}
+
+.line-service__equation sub,
+.line-service__equation sup {
+    font-size: 65%;
+    line-height: 0;
 }
 
 .line-projects {
@@ -6799,6 +6838,15 @@ body.search-is-visible {
     }
     .line-projects {
         grid-template-columns: 1fr;
+    }
+    .line-service__equation {
+        padding: 1.8rem 1.2rem;
+    }
+    .line-service__equation span {
+        font-size: 2.1rem;
+    }
+    .line-service__equation small {
+        font-size: 1.4rem;
     }
 }
 
