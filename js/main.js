@@ -366,8 +366,10 @@
 
         const triggers = Array.from(document.querySelectorAll('.services-item__trigger'));
         const panels = Array.from(document.querySelectorAll('.line-detail'));
+        const detailsHolder = document.querySelector('.line-details');
+        const servicesList = document.querySelector('.services-list');
 
-        if (!triggers.length || !panels.length) return;
+        if (!triggers.length || !panels.length || !detailsHolder || !servicesList) return;
 
         let activeTrigger = null;
 
@@ -381,6 +383,8 @@
 
             panels.forEach(function(panel) {
                 panel.hidden = true;
+                panel.classList.remove('is-inline');
+                detailsHolder.appendChild(panel);
             });
 
             if (returnFocus && activeTrigger) activeTrigger.focus({ preventScroll: true });
@@ -399,9 +403,23 @@
                 trigger.closest('.services-item').classList.add('is-active');
                 const symbol = trigger.querySelector('.services-item__action span');
                 if (symbol) symbol.textContent = '×';
+
+                const selectedCard = trigger.closest('.services-item');
+                const cards = Array.from(servicesList.querySelectorAll('.services-item'));
+                const selectedTop = selectedCard.offsetTop;
+                const cardsInRow = cards.filter(function(card) {
+                    return Math.abs(card.offsetTop - selectedTop) < 3;
+                });
+                const rowEnd = cardsInRow[cardsInRow.length - 1] || selectedCard;
+                rowEnd.insertAdjacentElement('afterend', panel);
+                panel.classList.add('is-inline');
                 panel.hidden = false;
                 activeTrigger = trigger;
                 panel.focus({ preventScroll: true });
+
+                window.setTimeout(function() {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 80);
             });
         });
 
@@ -412,6 +430,15 @@
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && activeTrigger) closeAll(true);
+        });
+
+        document.querySelectorAll('.line-service').forEach(function(service) {
+            service.addEventListener('toggle', function() {
+                if (!service.open) return;
+                service.closest('.line-detail').querySelectorAll('.line-service').forEach(function(other) {
+                    if (other !== service) other.open = false;
+                });
+            });
         });
 
     };
