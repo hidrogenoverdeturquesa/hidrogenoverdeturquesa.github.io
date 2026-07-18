@@ -5927,6 +5927,16 @@ body.search-is-visible {
     color: white;
 }
 
+.s-contact__info-block .contact-label {
+    display: block;
+}
+
+.s-contact__info-block .contact-email {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
 .s-contact__info-block-icon {
     position: absolute;
     left: 0;
@@ -5960,6 +5970,11 @@ body.search-is-visible {
     .s-contact__content .display-1 {
         font-size: var(--text-xl);
         line-height: var(--vspace-1_5);
+    }
+
+    .s-contact__info-block .contact-email {
+        font-size: clamp(1.25rem, 3.75vw, 1.7rem);
+        letter-spacing: -.02em;
     }
 }
 
