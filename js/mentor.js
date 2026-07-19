@@ -121,6 +121,8 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const typingQueue = [];
     let typingActive = false;
+    let hintTypingTimer = 0;
+    let hintHideTimer = 0;
 
     function typeNextMessage() {
         if (typingActive || !typingQueue.length) return;
@@ -177,7 +179,9 @@
         root.classList.add('mentor--open');
         panel.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded', 'true');
-        hint.classList.remove('mentor__hint--show');
+        window.clearTimeout(hintTypingTimer);
+        window.clearTimeout(hintHideTimer);
+        hint.classList.remove('mentor__hint--show', 'mentor__hint--typing');
         if (!messages.children.length) speakFor(state.section || initialContext());
         window.setTimeout(function () { input.focus(); }, 220);
     }
@@ -211,9 +215,32 @@
         const key = contextFor(id);
         if (state.lastSuggestion === key) return;
         state.lastSuggestion = key;
-        hint.textContent = contexts[key].prompt.split('. ')[0] + '.';
+        const text = contexts[key].prompt.split('. ')[0] + '.';
+        const characters = Array.from(text);
+        let position = 0;
+        window.clearTimeout(hintTypingTimer);
+        window.clearTimeout(hintHideTimer);
+        hint.textContent = reducedMotion ? text : '';
+        hint.setAttribute('aria-label', text);
         hint.classList.add('mentor__hint--show');
-        window.setTimeout(function () { hint.classList.remove('mentor__hint--show'); }, 9000);
+        if (reducedMotion) {
+            hintHideTimer = window.setTimeout(function () { hint.classList.remove('mentor__hint--show'); }, 9000);
+            return;
+        }
+        hint.classList.add('mentor__hint--typing');
+
+        function typeHintCharacter() {
+            position += 1;
+            hint.textContent = characters.slice(0, position).join('');
+            if (position < characters.length) {
+                hintTypingTimer = window.setTimeout(typeHintCharacter, 22);
+                return;
+            }
+            hint.classList.remove('mentor__hint--typing');
+            hintHideTimer = window.setTimeout(function () { hint.classList.remove('mentor__hint--show'); }, 9000);
+        }
+
+        typeHintCharacter();
     }
 
     function money(value) {
