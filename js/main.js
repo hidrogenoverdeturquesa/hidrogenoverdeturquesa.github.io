@@ -469,7 +469,7 @@
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = 'js/mentor.js?v=20260718h';
+            mentorScript.src = 'js/mentor.js?v=20260718i';
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);
         }

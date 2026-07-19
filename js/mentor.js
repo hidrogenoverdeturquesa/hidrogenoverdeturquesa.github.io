@@ -209,7 +209,7 @@
             type: 'generic',
             request: question
         };
-        addMessage('Puedo ayudarte a preparar la solicitud, aunque todavía no dispongo de un costo unitario verificado para calcular este caso. Indica la cantidad, las medidas o características principales que necesitas.');
+        addMessage('Para ofrecerte una orientación adecuada, indícame la cantidad, las medidas o las características principales de lo que necesitas.');
         setActions([['Cancelar solicitud', 'quote:cancel']]);
     }
 
@@ -319,7 +319,7 @@
                 'Necesidad: ' + state.quote.request + '\n' +
                 'Características: ' + state.quote.details + '\n' +
                 'Ubicación: ' + state.quote.location + '\n\n' +
-                'Todavía no tengo un rango verificado para este caso. El equipo puede revisar la información y preparar una cotización formal por WhatsApp.'
+                'Con esta información, nuestro equipo podrá precisar el alcance y confirmar el valor de la cotización por WhatsApp.'
             );
             state.quote = null;
             setActions([
@@ -476,7 +476,7 @@
             ];
         }
         if (/puerta|madera|carpinter/.test(q)) return [
-            'El valor de una puerta de madera depende de sus dimensiones, la especie de madera, el acabado, los herrajes, la instalación y el lugar de entrega. Aún no tengo un calculador verificado para este producto, pero puedo ayudarte a solicitar una cotización real al equipo.',
+            'El valor de una puerta de madera depende de sus dimensiones, la especie de madera, el acabado, los herrajes, la instalación y el lugar de entrega. Puedo reunir estos datos y ayudarte a solicitar una cotización con el equipo.',
             [['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo cotizar una puerta de madera. Necesito orientación sobre medidas, tipo de madera, acabado, herrajes e instalación.')], ['Explorar servicios', 'index.html#services']]
         ];
         if (/precio|costo|cotiza|presupuesto/.test(q)) return ['El costo no es una cifra aislada: es el reflejo de una escala, un territorio y un propósito. Para orientarte con rigor, conviene conocer la ubicación, la necesidad y el alcance de tu iniciativa.', [['Preparar consulta', 'chat:consulta'], ['Contactar al equipo', 'index.html#contact']]];
