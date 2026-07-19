@@ -1,0 +1,595 @@
+/* Mentor: asistente contextual de navegación.
+ * Módulo autónomo: no modifica el contenido ni depende del resto del sitio.
+ */
+(function () {
+    'use strict';
+
+    if (window.__mentorLoaded) return;
+    window.__mentorLoaded = true;
+
+    /* Solo activar cuando todos los costos utilizados estén revisados y aprobados. */
+    const PUBLIC_PRICE_RANGES_ENABLED = false;
+
+    const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const state = {
+        page: page,
+        section: '',
+        opened: false,
+        visits: JSON.parse(sessionStorage.getItem('mentor-visits') || '{}'),
+        dismissed: Number(sessionStorage.getItem('mentor-dismissed') || 0),
+        lastSuggestion: '',
+        quote: null
+    };
+
+    const contexts = {
+        home: {
+            label: 'este panorama',
+            prompt: 'Toda transformación comienza con una mirada atenta. Puedo mostrarte las rutas de conocimiento, los proyectos o los servicios que habitan este espacio.',
+            actions: [['Explorar servicios', '#services'], ['Conocer la fundación', 'fundacion.html']]
+        },
+        impact: {
+            label: 'nuestro impacto',
+            prompt: 'Las cifras describen una parte del camino; su verdadero valor aparece cuando revelan aquello que puede transformarse. ¿Quieres conocer cómo convertimos propósito en resultados?',
+            actions: [['Ver servicios', '#services'], ['Conocer proyectos', '#portfolio']]
+        },
+        services: {
+            label: 'los servicios',
+            prompt: 'Una necesidad bien comprendida contiene ya el principio de su solución. Si me dices qué buscas transformar, puedo orientarte entre nuestras líneas de trabajo.',
+            actions: [['Solicitar estimación', 'chat:cotizar'], ['Tengo un proyecto', 'chat:proyecto'], ['Comparar opciones', 'chat:comparar']]
+        },
+        portfolio: {
+            label: 'los proyectos',
+            prompt: 'Los proyectos son ideas que aprendieron a dialogar con la realidad. Puedo ayudarte a reconocer cuál de estas experiencias se aproxima más a tu propósito.',
+            actions: [['Encontrar un proyecto afín', 'chat:proyecto'], ['Explorar servicios', '#services']]
+        },
+        blog: {
+            label: 'estas reflexiones',
+            prompt: 'Leer es permitir que una idea encuentre nuevas preguntas. Puedo ayudarte a relacionar este contenido con una ruta de aprendizaje o con una aplicación concreta.',
+            actions: [['Quiero aprender', 'fundacion.html#cursos'], ['Buscar una aplicación', 'chat:aplicacion']]
+        },
+        about: {
+            label: 'nuestra forma de trabajar',
+            prompt: 'El conocimiento adquiere sentido cuando se acompaña de método y de propósito. Puedo explicarte cómo abordamos una iniciativa desde su primera pregunta.',
+            actions: [['Cómo trabajan', 'chat:metodo'], ['Hablar de mi iniciativa', '#contact']]
+        },
+        contact: {
+            label: 'el siguiente paso',
+            prompt: 'Toda conversación fecunda comienza cuando una posibilidad encuentra palabras. Puedo ayudarte a ordenar tu idea antes de ponerte en contacto con el equipo.',
+            actions: [['Preparar mi consulta', 'chat:consulta'], ['Contactar ahora', 'mailto:contacto@hidrogenoverdeturquesa.com']]
+        },
+        cursos: {
+            label: 'la ruta de aprendizaje',
+            prompt: 'Aprender no es acumular respuestas, sino descubrir preguntas cada vez más precisas. Puedo ayudarte a elegir un punto de partida según tu experiencia.',
+            actions: [['Estoy comenzando', 'chat:principiante'], ['Ya tengo experiencia', 'chat:avanzado']]
+        },
+        course: {
+            label: 'esta lección',
+            prompt: 'Cada concepto dominado ensancha el horizonte de lo posible. Si algo parece complejo, puedo ayudarte a mirarlo desde una perspectiva más sencilla.',
+            actions: [['Explícamelo sencillo', 'chat:sencillo'], ['Ver otros cursos', 'fundacion.html#cursos']]
+        },
+        project: {
+            label: 'este proyecto',
+            prompt: 'Una obra no se comprende únicamente por su resultado, sino por las decisiones que la hicieron posible. Puedo ayudarte a relacionar este proyecto con una necesidad propia.',
+            actions: [['Tengo una idea similar', 'chat:similar'], ['Consultar al equipo', 'index.html#contact']]
+        },
+        foundation: {
+            label: 'la fundación',
+            prompt: 'Cuando el conocimiento se comparte, deja de ser privilegio y se convierte en territorio común. Puedo guiarte por nuestras iniciativas y rutas educativas.',
+            actions: [['Ver cursos', '#cursos'], ['Cómo participar', 'chat:participar']]
+        }
+    };
+
+    function initialContext() {
+        if (page.indexOf('curso-') === 0) return 'course';
+        if (page.indexOf('proyecto-') === 0) return 'project';
+        if (page === 'fundacion.html') return location.hash === '#cursos' ? 'cursos' : 'foundation';
+        if (page.indexOf('blog') !== -1 || page === 'category.html') return 'blog';
+        return (location.hash || '#home').slice(1) || 'home';
+    }
+
+    const root = document.createElement('aside');
+    root.className = 'mentor';
+    root.setAttribute('aria-label', 'Mentor, asistente de navegación');
+    root.innerHTML = `
+        <div class="mentor__hint" role="status" aria-live="polite"></div>
+        <section class="mentor__panel" aria-hidden="true">
+            <header class="mentor__header">
+                <div class="mentor__mark mentor__mark--small" aria-hidden="true"><i></i><i></i></div>
+                <div><strong>Mentor</strong><span>Una mirada que orienta</span></div>
+                <button class="mentor__close" type="button" aria-label="Cerrar Mentor">×</button>
+            </header>
+            <div class="mentor__messages" role="log" aria-live="polite"></div>
+            <div class="mentor__actions"></div>
+            <form class="mentor__form">
+                <label class="mentor__sr" for="mentor-question">Escribe tu pregunta</label>
+                <input id="mentor-question" maxlength="240" autocomplete="off" placeholder="Escribe lo que deseas comprender…">
+                <button type="submit" aria-label="Enviar pregunta">→</button>
+            </form>
+            <p class="mentor__privacy">Mentor utiliza únicamente tu recorrido dentro de este sitio para contextualizar sus sugerencias.</p>
+        </section>
+        <button class="mentor__toggle" type="button" aria-label="Abrir Mentor" aria-expanded="false">
+            <span class="mentor__mark" aria-hidden="true"><i></i><i></i></span><span class="mentor__toggle-label">Mentor</span>
+        </button>`;
+    document.body.appendChild(root);
+
+    const panel = root.querySelector('.mentor__panel');
+    const toggle = root.querySelector('.mentor__toggle');
+    const messages = root.querySelector('.mentor__messages');
+    const actions = root.querySelector('.mentor__actions');
+    const hint = root.querySelector('.mentor__hint');
+    const input = root.querySelector('input');
+
+    function addMessage(text, who) {
+        const item = document.createElement('div');
+        item.className = 'mentor__message mentor__message--' + (who || 'mentor');
+        item.textContent = text;
+        messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function setActions(items) {
+        actions.innerHTML = '';
+        (items || []).forEach(function (item) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = item[0];
+            button.dataset.target = item[1];
+            actions.appendChild(button);
+        });
+    }
+
+    function openMentor() {
+        state.opened = true;
+        root.classList.add('mentor--open');
+        panel.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        hint.classList.remove('mentor__hint--show');
+        if (!messages.children.length) speakFor(state.section || initialContext());
+        window.setTimeout(function () { input.focus(); }, 220);
+    }
+
+    function closeMentor() {
+        state.opened = false;
+        root.classList.remove('mentor--open');
+        panel.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        state.dismissed += 1;
+        sessionStorage.setItem('mentor-dismissed', state.dismissed);
+        toggle.focus();
+    }
+
+    function contextFor(id) {
+        if (contexts[id]) return id;
+        if (id && id.indexOf('curso') !== -1) return 'cursos';
+        return initialContext() in contexts ? initialContext() : 'home';
+    }
+
+    function speakFor(id) {
+        const key = contextFor(id);
+        const context = contexts[key];
+        state.section = key;
+        addMessage(context.prompt);
+        setActions(context.actions);
+    }
+
+    function showHint(id) {
+        if (state.opened || state.dismissed > 1) return;
+        const key = contextFor(id);
+        if (state.lastSuggestion === key) return;
+        state.lastSuggestion = key;
+        hint.textContent = contexts[key].prompt.split('. ')[0] + '.';
+        hint.classList.add('mentor__hint--show');
+        window.setTimeout(function () { hint.classList.remove('mentor__hint--show'); }, 9000);
+    }
+
+    function money(value) {
+        return new Intl.NumberFormat('es-CO', {
+            style: 'currency', currency: 'COP', maximumFractionDigits: 0
+        }).format(Math.round(value));
+    }
+
+    function startQuote() {
+        state.quote = { stage: 'service' };
+        addMessage('SIMULADOR PRELIMINAR\n\nResponderé dos preguntas breves para ofrecerte un rango inicial. En esta primera prueba, el valor es únicamente ilustrativo.');
+        setActions([
+            ['Diagnóstico energético', 'quote:energy-audit'],
+            ['Cancelar simulación', 'quote:cancel']
+        ]);
+    }
+
+    function startDoorQuote() {
+        state.quote = { stage: 'door-width', type: 'door', service: 'Puerta de madera' };
+        addMessage('ESTIMADOR DE PUERTA — PRUEBA\n\nCalcularé un rango ilustrativo a partir del área y los componentes principales. Para comenzar, escribe el ancho de la puerta en metros; por ejemplo: 0,90.');
+        setActions([['Cancelar estimación', 'quote:cancel']]);
+    }
+
+    function startGenericQuote(question) {
+        state.quote = {
+            stage: 'generic-details',
+            type: 'generic',
+            request: question
+        };
+        addMessage('Puedo ayudarte a preparar la solicitud, aunque todavía no dispongo de un costo unitario verificado para calcular este caso. Indica la cantidad, las medidas o características principales que necesitas.');
+        setActions([['Cancelar solicitud', 'quote:cancel']]);
+    }
+
+    const specializedServices = {
+        solar: {
+            name: 'Sistema solar',
+            intro: 'Para orientar un sistema solar, indica el consumo mensual aproximado o valor de la factura, tipo de inmueble, área disponible y si buscas respaldo con baterías.'
+        },
+        wind: {
+            name: 'Sistema eólico',
+            intro: 'Para estudiar un sistema eólico, indica la necesidad de energía, tipo de predio, espacio disponible y si cuentas con mediciones o referencias del viento.'
+        },
+        hydro: {
+            name: 'Sistema de energía hidráulica',
+            intro: 'Para una primera orientación hidráulica, indica el uso esperado, caudal aproximado, desnivel disponible y si la fuente de agua mantiene flujo durante todo el año.'
+        },
+        water: {
+            name: 'Sistema de ahorro de agua',
+            intro: 'Para orientar el ahorro de agua, indica el tipo de inmueble, número de usuarios, consumo aproximado y si te interesa captación de lluvia, reutilización o dispositivos eficientes.'
+        },
+        humidity: {
+            name: 'Solución para humedad en vivienda',
+            intro: 'Para estudiar la humedad, indica cuántos espacios están afectados, qué señales observas —condensación, manchas, olor o filtración— y desde cuándo ocurre. La causa debe diagnosticarse antes de recomendar un filtro o equipo.'
+        }
+    };
+
+    function serviceIntent(text) {
+        const q = text.toLowerCase();
+        if (/solar|panel(?:es)?|fotovolta/.test(q)) return 'solar';
+        if (/e[oó]lic|aerogener|turbina de viento/.test(q)) return 'wind';
+        if (/hidr[aá]ul|hidroel[eé]ct|micro.?central|turbina de agua/.test(q)) return 'hydro';
+        if (/ahorro de agua|ahorrar agua|captaci[oó]n.*lluv|reutilizaci[oó]n.*agua/.test(q)) return 'water';
+        if (/humedad|deshumid|filtraci[oó]n|moho/.test(q)) return 'humidity';
+        return '';
+    }
+
+    function startSpecializedInquiry(key) {
+        const service = specializedServices[key];
+        state.quote = {
+            stage: 'generic-details',
+            type: 'generic',
+            request: service.name
+        };
+        addMessage(service.intro);
+        setActions([['Cancelar solicitud', 'quote:cancel']]);
+    }
+
+    function quoteAction(target, label) {
+        if (target === 'quote:cancel') {
+            state.quote = null;
+            addMessage('La simulación ha terminado. Ninguna cifra fue guardada ni enviada.');
+            setActions([['Explorar servicios', 'index.html#services']]);
+            return;
+        }
+        if (target === 'quote:energy-audit') {
+            state.quote = { stage: 'area', service: 'Diagnóstico energético' };
+            addMessage(label, 'user');
+            addMessage('Para comenzar, escribe el área aproximada de la instalación en metros cuadrados. Puedes escribir, por ejemplo: 120.');
+            setActions([['Cancelar simulación', 'quote:cancel']]);
+        }
+        if (target.indexOf('quote:door-quality-') === 0 && state.quote && state.quote.type === 'door') {
+            state.quote.quality = target.replace('quote:door-quality-', '');
+            state.quote.stage = 'door-installation';
+            addMessage(label, 'user');
+            addMessage('¿Deseas incluir la instalación en el rango?');
+            setActions([
+                ['Sí, con instalación', 'quote:door-install-yes'],
+                ['No, solo suministro', 'quote:door-install-no'],
+                ['Cancelar', 'quote:cancel']
+            ]);
+        }
+        if (target.indexOf('quote:door-install-') === 0 && state.quote && state.quote.type === 'door') {
+            state.quote.installation = target === 'quote:door-install-yes';
+            state.quote.stage = 'door-location';
+            addMessage(label, 'user');
+            addMessage('Finalmente, escribe el municipio y departamento de entrega.');
+            setActions([['Cancelar estimación', 'quote:cancel']]);
+        }
+    }
+
+    function quoteInput(value) {
+        if (!state.quote) return false;
+        if (state.quote.stage === 'generic-details') {
+            if (value.length < 3) {
+                addMessage('Cuéntame brevemente la cantidad y las características principales.');
+                return true;
+            }
+            state.quote.details = value;
+            state.quote.stage = 'generic-location';
+            addMessage('¿En qué municipio y departamento se requiere el producto o servicio?');
+            return true;
+        }
+        if (state.quote.stage === 'generic-location') {
+            if (value.length < 3) {
+                addMessage('Escribe el municipio y, si es posible, el departamento.');
+                return true;
+            }
+            state.quote.location = value;
+            const whatsappMessage = encodeURIComponent(
+                'Hola, deseo solicitar una cotización. ' +
+                'Solicitud: ' + state.quote.request + '. ' +
+                'Cantidad y características: ' + state.quote.details + '. ' +
+                'Ubicación: ' + state.quote.location + '.'
+            );
+            addMessage(
+                'SOLICITUD PREPARADA\n\n' +
+                'Necesidad: ' + state.quote.request + '\n' +
+                'Características: ' + state.quote.details + '\n' +
+                'Ubicación: ' + state.quote.location + '\n\n' +
+                'Todavía no tengo un rango verificado para este caso. El equipo puede revisar la información y preparar una cotización formal por WhatsApp.'
+            );
+            state.quote = null;
+            setActions([
+                ['Enviar por WhatsApp', 'https://wa.me/573209574884?text=' + whatsappMessage],
+                ['Nueva solicitud', 'chat:generic-quote']
+            ]);
+            return true;
+        }
+        if (state.quote.stage === 'door-width' || state.quote.stage === 'door-height') {
+            const dimension = Number(value.trim().replace(',', '.').replace(/[^0-9.]/g, ''));
+            if (!Number.isFinite(dimension) || dimension < 0.4 || dimension > 5) {
+                addMessage('Escribe la medida en metros, entre 0,40 y 5,00. Por ejemplo: 0,90.');
+                return true;
+            }
+            if (state.quote.stage === 'door-width') {
+                state.quote.width = dimension;
+                state.quote.stage = 'door-height';
+                addMessage('Ahora escribe la altura en metros; por ejemplo: 2,10.');
+            } else {
+                state.quote.height = dimension;
+                state.quote.stage = 'door-quantity';
+                addMessage('¿Cuántas puertas necesitas?');
+            }
+            return true;
+        }
+        if (state.quote.stage === 'door-quantity') {
+            const quantity = Number(value.replace(/[^0-9]/g, ''));
+            if (!Number.isInteger(quantity) || quantity < 1 || quantity > 100) {
+                addMessage('Escribe una cantidad entre 1 y 100.');
+                return true;
+            }
+            state.quote.quantity = quantity;
+            state.quote.stage = 'door-quality';
+            addMessage('Selecciona una categoría general. La cotización formal definirá la especie de madera, el acabado y los herrajes exactos.');
+            setActions([
+                ['Económica', 'quote:door-quality-economic'],
+                ['Estándar', 'quote:door-quality-standard'],
+                ['Premium', 'quote:door-quality-premium'],
+                ['Cancelar', 'quote:cancel']
+            ]);
+            return true;
+        }
+        if (state.quote.stage === 'door-quality' || state.quote.stage === 'door-installation') {
+            addMessage('Utiliza una de las opciones disponibles para continuar.');
+            return true;
+        }
+        if (state.quote.stage === 'door-location') {
+            if (value.length < 3) {
+                addMessage('Escribe el municipio y, si es posible, el departamento.');
+                return true;
+            }
+            state.quote.location = value;
+            const areaUnit = state.quote.width * state.quote.height;
+            const totalArea = areaUnit * state.quote.quantity;
+            const ranges = {
+                economic: [280000, 420000],
+                standard: [450000, 650000],
+                premium: [700000, 1050000]
+            };
+            const labels = { economic: 'Económica', standard: 'Estándar', premium: 'Premium' };
+            const unitRange = ranges[state.quote.quality];
+            const frameMin = 180000 * state.quote.quantity;
+            const frameMax = 320000 * state.quote.quantity;
+            const hardwareMin = 90000 * state.quote.quantity;
+            const hardwareMax = 220000 * state.quote.quantity;
+            const installationMin = state.quote.installation ? 120000 * state.quote.quantity : 0;
+            const installationMax = state.quote.installation ? 220000 * state.quote.quantity : 0;
+            const directMin = totalArea * unitRange[0] + frameMin + hardwareMin + installationMin;
+            const directMax = totalArea * unitRange[1] + frameMax + hardwareMax + installationMax;
+            const minimum = directMin * 1.12;
+            const maximum = directMax * 1.25;
+            const whatsappMessage = encodeURIComponent(
+                'Hola, deseo una cotización formal para ' + state.quote.quantity + ' puerta(s) de madera. ' +
+                'Medidas: ' + state.quote.width + ' m × ' + state.quote.height + ' m. ' +
+                'Categoría: ' + labels[state.quote.quality] + '. ' +
+                'Instalación: ' + (state.quote.installation ? 'sí' : 'no') + '. ' +
+                'Ubicación: ' + state.quote.location + '. ' +
+                'Rango preliminar mostrado por Mentor: ' + money(minimum) + ' a ' + money(maximum) + '.'
+            );
+            addMessage(
+                'RANGO PRELIMINAR\n\n' +
+                state.quote.quantity + ' puerta(s) de ' + state.quote.width.toLocaleString('es-CO') + ' m × ' + state.quote.height.toLocaleString('es-CO') + ' m\n' +
+                'Área total: ' + totalArea.toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' m²\n' +
+                'Categoría: ' + labels[state.quote.quality] + '\n' +
+                'Instalación: ' + (state.quote.installation ? 'incluida' : 'no incluida') + '\n' +
+                'Ubicación: ' + state.quote.location + '\n\n' +
+                money(minimum) + ' – ' + money(maximum) + '\n\n' +
+                'Valor ilustrativo de prueba. El precio definitivo dependerá de la madera, el diseño, el marco, los herrajes, el acabado, el transporte y la verificación humana.'
+            );
+            state.quote = null;
+            setActions([
+                ['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + whatsappMessage],
+                ['Calcular otra puerta', 'quote:door-start']
+            ]);
+            return true;
+        }
+        if (state.quote.stage === 'area') {
+            const normalized = value.replace(/\./g, '').replace(',', '.').replace(/[^0-9.]/g, '');
+            const area = Number(normalized);
+            if (!Number.isFinite(area) || area < 10 || area > 100000) {
+                addMessage('Necesito un área entre 10 y 100.000 m² para continuar con esta demostración.');
+                return true;
+            }
+            state.quote.area = area;
+            state.quote.stage = 'location';
+            addMessage('El territorio modifica los costos y las condiciones de desplazamiento. ¿En qué municipio y departamento se realizaría el diagnóstico?');
+            return true;
+        }
+        if (state.quote.stage === 'location') {
+            if (value.length < 3) {
+                addMessage('Escribe el municipio y, si es posible, el departamento.');
+                return true;
+            }
+            state.quote.location = value;
+            /* Valores exclusivamente demostrativos; no son precios comerciales ni SECOP. */
+            const materials = state.quote.area * 2500 * 1.10;
+            const labor = state.quote.area * 6500 * 1.15;
+            const direct = materials + labor + 450000;
+            const central = direct * (1 + 0.12 + 0.05 + 0.08);
+            const minimum = central * 0.90;
+            const maximum = central * 1.15;
+            const whatsappMessage = encodeURIComponent(
+                'Hola, deseo solicitar una cotización formal para un diagnóstico energético. ' +
+                'Área aproximada: ' + state.quote.area + ' m². ' +
+                'Ubicación: ' + state.quote.location + '. ' +
+                'Rango preliminar mostrado por Mentor: ' + money(minimum) + ' a ' + money(maximum) + '.'
+            );
+            addMessage(
+                'RANGO PRELIMINAR\n\n' +
+                'Servicio: ' + state.quote.service + '\n' +
+                'Área: ' + state.quote.area.toLocaleString('es-CO') + ' m²\n' +
+                'Ubicación: ' + state.quote.location + '\n\n' +
+                money(minimum) + ' – ' + money(maximum) + '\n\n' +
+                'Valor ilustrativo de prueba. El precio definitivo será establecido por una persona del equipo después de conocer el alcance completo.'
+            );
+            state.quote = null;
+            setActions([
+                ['Solicitar cotización por WhatsApp', 'https://wa.me/573209574884?text=' + whatsappMessage],
+                ['Repetir estimación', 'chat:cotizar']
+            ]);
+            return true;
+        }
+        return false;
+    }
+
+    function answer(question) {
+        const q = question.toLowerCase();
+        const specialized = serviceIntent(q);
+        if (specialized) {
+            const service = specializedServices[specialized];
+            return [
+                service.name + ' requiere reconocer primero el recurso, la necesidad y las condiciones del lugar. Puedo reunir la información inicial para que el equipo determine la solución adecuada.',
+                [['Preparar solicitud', 'chat:service-' + specialized], ['Hablar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo información sobre: ' + service.name)]]
+            ];
+        }
+        if (/puerta|madera|carpinter/.test(q)) return [
+            'El valor de una puerta de madera depende de sus dimensiones, la especie de madera, el acabado, los herrajes, la instalación y el lugar de entrega. Aún no tengo un calculador verificado para este producto, pero puedo ayudarte a solicitar una cotización real al equipo.',
+            [['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo cotizar una puerta de madera. Necesito orientación sobre medidas, tipo de madera, acabado, herrajes e instalación.')], ['Explorar servicios', 'index.html#services']]
+        ];
+        if (/precio|costo|cotiza|presupuesto/.test(q)) return ['El costo no es una cifra aislada: es el reflejo de una escala, un territorio y un propósito. Para orientarte con rigor, conviene conocer la ubicación, la necesidad y el alcance de tu iniciativa.', [['Preparar consulta', 'chat:consulta'], ['Contactar al equipo', 'index.html#contact']]];
+        if (/curso|aprender|estudi|principiante/.test(q)) return ['El aprendizaje más sólido comienza donde la curiosidad encuentra una ruta. Puedes iniciar con nuestros cursos y avanzar desde los fundamentos hacia aplicaciones concretas.', [['Ver cursos', 'fundacion.html#cursos']]];
+        if (/servicio|proyecto|asesor|idea|similar/.test(q)) return ['Una idea adquiere forma cuando se reconocen sus condiciones. Cuéntame, en una frase, qué deseas transformar y en qué territorio; con ello podré señalarte una línea de trabajo adecuada.', [['Ver líneas de servicio', 'index.html#services'], ['Contactar', 'index.html#contact']]];
+        if (/hidrogen|electrol|energ/.test(q)) return ['La energía es posibilidad antes de convertirse en servicio. En el hidrógeno, esa posibilidad depende de cómo se produce, almacena y utiliza. Puedo conducirte hacia formación o hacia una evaluación aplicada.', [['Quiero aprender', 'fundacion.html#cursos'], ['Tengo un proyecto', 'index.html#services']]];
+        if (/fundaci|particip|miembro/.test(q)) return ['El conocimiento crece cuando circula. La fundación reúne formación, participación y acción territorial para convertir el aprendizaje en capacidad compartida.', [['Conocer la fundación', 'fundacion.html'], ['Ver cursos', 'fundacion.html#cursos']]];
+        return ['Toda pregunta señala un horizonte, aunque aún no tenga un nombre preciso. Puedo orientarte mejor si eliges entre aprender sobre el tema, explorar un servicio o conversar acerca de un proyecto.', [['Quiero aprender', 'fundacion.html#cursos'], ['Explorar servicios', 'index.html#services'], ['Tengo un proyecto', 'chat:proyecto']]];
+    }
+
+    function handleTarget(target, label) {
+        if (target.indexOf('quote:') === 0) {
+            if (!PUBLIC_PRICE_RANGES_ENABLED) {
+                addMessage(label, 'user');
+                startGenericQuote('Solicitud de cotización');
+                return;
+            }
+            if (target === 'quote:door-start') {
+                addMessage(label, 'user');
+                startDoorQuote();
+                return;
+            }
+            quoteAction(target, label);
+            return;
+        }
+        if (target.indexOf('chat:') === 0) {
+            if (target === 'chat:cotizar') {
+                addMessage(label, 'user');
+                if (PUBLIC_PRICE_RANGES_ENABLED) {
+                    startQuote();
+                } else {
+                    startGenericQuote('Solicitud de producto o servicio');
+                }
+                return;
+            }
+            if (target === 'chat:generic-quote') {
+                addMessage(label, 'user');
+                startGenericQuote('Nueva solicitud de producto o servicio');
+                return;
+            }
+            if (target.indexOf('chat:service-') === 0) {
+                addMessage(label, 'user');
+                startSpecializedInquiry(target.replace('chat:service-', ''));
+                return;
+            }
+            const result = answer(target.slice(5));
+            addMessage(label, 'user');
+            window.setTimeout(function () { addMessage(result[0]); setActions(result[1]); }, 260);
+            return;
+        }
+        if (target.indexOf('https://wa.me/') === 0) {
+            window.open(target, '_blank', 'noopener');
+        } else {
+            location.href = target;
+        }
+    }
+
+    toggle.addEventListener('click', function () { state.opened ? closeMentor() : openMentor(); });
+    root.querySelector('.mentor__close').addEventListener('click', closeMentor);
+    hint.addEventListener('click', openMentor);
+    actions.addEventListener('click', function (event) {
+        const button = event.target.closest('button');
+        if (button) handleTarget(button.dataset.target, button.textContent);
+    });
+    root.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+        addMessage(question, 'user');
+        input.value = '';
+        if (quoteInput(question)) return;
+        if (/puerta|madera|carpinter/i.test(question)) {
+            if (PUBLIC_PRICE_RANGES_ENABLED) {
+                startDoorQuote();
+            } else {
+                startGenericQuote(question);
+            }
+            return;
+        }
+        const specialized = serviceIntent(question);
+        if (specialized && /precio|costo|cotiza|presupuesto|cu[aá]nto vale|cuesta|valor|necesito|quiero/i.test(question)) {
+            startSpecializedInquiry(specialized);
+            return;
+        }
+        if (/precio|costo|cotiza|presupuesto|cu[aá]nto vale|cuesta|valor/i.test(question)) {
+            startGenericQuote(question);
+            return;
+        }
+        const result = answer(question);
+        window.setTimeout(function () { addMessage(result[0]); setActions(result[1]); }, 320);
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && state.opened) closeMentor();
+    });
+
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    if ('IntersectionObserver' in window && sections.length) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.28) return;
+                const id = contextFor(entry.target.id);
+                if (state.section === id) return;
+                state.section = id;
+                state.visits[id] = (state.visits[id] || 0) + 1;
+                sessionStorage.setItem('mentor-visits', JSON.stringify(state.visits));
+                window.clearTimeout(state.hintTimer);
+                state.hintTimer = window.setTimeout(function () { showHint(id); }, state.visits[id] > 1 ? 2600 : 5200);
+            });
+        }, { threshold: [0.28, 0.55] });
+        sections.forEach(function (section) { observer.observe(section); });
+    } else {
+        state.section = contextFor(initialContext());
+    }
+
+    window.setTimeout(function () { showHint(state.section || initialContext()); }, 6500);
+})();

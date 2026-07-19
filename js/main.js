@@ -460,6 +460,20 @@
         ssBackToTop();
         ssWorkLines();
 
+        /* Mentor puede retirarse sin afectar el sitio: cambia true por false. */
+        const MENTOR_ENABLED = true;
+        if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
+            const mentorStyle = document.createElement('link');
+            mentorStyle.rel = 'stylesheet';
+            mentorStyle.href = 'css/mentor.css?v=20260718e';
+            document.head.appendChild(mentorStyle);
+
+            const mentorScript = document.createElement('script');
+            mentorScript.src = 'js/mentor.js?v=20260718h';
+            mentorScript.dataset.mentor = 'true';
+            document.body.appendChild(mentorScript);
+        }
+
     })();
 
 })(jQuery);
