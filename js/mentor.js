@@ -118,12 +118,46 @@
     const actions = root.querySelector('.mentor__actions');
     const hint = root.querySelector('.mentor__hint');
     const input = root.querySelector('input');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const typingQueue = [];
+    let typingActive = false;
+
+    function typeNextMessage() {
+        if (typingActive || !typingQueue.length) return;
+        typingActive = true;
+        const current = typingQueue.shift();
+        const characters = Array.from(current.text);
+        let position = 0;
+        current.item.classList.add('mentor__message--typing');
+
+        function typeCharacter() {
+            position += 1;
+            current.item.textContent = characters.slice(0, position).join('');
+            messages.scrollTop = messages.scrollHeight;
+            if (position < characters.length) {
+                window.setTimeout(typeCharacter, 18);
+                return;
+            }
+            current.item.classList.remove('mentor__message--typing');
+            typingActive = false;
+            typeNextMessage();
+        }
+
+        typeCharacter();
+    }
 
     function addMessage(text, who) {
+        const author = who || 'mentor';
         const item = document.createElement('div');
-        item.className = 'mentor__message mentor__message--' + (who || 'mentor');
-        item.textContent = text;
+        item.className = 'mentor__message mentor__message--' + author;
         messages.appendChild(item);
+        if (author === 'mentor' && !reducedMotion) {
+            item.setAttribute('aria-label', text);
+            typingQueue.push({ item: item, text: text });
+            typeNextMessage();
+        } else {
+            item.textContent = text;
+        }
         messages.scrollTop = messages.scrollHeight;
     }
 
@@ -537,6 +571,9 @@
     toggle.addEventListener('click', function () { state.opened ? closeMentor() : openMentor(); });
     root.querySelector('.mentor__close').addEventListener('click', closeMentor);
     hint.addEventListener('click', openMentor);
+    document.addEventListener('click', function (event) {
+        if (state.opened && !root.contains(event.target)) closeMentor();
+    });
     actions.addEventListener('click', function (event) {
         const button = event.target.closest('button');
         if (button) handleTarget(button.dataset.target, button.textContent);
