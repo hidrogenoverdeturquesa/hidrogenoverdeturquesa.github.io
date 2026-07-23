@@ -5855,6 +5855,14 @@ body.search-is-visible {
     color: white;
 }
 
+.s-cta .cta-content p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.s-cta .cta-content strong {
+    color: #ffffff;
+}
+
 .cta-content {
     max-width: 800px;
 }
@@ -5869,6 +5877,19 @@ body.search-is-visible {
     background-color: white;
     border: .2rem solid white;
     color: black;
+}
+
+.s-cta .cta-content .btn--primary {
+    color: #071c18;
+    background-color: var(--color-1);
+    border-color: var(--color-1);
+}
+
+.s-cta .cta-content .btn--primary:hover,
+.s-cta .cta-content .btn--primary:focus {
+    color: #071c18;
+    background-color: #ffffff;
+    border-color: #ffffff;
 }
 
 /* ------------------------------------------------------------------- 
