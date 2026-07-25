@@ -223,13 +223,14 @@
 
             $heroSlider.slick({
                 arrows: false,
-                dots: false,
+                dots: true,
                 speed: 1000,
                 fade: true,
                 cssEase: 'linear',
-                autoplay: false,
-                autoplaySpeed: 5000,
-                pauseOnHover: false
+                autoplay: true,
+                autoplaySpeed: 6500,
+                pauseOnHover: true,
+                pauseOnFocus: true
             });
 
             $('.s-home__arrow-prev').on('click', function() {

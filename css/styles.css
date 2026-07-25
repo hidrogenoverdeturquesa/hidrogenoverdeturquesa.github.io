@@ -3665,7 +3665,8 @@ body.search-is-visible {
     outline: none;
 }
 
-.s-home__slider h1 {
+.s-home__slider h1,
+.s-home__slider h2 {
     font-family: var(--font-2);
     font-size: 6.4rem;
     line-height: 1.25;
@@ -3678,21 +3679,40 @@ body.search-is-visible {
 
 .s-home__slider h1 a,
 .s-home__slider h1 a:visited,
-.s-home__slider h1 span {
+.s-home__slider h1 span,
+.s-home__slider h2 a,
+.s-home__slider h2 a:visited,
+.s-home__slider h2 span {
     display: inline-block;
     color: var(--color-1);
     border-bottom: 1px solid transparent;
 }
 
 .s-home__slider h1 a:hover,
-.s-home__slider h1 a:focus {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+.s-home__slider h1 a:focus,
+.s-home__slider h2 a:hover,
+.s-home__slider h2 a:focus {
+    color: white;
+    border-bottom-color: white;
 }
 
 .s-home__slider p {
     max-width: 600px;
     margin-right: auto;
     margin-left: auto;
+    color: white;
+    font-weight: 500;
+}
+
+.s-home__slider .slick-dots {
+    top: auto;
+    bottom: 3.2rem;
+    z-index: 3;
+    margin: 0;
+}
+
+.s-home__slider .slick-dots li button {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 /* slider nav buttons
