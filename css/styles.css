@@ -3665,7 +3665,7 @@ body.search-is-visible {
     outline: none;
 }
 
-.s-home__slider h2 {
+.s-home__slider h1 {
     font-family: var(--font-2);
     font-size: 6.4rem;
     line-height: 1.25;
@@ -3676,16 +3676,16 @@ body.search-is-visible {
     transition: all .3s;
 }
 
-.s-home__slider h2 a, 
-.s-home__slider h2 a:visited, 
-.s-home__slider h2 span {
+.s-home__slider h1 a,
+.s-home__slider h1 a:visited,
+.s-home__slider h1 span {
     display: inline-block;
     color: var(--color-1);
     border-bottom: 1px solid transparent;
 }
 
-.s-home__slider h2 a:hover, 
-.s-home__slider h2 a:focus {
+.s-home__slider h1 a:hover,
+.s-home__slider h1 a:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
@@ -4530,7 +4530,7 @@ body.search-is-visible {
  * home
  * ------------------------------------------------------------------- */
 @media screen and (max-width: 1200px) {
-    .s-home__slider h2 {
+    .s-home__slider h1 {
         font-size: 6rem;
     }
 }
@@ -4584,7 +4584,7 @@ body.search-is-visible {
     .book-flow {
         grid-template-columns: 1fr;
     }
-    .s-home__slider h2 {
+    .s-home__slider h1 {
         font-size: 5rem;
     }
 }
@@ -7168,4 +7168,24 @@ body.search-is-visible {
     .investor-team-card {
         min-height: 0;
     }
+}
+
+/* Responsive typography for the semantic homepage H1. */
+@media screen and (max-width: 900px) {
+    .s-home__slider h1 { font-size: 5rem; }
+}
+@media screen and (max-width: 800px) {
+    .s-home__slider h1 { font-size: 4.6rem; }
+}
+@media screen and (max-width: 700px) {
+    .s-home__slider h1 { font-size: 4.2rem; }
+}
+@media screen and (max-width: 600px) {
+    .s-home__slider h1 { font-size: 4rem; }
+}
+@media screen and (max-width: 500px) {
+    .s-home__slider h1 { font-size: 3.8rem; }
+}
+@media screen and (max-width: 400px) {
+    .s-home__slider h1 { font-size: 3.5rem; }
 }
