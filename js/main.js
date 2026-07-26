@@ -542,7 +542,7 @@
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = 'js/mentor.js?v=20260719c';
+            mentorScript.src = 'js/mentor.js?v=pueblito-20260725';
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);
         }

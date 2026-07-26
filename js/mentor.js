@@ -11,6 +11,7 @@
     const PUBLIC_PRICE_RANGES_ENABLED = false;
 
     const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const isPueblitoPage = page === 'pueblito-boyacense.html';
     const state = {
         page: page,
         section: '',
@@ -76,10 +77,56 @@
             label: 'la fundación',
             prompt: 'Cuando el conocimiento se comparte, deja de ser privilegio y se convierte en territorio común. Puedo guiarte por nuestras iniciativas y rutas educativas.',
             actions: [['Ver cursos', '#cursos'], ['Cómo participar', 'chat:participar']]
+        },
+        pueblito: {
+            label: 'esta mirada desde Pueblito Boyacense',
+            prompt: 'Estás recorriendo una visión de Hidrógeno Verde Turquesa nacida desde Pueblito Boyacense. Aquí relacionamos energía, agua, alimento, arquitectura y cultura sin afirmar que ya exista una instalación de hidrógeno en el lugar.',
+            actions: [['Explorar la casa', '#casa-viva'], ['Entender la visión', 'chat:pueblito-vision'], ['Sitio oficial de Pueblito', 'https://pueblitoboyacense.org/']]
+        },
+        vision: {
+            label: 'la visión territorial',
+            prompt: 'La soberanía energética no significa aislarse: significa comprender la demanda, los recursos y las decisiones del territorio. En esta propuesta, la energía también se relaciona con agua segura, alimentos y capacidades locales.',
+            actions: [['Ver el plano conceptual', '#ecosistema'], ['¿Qué papel tiene el hidrógeno?', 'chat:pueblito-hidrogeno']]
+        },
+        ecosistema: {
+            label: 'el plano territorial',
+            prompt: 'Este dibujo es un esquema conceptual, no un diseño constructivo. Muestra cómo energía, agua, alimento, materiales y cultura deben estudiarse como partes de un mismo sistema habitado.',
+            actions: [['Explorar la casa real', '#casa-viva'], ['¿Ya está instalado?', 'chat:pueblito-transparencia']]
+        },
+        'casa-viva': {
+            label: 'la casa como organismo',
+            prompt: 'Los puntos sobre la fotografía presentan hipótesis de integración: cubierta, muros, aire, huerta y núcleo técnico. La prioridad es mejorar confort y eficiencia sin borrar la arquitectura ni convertir el hogar en una industria.',
+            actions: [['Conocer los materiales', '#materiales'], ['¿Cómo se protege la arquitectura?', 'chat:pueblito-arquitectura']]
+        },
+        materiales: {
+            label: 'la mesa de materiales',
+            prompt: 'Tierra, madera, piedra, fibras y materiales biobasados pueden aportar identidad y confort. Su uso responsable exige caracterización, ensayos y validación estructural, contra incendios y de eficiencia energética.',
+            actions: [['Ver el método', 'chat:pueblito-materiales'], ['Explorar proyectos', '#proyectos-relacionados']]
+        },
+        'proyectos-relacionados': {
+            label: 'el archivo de investigación',
+            prompt: 'Estas cinco rutas conectan vivienda, territorio, hidrógeno y bioeconomía. Son investigaciones y formulaciones relacionadas con la visión; no son obras que afirmemos haber ejecutado en Pueblito Boyacense.',
+            actions: [['Ver hogares eficientes', 'proyecto-hogares-eficientes.html'], ['Resolver una duda', '#preguntas-pueblito']]
+        },
+        'memoria-visual': {
+            label: 'la memoria visual',
+            prompt: 'Las fotografías documentan fachadas, jardines, plazas y lugares de encuentro. Este archivo reconoce que el territorio también se comprende caminándolo, observándolo y escuchando su memoria.',
+            actions: [['Volver a la casa', '#casa-viva'], ['Conocer Pueblito oficialmente', 'https://pueblitoboyacense.org/']]
+        },
+        'preguntas-pueblito': {
+            label: 'las preguntas necesarias',
+            prompt: 'Esta sección separa con claridad la visión de lo que aún debe investigarse. No afirmamos que Pueblito Boyacense funcione hoy con hidrógeno ni que exista allí un sistema instalado por la empresa.',
+            actions: [['¿Qué propone entonces?', 'chat:pueblito-vision'], ['Conversar con el equipo', '#presencia-pueblito']]
+        },
+        'presencia-pueblito': {
+            label: 'nuestra presencia en el territorio',
+            prompt: 'Hidrógeno Verde Turquesa piensa esta visión desde Pueblito Boyacense, en Duitama. Puedo ayudarte a preparar una conversación con el equipo o llevarte al portal oficial del lugar.',
+            actions: [['Conversar por WhatsApp', 'https://wa.me/573209574884?text=Hola%2C%20quiero%20conocer%20la%20visi%C3%B3n%20de%20Hidr%C3%B3geno%20Verde%20Turquesa%20desde%20Pueblito%20Boyacense'], ['Portal oficial', 'https://pueblitoboyacense.org/']]
         }
     };
 
     function initialContext() {
+        if (isPueblitoPage) return (location.hash || '#pueblito').slice(1) || 'pueblito';
         if (page.indexOf('curso-') === 0) return 'course';
         if (page.indexOf('proyecto-') === 0) return 'project';
         if (page === 'fundacion.html') return location.hash === '#cursos' ? 'cursos' : 'foundation';
@@ -198,6 +245,7 @@
 
     function contextFor(id) {
         if (contexts[id]) return id;
+        if (isPueblitoPage) return 'pueblito';
         if (id && id.indexOf('curso') !== -1) return 'cursos';
         return initialContext() in contexts ? initialContext() : 'home';
     }
@@ -528,6 +576,36 @@
 
     function answer(question) {
         const q = question.toLowerCase();
+        if (isPueblitoPage) {
+            if (/pueblito-transparencia|ya funciona|ya existe|ya est[aá] instalado|instalaci[oó]n.*hidr[oó]geno|hidr[oó]geno.*instalado/.test(q)) return [
+                'No afirmamos que Pueblito Boyacense funcione actualmente con hidrógeno ni que Hidrógeno Verde Turquesa haya instalado allí uno de estos sistemas. La página presenta una visión territorial y varias hipótesis que requerirían estudios, acuerdos, permisos, diseño y verificación de seguridad.',
+                [['Ver preguntas y respuestas', '#preguntas-pueblito'], ['Conocer la visión', '#vision']]
+            ];
+            if (/pueblito-arquitectura|arquitect|colonial|casa|cabaña|fachada|patrimonio/.test(q)) return [
+                'La tecnología debe adaptarse a la vivienda y no al contrario. Primero se estudian orientación, ventilación, luz, materiales, demanda y valor arquitectónico; después se plantean intervenciones discretas, seguras, mantenibles y, cuando corresponda, reversibles.',
+                [['Explorar la casa', '#casa-viva'], ['Ver materiales', '#materiales']]
+            ];
+            if (/pueblito-materiales|material|tierra|madera|piedra|fibra|biobasad|sismo|incendio|bioclim/.test(q)) return [
+                'Un material tradicional o biobasado no se valida solo por ser natural. Debe caracterizarse y ensayarse como parte de un sistema completo: estructura y uniones, humedad, durabilidad, comportamiento térmico, fuego, mantenimiento y normativa aplicable.',
+                [['Ver la mesa de materiales', '#materiales'], ['Explorar proyectos', '#proyectos-relacionados']]
+            ];
+            if (/soberan[ií]a.*aliment|alimento|huerta|cultivo|agua/.test(q)) return [
+                'La soberanía alimentaria necesita energía para agua segura, riego, conservación, frío, monitoreo y transformación local. La propuesta no reduce el territorio a energía: conecta agua, suelo, alimentos, biodiversidad y conocimiento cotidiano.',
+                [['Ver el plano territorial', '#ecosistema'], ['Explorar la casa', '#casa-viva']]
+            ];
+            if (/pueblito-hidrogeno|hidr[oó]geno|electr[oó]lisis|energ[ií]a/.test(q)) return [
+                'Aquí el hidrógeno se entiende como vector energético, no como fuente primaria ni como solución automática. Solo tendría sentido después de reducir la demanda y comparar alternativas, y si demuestra necesidad, seguridad, viabilidad y beneficio territorial.',
+                [['Ver preguntas necesarias', '#preguntas-pueblito'], ['Conocer proyectos relacionados', '#proyectos-relacionados']]
+            ];
+            if (/turis|visitar|sitio oficial|portal oficial|conocer pueblito|direcci[oó]n|llegar/.test(q)) return [
+                'Esta es la página de la visión de Hidrógeno Verde Turquesa desde el territorio. Para información turística, cultural, de acceso o programación de Pueblito Boyacense, la fuente adecuada es su portal oficial.',
+                [['Visitar el portal oficial', 'https://pueblitoboyacense.org/'], ['Ver memoria visual', '#memoria-visual']]
+            ];
+            if (/pueblito-vision|qu[eé] propone|de qu[eé] trata|esta p[aá]gina|visi[oó]n|pueblito|boyacense|duitama/.test(q)) return [
+                'La página propone investigar cómo la soberanía energética y alimentaria, la vivienda eficiente, el hidrógeno y los materiales bioclimáticos pueden convivir con la arquitectura y la cultura de Pueblito Boyacense. Es una visión de integración responsable, no el anuncio de una obra ya ejecutada.',
+                [['Recorrer el plano', '#ecosistema'], ['Explorar la casa', '#casa-viva'], ['Ver preguntas', '#preguntas-pueblito']]
+            ];
+        }
         const specialized = serviceIntent(q);
         if (specialized) {
             const service = specializedServices[specialized];
@@ -588,7 +666,7 @@
             window.setTimeout(function () { addMessage(result[0]); setActions(result[1]); }, 260);
             return;
         }
-        if (target.indexOf('https://wa.me/') === 0) {
+        if (/^https?:\/\//.test(target)) {
             window.open(target, '_blank', 'noopener');
         } else {
             location.href = target;
