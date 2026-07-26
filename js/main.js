@@ -361,6 +361,76 @@
     };
 
 
+   /* service card hover videos
+    * ------------------------------------------------------ */
+    const ssServiceVideos = function() {
+
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!canHover || reduceMotion) return;
+
+        document.querySelectorAll('.services-item').forEach(function(card) {
+            const video = card.querySelector('.services-item__video');
+            if (!video) return;
+
+            const playVideo = function() {
+                if (video.readyState === 0) video.load();
+                const playback = video.play();
+                if (playback && typeof playback.catch === 'function') playback.catch(function() {});
+            };
+
+            const stopVideo = function() {
+                video.pause();
+                video.currentTime = 0;
+            };
+
+            card.addEventListener('pointerenter', playVideo);
+            card.addEventListener('pointerleave', stopVideo);
+            card.addEventListener('focusin', playVideo);
+            card.addEventListener('focusout', function(event) {
+                if (!card.contains(event.relatedTarget)) stopVideo();
+            });
+        });
+
+    };
+
+
+   /* portfolio card hover videos
+    * ------------------------------------------------------ */
+    const ssPortfolioVideos = function() {
+
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!canHover || reduceMotion) return;
+
+        document.querySelectorAll('.folio-item__thumb').forEach(function(card) {
+            const video = card.querySelector('.folio-item__video');
+            if (!video) return;
+
+            const playVideo = function() {
+                if (video.readyState === 0) video.load();
+                const playback = video.play();
+                if (playback && typeof playback.catch === 'function') playback.catch(function() {});
+            };
+
+            const stopVideo = function() {
+                video.pause();
+                video.currentTime = 0;
+            };
+
+            card.addEventListener('pointerenter', playVideo);
+            card.addEventListener('pointerleave', stopVideo);
+            card.addEventListener('focusin', playVideo);
+            card.addEventListener('focusout', function(event) {
+                if (!card.contains(event.relatedTarget)) stopVideo();
+            });
+        });
+
+    };
+
+
    /* work lines expandable details
     * ------------------------------------------------------ */
     const ssWorkLines = function() {
@@ -459,6 +529,8 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssBackToTop();
+        ssServiceVideos();
+        ssPortfolioVideos();
         ssWorkLines();
 
         /* Mentor puede retirarse sin afectar el sitio: cambia true por false. */
