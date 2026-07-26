@@ -12,6 +12,20 @@
                 mailChimpURL   : ''   // mailchimp url
                 };
 
+    /* Keep the home URL clean when an old link or bookmark includes index.html. */
+    const ssNormalizeHomeURL = function() {
+        const currentPath = window.location.pathname;
+
+        if (!/\/index\.html$/i.test(currentPath)) return;
+
+        const cleanPath = currentPath.slice(0, -'index.html'.length);
+        window.history.replaceState(
+            window.history.state,
+            document.title,
+            cleanPath + window.location.search + window.location.hash
+        );
+    };
+
     // Add the User Agent to the <html>
     // will be used for IE10/IE11 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; rv:11.0))
     // const doc = document.documentElement;
@@ -648,6 +662,7 @@
     * ------------------------------------------------------ */
     (function ssInit() {
 
+        ssNormalizeHomeURL();
         ssPreloader();
         ssMoveHeader();
         ssMobileMenu();
@@ -672,7 +687,7 @@
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = 'js/mentor.js?v=pueblito-20260725';
+            mentorScript.src = 'js/mentor.js?v=url-limpia-20260726';
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);
         }

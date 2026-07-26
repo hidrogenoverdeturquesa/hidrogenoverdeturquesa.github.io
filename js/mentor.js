@@ -71,7 +71,7 @@
         project: {
             label: 'este proyecto',
             prompt: 'Una obra no se comprende únicamente por su resultado, sino por las decisiones que la hicieron posible. Puedo ayudarte a relacionar este proyecto con una necesidad propia.',
-            actions: [['Tengo una idea similar', 'chat:similar'], ['Consultar al equipo', 'index.html#contact']]
+            actions: [['Tengo una idea similar', 'chat:similar'], ['Consultar al equipo', '/#contact']]
         },
         foundation: {
             label: 'la fundación',
@@ -370,7 +370,7 @@
         if (target === 'quote:cancel') {
             state.quote = null;
             addMessage('La simulación ha terminado. Ninguna cifra fue guardada ni enviada.');
-            setActions([['Explorar servicios', 'index.html#services']]);
+            setActions([['Explorar servicios', '/#services']]);
             return;
         }
         if (target === 'quote:energy-audit') {
@@ -616,14 +616,14 @@
         }
         if (/puerta|madera|carpinter/.test(q)) return [
             'El valor de una puerta de madera depende de sus dimensiones, la especie de madera, el acabado, los herrajes, la instalación y el lugar de entrega. Puedo reunir estos datos y ayudarte a solicitar una cotización con el equipo.',
-            [['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo cotizar una puerta de madera. Necesito orientación sobre medidas, tipo de madera, acabado, herrajes e instalación.')], ['Explorar servicios', 'index.html#services']]
+            [['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo cotizar una puerta de madera. Necesito orientación sobre medidas, tipo de madera, acabado, herrajes e instalación.')], ['Explorar servicios', '/#services']]
         ];
-        if (/precio|costo|cotiza|presupuesto/.test(q)) return ['El costo no es una cifra aislada: es el reflejo de una escala, un territorio y un propósito. Para orientarte con rigor, conviene conocer la ubicación, la necesidad y el alcance de tu iniciativa.', [['Preparar consulta', 'chat:consulta'], ['Contactar al equipo', 'index.html#contact']]];
+        if (/precio|costo|cotiza|presupuesto/.test(q)) return ['El costo no es una cifra aislada: es el reflejo de una escala, un territorio y un propósito. Para orientarte con rigor, conviene conocer la ubicación, la necesidad y el alcance de tu iniciativa.', [['Preparar consulta', 'chat:consulta'], ['Contactar al equipo', '/#contact']]];
         if (/curso|aprender|estudi|principiante/.test(q)) return ['El aprendizaje más sólido comienza donde la curiosidad encuentra una ruta. Puedes iniciar con nuestros cursos y avanzar desde los fundamentos hacia aplicaciones concretas.', [['Ver cursos', 'fundacion.html#cursos']]];
-        if (/servicio|proyecto|asesor|idea|similar/.test(q)) return ['Una idea adquiere forma cuando se reconocen sus condiciones. Cuéntame, en una frase, qué deseas transformar y en qué territorio; con ello podré señalarte una línea de trabajo adecuada.', [['Ver líneas de servicio', 'index.html#services'], ['Contactar', 'index.html#contact']]];
-        if (/hidrogen|electrol|energ/.test(q)) return ['La energía es posibilidad antes de convertirse en servicio. En el hidrógeno, esa posibilidad depende de cómo se produce, almacena y utiliza. Puedo conducirte hacia formación o hacia una evaluación aplicada.', [['Quiero aprender', 'fundacion.html#cursos'], ['Tengo un proyecto', 'index.html#services']]];
+        if (/servicio|proyecto|asesor|idea|similar/.test(q)) return ['Una idea adquiere forma cuando se reconocen sus condiciones. Cuéntame, en una frase, qué deseas transformar y en qué territorio; con ello podré señalarte una línea de trabajo adecuada.', [['Ver líneas de servicio', '/#services'], ['Contactar', '/#contact']]];
+        if (/hidrogen|electrol|energ/.test(q)) return ['La energía es posibilidad antes de convertirse en servicio. En el hidrógeno, esa posibilidad depende de cómo se produce, almacena y utiliza. Puedo conducirte hacia formación o hacia una evaluación aplicada.', [['Quiero aprender', 'fundacion.html#cursos'], ['Tengo un proyecto', '/#services']]];
         if (/fundaci|particip|miembro/.test(q)) return ['El conocimiento crece cuando circula. La fundación reúne formación, participación y acción territorial para convertir el aprendizaje en capacidad compartida.', [['Conocer la fundación', 'fundacion.html'], ['Ver cursos', 'fundacion.html#cursos']]];
-        return ['Toda pregunta señala un horizonte, aunque aún no tenga un nombre preciso. Puedo orientarte mejor si eliges entre aprender sobre el tema, explorar un servicio o conversar acerca de un proyecto.', [['Quiero aprender', 'fundacion.html#cursos'], ['Explorar servicios', 'index.html#services'], ['Tengo un proyecto', 'chat:proyecto']]];
+        return ['Toda pregunta señala un horizonte, aunque aún no tenga un nombre preciso. Puedo orientarte mejor si eliges entre aprender sobre el tema, explorar un servicio o conversar acerca de un proyecto.', [['Quiero aprender', 'fundacion.html#cursos'], ['Explorar servicios', '/#services'], ['Tengo un proyecto', 'chat:proyecto']]];
     }
 
     function handleTarget(target, label) {
