@@ -26,31 +26,86 @@
 
         if (!preloader) return;
 
-        document.querySelector('html').classList.add('ss-preload');
-        
-        const revealPage = function() {
-            document.querySelector('html').classList.remove('ss-preload');
-            document.querySelector('html').classList.add('ss-loaded');
+        const doc = document.documentElement;
+        const loader = preloader.querySelector('#loader');
+        const pageName = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        const minimumVisibleTime = 1800;
+        const maximumVisibleTime = 3200;
+        const loaderStartedAt = window.performance && performance.now ? performance.now() : Date.now();
+        let minimumTimeElapsed = false;
+        let resourcesReady = document.readyState === 'complete';
+        let revealed = false;
+
+        const generalFacts = [
+            'El hidrógeno no es una fuente primaria de energía: es un vector capaz de almacenarla y transportarla.',
+            'La energía que menos impacta suele ser la que primero evitamos desperdiciar mediante eficiencia.',
+            'Agua, energía, alimentos y materiales forman sistemas conectados dentro de un territorio.',
+            'Los residuos orgánicos pueden convertirse en insumos cuando se separan y aprovechan correctamente.',
+            'Una solución sostenible también debe poder mantenerse, repararse y comprenderse localmente.',
+            'La ventilación, la luz natural y la inercia térmica pueden reducir la demanda energética de una vivienda.'
+        ];
+        const pueblitoFacts = [
+            'Una vivienda tradicional puede ganar eficiencia sin perder la forma, los materiales y la memoria que la hacen única.',
+            'Antes de incorporar nuevos equipos, una casa puede aprovechar mejor el sol, la ventilación y la inercia térmica.',
+            'Un material natural también debe demostrar seguridad estructural, durabilidad y comportamiento frente al fuego.'
+        ];
+        const availableFacts = pageName === 'pueblito-boyacense.html' ? pueblitoFacts : generalFacts;
+
+        if (loader && !loader.querySelector('.loader-fact')) {
+            const fact = document.createElement('div');
+            const factLabel = document.createElement('span');
+            const factText = document.createElement('p');
+            const selectedFact = availableFacts[Math.floor(Math.random() * availableFacts.length)];
+
+            fact.className = 'loader-fact';
+            fact.setAttribute('role', 'status');
+            fact.setAttribute('aria-live', 'polite');
+            factLabel.textContent = '¿Sabías que…?';
+            factText.textContent = selectedFact;
+            fact.appendChild(factLabel);
+            fact.appendChild(factText);
+            loader.appendChild(fact);
+        }
+
+        doc.classList.add('ss-preload');
+
+        const revealPage = function(forceReveal) {
+            if (revealed) return;
+            if (!forceReveal && (!minimumTimeElapsed || !resourcesReady)) return;
+            revealed = true;
+            doc.classList.remove('ss-preload');
+            doc.classList.add('ss-loaded');
 
             preloader.addEventListener('transitionend', function(e) {
                 if (e.target.matches("#preloader")) {
                     this.style.display = 'none';
                 }
-            });
+            }, { once: true });
 
             window.setTimeout(function() {
                 preloader.style.display = 'none';
-            }, 700);
+            }, 800);
         };
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', revealPage, { once: true });
+        const elapsedTime = (window.performance && performance.now ? performance.now() : Date.now()) - loaderStartedAt;
+        window.setTimeout(function() {
+            minimumTimeElapsed = true;
+            revealPage(false);
+        }, Math.max(0, minimumVisibleTime - elapsedTime));
+
+        if (resourcesReady) {
+            revealPage(false);
         } else {
-            revealPage();
+            window.addEventListener('load', function() {
+                resourcesReady = true;
+                revealPage(false);
+            }, { once: true });
         }
 
-        // Never leave the interface blocked if a third-party resource is slow.
-        window.setTimeout(revealPage, 1200);
+        // Never leave the interface blocked if an external resource is slow.
+        window.setTimeout(function() {
+            revealPage(true);
+        }, maximumVisibleTime);
 
         // force page scroll position to top at page refresh
         window.addEventListener('beforeunload' , function () {
@@ -515,6 +570,80 @@
     };
 
 
+   /* impact counters
+    * ------------------------------------------------------ */
+    const ssImpactCounters = function() {
+
+        const section = document.querySelector('#impact');
+        const counters = Array.from(document.querySelectorAll('.impact-counter'));
+
+        if (!section || !counters.length) return;
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const formatter = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
+
+        const finalValue = function(counter) {
+            const target = Number(counter.dataset.counterTarget || 0);
+            const suffix = counter.dataset.counterSuffix || '';
+            const display = counter.querySelector('span') || counter;
+            display.textContent = formatter.format(target) + suffix;
+        };
+
+        if (reducedMotion || !('IntersectionObserver' in window)) {
+            counters.forEach(finalValue);
+            return;
+        }
+
+        counters.forEach(function(counter) {
+            const suffix = counter.dataset.counterSuffix || '';
+            const display = counter.querySelector('span') || counter;
+            display.textContent = '0' + suffix;
+        });
+
+        const animateCounter = function(counter, delay) {
+            const target = Number(counter.dataset.counterTarget || 0);
+            const suffix = counter.dataset.counterSuffix || '';
+            const display = counter.querySelector('span') || counter;
+            const duration = 1600;
+
+            window.setTimeout(function() {
+                let startTime = null;
+
+                const step = function(timestamp) {
+                    if (startTime === null) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    const easedProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.round(target * easedProgress);
+
+                    display.textContent = formatter.format(currentValue) + suffix;
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        finalValue(counter);
+                    }
+                };
+
+                window.requestAnimationFrame(step);
+            }, delay);
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                counters.forEach(function(counter, index) {
+                    animateCounter(counter, index * 90);
+                });
+                observer.unobserve(section);
+            });
+        }, {
+            threshold: 0.28
+        });
+
+        observer.observe(section);
+    };
+
+
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -532,6 +661,7 @@
         ssServiceVideos();
         ssPortfolioVideos();
         ssWorkLines();
+        ssImpactCounters();
 
         /* Mentor puede retirarse sin afectar el sitio: cambia true por false. */
         const MENTOR_ENABLED = true;
