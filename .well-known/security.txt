@@ -1,0 +1,4 @@
+Contact: mailto:contacto@hidrogenoverdeturquesa.com
+Expires: 2027-07-25T23:59:59Z
+Preferred-Languages: es
+Canonical: https://hidrogenoverdeturquesa.com/.well-known/security.txt
