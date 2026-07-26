@@ -120,7 +120,6 @@ Javascript Files:
  - Parralax.js (https://pixelcog.github.io/parallax.js/)
  - Slick slider (http://kenwheeler.github.io/slick/)
  - Animate On Scroll (https://michalsnik.github.io/aos/)
- - PrismJS (https://prismjs.com/)
  - Waypoints (https://github.com/imakewebthings/waypoints)
  - Lity (https://sorgalla.com/lity/)
 
