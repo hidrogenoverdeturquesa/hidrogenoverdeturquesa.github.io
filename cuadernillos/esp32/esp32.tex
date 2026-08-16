@@ -1,0 +1,36 @@
+% !TeX encoding = UTF-8
+\documentclass{../plantilla/hvtbook}
+\HVTTitulo{ESP32, monitoreo y datos}
+\HVTSubtitulo{Aprende a usar ESP32 como cerebro de un sistema de medición: lectura de sensores, conexión WiFi, registro de datos y tablero básico para prototipos energéticos.}
+\HVTNivel{Nivel básico}\HVTSerie{Guía formativa}\HVTNumero{02}\HVTAccion{Empezar}
+\HVTDescripcion{Guía formativa sobre ESP32, monitoreo y datos.}\HVTCanonical{https://hidrogenoverdeturquesa.com/curso-esp32}
+\HVTRegreso{Volver al catálogo}{/fundacion\#cursos}
+\HVTPortada{../../images/Esp32.png}{Figura 1. Tarjeta ESP32 para monitoreo, conectividad y control.}
+\begin{document}\HVTMakeTitle
+\begin{HVTPage}{Capítulo 1}{ESP32 como nodo de medición}{Objetivo de la lección}
+\HVTLead{Al terminar, el estudiante entiende qué hace un ESP32, distingue alimentación, entradas, salidas y comunicación, y diseña un primer nodo de monitoreo para energía sostenible.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Aprenderás}\begin{itemize}\item Qué significa entrada analógica y entrada digital. \item Cómo conectar un sensor sin exceder el voltaje permitido. \item Cómo enviar datos por WiFi a un tablero simple. \item Cómo documentar una variable medida.\end{itemize}\end{HVTColumn}
+\begin{HVTColumn}{Materiales}\begin{itemize}\item 1 tarjeta ESP32. \item Cable USB de datos. \item Sensor de temperatura o luz. \item Protoboard y cables Dupont.\end{itemize}\end{HVTColumn}
+\end{HVTGrid}
+\HVTImagen{../../images/Esp32.png}{Figura 1-1. El ESP32 integra microcontrolador, pines de conexión y módulo WiFi/Bluetooth.}
+\end{HVTPage}
+\begin{HVTPage}{Concepto}{Dato, decisión y comunicación}{La idea central}
+\HVTText{Un sistema energético inteligente no solo produce energía: también mide, guarda datos y alerta cuando algo cambia. El ESP32 permite conectar el mundo físico con una interfaz digital.}
+\begin{HVTFlow}\HVTFlowItem{1}{Sensor}{Convierte una variable física en señal eléctrica.}\HVTFlowItem{2}{ESP32}{Lee, compara, calcula y decide.}\HVTFlowItem{3}{Tablero}{Muestra datos para tomar decisiones.}\end{HVTFlow}
+\begin{HVTExample}{Ejemplo 2-1}{Monitoreo de temperatura en una caja energética}\begin{enumerate}\item Definir la variable: temperatura en grados Celsius. \item Definir el límite inicial de alerta, por ejemplo 35 °C. \item Leer el sensor cada cierto intervalo. \item Mostrar estado normal o alerta en el tablero.\end{enumerate}\end{HVTExample}
+\HVTText{Comentario: medir no es acumular números; medir es convertir datos en decisiones útiles para seguridad, mantenimiento y eficiencia.}
+\end{HVTPage}
+\begin{HVTPage}{Práctica}{Primer nodo de monitoreo}{Construye una lectura básica}
+\begin{HVTSteps}\item Identifica alimentación: conecta el ESP32 por USB y verifica que encienda correctamente. \item Elige una variable: usa temperatura, luz o humedad como primera variable de práctica. \item Conecta el sensor: revisa VCC, GND y señal antes de energizar. \item Lee el dato: programa una lectura periódica y muéstrala por monitor serial. \item Define una alerta: si la lectura supera el límite, escribe “ALERTA”.\end{HVTSteps}
+\begin{HVTCode}{Lógica del programa}leer sensor
+si valor > limite:
+    mostrar "ALERTA"
+si no:
+    mostrar "NORMAL"\end{HVTCode}
+\end{HVTPage}
+\begin{HVTPage}{Actividad}{Evidencia de aprendizaje}{Diseña tu primer tablero energético}
+\HVTText{Representa en una hoja cómo se vería un tablero para una casa con panel solar, batería y caja de control.}
+\begin{HVTTask}{Entrega}\item Dibuja tres variables que medirías. \item Define para cada una un estado normal y un estado de alerta. \item Explica qué acción tomarías si aparece una alerta.\end{HVTTask}
+\end{HVTPage}
+\end{document}

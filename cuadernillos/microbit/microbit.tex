@@ -1,0 +1,36 @@
+% !TeX encoding = UTF-8
+\documentclass{../plantilla/hvtbook}
+\HVTTitulo{Micro:bit para energía y sensores}
+\HVTSubtitulo{Aprende a usar una tarjeta Micro:bit como primer laboratorio de medición: entradas, salidas, sensores, alertas y pensamiento lógico aplicado a energía sostenible.}
+\HVTNivel{Nivel inicial}\HVTSerie{Guía formativa}\HVTNumero{01}\HVTAccion{Empezar}
+\HVTDescripcion{Guía formativa de Micro:bit aplicada a energía y sensores.}\HVTCanonical{https://hidrogenoverdeturquesa.com/curso-microbit}
+\HVTRegreso{Volver al catálogo}{/fundacion\#cursos}
+\HVTPortada{../../images/Microbit.png}{Figura 1. Tarjeta Micro:bit usada como laboratorio educativo.}
+\begin{document}\HVTMakeTitle
+\begin{HVTPage}{Capítulo 1}{Primer contacto con Micro:bit}{Objetivo de la lección}
+\HVTLead{Al terminar esta lección, el estudiante entiende qué es una Micro:bit, identifica sus partes principales y programa una primera alerta visual que representa el estado de una variable de energía.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Aprenderás}\begin{itemize}\item Qué es una entrada y una salida. \item Cómo usar la matriz LED como indicador. \item Cómo leer botones y tomar decisiones simples. \item Cómo convertir una medición en una alerta.\end{itemize}\end{HVTColumn}
+\begin{HVTColumn}{Materiales}\begin{itemize}\item 1 tarjeta Micro:bit. \item Cable USB o batería. \item Computador con acceso al editor MakeCode. \item Cuaderno de observación.\end{itemize}\end{HVTColumn}
+\end{HVTGrid}
+\HVTImagen{../../images/Microbit.png}{Figura 1-1. Componentes visibles: botones A/B, matriz LED, pines 0, 1, 2, 3V y GND.}
+\end{HVTPage}
+\begin{HVTPage}{Concepto}{Entrada, proceso y salida}{La idea central}
+\HVTText{Todo sistema de control básico funciona como una cadena: una entrada entrega información, el programa toma una decisión y una salida comunica o ejecuta una acción.}
+\begin{HVTFlow}\HVTFlowItem{1}{Entrada}{Botón, sensor, temperatura, luz o voltaje.}\HVTFlowItem{2}{Proceso}{La Micro:bit compara, calcula y decide.}\HVTFlowItem{3}{Salida}{LED, icono, sonido, radio o señal.}\end{HVTFlow}
+\begin{HVTExample}{Ejemplo 1-1}{Alerta visual de energía}\begin{enumerate}\item Si se presiona A, mostrar un símbolo de confirmación. \item Si se presiona B, mostrar una X. \item Registrar en el cuaderno qué representa cada estado.\end{enumerate}\end{HVTExample}
+\HVTText{Comentario: antes de medir variables reales, se entrena la lógica de decisión. Esta misma estructura servirá luego para sensores de temperatura, humedad, corriente o gas.}
+\end{HVTPage}
+\begin{HVTPage}{Práctica}{Paso a paso}{Construye tu primera alerta}
+\begin{HVTSteps}\item Abre el editor: entra a MakeCode para Micro:bit y crea un proyecto llamado Alerta Energia 01. \item Programa el botón A: usa el bloque “al presionar botón A” y agrega “mostrar icono feliz” o un visto bueno. \item Programa el botón B: usa el bloque “al presionar botón B” y agrega “mostrar icono X”. \item Prueba en el simulador: verifica que los botones cambien la salida en la matriz LED. \item Descarga a la tarjeta: conecta la Micro:bit y transfiere el programa.\end{HVTSteps}
+\begin{HVTCode}{Lógica del programa}cuando botón A presionado:
+    mostrar "OK"
+
+cuando botón B presionado:
+    mostrar "X"\end{HVTCode}
+\end{HVTPage}
+\begin{HVTPage}{Actividad}{Evidencia de aprendizaje}{Convierte la alerta en una historia energética}
+\HVTText{Imagina una casa que tiene panel solar, batería y un pequeño sistema de monitoreo. Tu Micro:bit será el primer tablero de estado.}
+\begin{HVTTask}{Entrega}\item Dibuja en tu cuaderno una casa con una batería. \item Explica qué significa el botón A y qué significa el botón B. \item Escribe una frase sobre por qué medir ayuda a ahorrar energía. \item Toma una foto de tu Micro:bit mostrando los dos estados.\end{HVTTask}
+\end{HVTPage}
+\end{document}

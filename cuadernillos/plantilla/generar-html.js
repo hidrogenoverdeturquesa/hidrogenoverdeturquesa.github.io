@@ -100,6 +100,7 @@ function formula(value) {
   html = html.replace(/\\mathrm\{([^{}]+)\}/g, '$1');
   html = html.replace(/\\text\{([^{}]+)\}/g, '$1');
   html = html.replace(/\\mathcal\{O\}/g, '𝒪');
+  html = html.replace(/\\dot\{([^{}]+)\}/g, '$1̇');
   html = html.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="math-fraction"><span>$1</span><span>$2</span></span>');
   html = html.replace(/_\{([^{}]+)\}/g, '<sub>$1</sub>');
   html = html.replace(/\^\{([^{}]+)\}/g, '<sup>$1</sup>');
@@ -109,7 +110,7 @@ function formula(value) {
     alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', eta: 'η', lambda: 'λ',
     mu: 'μ', rho: 'ρ', sigma: 'σ', omega: 'ω', Delta: 'Δ', Sigma: 'Σ',
     Omega: 'Ω', cdot: '·', times: '×', approx: '≈', sum: 'Σ', int: '∫',
-    leq: '≤', geq: '≥'
+    leq: '≤', geq: '≥', lceil: '⌈', rceil: '⌉', rightarrow: '→'
   };
   html = html.replace(/\\([A-Za-z]+)/g, (_, name) => symbols[name] || name);
   return html;
@@ -121,7 +122,7 @@ function formulaMathML(value) {
     alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', eta: 'η', lambda: 'λ',
     mu: 'μ', rho: 'ρ', sigma: 'σ', omega: 'ω', Delta: 'Δ', Sigma: 'Σ',
     Omega: 'Ω', cdot: '·', times: '×', approx: '≈', sum: 'Σ', int: '∫',
-    leq: '≤', geq: '≥'
+    leq: '≤', geq: '≥', lceil: '⌈', rceil: '⌉', rightarrow: '→'
   };
   const groupText = () => {
     while (/\s/.test(value[cursor] || '')) cursor++;
@@ -149,6 +150,9 @@ function formulaMathML(value) {
           const numerator = groupText();
           const denominator = groupText();
           atom = `<mfrac><mrow>${formulaMathMLInner(numerator)}</mrow><mrow>${formulaMathMLInner(denominator)}</mrow></mfrac>`;
+        } else if (name === 'dot') {
+          const content = groupText();
+          atom = `<mover accent="true"><mrow>${formulaMathMLInner(content)}</mrow><mo>˙</mo></mover>`;
         } else if (name === 'mathrm' || name === 'text' || name === 'mathcal') {
           const content = escapeHtml(groupText());
           atom = name === 'text' || name === 'mathrm' ? `<mtext>${content}</mtext>` : `<mi mathvariant="script">${content}</mi>`;
@@ -187,7 +191,7 @@ function formulaMathML(value) {
 
 function renderBody(body) {
   const commandTypes = { HVTLead: 1, HVTText: 1, HVTHeading: 1, HVTEquation: 2, HVTImagen: 2, HVTContact: 2 };
-  const environmentTypes = ['HVTGrid','HVTFlow','HVTGallery','HVTExample','HVTSteps','HVTTable','HVTWarning','HVTTaskOrdered','HVTTask','HVTCode','HVTReferences'];
+  const environmentTypes = ['HVTGrid','HVTFlow','HVTGallery','HVTExample','HVTSteps','HVTTable','HVTTableFour','HVTWarning','HVTTaskOrdered','HVTTask','HVTCode','HVTReferences'];
   const tokens = [];
   for (const [name, count] of Object.entries(commandTypes)) {
     const marker = `\\${name}`;
@@ -223,10 +227,11 @@ function renderBody(body) {
     if (name==='HVTExample') { const numbered=environments('enumerate',b)[0]; return `<div class="book-example"><p class="book-example__label">${inline(a[0])}</p><h3>${inline(a[1])}</h3><div class="book-solution">${numbered?list(numbered.body,true):`<p>${inline(b)}</p>`}</div></div>`; }
     if (name==='HVTSteps') return list(b,true,'book-steps');
     if (name==='HVTTable') return `<table class="project-parameter-table"><thead><tr>${a.map(x=>`<th>${inline(x)}</th>`).join('')}</tr></thead><tbody>${commands('HVTTableRow',3,b).map(r=>`<tr>${r.map(x=>`<td>${inline(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    if (name==='HVTTableFour') return `<table class="project-parameter-table"><thead><tr>${a.map(x=>`<th>${inline(x)}</th>`).join('')}</tr></thead><tbody>${commands('HVTTableRowFour',4,b).map(r=>`<tr>${r.map(x=>`<td>${inline(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
     if (name==='HVTWarning') return `<div class="project-warning"><strong>${inline(a[0])}:</strong> ${inline(b)}</div>`;
     if (name==='HVTTask' || name==='HVTTaskOrdered') return `<div class="book-task"><h3>${inline(a[0])}</h3>${list(b,name==='HVTTaskOrdered')}</div>`;
     if (name==='HVTCode') return `<div class="book-code-card"><h3>${inline(a[0])}</h3><pre><code>${escapeHtml(b.trim())}</code></pre></div>`;
-    if (name==='HVTReferences') return `<div class="book-references"><h3>Referencias</h3><ol>${commands('HVTReference',2,b).map(r=>`<li><a href="${escapeHtml(r[1])}" target="_blank" rel="noopener">${inline(r[0])}</a>.</li>`).join('')}</ol></div>`;
+    if (name==='HVTReferences') return `<div class="book-references"><h3>Referencias</h3><ol>${commands('HVTReference',2,b).map(r=>`<li><a href="${escapeHtml(r[1].replace(/\\%/g, '%'))}" target="_blank" rel="noopener">${inline(r[0])}</a>.</li>`).join('')}</ol></div>`;
     return '';
   }).join('');
   return rendered.replace(/<\/ol><\/div><div class="book-references"><h3>Referencias<\/h3><ol>/g, '');

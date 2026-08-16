@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Prototipo escalable de planta de hidrógeno | Hidrógeno Verde Turquesa</title>
+  <meta name="description" content="Documento técnico del prototipo modular y escalable de planta de hidrógeno en Boyacá.">
+  <link rel="canonical" href="https://hidrogenoverdeturquesa.com/proyecto-planta-hidrogeno">
+  <meta property="og:title" content="Prototipo escalable de planta de hidrógeno">
+  <meta property="og:description" content="Documento técnico del prototipo modular y escalable de planta de hidrógeno en Boyacá.">
+  <meta property="og:image" content="https://hidrogenoverdeturquesa.com/images/portfolio/planta.jpg">
+  <meta property="og:url" content="https://hidrogenoverdeturquesa.com/proyecto-planta-hidrogeno">
+  <meta property="og:type" content="article">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css?v=fuentes-locales-20260726">
+  <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
+  <link rel="stylesheet" href="cuadernillos/plantilla/pdf.css">
+  <script src="js/modernizr.js"></script>
+  <script defer src="js/fontawesome/all.min.js"></script>
+</head>
+<body id="top">
+  <div id="preloader"><div id="loader"></div></div>
+  <header class="s-header"><div class="row">
+    <div class="s-header__logo"><a href="/"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height:40px;width:auto"></a></div>
+    <nav class="s-header__nav"><ul><li><a href="/">Inicio</a></li><li class="current"><a href="/#portfolio">Proyectos</a></li><li><a href="/investors">Apoyar proyectos</a></li><li><a href="/#contact">Contacto</a></li></ul></nav>
+    <a class="s-header__menu-toggle" href="#0" title="Menu"><span class="s-header__menu-icon"></span></a>
+  </div></header>
+  <main class="course-book">
+    <section class="course-book__hero"><div class="row">
+      <div class="column large-7 medium-12"><p class="course-book__eyebrow">Publicación técnica 01 · Proyecto de investigación en Boyacá</p><h1>Prototipo escalable de planta de hidrógeno</h1><p class="course-book__lead">Documento técnico del prototipo modular y escalable de planta de hidrógeno. Integra criterios de diseño, cálculos, componentes, procesos, operación, control, seguridad, validación y escalamiento.</p><div class="course-book__actions"><a href="#capitulo-1" class="btn btn--primary smoothscroll">Explorar capítulos</a><a href="/#portfolio" class="btn btn--stroke">Volver a proyectos</a></div></div>
+      <div class="column large-5 medium-12"><figure class="book-cover-figure"><img src="images/portfolio/planta.jpg" alt="Prototipo escalable de planta de hidrógeno"><figcaption>Figura 1. Concepto inicial del prototipo modular y escalable.</figcaption></figure></div>
+    </div></section>
+
+<section class="book-sheet" id="capitulo-1">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Contenido</span><strong>Mapa de la publicación</strong></aside>
+    <article class="book-page__content"><h2>Arquitectura técnica del prototipo</h2><p class="book-lead">El prototipo reúne electrólisis, pirólisis de residuos orgánicos y biohidrógeno como módulos tecnológicos diferenciados, articulados mediante sistemas comunes de acondicionamiento, almacenamiento, control y seguridad.</p><div class="book-learning-grid"><div><h3>Ruta electroquímica</h3><p>Electrólisis del agua utilizando electricidad y un electrolizador.</p></div><div><h3>Ruta termoquímica</h3><p>Pirólisis de residuos orgánicos y tratamiento posterior de los productos gaseosos y líquidos.</p></div><div><h3>Ruta biológica</h3><p>Producción de biohidrógeno mediante microorganismos y sustratos biodegradables.</p></div></div><div class="book-task"><h3>Capítulos</h3><ol><li>Criterios de diseño.</li>
+<li>Electrólisis.</li>
+<li>Pirólisis de residuos orgánicos.</li>
+<li>Biohidrógeno.</li>
+<li>Acondicionamiento y pureza.</li>
+<li>Arquitectura modular.</li>
+<li>Instrumentación y seguridad.</li>
+<li>Selección tecnológica.</li></ol></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 1</span><strong>Criterios de diseño</strong></aside>
+    <article class="book-page__content"><h2>Base común de evaluación</h2><p class="book-lead">El balance comienza con la caracterización de la alimentación y termina con una corriente de H2 cuya composición, presión y caudal sean conocidos.</p><table class="project-parameter-table"><thead><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr></thead><tbody><tr><td>Flujo de alimentación</td><td><span class="math-inline">ṁ<sub>f</sub></span></td><td>kg/h</td></tr><tr><td>Producción de hidrógeno</td><td><span class="math-inline">ṁ<sub>H<sub>2</sub></sub></span></td><td>kg/h</td></tr><tr><td>Rendimiento específico</td><td><span class="math-inline">Y<sub>H<sub>2</sub></sub></span></td><td>kg H2/kg alimentación</td></tr><tr><td>Consumo específico de energía</td><td><span class="math-inline">E<sub>esp</sub></span></td><td>kWh/kg H2</td></tr><tr><td>Pureza de hidrógeno</td><td><span class="math-inline">x<sub>H<sub>2</sub></sub></span></td><td>% vol.</td></tr></tbody></table><div class="project-equation hvt-display-equation"><div class="math-display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\dot{m}_{H_2}=\dot{m}_f\cdot Y_{H_2}"><mrow><msub><mover accent="true"><mrow><mi>m</mi></mrow><mo>˙</mo></mover><mrow><msub><mi>H</mi><mn>2</mn></msub><mo>=</mo><msub><mover accent="true"><mrow><mi>m</mi></mrow><mo>˙</mo></mover><mi>f</mi></msub><mo>·</mo><msub><mi>Y</mi><mrow><msub><mi>H</mi><mn>2</mn></msub></mrow></msub></mrow></msub></mrow></math></div></div><p>Esta relación corresponde a la definición de rendimiento másico. El valor de YH2 debe proceder de ensayos, literatura técnica aplicable o datos validados para el residuo y las condiciones de operación consideradas.</p></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 2</span><strong>Electrólisis</strong></aside>
+    <article class="book-page__content"><h2>Ruta electroquímica</h2><p class="book-lead">La electrólisis separa el agua en hidrógeno y oxígeno mediante electricidad. El diseño debe considerar calidad del agua, potencia, eficiencia, temperatura, presión y tecnología del electrolizador.</p><div class="book-flow"><div><span>1</span><strong>Agua tratada</strong><p>Filtración, desmineralización y control de conductividad.</p></div><div><span>2</span><strong>Electrolizador</strong><p>Conversión electroquímica y separación inicial.</p></div><div><span>3</span><strong>Secado</strong><p>Eliminación de humedad, medición y control de pureza.</p></div></div><table class="project-parameter-table"><thead><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr></thead><tbody><tr><td>Corriente eléctrica</td><td><span class="math-inline">I</span></td><td>A</td></tr><tr><td>Eficiencia faradaica</td><td><span class="math-inline">η<sub>F</sub></span></td><td>--</td></tr><tr><td>Constante de Faraday</td><td><span class="math-inline">F</span></td><td>C/mol</td></tr><tr><td>Potencia eléctrica</td><td><span class="math-inline">P</span></td><td>kW</td></tr></tbody></table><div class="project-equation hvt-display-equation"><div class="math-display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\dot{n}_{H_2}=\frac{\eta_F\cdot I}{2\cdot F}"><mrow><msub><mover accent="true"><mrow><mi>n</mi></mrow><mo>˙</mo></mover><mrow><msub><mi>H</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mo>η</mo><mi>F</mi></msub><mo>·</mo><mi>I</mi></mrow><mrow><mn>2</mn><mo>·</mo><mi>F</mi></mrow></mfrac></mrow></msub></mrow></math></div></div><p>La expresión se deriva de la ley de Faraday para una reacción que requiere dos electrones por mol de H2. Se adopta F = 96 485,332 12 C/mol, valor exacto reportado por NIST. <sup>[1]</sup> La revisión de Carmo et al. documenta los fundamentos y variables de la electrólisis PEM. <sup>[2]</sup></p><div class="book-example"><p class="book-example__label">Ejemplo E-1</p><h3>Estimación con corriente conocida</h3><div class="book-solution"><ol><li>Definir la corriente estable del módulo.</li>
+<li>Establecer la eficiencia faradaica esperada.</li>
+<li>Calcular el flujo molar de H2.</li>
+<li>Convertir el resultado a caudal volumétrico o másico.</li>
+<li>Verificar capacidad de secado, venteo y almacenamiento.</li></ol></div></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 3</span><strong>Pirólisis de residuos</strong></aside>
+    <article class="book-page__content"><h2>Ruta termoquímica</h2><p class="book-lead">La pirólisis transforma residuos orgánicos mediante calentamiento en ausencia o fuerte limitación de oxígeno. Sus productos principales son biocarbón, bioaceite y gas; la obtención de una corriente rica en H2 requiere reformado y acondicionamiento posteriores.</p><div class="project-equation hvt-display-equation"><div class="math-display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\text{Residuos orgánicos}+\text{calor}\rightarrow\text{biocarbón}+\text{bioaceite}+\text{gas}"><mrow><mtext>Residuos orgánicos</mtext><mo>+</mo><mtext>calor</mtext><mo>→</mo><mtext>biocarbón</mtext><mo>+</mo><mtext>bioaceite</mtext><mo>+</mo><mtext>gas</mtext></mrow></math></div></div><p>La expresión es una representación conceptual de productos y no una ecuación estequiométrica. Sus fracciones dependen de la biomasa, la temperatura, la velocidad de calentamiento y el tiempo de residencia. <sup>[3]</sup></p><div class="book-flow"><div><span>1</span><strong>Preparación</strong><p>Clasificación, secado, reducción de tamaño y caracterización.</p></div><div><span>2</span><strong>Pirólisis</strong><p>Control de temperatura, tiempo de residencia y atmósfera.</p></div><div><span>3</span><strong>Conversión del gas</strong><p>Reformado, conversión de CO y purificación de H2.</p></div></div><table class="project-parameter-table"><thead><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr></thead><tbody><tr><td>Humedad del residuo</td><td><span class="math-inline">X<sub>H<sub>2</sub>O</sub></span></td><td>% masa</td></tr><tr><td>Temperatura del reactor</td><td><span class="math-inline">T<sub>p</sub></span></td><td>°C</td></tr><tr><td>Tiempo de residencia</td><td><span class="math-inline">t<sub>r</sub></span></td><td>s o min</td></tr><tr><td>Rendimiento de gas</td><td><span class="math-inline">Y<sub>g</sub></span></td><td>kg gas/kg residuo</td></tr><tr><td>Fracción de H2 en gas</td><td><span class="math-inline">x<sub>H<sub>2</sub>,g</sub></span></td><td>% vol.</td></tr></tbody></table><div class="project-warning"><strong>Precisión técnica:</strong> El desempeño depende de la composición del residuo, especialmente humedad, cenizas y fracciones de celulosa, hemicelulosa y lignina. <sup>[4]</sup> La producción de H2 a partir de bioaceite requiere etapas posteriores, como reformado catalítico con vapor y purificación. <sup>[5]</sup> No debe asignarse un rendimiento único sin caracterización y ensayos.</div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 4</span><strong>Biohidrógeno</strong></aside>
+    <article class="book-page__content"><h2>Ruta biológica</h2><p class="book-lead">La fermentación oscura utiliza microorganismos para degradar materia orgánica y producir una mezcla gaseosa que puede contener H2 y CO2, además de metabolitos líquidos.</p><div class="project-equation hvt-display-equation"><div class="math-display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="C_6H_{12}O_6+2H_2O\rightarrow2CH_3COOH+2CO_2+4H_2"><mrow><msub><mi>C</mi><mn>6</mn></msub><msub><mi>H</mi><mrow><mn>1</mn><mn>2</mn></mrow></msub><msub><mi>O</mi><mn>6</mn></msub><mo>+</mo><mn>2</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi><mo>→</mo><mn>2</mn><mi>C</mi><msub><mi>H</mi><mn>3</mn></msub><mi>C</mi><mi>O</mi><mi>O</mi><mi>H</mi><mo>+</mo><mn>2</mn><mi>C</mi><msub><mi>O</mi><mn>2</mn></msub><mo>+</mo><mn>4</mn><msub><mi>H</mi><mn>2</mn></msub></mrow></math></div></div><p>La reacción representa la ruta estequiométrica teórica hacia acetato, cuyo límite es 4 mol H2/mol glucosa; no representa el rendimiento garantizado de un residuo real. <sup>[6]</sup> Los rendimientos experimentales dependen del sustrato, la comunidad microbiana, el pH, la temperatura, la carga orgánica y el tiempo de retención. <sup>[7]</sup></p><table class="project-parameter-table"><thead><tr><th>Variable</th><th>Símbolo</th><th>Unidad</th></tr></thead><tbody><tr><td>Demanda química de oxígeno</td><td>DQO</td><td>g O2/L</td></tr><tr><td>pH</td><td>pH</td><td>--</td></tr><tr><td>Temperatura</td><td><span class="math-inline">T<sub>b</sub></span></td><td>°C</td></tr><tr><td>Tiempo de retención hidráulica</td><td>TRH</td><td>h</td></tr><tr><td>Rendimiento de H2</td><td><span class="math-inline">Y<sub>H<sub>2</sub>,s</sub></span></td><td>mol H2/mol sustrato</td></tr></tbody></table><div class="book-task"><h3>Caracterización mínima</h3><ul><li>Origen y variabilidad del residuo.</li>
+<li>Materia seca, sólidos volátiles y DQO.</li>
+<li>Carbohidratos disponibles e inhibidores.</li>
+<li>Producción y composición del biogás.</li>
+<li>Ácidos orgánicos y estabilidad del reactor.</li></ul></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 5</span><strong>Acondicionamiento</strong></aside>
+    <article class="book-page__content"><h2>Del gas de proceso al hidrógeno útil</h2><p class="book-lead">Las rutas termoquímica y biológica producen mezclas gaseosas. Antes de almacenar o utilizar H2 deben medirse y reducirse impurezas según la aplicación final.</p><div class="book-flow"><div><span>1</span><strong>Separación primaria</strong><p>Partículas, condensados, alquitranes y humedad.</p></div><div><span>2</span><strong>Conversión y limpieza</strong><p>Tratamiento de CO, CO2, CH4, H2S y compuestos traza.</p></div><div><span>3</span><strong>Purificación</strong><p>Membranas, adsorción u otra tecnología seleccionada.</p></div></div><div class="book-task"><h3>Especificación de salida</h3><ul><li>Caudal y presión.</li>
+<li>Pureza y punto de rocío.</li>
+<li>Concentración de CO, CO2, CH4, H2S y O2.</li>
+<li>Destino del gas fuera de especificación.</li>
+<li>Método y frecuencia de análisis.</li></ul></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 6</span><strong>Arquitectura modular</strong></aside>
+    <article class="book-page__content"><h2>Integración por bloques funcionales</h2><p class="book-lead">Una planta multirruta no debe operar como una sola caja de proceso. Cada módulo conserva sus protecciones y controles, mientras comparte servicios auxiliares cuando sea técnica y operativamente viable.</p><div class="book-learning-grid"><div><h3>Módulo A · Electrólisis</h3><p>Agua tratada, potencia, electrolizador, separación y secado.</p></div><div><h3>Módulo B · Pirólisis</h3><p>Preparación de residuos, reactor, separación de sólidos y tratamiento del gas.</p></div><div><h3>Módulo C · Biohidrógeno</h3><p>Pretratamiento, biorreactor, separación gas-líquido y limpieza.</p></div><div><h3>Módulo D · Servicios comunes</h3><p>Analítica, purificación final, compresión, almacenamiento y control.</p></div></div><div class="book-task"><h3>Entregables de ingeniería conceptual</h3><ul><li>Diagrama de bloques y PFD por ruta.</li>
+<li>Balances preliminares de masa y energía.</li>
+<li>Lista de equipos, instrumentos y servicios.</li>
+<li>Filosofía de operación y parada.</li>
+<li>Matriz de interfaces entre módulos.</li></ul></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 7</span><strong>Control y seguridad</strong></aside>
+    <article class="book-page__content"><h2>Capas de protección</h2><p class="book-lead">La seguridad debe desarrollarse desde la ingeniería conceptual y actualizarse cuando cambien las materias primas, capacidades, presiones o composiciones del gas.</p><ol class="book-steps"><li>Caracterizar materiales combustibles, tóxicos, corrosivos y biológicos.</li>
+<li>Definir ventilación, detección de H2 y clasificación de áreas.</li>
+<li>Establecer límites de presión, temperatura, nivel, flujo y composición.</li>
+<li>Diseñar alarmas, enclavamientos, alivio, purga y parada segura.</li>
+<li>Realizar análisis de riesgos y procedimientos de respuesta.</li></ol><div class="project-warning"><strong>Criterio obligatorio:</strong> Ningún cálculo preliminar autoriza la construcción u operación. La ingeniería detallada debe incluir revisión normativa, HAZOP u otra metodología aplicable, compatibilidad de materiales, protección eléctrica y protocolos de emergencia.</div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 8</span><strong>Selección tecnológica</strong></aside>
+    <article class="book-page__content"><h2>Comparar antes de integrar</h2><table class="project-parameter-table"><thead><tr><th>Criterio</th><th>Electrólisis</th><th>Pirólisis de residuos</th><th>Biohidrógeno</th></tr></thead><tbody><tr><td>Alimentación principal</td><td>Agua y electricidad</td><td>Residuo orgánico seco o acondicionado</td><td>Sustrato orgánico biodegradable</td></tr><tr><td>Conversión</td><td>Electroquímica</td><td>Termoquímica</td><td>Biológica</td></tr><tr><td>Corriente inicial</td><td>H2 y O2 separados</td><td>Gas, bioaceite y biocarbón</td><td>Biogás y efluente líquido</td></tr><tr><td>Reto principal</td><td>Consumo eléctrico</td><td>Variabilidad, alquitranes y acondicionamiento</td><td>Rendimiento y estabilidad microbiana</td></tr><tr><td>Escala inicial recomendada</td><td>Módulo demostrativo</td><td>Ensayo de residuo y reactor piloto</td><td>Biorreactor de laboratorio o piloto</td></tr></tbody></table><div class="book-task"><h3>Próxima fase</h3><ul><li>Seleccionar residuos orgánicos representativos.</li>
+<li>Ejecutar caracterización fisicoquímica y bioquímica.</li>
+<li>Construir balances por ruta con datos experimentales.</li>
+<li>Definir el producto objetivo y su especificación.</li>
+<li>Comparar desempeño, riesgos y costo por kilogramo de H2.</li></ul></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Fuentes</span><strong>Referencias técnicas</strong></aside>
+    <article class="book-page__content"><h2>Documentos de consulta</h2><div class="book-references"><h3>Referencias</h3><ol><li><a href="https://www.govinfo.gov/content/pkg/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195/pdf/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195.pdf" target="_blank" rel="noopener">National Institute of Standards and Technology. <em>NIST Special Publication 260</em>. Constante de Faraday: 96 485,332 12 C/mol</a>.</li><li><a href="https://doi.org/10.1016/j.ijhydene.2013.01.151" target="_blank" rel="noopener">Carmo, M.; Fritz, D. L.; Mergel, J.; Stolten, D. (2013). <em>A comprehensive review on PEM water electrolysis</em>. International Journal of Hydrogen Energy, 38(12), 4901--4934</a>.</li><li><a href="https://doi.org/10.1016/j.biombioe.2011.01.048" target="_blank" rel="noopener">Bridgwater, A. V. (2012). <em>Review of fast pyrolysis of biomass and product upgrading</em>. Biomass and Bioenergy, 38, 68--94</a>.</li><li><a href="https://www.nrel.gov/docs/fy24osti/86731.pdf" target="_blank" rel="noopener">Parra-Alvarez, M.; Sitaraman, H. (2024). <em>Optimization of hydrogen production from pyrolysis of biomass waste</em>. NREL/PO-2C00-86731</a>.</li><li><a href="https://doi.org/10.1016/j.cattod.2006.08.071" target="_blank" rel="noopener">Czernik, S.; Evans, R.; French, R. (2007). <em>Hydrogen from biomass-production by steam reforming of biomass pyrolysis oil</em>. Catalysis Today, 129(3--4), 265--268</a>.</li><li><a href="https://doi.org/10.1016/S0360-3199(02)00090-3" target="_blank" rel="noopener">Hawkes, F. R.; Dinsdale, R.; Hawkes, D. L.; Hussy, I. (2002). <em>Sustainable fermentative hydrogen production: challenges for process optimisation</em></a>.</li><li><a href="https://doi.org/10.1016/j.ijhydene.2006.08.014" target="_blank" rel="noopener">Hawkes, F. R.; Hussy, I.; Kyazze, G.; Dinsdale, R.; Hawkes, D. L. (2007). <em>Continuous dark fermentative hydrogen production by mesophilic microflora: principles and progress</em></a>.</li><li><a href="https://www.energy.gov/cmei/fuels/hydrogen-production-microbial-biomass-conversion" target="_blank" rel="noopener">U.S. Department of Energy. <em>Hydrogen Production: Microbial Biomass Conversion</em></a>.</li></ol></div><p>Esta publicación presenta criterios de ingeniería conceptual autorizados para divulgación pública. Los resultados experimentales, diseños detallados, datos operativos, análisis económicos y demás información estratégica del proyecto son confidenciales. Los valores definitivos deben establecerse mediante caracterización, ensayos, balances validados y diseño especializado.</p></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Colaboración</span><strong>Conversemos</strong></aside>
+    <article class="book-page__content"><h2>¿Necesitas investigar, formular o evaluar un proyecto relacionado?</h2><p class="book-lead">Conversemos sobre tu necesidad de investigación, diseño conceptual o evaluación de un proyecto de hidrógeno.</p><a class="btn btn--primary" href="https://wa.me/573209574884" target="_blank" rel="noopener">Consultar proyecto de hidrógeno por WhatsApp</a></article>
+  </div>
+</section>
+  </main>
+  <footer class="s-footer"><div class="row"><div class="column large-7 medium-6 w-1000-stack ss-copyright"><span>© Hidrógeno Verde Turquesa 2026</span><span>Publicaciones técnicas de proyectos</span></div></div><div class="ss-go-top"><a class="smoothscroll" title="Volver arriba" href="#top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg></a></div></footer>
+  <script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js?v=sin-prism-20260726"></script><script src="js/main.js?v=urls-limpias-20260727"></script>
+</body></html>

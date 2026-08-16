@@ -161,6 +161,20 @@
 }{\end{tabular}\endgroup\par\medskip}
 \newcommand{\HVTTableRow}[3]{#1 & #2 & #3\\\hline}
 
+% Tabla comparativa de cuatro columnas.
+\newenvironment{HVTTableFour}[4]{%
+  \par\medskip
+  \begingroup
+  \arrayrulecolor{hvtMuted!24}
+  \setlength{\arrayrulewidth}{.35pt}
+  \setlength{\tabcolsep}{2mm}
+  \renewcommand{\arraystretch}{1.5}
+  \footnotesize
+  \begin{tabular}{|>{\RaggedRight\arraybackslash}p{.15\linewidth}|>{\RaggedRight\arraybackslash}p{.205\linewidth}|>{\RaggedRight\arraybackslash}p{.245\linewidth}|>{\RaggedRight\arraybackslash}p{.245\linewidth}|}\hline
+  \rowcolor{hvtPanel}\bfseries #1 & \bfseries #2 & \bfseries #3 & \bfseries #4\\\hline
+}{\end{tabular}\endgroup\par\medskip}
+\newcommand{\HVTTableRowFour}[4]{#1 & #2 & #3 & #4\\\hline}
+
 \newenvironment{HVTWarning}[1]{%
   \begin{tcolorbox}[colback=white,colframe=hvt,boxrule=.7pt,arc=0pt,
     left=4mm,right=4mm,top=3mm,bottom=3mm]
@@ -186,7 +200,7 @@
 \newenvironment{HVTCode}[1]{%
   \begin{tcolorbox}[colback=hvtText,colframe=hvtText,coltext=white,boxrule=0pt,
     arc=0pt,left=5mm,right=5mm,top=3mm,bottom=3mm]
-  {\bfseries #1}\par\smallskip\ttfamily\obeylines\obeyspaces
+  {\bfseries #1}\par\smallskip\sffamily\obeylines\obeyspaces
 }{\end{tcolorbox}}
 
 \newenvironment{HVTReferences}{%

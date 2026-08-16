@@ -1,0 +1,150 @@
+% !TeX encoding = UTF-8
+\documentclass{../plantilla/hvtbook}
+\HVTTitulo{Prototipo escalable de planta de hidrógeno}
+\HVTSubtitulo{Documento técnico del prototipo modular y escalable de planta de hidrógeno. Integra criterios de diseño, cálculos, componentes, procesos, operación, control, seguridad, validación y escalamiento.}
+\HVTNivel{Proyecto de investigación en Boyacá}
+\HVTSerie{Publicación técnica}
+\HVTNumero{01}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Documento técnico del prototipo modular y escalable de planta de hidrógeno en Boyacá.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-planta-hidrogeno}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../../images/portfolio/planta.jpg}{Figura 1. Concepto inicial del prototipo modular y escalable.}
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Contenido}{Mapa de la publicación}{Arquitectura técnica del prototipo}
+\HVTLead{El prototipo reúne electrólisis, pirólisis de residuos orgánicos y biohidrógeno como módulos tecnológicos diferenciados, articulados mediante sistemas comunes de acondicionamiento, almacenamiento, control y seguridad.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Ruta electroquímica}Electrólisis del agua utilizando electricidad y un electrolizador.\end{HVTColumn}
+\begin{HVTColumn}{Ruta termoquímica}Pirólisis de residuos orgánicos y tratamiento posterior de los productos gaseosos y líquidos.\end{HVTColumn}
+\begin{HVTColumn}{Ruta biológica}Producción de biohidrógeno mediante microorganismos y sustratos biodegradables.\end{HVTColumn}
+\end{HVTGrid}
+\begin{HVTTaskOrdered}{Capítulos}\item Criterios de diseño. \item Electrólisis. \item Pirólisis de residuos orgánicos. \item Biohidrógeno. \item Acondicionamiento y pureza. \item Arquitectura modular. \item Instrumentación y seguridad. \item Selección tecnológica.\end{HVTTaskOrdered}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Base común de evaluación}
+\HVTLead{El balance comienza con la caracterización de la alimentación y termina con una corriente de H2 cuya composición, presión y caudal sean conocidos.}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Flujo de alimentación}{$\dot{m}_f$}{kg/h}
+\HVTTableRow{Producción de hidrógeno}{$\dot{m}_{H_2}$}{kg/h}
+\HVTTableRow{Rendimiento específico}{$Y_{H_2}$}{kg H2/kg alimentación}
+\HVTTableRow{Consumo específico de energía}{$E_{esp}$}{kWh/kg H2}
+\HVTTableRow{Pureza de hidrógeno}{$x_{H_2}$}{\% vol.}
+\end{HVTTable}
+\HVTEquation{\dot{m}_{H_2}=\dot{m}_f\cdot Y_{H_2}}{}
+\HVTText{Esta relación corresponde a la definición de rendimiento másico. El valor de YH2 debe proceder de ensayos, literatura técnica aplicable o datos validados para el residuo y las condiciones de operación consideradas.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Electrólisis}{Ruta electroquímica}
+\HVTLead{La electrólisis separa el agua en hidrógeno y oxígeno mediante electricidad. El diseño debe considerar calidad del agua, potencia, eficiencia, temperatura, presión y tecnología del electrolizador.}
+\begin{HVTFlow}\HVTFlowItem{1}{Agua tratada}{Filtración, desmineralización y control de conductividad.}\HVTFlowItem{2}{Electrolizador}{Conversión electroquímica y separación inicial.}\HVTFlowItem{3}{Secado}{Eliminación de humedad, medición y control de pureza.}\end{HVTFlow}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Corriente eléctrica}{$I$}{A}
+\HVTTableRow{Eficiencia faradaica}{$\eta_F$}{--}
+\HVTTableRow{Constante de Faraday}{$F$}{C/mol}
+\HVTTableRow{Potencia eléctrica}{$P$}{kW}
+\end{HVTTable}
+\HVTEquation{\dot{n}_{H_2}=\frac{\eta_F\cdot I}{2\cdot F}}{}
+\HVTText{La expresión se deriva de la ley de Faraday para una reacción que requiere dos electrones por mol de H2. Se adopta F = 96 485,332 12 C/mol, valor exacto reportado por NIST. \HVTCite{1} La revisión de Carmo et al. documenta los fundamentos y variables de la electrólisis PEM. \HVTCite{2}}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Ejemplo E-1}{Estimación con corriente conocida}
+\begin{HVTExample}{Ejemplo E-1}{Estimación con corriente conocida}\begin{enumerate}\item Definir la corriente estable del módulo. \item Establecer la eficiencia faradaica esperada. \item Calcular el flujo molar de H2. \item Convertir el resultado a caudal volumétrico o másico. \item Verificar capacidad de secado, venteo y almacenamiento.\end{enumerate}\end{HVTExample}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Pirólisis de residuos}{Ruta termoquímica}
+\HVTLead{La pirólisis transforma residuos orgánicos mediante calentamiento en ausencia o fuerte limitación de oxígeno. Sus productos principales son biocarbón, bioaceite y gas; la obtención de una corriente rica en H2 requiere reformado y acondicionamiento posteriores.}
+\HVTEquation{\text{Residuos orgánicos}+\text{calor}\rightarrow\text{biocarbón}+\text{bioaceite}+\text{gas}}{}
+\HVTText{La expresión es una representación conceptual de productos y no una ecuación estequiométrica. Sus fracciones dependen de la biomasa, la temperatura, la velocidad de calentamiento y el tiempo de residencia. \HVTCite{3}}
+\begin{HVTFlow}\HVTFlowItem{1}{Preparación}{Clasificación, secado, reducción de tamaño y caracterización.}\HVTFlowItem{2}{Pirólisis}{Control de temperatura, tiempo de residencia y atmósfera.}\HVTFlowItem{3}{Conversión del gas}{Reformado, conversión de CO y purificación de H2.}\end{HVTFlow}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Pirólisis de residuos}{Variables y precisión técnica}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Humedad del residuo}{$X_{H_2O}$}{\% masa}
+\HVTTableRow{Temperatura del reactor}{$T_p$}{°C}
+\HVTTableRow{Tiempo de residencia}{$t_r$}{s o min}
+\HVTTableRow{Rendimiento de gas}{$Y_g$}{kg gas/kg residuo}
+\HVTTableRow{Fracción de H2 en gas}{$x_{H_2,g}$}{\% vol.}
+\end{HVTTable}
+\begin{HVTWarning}{Precisión técnica}El desempeño depende de la composición del residuo, especialmente humedad, cenizas y fracciones de celulosa, hemicelulosa y lignina. \HVTCite{4} La producción de H2 a partir de bioaceite requiere etapas posteriores, como reformado catalítico con vapor y purificación. \HVTCite{5} No debe asignarse un rendimiento único sin caracterización y ensayos.\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Biohidrógeno}{Ruta biológica}
+\HVTLead{La fermentación oscura utiliza microorganismos para degradar materia orgánica y producir una mezcla gaseosa que puede contener H2 y CO2, además de metabolitos líquidos.}
+\HVTEquation{C_6H_{12}O_6+2H_2O\rightarrow2CH_3COOH+2CO_2+4H_2}{}
+\HVTText{La reacción representa la ruta estequiométrica teórica hacia acetato, cuyo límite es 4 mol H2/mol glucosa; no representa el rendimiento garantizado de un residuo real. \HVTCite{6} Los rendimientos experimentales dependen del sustrato, la comunidad microbiana, el pH, la temperatura, la carga orgánica y el tiempo de retención. \HVTCite{7}}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Demanda química de oxígeno}{DQO}{g O2/L}
+\HVTTableRow{pH}{pH}{--}
+\HVTTableRow{Temperatura}{$T_b$}{°C}
+\HVTTableRow{Tiempo de retención hidráulica}{TRH}{h}
+\HVTTableRow{Rendimiento de H2}{$Y_{H_2,s}$}{mol H2/mol sustrato}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Biohidrógeno}{Caracterización mínima}
+\begin{HVTTask}{Caracterización mínima}\item Origen y variabilidad del residuo. \item Materia seca, sólidos volátiles y DQO. \item Carbohidratos disponibles e inhibidores. \item Producción y composición del biogás. \item Ácidos orgánicos y estabilidad del reactor.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Acondicionamiento}{Del gas de proceso al hidrógeno útil}
+\HVTLead{Las rutas termoquímica y biológica producen mezclas gaseosas. Antes de almacenar o utilizar H2 deben medirse y reducirse impurezas según la aplicación final.}
+\begin{HVTFlow}\HVTFlowItem{1}{Separación primaria}{Partículas, condensados, alquitranes y humedad.}\HVTFlowItem{2}{Conversión y limpieza}{Tratamiento de CO, CO2, CH4, H2S y compuestos traza.}\HVTFlowItem{3}{Purificación}{Membranas, adsorción u otra tecnología seleccionada.}\end{HVTFlow}
+\begin{HVTTask}{Especificación de salida}\item Caudal y presión. \item Pureza y punto de rocío. \item Concentración de CO, CO2, CH4, H2S y O2. \item Destino del gas fuera de especificación. \item Método y frecuencia de análisis.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Arquitectura modular}{Integración por bloques funcionales}
+\HVTLead{Una planta multirruta no debe operar como una sola caja de proceso. Cada módulo conserva sus protecciones y controles, mientras comparte servicios auxiliares cuando sea técnica y operativamente viable.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Módulo A · Electrólisis}Agua tratada, potencia, electrolizador, separación y secado.\end{HVTColumn}
+\begin{HVTColumn}{Módulo B · Pirólisis}Preparación de residuos, reactor, separación de sólidos y tratamiento del gas.\end{HVTColumn}
+\begin{HVTColumn}{Módulo C · Biohidrógeno}Pretratamiento, biorreactor, separación gas-líquido y limpieza.\end{HVTColumn}
+\begin{HVTColumn}{Módulo D · Servicios comunes}Analítica, purificación final, compresión, almacenamiento y control.\end{HVTColumn}
+\end{HVTGrid}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Arquitectura modular}{Entregables de ingeniería conceptual}
+\begin{HVTTask}{Entregables de ingeniería conceptual}\item Diagrama de bloques y PFD por ruta. \item Balances preliminares de masa y energía. \item Lista de equipos, instrumentos y servicios. \item Filosofía de operación y parada. \item Matriz de interfaces entre módulos.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Control y seguridad}{Capas de protección}
+\HVTLead{La seguridad debe desarrollarse desde la ingeniería conceptual y actualizarse cuando cambien las materias primas, capacidades, presiones o composiciones del gas.}
+\begin{HVTSteps}\item Caracterizar materiales combustibles, tóxicos, corrosivos y biológicos. \item Definir ventilación, detección de H2 y clasificación de áreas. \item Establecer límites de presión, temperatura, nivel, flujo y composición. \item Diseñar alarmas, enclavamientos, alivio, purga y parada segura. \item Realizar análisis de riesgos y procedimientos de respuesta.\end{HVTSteps}
+\begin{HVTWarning}{Criterio obligatorio}Ningún cálculo preliminar autoriza la construcción u operación. La ingeniería detallada debe incluir revisión normativa, HAZOP u otra metodología aplicable, compatibilidad de materiales, protección eléctrica y protocolos de emergencia.\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 8}{Selección tecnológica}{Comparar antes de integrar}
+\begin{HVTTableFour}{Criterio}{Electrólisis}{Pirólisis de residuos}{Biohidrógeno}
+\HVTTableRowFour{Alimentación principal}{Agua y electricidad}{Residuo orgánico seco o acondicionado}{Sustrato orgánico biodegradable}
+\HVTTableRowFour{Conversión}{Electroquímica}{Termoquímica}{Biológica}
+\HVTTableRowFour{Corriente inicial}{H2 y O2 separados}{Gas, bioaceite y biocarbón}{Biogás y efluente líquido}
+\HVTTableRowFour{Reto principal}{Consumo eléctrico}{Variabilidad, alquitranes y acondicionamiento}{Rendimiento y estabilidad microbiana}
+\HVTTableRowFour{Escala inicial recomendada}{Módulo demostrativo}{Ensayo de residuo y reactor piloto}{Biorreactor de laboratorio o piloto}
+\end{HVTTableFour}
+\begin{HVTTask}{Próxima fase}\item Seleccionar residuos orgánicos representativos. \item Ejecutar caracterización fisicoquímica y bioquímica. \item Construir balances por ruta con datos experimentales. \item Definir el producto objetivo y su especificación. \item Comparar desempeño, riesgos y costo por kilogramo de H2.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+\HVTReference{National Institute of Standards and Technology. \emph{NIST Special Publication 260}. Constante de Faraday: 96 485,332 12 C/mol}{https://www.govinfo.gov/content/pkg/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195/pdf/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195.pdf}
+\HVTReference{Carmo, M.; Fritz, D. L.; Mergel, J.; Stolten, D. (2013). \emph{A comprehensive review on PEM water electrolysis}. International Journal of Hydrogen Energy, 38(12), 4901--4934}{https://doi.org/10.1016/j.ijhydene.2013.01.151}
+\HVTReference{Bridgwater, A. V. (2012). \emph{Review of fast pyrolysis of biomass and product upgrading}. Biomass and Bioenergy, 38, 68--94}{https://doi.org/10.1016/j.biombioe.2011.01.048}
+\HVTReference{Parra-Alvarez, M.; Sitaraman, H. (2024). \emph{Optimization of hydrogen production from pyrolysis of biomass waste}. NREL/PO-2C00-86731}{https://www.nrel.gov/docs/fy24osti/86731.pdf}
+\end{HVTReferences}
+\end{HVTPage}
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+\HVTReference{Czernik, S.; Evans, R.; French, R. (2007). \emph{Hydrogen from biomass-production by steam reforming of biomass pyrolysis oil}. Catalysis Today, 129(3--4), 265--268}{https://doi.org/10.1016/j.cattod.2006.08.071}
+\HVTReference{Hawkes, F. R.; Dinsdale, R.; Hawkes, D. L.; Hussy, I. (2002). \emph{Sustainable fermentative hydrogen production: challenges for process optimisation}}{https://doi.org/10.1016/S0360-3199(02)00090-3}
+\HVTReference{Hawkes, F. R.; Hussy, I.; Kyazze, G.; Dinsdale, R.; Hawkes, D. L. (2007). \emph{Continuous dark fermentative hydrogen production by mesophilic microflora: principles and progress}}{https://doi.org/10.1016/j.ijhydene.2006.08.014}
+\HVTReference{U.S. Department of Energy. \emph{Hydrogen Production: Microbial Biomass Conversion}}{https://www.energy.gov/cmei/fuels/hydrogen-production-microbial-biomass-conversion}
+\end{HVTReferences}
+\HVTText{Esta publicación presenta criterios de ingeniería conceptual autorizados para divulgación pública. Los resultados experimentales, diseños detallados, datos operativos, análisis económicos y demás información estratégica del proyecto son confidenciales. Los valores definitivos deben establecerse mediante caracterización, ensayos, balances validados y diseño especializado.}
+\end{HVTPage}
+
+\begin{HVTPage}{Colaboración}{Conversemos}{¿Necesitas investigar, formular o evaluar un proyecto relacionado?}
+\HVTLead{Conversemos sobre tu necesidad de investigación, diseño conceptual o evaluación de un proyecto de hidrógeno.}
+\HVTContact{Consultar proyecto de hidrógeno por WhatsApp}{https://wa.me/573209574884}
+\end{HVTPage}
+\end{document}
