@@ -159,8 +159,8 @@
     let latestSolar = null;
     let latestDoe = null;
 
-    function openLab(view) { root.classList.add('is-open'); panel.setAttribute('aria-hidden', 'false'); toggle.setAttribute('aria-expanded', 'true'); switchView(view || 'consult'); }
-    function closeLab() { root.classList.remove('is-open'); panel.setAttribute('aria-hidden', 'true'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus(); }
+    function openLab(view) { document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })); document.body.classList.add('hvt-lab-open'); root.classList.add('is-open'); panel.setAttribute('aria-hidden', 'false'); toggle.setAttribute('aria-expanded', 'true'); switchView(view || 'consult'); }
+    function closeLab() { document.body.classList.remove('hvt-lab-open'); root.classList.remove('is-open'); panel.setAttribute('aria-hidden', 'true'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus(); }
     function switchView(view) {
         root.querySelectorAll('[data-view]').forEach(button => button.classList.toggle('is-active', button.dataset.view === view));
         root.querySelectorAll('[data-view-panel]').forEach(section => section.classList.toggle('is-active', section.dataset.viewPanel === view));
