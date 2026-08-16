@@ -9,6 +9,7 @@
 
     const locale = location.pathname.indexOf('/ru/') === 0 ? 'ru' :
         (location.pathname.indexOf('/en/') === 0 ? 'en' : 'es');
+    const hasPublicPortal = locale === 'es';
 
     const copy = {
         es: {
@@ -209,7 +210,7 @@
                 </section>
             </div>
         </section>
-        <button class="hvt-lab__toggle" type="button" aria-label="${t.open}" aria-expanded="false"><span class="hvt-lab__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M12 3h8M14 3v8L6.5 24.5A3 3 0 0 0 9.1 29h13.8a3 3 0 0 0 2.6-4.5L18 11V3"/><path class="hvt-lab__liquid" d="M9 22h14M11 18.5h10"/><circle cx="13" cy="25" r="1"/><circle cx="19" cy="23.5" r="1"/></svg></span><b>${t.lab}</b></button>`;
+        ${hasPublicPortal ? `<a class="hvt-lab__toggle hvt-lab__toggle--portal" href="/laboratorio/" aria-label="Entrar al Laboratorio HVT"><span class="hvt-lab__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M12 3h8M14 3v8L6.5 24.5A3 3 0 0 0 9.1 29h13.8a3 3 0 0 0 2.6-4.5L18 11V3"/><path class="hvt-lab__liquid" d="M9 22h14M11 18.5h10"/><circle cx="13" cy="25" r="1"/><circle cx="19" cy="23.5" r="1"/></svg></span><b><span class="hvt-lab__portal-wide">Entrar al Laboratorio HVT</span><span class="hvt-lab__portal-compact">Entrar</span></b><span class="hvt-lab__portal-arrow" aria-hidden="true">→</span></a>` : `<button class="hvt-lab__toggle" type="button" aria-label="${t.open}" aria-expanded="false"><span class="hvt-lab__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M12 3h8M14 3v8L6.5 24.5A3 3 0 0 0 9.1 29h13.8a3 3 0 0 0 2.6-4.5L18 11V3"/><path class="hvt-lab__liquid" d="M9 22h14M11 18.5h10"/><circle cx="13" cy="25" r="1"/><circle cx="19" cy="23.5" r="1"/></svg></span><b>${t.lab}</b></button>`}`;
 
     function field(name, label, type, value, min, max, suffix, step) {
         const attrs = [min !== '' ? `min="${min}"` : '', max !== '' ? `max="${max}"` : '', step ? `step="${step}"` : ''].join(' ');
@@ -237,7 +238,7 @@
         root.querySelectorAll('[data-view-panel]').forEach(section => section.classList.toggle('is-active', section.dataset.viewPanel === view));
         panel.querySelector('.hvt-lab__body').scrollTop = 0;
     }
-    toggle.addEventListener('click', () => root.classList.contains('is-open') ? closeLab() : openLab());
+    if (!hasPublicPortal) toggle.addEventListener('click', () => root.classList.contains('is-open') ? closeLab() : openLab());
     close.addEventListener('click', closeLab);
     root.querySelector('.hvt-lab__tabs').addEventListener('click', event => { const b = event.target.closest('[data-view]'); if (b) switchView(b.dataset.view); });
     root.querySelector('.hvt-lab__quick').addEventListener('click', event => { const b = event.target.closest('[data-route]'); if (b) switchView(b.dataset.route); });
