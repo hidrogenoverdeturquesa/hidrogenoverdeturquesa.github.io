@@ -3433,6 +3433,9 @@ input::-moz-focus-inner {
     -ms-flex-pack: center;
     -webkit-box-pack: center;
     justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
     padding: 0 calc(var(--gutter-lg) + 1.2rem);
     flex-wrap: nowrap;
     position: relative;
@@ -3929,7 +3932,28 @@ body.search-is-visible {
  * ------------------------------------------------------------------- */
 @media only screen and (min-width: 1381px) {
     .s-header__nav {
-        display: block !important;
+        display: flex !important;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+    .s-header__nav > ul {
+        display: flex;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+    .s-header__nav > ul > li {
+        display: flex;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+    .s-header__nav > ul > li > a {
+        display: flex;
+        align-items: center;
+        line-height: 1.2;
+    }
+    .s-header__nav > ul > li.language-switcher {
+        display: flex;
+        align-items: stretch;
     }
 }
 
