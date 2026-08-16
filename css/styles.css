@@ -3824,7 +3824,7 @@ body.search-is-visible {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1380px) {
     .s-header .row {
         display: block;
         width: 100%;
@@ -3905,7 +3905,7 @@ body.search-is-visible {
 /* -------------------------------------------------------------------
  * make sure the menu is visible on larger screens
  * ------------------------------------------------------------------- */
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 1381px) {
     .s-header__nav {
         display: block !important;
     }
@@ -8345,7 +8345,7 @@ body.search-is-visible {
     transform: translateX(.4rem);
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1380px) {
     .pueblito-principles,
     .pueblito-method {
         grid-template-columns: repeat(2, minmax(0, 1fr));
