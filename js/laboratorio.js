@@ -138,7 +138,7 @@
                 </section>
             </div>
         </section>
-        <button class="hvt-lab__toggle" type="button" aria-label="${t.open}" aria-expanded="false"><span aria-hidden="true">∿</span><b>${t.lab}</b></button>`;
+        <button class="hvt-lab__toggle" type="button" aria-label="${t.open}" aria-expanded="false"><span class="hvt-lab__mark" aria-hidden="true"><i></i><i></i></span><b>${t.lab}</b></button>`;
 
     function field(name, label, type, value, min, max, suffix, step) {
         const attrs = [min !== '' ? `min="${min}"` : '', max !== '' ? `max="${max}"` : '', step ? `step="${step}"` : ''].join(' ');
