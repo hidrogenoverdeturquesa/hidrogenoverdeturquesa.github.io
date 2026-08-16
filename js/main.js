@@ -38,7 +38,13 @@
         const path = window.location.pathname;
         const current = /^\/en(?:\/|$)/.test(path) ? 'en' : (/^\/ru(?:\/|$)/.test(path) ? 'ru' : 'es');
         const names = { es: 'Español', en: 'English', ru: 'Русский' };
-        const destinations = { es: '/', en: '/en/', ru: '/ru/' };
+        // The release query prevents a previously visited localized document from
+        // being restored from the browser/CDN cache after a translation rebuild.
+        const destinations = {
+            es: '/?lang-release=20260816a',
+            en: '/en/?lang-release=20260816a',
+            ru: '/ru/?lang-release=20260816a'
+        };
         const nav = document.querySelector('.s-header__nav ul');
         const browserLanguages = navigator.languages || [navigator.language || 'es'];
         const suggested = browserLanguages.map(function(language) {
