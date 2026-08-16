@@ -10954,3 +10954,27 @@ body.search-is-visible {
         max-width: none;
     }
 }
+
+/* -------------------------------------------------------------------
+ * Localized landing pages: readable typography on dark sections
+ * ------------------------------------------------------------------- */
+.localized-page .s-dark .section-head > div > h3,
+.localized-page .s-contact .section-head > div > h3 {
+    color: var(--color-1);
+}
+
+.localized-page .s-dark .section-head h2,
+.localized-page .s-dark .item-title,
+.localized-page .s-contact .section-head h2 {
+    color: #ffffff;
+}
+
+.localized-page .s-dark .section-head p,
+.localized-page .s-dark .item-service p,
+.localized-page .s-contact .section-head p {
+    color: rgba(255, 255, 255, .78);
+}
+
+.localized-page .s-contact a:not(.btn) {
+    color: rgba(255, 255, 255, .9);
+}
