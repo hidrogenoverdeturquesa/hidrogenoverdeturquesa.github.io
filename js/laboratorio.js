@@ -13,7 +13,7 @@
     const copy = {
         es: {
             lab: 'Laboratorio HVT', tagline: 'Consulta, calcula y compara', open: 'Abrir Laboratorio HVT', close: 'Cerrar laboratorio',
-            consult: 'Consultar', solar: 'Solar → H₂', experiment: 'Experimento real',
+            consult: 'Consultar', solar: 'Solar → H₂', experiment: 'Experimento real', sources: 'Fuentes',
             welcome: 'Describe tu necesidad. Esta primera versión identifica la herramienta adecuada y realiza los cálculos con modelos verificables.',
             prompt: 'Ejemplo: tengo 12 kWp solares y quiero estimar cuánto hidrógeno puedo producir', send: 'Orientarme',
             privacy: 'Tus datos permanecen en este dispositivo. Esta versión no los envía a una IA ni al equipo de HVT.',
@@ -41,22 +41,87 @@
             missingDoe: 'Completa nombre, pregunta, variable de respuesta, unidad experimental, método de medición y al menos un factor con dos niveles diferentes.',
             run: 'Corrida', block: 'Bloque', replicate: 'Réplica', condition: 'Condición', measured: 'Respuesta medida', referenceRun: 'Referencia',
             exportCsv: 'Descargar tabla CSV', exportPlan: 'Descargar plan JSON', print: 'Imprimir',
-            doeWarning: 'Antes de ejecutar: revisión humana competente, permisos, análisis de riesgos, protocolo, calibración, manejo de residuos y criterios de parada. Para hidrógeno, presión, electricidad o sustancias peligrosas se requiere infraestructura y supervisión apropiadas.'
+            doeWarning: 'Antes de ejecutar: revisión humana competente, permisos, análisis de riesgos, protocolo, calibración, manejo de residuos y criterios de parada. Para hidrógeno, presión, electricidad o sustancias peligrosas se requiere infraestructura y supervisión apropiadas.',
+            scienceTitle: 'Fuentes científicas verificadas', scienceIntro: 'Tres artículos reales que orientan el desarrollo del Laboratorio HVT. Cada referencia identifica su DOI, alcance y disponibilidad.',
+            verifiedDoi: 'DOI verificado', openAccess: 'Acceso abierto', abstractAccess: 'Resumen disponible; texto completo por suscripción',
+            supports: 'Aporta al laboratorio', viewDoi: 'Ver publicación', viewFullText: 'Leer texto completo',
+            sourceUses: [
+                'Modelo y validación experimental de un electrolizador PEM; ayuda a definir variables, supuestos y contraste entre cálculo y medición.',
+                'Dimensionamiento dinámico de plantas aisladas de hidrógeno verde; aporta criterios para comparar producción, operación y costo.',
+                'Diseño y optimización experimental de un electrolizador PEM mediante metodología de superficie de respuesta; orienta factores, respuestas y análisis DoE.'
+            ],
+            evidenceNote: 'Alcance responsable: estas referencias fundamentan decisiones metodológicas, pero no certifican por sí solas los resultados de la calculadora. Los valores deben contrastarse con datos del equipo, mediciones y revisión técnica.'
         },
         en: {
             lab: 'HVT Laboratory', tagline: 'Ask, calculate and compare', open: 'Open HVT Laboratory', close: 'Close laboratory',
-            consult: 'Ask', solar: 'Solar → H₂', experiment: 'Real experiment', welcome: 'Describe your need. This first version identifies the appropriate tool and performs calculations with verifiable models.', prompt: 'Example: I have 12 kWp of solar and want to estimate hydrogen production', send: 'Guide me', privacy: 'Your data stays on this device. This version does not send it to an AI or to HVT.', guided: 'Local guided assistant', guidedNote: 'AI conversation will be connected through a secure service. For now, the laboratory does not pretend to be AI: it routes you to reproducible calculations and plans.', quickSolar: 'Estimate hydrogen production', quickExperiment: 'Design a real experiment', quickUnits: 'Convert units', routeSolar: 'Your request needs a solar-to-hydrogen balance. Complete or adjust the prepared data.', routeExperiment: 'Your request appears to involve a physical test. Let us turn it into a reproducible, reviewable experimental plan.', routeOther: 'There is no validated module for that request yet. Start with Solar → H₂ or Real experiment; this field can later connect to the AI assistant.',
+            consult: 'Ask', solar: 'Solar → H₂', experiment: 'Real experiment', sources: 'Sources', welcome: 'Describe your need. This first version identifies the appropriate tool and performs calculations with verifiable models.', prompt: 'Example: I have 12 kWp of solar and want to estimate hydrogen production', send: 'Guide me', privacy: 'Your data stays on this device. This version does not send it to an AI or to HVT.', guided: 'Local guided assistant', guidedNote: 'AI conversation will be connected through a secure service. For now, the laboratory does not pretend to be AI: it routes you to reproducible calculations and plans.', quickSolar: 'Estimate hydrogen production', quickExperiment: 'Design a real experiment', quickUnits: 'Convert units', routeSolar: 'Your request needs a solar-to-hydrogen balance. Complete or adjust the prepared data.', routeExperiment: 'Your request appears to involve a physical test. Let us turn it into a reproducible, reviewable experimental plan.', routeOther: 'There is no validated module for that request yet. Start with Solar → H₂ or Real experiment; this field can later connect to the AI assistant.',
             calcTitle: 'Solar-to-hydrogen pre-assessment', calcIntro: 'Compare three scenarios without hiding formulas or assumptions. This is not an engineering design.', location: 'Location or scenario name', solarPower: 'PV capacity', sunHours: 'Peak sun hours', performance: 'Overall performance ratio', electrolyzer: 'Electrolyser capacity', operatingHours: 'Available hours per day', specificEnergy: 'Specific consumption', waterFactor: 'Process water', operatingDays: 'Operating days per year', electricityPrice: 'Electricity price (optional)', baseline: 'Reference emissions (optional)', calculate: 'Calculate scenarios', unitsHint: 'Use measured data or an identified source. Initial values are editable references, not data for the named location.', conservative: 'Conservative', expected: 'Expected', favorable: 'Favourable', dailyH2: 'H₂ per day', annualH2: 'H₂ per year', solarEnergy: 'Daily solar energy', water: 'Water per day', utilization: 'Electrolyser use', energyCost: 'Electricity cost/kg', avoided: 'Avoided emissions/year', assumptions: 'Assumptions and limits', noPrice: 'Add a price to calculate', noBaseline: 'Add a reference to calculate', download: 'Download scenario', calcWarning: 'Educational pre-assessment. Resource, equipment curves, water quality, balance of plant, safety, permits and costs must be verified before decisions are made.',
-            doeTitle: 'Design of real experiments', doeIntro: 'Organise a physical test using hypotheses, factors, replication, randomisation and traceability. The plan does not authorise execution.', project: 'Experiment name', question: 'Experimental question', hypothesis: 'Hypothesis', response: 'Response variable', responseUnit: 'Unit', system: 'System under study', experimentalUnit: 'Experimental unit', measurementMethod: 'Measurement method', stopCriteria: 'Stop criteria', blockMeaning: 'What each block represents', systemOptions: ['Solar PV', 'Electrolyser', 'Water and treatment', 'Bioeconomy or fermentation', 'Materials and habitats', 'Sensors and control', 'Other'], factors: 'Controllable factors (maximum 3)', factor: 'Factor', low: 'Low level', high: 'High level', unit: 'Unit', replicates: 'Independent replicates', blocks: 'Blocks', reference: 'Reference condition (optional)', seed: 'Randomisation seed', safety: 'Reality and safety review', hazards: 'Select present hazards', hazardLabels: ['Hydrogen or flammable gas', 'Pressure or vacuum', 'High current or voltage', 'Chemical or biological substances', 'Temperature or moving parts'], responsible: 'Technical lead', site: 'Authorised location', risk: 'Risk assessment documented', procedure: 'Procedure and stop criteria approved', calibrated: 'Instruments identified and calibrated', emergency: 'Emergency response and supervision available', generate: 'Generate randomised plan', plan: 'Experimental plan', statusBlocked: 'DRAFT — DO NOT RUN', statusReview: 'READY FOR TECHNICAL REVIEW — NOT AN AUTHORISATION', missingDoe: 'Complete the name, question, response, experimental unit, measurement method and at least one factor with two different levels.', run: 'Run', block: 'Block', replicate: 'Replicate', condition: 'Condition', measured: 'Measured response', referenceRun: 'Reference', exportCsv: 'Download CSV table', exportPlan: 'Download JSON plan', print: 'Print', doeWarning: 'Before execution: competent human review, permits, risk assessment, protocol, calibration, waste handling and stop criteria. Hydrogen, pressure, electricity and hazardous substances require appropriate infrastructure and supervision.'
+            doeTitle: 'Design of real experiments', doeIntro: 'Organise a physical test using hypotheses, factors, replication, randomisation and traceability. The plan does not authorise execution.', project: 'Experiment name', question: 'Experimental question', hypothesis: 'Hypothesis', response: 'Response variable', responseUnit: 'Unit', system: 'System under study', experimentalUnit: 'Experimental unit', measurementMethod: 'Measurement method', stopCriteria: 'Stop criteria', blockMeaning: 'What each block represents', systemOptions: ['Solar PV', 'Electrolyser', 'Water and treatment', 'Bioeconomy or fermentation', 'Materials and habitats', 'Sensors and control', 'Other'], factors: 'Controllable factors (maximum 3)', factor: 'Factor', low: 'Low level', high: 'High level', unit: 'Unit', replicates: 'Independent replicates', blocks: 'Blocks', reference: 'Reference condition (optional)', seed: 'Randomisation seed', safety: 'Reality and safety review', hazards: 'Select present hazards', hazardLabels: ['Hydrogen or flammable gas', 'Pressure or vacuum', 'High current or voltage', 'Chemical or biological substances', 'Temperature or moving parts'], responsible: 'Technical lead', site: 'Authorised location', risk: 'Risk assessment documented', procedure: 'Procedure and stop criteria approved', calibrated: 'Instruments identified and calibrated', emergency: 'Emergency response and supervision available', generate: 'Generate randomised plan', plan: 'Experimental plan', statusBlocked: 'DRAFT — DO NOT RUN', statusReview: 'READY FOR TECHNICAL REVIEW — NOT AN AUTHORISATION', missingDoe: 'Complete the name, question, response, experimental unit, measurement method and at least one factor with two different levels.', run: 'Run', block: 'Block', replicate: 'Replicate', condition: 'Condition', measured: 'Measured response', referenceRun: 'Reference', exportCsv: 'Download CSV table', exportPlan: 'Download JSON plan', print: 'Print', doeWarning: 'Before execution: competent human review, permits, risk assessment, protocol, calibration, waste handling and stop criteria. Hydrogen, pressure, electricity and hazardous substances require appropriate infrastructure and supervision.',
+            scienceTitle: 'Verified scientific sources', scienceIntro: 'Three genuine research articles guiding the development of the HVT Laboratory. Each reference identifies its DOI, scope and availability.',
+            verifiedDoi: 'Verified DOI', openAccess: 'Open access', abstractAccess: 'Abstract available; full text by subscription',
+            supports: 'Contribution to the laboratory', viewDoi: 'View publication', viewFullText: 'Read full text',
+            sourceUses: [
+                'PEM electrolyser modelling and experimental validation; supports the selection of variables, assumptions and comparison between calculations and measurements.',
+                'Dynamic sizing of off-grid green-hydrogen plants; informs comparisons of production, operation and cost.',
+                'Experimental design and PEM electrolyser optimisation using response-surface methodology; informs DoE factors, responses and analysis.'
+            ],
+            evidenceNote: 'Responsible scope: these references support methodological choices, but do not by themselves certify calculator results. Values must be checked against equipment data, measurements and technical review.'
         },
         ru: {
-            lab: 'Лаборатория HVT', tagline: 'Спросить, рассчитать и сравнить', open: 'Открыть лабораторию HVT', close: 'Закрыть лабораторию', consult: 'Консультация', solar: 'Солнце → H₂', experiment: 'Реальный эксперимент', welcome: 'Опишите задачу. Первая версия выбирает подходящий инструмент и использует проверяемые расчётные модели.', prompt: 'Пример: у меня 12 кВт солнечных панелей, сколько водорода можно получить?', send: 'Подобрать инструмент', privacy: 'Данные остаются на этом устройстве и не отправляются ИИ или команде HVT.', guided: 'Локальный помощник', guidedNote: 'Диалог с ИИ будет подключён через защищённый сервис. Сейчас лаборатория честно направляет к воспроизводимым расчётам и планам.', quickSolar: 'Оценить производство водорода', quickExperiment: 'Спланировать реальный эксперимент', quickUnits: 'Преобразовать единицы', routeSolar: 'Для запроса нужен баланс солнечной энергии и водорода. Проверьте подготовленные данные.', routeExperiment: 'Запрос связан с физическим испытанием. Создадим воспроизводимый план для технической проверки.', routeOther: 'Проверенного модуля для этого запроса пока нет. Выберите Солнце → H₂ или Реальный эксперимент.',
+            lab: 'Лаборатория HVT', tagline: 'Спросить, рассчитать и сравнить', open: 'Открыть лабораторию HVT', close: 'Закрыть лабораторию', consult: 'Консультация', solar: 'Солнце → H₂', experiment: 'Реальный эксперимент', sources: 'Источники', welcome: 'Опишите задачу. Первая версия выбирает подходящий инструмент и использует проверяемые расчётные модели.', prompt: 'Пример: у меня 12 кВт солнечных панелей, сколько водорода можно получить?', send: 'Подобрать инструмент', privacy: 'Данные остаются на этом устройстве и не отправляются ИИ или команде HVT.', guided: 'Локальный помощник', guidedNote: 'Диалог с ИИ будет подключён через защищённый сервис. Сейчас лаборатория честно направляет к воспроизводимым расчётам и планам.', quickSolar: 'Оценить производство водорода', quickExperiment: 'Спланировать реальный эксперимент', quickUnits: 'Преобразовать единицы', routeSolar: 'Для запроса нужен баланс солнечной энергии и водорода. Проверьте подготовленные данные.', routeExperiment: 'Запрос связан с физическим испытанием. Создадим воспроизводимый план для технической проверки.', routeOther: 'Проверенного модуля для этого запроса пока нет. Выберите Солнце → H₂ или Реальный эксперимент.',
             calcTitle: 'Предварительная оценка солнце–водород', calcIntro: 'Три сценария с открытыми формулами и допущениями. Это не инженерный проект.', location: 'Место или название сценария', solarPower: 'Мощность ФЭМ', sunHours: 'Пиковые солнечные часы', performance: 'Общий коэффициент эффективности', electrolyzer: 'Мощность электролизёра', operatingHours: 'Доступные часы в сутки', specificEnergy: 'Удельное потребление', waterFactor: 'Технологическая вода', operatingDays: 'Рабочие дни в год', electricityPrice: 'Цена электроэнергии (необязательно)', baseline: 'Эталонные выбросы (необязательно)', calculate: 'Рассчитать сценарии', unitsHint: 'Используйте измеренные данные или указанной источник. Начальные значения — редактируемые примеры.', conservative: 'Консервативный', expected: 'Ожидаемый', favorable: 'Благоприятный', dailyH2: 'H₂ в сутки', annualH2: 'H₂ в год', solarEnergy: 'Солнечная энергия в сутки', water: 'Вода в сутки', utilization: 'Загрузка электролизёра', energyCost: 'Стоимость энергии/кг', avoided: 'Сокращение выбросов/год', assumptions: 'Допущения и ограничения', noPrice: 'Добавьте цену', noBaseline: 'Добавьте эталон', download: 'Скачать сценарий', calcWarning: 'Учебная предварительная оценка. Перед решениями необходимо проверить ресурс, оборудование, воду, вспомогательные системы, безопасность, разрешения и затраты.',
-            doeTitle: 'Планирование реальных экспериментов', doeIntro: 'Физическое испытание с гипотезой, факторами, повторениями, рандомизацией и прослеживаемостью. План не разрешает выполнение.', project: 'Название эксперимента', question: 'Исследовательский вопрос', hypothesis: 'Гипотеза', response: 'Отклик', responseUnit: 'Единица', system: 'Исследуемая система', experimentalUnit: 'Экспериментальная единица', measurementMethod: 'Метод измерения', stopCriteria: 'Критерии остановки', blockMeaning: 'Что означает каждый блок', systemOptions: ['Солнечная ФЭМ', 'Электролизёр', 'Вода и очистка', 'Биоэкономика или ферментация', 'Материалы и среда', 'Датчики и управление', 'Другое'], factors: 'Управляемые факторы (до 3)', factor: 'Фактор', low: 'Низкий уровень', high: 'Высокий уровень', unit: 'Единица', replicates: 'Независимые повторения', blocks: 'Блоки', reference: 'Эталонное условие (необязательно)', seed: 'Ключ рандомизации', safety: 'Проверка реальности и безопасности', hazards: 'Отметьте опасности', hazardLabels: ['Водород или горючий газ', 'Давление или вакуум', 'Высокий ток или напряжение', 'Химические или биологические вещества', 'Температура или движущиеся части'], responsible: 'Технический руководитель', site: 'Разрешённое место', risk: 'Оценка рисков документирована', procedure: 'Процедура и критерии остановки утверждены', calibrated: 'Приборы определены и откалиброваны', emergency: 'Доступны аварийные меры и надзор', generate: 'Создать рандомизированный план', plan: 'План эксперимента', statusBlocked: 'ЧЕРНОВИК — НЕ ВЫПОЛНЯТЬ', statusReview: 'ГОТОВО К ТЕХНИЧЕСКОЙ ПРОВЕРКЕ — НЕ РАЗРЕШЕНИЕ', missingDoe: 'Заполните название, вопрос, отклик, экспериментальную единицу, метод измерения и хотя бы один фактор с двумя разными уровнями.', run: 'Запуск', block: 'Блок', replicate: 'Повторение', condition: 'Условие', measured: 'Измеренный отклик', referenceRun: 'Эталон', exportCsv: 'Скачать CSV', exportPlan: 'Скачать JSON', print: 'Печать', doeWarning: 'До выполнения нужны компетентная проверка, разрешения, анализ рисков, протокол, калибровка, обращение с отходами и критерии остановки. Водород, давление, электричество и опасные вещества требуют подходящей инфраструктуры и надзора.'
+            doeTitle: 'Планирование реальных экспериментов', doeIntro: 'Физическое испытание с гипотезой, факторами, повторениями, рандомизацией и прослеживаемостью. План не разрешает выполнение.', project: 'Название эксперимента', question: 'Исследовательский вопрос', hypothesis: 'Гипотеза', response: 'Отклик', responseUnit: 'Единица', system: 'Исследуемая система', experimentalUnit: 'Экспериментальная единица', measurementMethod: 'Метод измерения', stopCriteria: 'Критерии остановки', blockMeaning: 'Что означает каждый блок', systemOptions: ['Солнечная ФЭМ', 'Электролизёр', 'Вода и очистка', 'Биоэкономика или ферментация', 'Материалы и среда', 'Датчики и управление', 'Другое'], factors: 'Управляемые факторы (до 3)', factor: 'Фактор', low: 'Низкий уровень', high: 'Высокий уровень', unit: 'Единица', replicates: 'Независимые повторения', blocks: 'Блоки', reference: 'Эталонное условие (необязательно)', seed: 'Ключ рандомизации', safety: 'Проверка реальности и безопасности', hazards: 'Отметьте опасности', hazardLabels: ['Водород или горючий газ', 'Давление или вакуум', 'Высокий ток или напряжение', 'Химические или биологические вещества', 'Температура или движущиеся части'], responsible: 'Технический руководитель', site: 'Разрешённое место', risk: 'Оценка рисков документирована', procedure: 'Процедура и критерии остановки утверждены', calibrated: 'Приборы определены и откалиброваны', emergency: 'Доступны аварийные меры и надзор', generate: 'Создать рандомизированный план', plan: 'План эксперимента', statusBlocked: 'ЧЕРНОВИК — НЕ ВЫПОЛНЯТЬ', statusReview: 'ГОТОВО К ТЕХНИЧЕСКОЙ ПРОВЕРКЕ — НЕ РАЗРЕШЕНИЕ', missingDoe: 'Заполните название, вопрос, отклик, экспериментальную единицу, метод измерения и хотя бы один фактор с двумя разными уровнями.', run: 'Запуск', block: 'Блок', replicate: 'Повторение', condition: 'Условие', measured: 'Измеренный отклик', referenceRun: 'Эталон', exportCsv: 'Скачать CSV', exportPlan: 'Скачать JSON', print: 'Печать', doeWarning: 'До выполнения нужны компетентная проверка, разрешения, анализ рисков, протокол, калибровка, обращение с отходами и критерии остановки. Водород, давление, электричество и опасные вещества требуют подходящей инфраструктуры и надзора.',
+            scienceTitle: 'Проверенные научные источники', scienceIntro: 'Три подлинные научные статьи, используемые при развитии лаборатории HVT. Для каждой ссылки указаны DOI, область применения и доступность.',
+            verifiedDoi: 'DOI проверен', openAccess: 'Открытый доступ', abstractAccess: 'Доступна аннотация; полный текст по подписке',
+            supports: 'Вклад в лабораторию', viewDoi: 'Открыть публикацию', viewFullText: 'Читать полный текст',
+            sourceUses: [
+                'Модель PEM-электролизёра и экспериментальная проверка; помогает выбирать переменные, допущения и сопоставлять расчёты с измерениями.',
+                'Динамическое проектирование автономных установок зелёного водорода; задаёт критерии сравнения производства, режима работы и стоимости.',
+                'Планирование и оптимизация эксперимента с PEM-электролизёром методом поверхности отклика; помогает выбирать факторы, отклики и анализ DoE.'
+            ],
+            evidenceNote: 'Ответственное применение: эти статьи обосновывают методические решения, но сами по себе не сертифицируют результаты калькулятора. Значения необходимо сверять с данными оборудования, измерениями и технической экспертизой.'
         }
     };
     const t = copy[locale];
     const nf = new Intl.NumberFormat(locale === 'es' ? 'es-CO' : locale, { maximumFractionDigits: 2 });
+    const scientificSources = [
+        {
+            title: 'Simple PEM water electrolyser model and experimental validation',
+            authors: 'R. García-Valverde, N. Espinosa, A. Urbina',
+            publication: 'International Journal of Hydrogen Energy 37(2), 1927–1938 (2012)',
+            doi: '10.1016/j.ijhydene.2011.09.027',
+            url: 'https://doi.org/10.1016/j.ijhydene.2011.09.027',
+            open: false
+        },
+        {
+            title: 'Designing off-grid green hydrogen plants using dynamic polymer electrolyte membrane electrolyzers to minimize the hydrogen production cost',
+            authors: 'M. J. Ginsberg, D. V. Esposito, V. M. Fthenakis',
+            publication: 'Cell Reports Physical Science 4(10), 101625 (2023)',
+            doi: '10.1016/j.xcrp.2023.101625',
+            url: 'https://doi.org/10.1016/j.xcrp.2023.101625',
+            fullText: 'https://www.osti.gov/pages/servlets/purl/2577198',
+            open: true
+        },
+        {
+            title: 'Performance assessment and optimization of the PEM water electrolyzer by coupled response surface methodology and finite element modeling',
+            authors: 'S. N. Ozdemir, I. Taymaz, F. G. Boyacı San, E. Okumuş',
+            publication: 'Fuel 365, 131138 (2024)',
+            doi: '10.1016/j.fuel.2024.131138',
+            url: 'https://doi.org/10.1016/j.fuel.2024.131138',
+            open: false
+        }
+    ];
+
+    function sourceCards() {
+        return scientificSources.map((source, index) => `<article class="hvt-lab__source">
+            <div class="hvt-lab__source-meta"><span>${t.verifiedDoi}</span><span class="${source.open ? 'is-open' : ''}">${source.open ? t.openAccess : t.abstractAccess}</span></div>
+            <h3>${escapeHtml(source.title)}</h3>
+            <p class="hvt-lab__source-authors">${escapeHtml(source.authors)}</p>
+            <p class="hvt-lab__source-publication">${escapeHtml(source.publication)}</p>
+            <p class="hvt-lab__source-use"><strong>${t.supports}:</strong> ${escapeHtml(t.sourceUses[index])}</p>
+            <div class="hvt-lab__source-actions"><a href="${source.url}" target="_blank" rel="noopener noreferrer">${t.viewDoi}<small>DOI ${source.doi}</small></a>${source.fullText ? `<a href="${source.fullText}" target="_blank" rel="noopener noreferrer">${t.viewFullText}<small>OSTI</small></a>` : ''}</div>
+        </article>`).join('');
+    }
 
     const root = document.createElement('aside');
     root.className = 'hvt-lab';
@@ -71,6 +136,7 @@
                 <button type="button" data-view="consult" class="is-active">${t.consult}</button>
                 <button type="button" data-view="solar">${t.solar}</button>
                 <button type="button" data-view="experiment">${t.experiment}</button>
+                <button type="button" data-view="sources">${t.sources}</button>
             </nav>
             <div class="hvt-lab__body">
                 <section class="hvt-lab__view is-active" data-view-panel="consult">
@@ -135,6 +201,11 @@
                     </form>
                     <div id="hvt-doe-results" class="hvt-lab__results" hidden></div>
                     <p class="hvt-lab__warning hvt-lab__warning--danger">${t.doeWarning}</p>
+                </section>
+                <section class="hvt-lab__view" data-view-panel="sources">
+                    <div class="hvt-lab__section-head"><div><h2>${t.scienceTitle}</h2><p>${t.scienceIntro}</p></div><span>3 DOI</span></div>
+                    <div class="hvt-lab__sources">${sourceCards()}</div>
+                    <p class="hvt-lab__evidence-note">${t.evidenceNote}</p>
                 </section>
             </div>
         </section>
@@ -273,7 +344,7 @@
     });
 
     const requestedView = new URLSearchParams(location.search).get('lab');
-    if (['consult', 'solar', 'experiment'].indexOf(requestedView) !== -1) {
+    if (['consult', 'solar', 'experiment', 'sources'].indexOf(requestedView) !== -1) {
         window.setTimeout(() => openLab(requestedView), 120);
     }
 })();
