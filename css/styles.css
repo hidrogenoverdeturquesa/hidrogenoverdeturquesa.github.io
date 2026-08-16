@@ -4121,6 +4121,28 @@ body.search-is-visible {
 .volunteer-apply p { max-width: 68rem; color: rgba(255,255,255,.66); }
 .volunteer-apply__action .btn { width: 100%; margin: 0 0 1.2rem; }
 .volunteer-apply__action p { margin: 0; font-size: var(--text-xs); line-height: 1.5; }
+.volunteer-application-wrap { margin-left: auto; }
+.volunteer-application-form { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2rem; padding: 3.2rem; border: 1px solid rgba(255,255,255,.14); background: #172021; }
+.application-field { margin: 0; }
+.application-field--wide { grid-column: 1 / -1; }
+.application-field label { display: block; margin-bottom: .8rem; color: white; font-size: var(--text-sm); font-weight: 600; }
+.application-field label span { color: rgba(255,255,255,.48); font-weight: 400; }
+.volunteer-application-form input[type="text"], .volunteer-application-form input[type="email"], .volunteer-application-form input[type="tel"], .volunteer-application-form select, .volunteer-application-form textarea { width: 100%; margin: 0; border: 1px solid rgba(255,255,255,.17); background: #0e1516; color: white; }
+.volunteer-application-form input:focus, .volunteer-application-form select:focus, .volunteer-application-form textarea:focus { border-color: var(--color-1); box-shadow: 0 0 0 1px var(--color-1); }
+.volunteer-application-form option { color: #111; }
+.application-file { display: flex !important; align-items: center; justify-content: space-between; gap: 2rem; min-height: 7.2rem; margin: 0 !important; padding: 1.6rem 2rem; border: 1px dashed rgba(255,255,255,.35); background: #0e1516; cursor: pointer; }
+.application-file:hover { border-color: var(--color-1); }
+.application-file small { color: rgba(255,255,255,.48); font-weight: 400; }
+.application-file__input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.application-consent { display: flex; grid-column: 1 / -1; gap: 1.2rem; align-items: flex-start; color: rgba(255,255,255,.72); font-size: var(--text-xs); line-height: 1.5; }
+.application-consent input { flex: 0 0 auto; margin-top: .3rem; }
+.application-consent a { color: white; text-decoration: underline; }
+.application-submit { display: flex; grid-column: 1 / -1; gap: 2rem; align-items: center; }
+.application-submit .btn { margin: 0; }
+.application-submit p { margin: 0; font-size: var(--text-xs); }
+.application-status { grid-column: 1 / -1; margin: 0; padding: 1.4rem 1.6rem; color: white !important; font-size: var(--text-sm); }
+.application-status.is-error { border-left: .4rem solid #ff766e; background: rgba(255,70,60,.12); }
+.application-status.is-success { border-left: .4rem solid var(--color-1); background: rgba(8,158,157,.15); }
 .volunteer-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
@@ -4137,6 +4159,7 @@ body.search-is-visible {
     .volunteer-section-index { margin-bottom: 3.2rem; }
     .volunteer-terms__grid { grid-template-columns: 1fr; }
     .volunteer-apply__action { margin-top: 3.2rem; }
+    .volunteer-application-wrap { margin-top: 3.2rem; }
 }
 @media screen and (max-width: 600px) {
     .volunteer-hero { padding-top: 14rem; }
@@ -4149,6 +4172,11 @@ body.search-is-visible {
     .volunteer-process__grid article { border-top: 1px solid rgba(18,32,33,.17); border-right: 1px solid rgba(18,32,33,.17); }
     .volunteer-process__grid article:first-child { border-top: 0; }
     .volunteer-terms__grid article { padding: 2.4rem; }
+    .volunteer-application-form { grid-template-columns: 1fr; padding: 2.4rem; }
+    .application-field--wide, .application-consent, .application-submit, .application-status { grid-column: 1; }
+    .application-submit { align-items: stretch; flex-direction: column; }
+    .application-submit .btn { width: 100%; }
+    .application-file { align-items: flex-start; flex-direction: column; gap: .4rem; }
 }
 
 /* Short, scalable careers hub. */

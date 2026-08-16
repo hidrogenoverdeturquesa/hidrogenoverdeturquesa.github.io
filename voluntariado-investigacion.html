@@ -133,14 +133,27 @@
 
         <section id="postularme" class="volunteer-apply" aria-labelledby="apply-title">
             <div class="row volunteer-apply__card">
-                <div class="column large-7 medium-12">
+                <div class="column large-4 medium-12">
                     <p class="volunteer-eyebrow"><span></span> Postulación</p>
                     <h2 id="apply-title">¿Quieres investigar con nosotros?</h2>
-                    <p>Adjunta tu hoja de vida en PDF y cuéntanos brevemente qué tema te interesa, qué puedes aportar y cuál es tu disponibilidad.</p>
+                    <p>Completa el formulario y adjunta tu hoja de vida. Recibirás una confirmación inmediata con tu número de referencia.</p>
                 </div>
-                <div class="column large-4 medium-12 volunteer-apply__action">
-                    <a class="btn btn--primary" href="mailto:contacto@hidrogenoverdeturquesa.com?subject=Postulaci%C3%B3n%20al%20voluntariado%20en%20investigaci%C3%B3n&amp;body=Adjunto%20mi%20hoja%20de%20vida%20en%20PDF.%0A%0A%C3%81rea%20de%20inter%C3%A9s%3A%0ADisponibilidad%3A%0A%C2%BFQu%C3%A9%20puedo%20aportar%3F%3A%0A%0AAutorizo%20de%20manera%20previa%2C%20expresa%20e%20informada%20a%20Hidr%C3%B3geno%20Verde%20Turquesa%20S.A.S.%20para%20tratar%20mis%20datos%20con%20el%20fin%20de%20evaluar%20y%20gestionar%20mi%20postulaci%C3%B3n%2C%20conforme%20a%20su%20pol%C3%ADtica%20de%20tratamiento%20de%20datos.">Enviar mi postulación <span aria-hidden="true">↗</span></a>
-                    <p>El botón abre tu aplicación de correo. Debes adjuntar manualmente la hoja de vida.</p>
+                <div class="column large-7 medium-12 volunteer-application-wrap">
+                    <form class="volunteer-application-form" data-application-form novalidate>
+                        <div class="application-field application-field--wide"><label for="application-name">Nombre completo</label><input id="application-name" name="full_name" type="text" autocomplete="name" maxlength="120" required></div>
+                        <div class="application-field"><label for="application-email">Correo electrónico</label><input id="application-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+                        <div class="application-field"><label for="application-phone">Teléfono <span>(opcional)</span></label><input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+                        <div class="application-field"><label for="application-area">Área de interés</label><select id="application-area" name="interest_area" required><option value="">Selecciona una opción</option><option>Hidrógeno</option><option>Energías limpias</option><option>Bioeconomía</option><option>Sostenibilidad</option><option>Análisis de datos</option><option>Divulgación científica</option><option>Otra</option></select></div>
+                        <div class="application-field"><label for="application-availability">Disponibilidad estimada</label><input id="application-availability" name="availability" type="text" maxlength="160" placeholder="Ej. 4 horas semanales" required></div>
+                        <div class="application-field application-field--wide"><label for="application-contribution">¿Qué te interesa investigar y qué puedes aportar?</label><textarea id="application-contribution" name="contribution" rows="5" minlength="20" maxlength="1500" required></textarea></div>
+                        <div class="application-field application-field--wide">
+                            <label class="application-file" for="application-cv"><span data-file-label>Seleccionar hoja de vida en PDF</span><small>PDF · máximo 5 MB</small></label>
+                            <input class="application-file__input" id="application-cv" name="cv" type="file" accept="application/pdf,.pdf" required>
+                        </div>
+                        <label class="application-consent"><input type="checkbox" name="processing_consent" required><span>Autorizo el tratamiento de mis datos para evaluar y gestionar esta postulación, conforme a la <a href="/politica-tratamiento-datos" target="_blank">política de datos</a>.</span></label>
+                        <div class="application-submit"><button class="btn btn--primary" type="submit">Enviar postulación</button><p>Tu hoja de vida se almacena de forma privada.</p></div>
+                        <p class="application-status" data-form-status tabindex="-1" role="status" aria-live="polite" hidden></p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -156,5 +169,8 @@
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js?v=sin-prism-20260726"></script>
     <script src="js/main.js?v=voluntariado-page-20260816"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+    <script src="js/postulaciones-config.js?v=20260816"></script>
+    <script src="js/postulaciones.js?v=20260816"></script>
 </body>
 </html>
