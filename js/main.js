@@ -12,18 +12,87 @@
                 mailChimpURL   : ''   // mailchimp url
                 };
 
-    /* Keep the home URL clean when an old link or bookmark includes index.html. */
-    const ssNormalizeHomeURL = function() {
+    /* Keep public URLs clean when an old link or bookmark includes .html. */
+    const ssNormalizePageURL = function() {
         const currentPath = window.location.pathname;
+        let cleanPath = currentPath;
 
-        if (!/\/index\.html$/i.test(currentPath)) return;
+        if (/\/index\.html$/i.test(currentPath)) {
+            cleanPath = currentPath.slice(0, -'index.html'.length);
+        } else if (/\.html$/i.test(currentPath)) {
+            cleanPath = currentPath.slice(0, -'.html'.length);
+        } else {
+            return;
+        }
 
-        const cleanPath = currentPath.slice(0, -'index.html'.length);
         window.history.replaceState(
             window.history.state,
             document.title,
             cleanPath + window.location.search + window.location.hash
         );
+    };
+
+    /* Language selector and a non-blocking first-visit suggestion. */
+    const ssLanguageNavigation = function() {
+        const supported = ['es', 'en', 'ru'];
+        const path = window.location.pathname;
+        const current = /^\/en(?:\/|$)/.test(path) ? 'en' : (/^\/ru(?:\/|$)/.test(path) ? 'ru' : 'es');
+        const labels = { es: 'ES', en: 'EN', ru: 'RU' };
+        const names = { es: 'Español', en: 'English', ru: 'Русский' };
+        const destinations = { es: '/', en: '/en/', ru: '/ru/' };
+        const nav = document.querySelector('.s-header__nav ul');
+
+        if (nav && !nav.querySelector('.language-switcher')) {
+            const item = document.createElement('li');
+            item.className = 'language-switcher';
+            item.setAttribute('aria-label', current === 'es' ? 'Seleccionar idioma' : (current === 'ru' ? 'Выбрать язык' : 'Choose language'));
+
+            supported.forEach(function(language) {
+                const link = document.createElement('a');
+                link.href = destinations[language];
+                link.lang = language;
+                link.hreflang = language;
+                link.textContent = labels[language];
+                link.title = names[language];
+                if (language === current) {
+                    link.className = 'is-active';
+                    link.setAttribute('aria-current', 'page');
+                }
+                link.addEventListener('click', function() {
+                    try { window.localStorage.setItem('hvt-language', language); } catch (error) {}
+                });
+                item.appendChild(link);
+            });
+            nav.appendChild(item);
+        }
+
+        let preferred;
+        try { preferred = window.localStorage.getItem('hvt-language'); } catch (error) {}
+        if (preferred || window.sessionStorage.getItem('hvt-language-prompted')) return;
+
+        const browserLanguages = navigator.languages || [navigator.language || 'es'];
+        const suggested = browserLanguages.map(function(language) {
+            return language.toLowerCase().split('-')[0];
+        }).find(function(language) { return supported.indexOf(language) !== -1; }) || 'es';
+
+        if (suggested === current) return;
+        window.sessionStorage.setItem('hvt-language-prompted', '1');
+
+        const messages = {
+            en: ['This website is available in English.', 'View in English', 'Not now'],
+            ru: ['Сайт доступен на русском языке.', 'Открыть на русском', 'Не сейчас'],
+            es: ['Este sitio está disponible en español.', 'Ver en español', 'Ahora no']
+        };
+        const copy = messages[suggested];
+        const prompt = document.createElement('aside');
+        prompt.className = 'language-suggestion';
+        prompt.setAttribute('aria-live', 'polite');
+        prompt.innerHTML = '<span>' + copy[0] + '</span><a href="' + destinations[suggested] + '">' + copy[1] + '</a><button type="button">' + copy[2] + '</button>';
+        prompt.querySelector('a').addEventListener('click', function() {
+            try { window.localStorage.setItem('hvt-language', suggested); } catch (error) {}
+        });
+        prompt.querySelector('button').addEventListener('click', function() { prompt.remove(); });
+        document.body.appendChild(prompt);
     };
 
     // Add the User Agent to the <html>
@@ -42,7 +111,9 @@
 
         const doc = document.documentElement;
         const loader = preloader.querySelector('#loader');
-        const pageName = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        const pageSlug = (window.location.pathname.split('/').pop() || 'index')
+            .toLowerCase()
+            .replace(/\.html$/i, '');
         const minimumVisibleTime = 1800;
         const maximumVisibleTime = 3200;
         const loaderStartedAt = window.performance && performance.now ? performance.now() : Date.now();
@@ -63,7 +134,20 @@
             'Antes de incorporar nuevos equipos, una casa puede aprovechar mejor el sol, la ventilación y la inercia térmica.',
             'Un material natural también debe demostrar seguridad estructural, durabilidad y comportamiento frente al fuego.'
         ];
-        const availableFacts = pageName === 'pueblito-boyacense.html' ? pueblitoFacts : generalFacts;
+        const localizedFacts = {
+            en: [
+                'Hydrogen is an energy carrier: it can store and transport energy produced from other sources.',
+                'Energy efficiency often begins by preventing energy from being wasted.',
+                'Water, energy, food and materials form connected systems within a territory.'
+            ],
+            ru: [
+                'Водород — это энергоноситель, способный хранить и транспортировать энергию из других источников.',
+                'Энергоэффективность часто начинается с предотвращения потерь энергии.',
+                'Вода, энергия, продовольствие и материалы образуют взаимосвязанные территориальные системы.'
+            ]
+        };
+        const pageLanguage = (doc.lang || 'es').toLowerCase().split('-')[0];
+        const availableFacts = localizedFacts[pageLanguage] || (pageSlug === 'pueblito-boyacense' ? pueblitoFacts : generalFacts);
 
         if (loader && !loader.querySelector('.loader-fact')) {
             const fact = document.createElement('div');
@@ -74,7 +158,7 @@
             fact.className = 'loader-fact';
             fact.setAttribute('role', 'status');
             fact.setAttribute('aria-live', 'polite');
-            factLabel.textContent = '¿Sabías que…?';
+            factLabel.textContent = pageLanguage === 'en' ? 'Did you know?' : (pageLanguage === 'ru' ? 'Знаете ли вы?' : '¿Sabías que…?');
             factText.textContent = selectedFact;
             fact.appendChild(factLabel);
             fact.appendChild(factText);
@@ -662,7 +746,8 @@
     * ------------------------------------------------------ */
     (function ssInit() {
 
-        ssNormalizeHomeURL();
+        ssNormalizePageURL();
+        ssLanguageNavigation();
         ssPreloader();
         ssMoveHeader();
         ssMobileMenu();
