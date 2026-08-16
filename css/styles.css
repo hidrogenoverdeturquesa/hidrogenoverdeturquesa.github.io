@@ -4143,19 +4143,38 @@ body.search-is-visible {
 .application-status { grid-column: 1 / -1; margin: 0; padding: 1.4rem 1.6rem; color: white !important; font-size: var(--text-sm); }
 .application-status.is-error { border-left: .4rem solid #ff766e; background: rgba(255,70,60,.12); }
 .application-status.is-success { border-left: .4rem solid var(--color-1); background: rgba(8,158,157,.15); }
+
+/* Versión compacta de la convocatoria */
+.volunteer-hero { min-height: 56rem; padding-top: 15rem; padding-bottom: 6rem; }
+.volunteer-hero h1 { margin-bottom: 2rem; font-size: clamp(5.2rem, 6vw, 8rem); }
+.volunteer-hero__actions { margin-top: 2.6rem; }
+.volunteer-hero__summary { padding: 2.4rem; }
+.volunteer-intro, .volunteer-process, .volunteer-terms { padding-top: 6rem; padding-bottom: 6rem; }
+.volunteer-intro h2, .volunteer-process h2, .volunteer-terms h2 { font-size: clamp(3.4rem, 3.5vw, 5rem); }
+.volunteer-process__grid { margin-top: 3rem; }
+.volunteer-process__grid article { padding: 2rem; }
+.volunteer-process__grid h3 { margin-top: 2rem; }
+.volunteer-process__notice { margin-top: 2.4rem; }
+.volunteer-terms__grid { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.2rem; margin-top: 3rem; }
+.volunteer-terms__grid article { padding: 2rem; }
+.volunteer-terms__grid h3 { margin: 1.2rem 0 .8rem; }
+.volunteer-apply { padding: 5rem 0; }
+.volunteer-application-form { gap: 1.4rem; padding: 2.4rem; }
+.application-file { min-height: 6rem; }
 .volunteer-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
 @media screen and (max-width: 1200px) {
-    .volunteer-hero { min-height: 0; padding: 17rem 0 9rem; }
+    .volunteer-hero { min-height: 0; padding: 14rem 0 6rem; }
     .volunteer-hero__summary { max-width: none; margin-top: 5rem; }
     .volunteer-process__grid { grid-template-columns: repeat(2, 1fr); }
     .volunteer-process__grid article:nth-child(3) { border-top: 1px solid rgba(18,32,33,.17); }
     .volunteer-process__grid article:nth-child(4) { border-top: 1px solid rgba(18,32,33,.17); }
+    .volunteer-terms__grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 @media screen and (max-width: 800px) {
     .volunteer-hero h1 { font-size: clamp(5rem, 14vw, 7.6rem); }
-    .volunteer-intro, .volunteer-process, .volunteer-terms { padding: 8rem 0; }
+    .volunteer-intro, .volunteer-process, .volunteer-terms { padding: 5rem 0; }
     .volunteer-section-index { margin-bottom: 3.2rem; }
     .volunteer-terms__grid { grid-template-columns: 1fr; }
     .volunteer-apply__action { margin-top: 3.2rem; }
