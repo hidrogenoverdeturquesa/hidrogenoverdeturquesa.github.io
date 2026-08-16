@@ -64,7 +64,7 @@
             toggle.setAttribute('aria-label', selectorLabel);
             toggle.setAttribute('aria-haspopup', 'menu');
             toggle.setAttribute('aria-expanded', 'false');
-            toggle.innerHTML = '<span class="language-switcher__globe" aria-hidden="true">●</span><span class="language-switcher__chevron" aria-hidden="true"></span>';
+            toggle.innerHTML = '<span class="language-switcher__globe" aria-hidden="true"><i class="fas fa-globe-americas"></i></span><span class="language-switcher__chevron" aria-hidden="true"></span>';
             menu.className = 'language-switcher__menu';
             menu.setAttribute('role', 'menu');
             menu.hidden = true;
