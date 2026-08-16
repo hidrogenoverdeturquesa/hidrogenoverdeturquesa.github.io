@@ -4169,6 +4169,20 @@ body.search-is-visible {
 .volunteer-terms-card summary i { color: #078c8c; font-size: 3rem; font-style: normal; line-height: 1; transition: transform .2s ease; }
 .volunteer-terms-card[open] summary i { transform: rotate(45deg); }
 .volunteer-terms-card .volunteer-terms__grid { width: 100%; }
+
+/* Ficha profesional: toda la convocatoria en una sola tarjeta */
+.volunteer-page main { padding-bottom: 6rem; background: #e9efec; }
+.volunteer-page .opportunity-back { background: #101718; }
+.volunteer-dossier { display: block; width: min(132rem, calc(100% - 4rem)); margin: 0 auto; overflow: hidden; border: 1px solid #d1dad6; border-radius: .4rem; background: white; box-shadow: 0 2.4rem 7rem rgba(20,43,40,.1); }
+.volunteer-dossier > section { width: 100%; }
+.volunteer-dossier > section > .row { width: 100%; max-width: none; padding-right: 5rem; padding-left: 5rem; }
+.volunteer-dossier .volunteer-hero { min-height: 0; padding: 6rem 0; }
+.volunteer-dossier .volunteer-hero h1 { font-size: clamp(4.8rem, 5.6vw, 7.6rem); }
+.volunteer-dossier .volunteer-intro { padding: 4.5rem 0; border-bottom: 1px solid #dce3e0; }
+.volunteer-dossier .volunteer-process { padding: 4.5rem 0; border-bottom: 1px solid #cad7d2; }
+.volunteer-dossier .volunteer-terms { padding: 4.5rem 0; border-bottom: 1px solid #dce3e0; }
+.volunteer-dossier .volunteer-apply { padding: 5rem 0; }
+.volunteer-dossier .volunteer-apply__card { align-items: flex-start; }
 .volunteer-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
@@ -4187,6 +4201,8 @@ body.search-is-visible {
     .volunteer-terms__grid { grid-template-columns: 1fr; }
     .volunteer-apply__action { margin-top: 3.2rem; }
     .volunteer-application-wrap { margin-top: 3.2rem; }
+    .volunteer-dossier { width: min(100% - 2rem, 132rem); }
+    .volunteer-dossier > section > .row { padding-right: 2.4rem; padding-left: 2.4rem; }
 }
 @media screen and (max-width: 600px) {
     .volunteer-hero { padding-top: 14rem; }
