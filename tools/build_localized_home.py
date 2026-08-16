@@ -33,7 +33,7 @@ SKIP_CLASSES = {
     "line-project-card--protected",
     "contact-email",
 }
-LOCAL_ASSET_PREFIXES = ("images/", "videos/", "css/", "js/", "fonts/")
+LOCAL_ASSET_PREFIXES = ("images/", "videos/", "css/", "js/", "fonts/", "Certificados/")
 TRANSLATABLE_ATTRIBUTES = ("alt", "title", "aria-label", "placeholder")
 MANUAL_OVERRIDES = {
     "en": {

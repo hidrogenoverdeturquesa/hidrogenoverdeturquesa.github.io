@@ -815,18 +815,18 @@
         ssWorkLines();
         ssImpactCounters();
 
-        /* Mentor puede retirarse sin afectar el sitio: cambia true por false. */
-        const MENTOR_ENABLED = true;
-        if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
-            const mentorStyle = document.createElement('link');
-            mentorStyle.rel = 'stylesheet';
-            mentorStyle.href = '/css/mentor.css?v=20260719b';
-            document.head.appendChild(mentorStyle);
+        /* El laboratorio es autónomo y puede retirarse sin afectar el sitio. */
+        const LAB_ENABLED = true;
+        if (LAB_ENABLED && !document.querySelector('script[data-hvt-lab]')) {
+            const labStyle = document.createElement('link');
+            labStyle.rel = 'stylesheet';
+            labStyle.href = '/css/laboratorio.css?v=20260816a';
+            document.head.appendChild(labStyle);
 
-            const mentorScript = document.createElement('script');
-            mentorScript.src = '/js/mentor.js?v=url-limpia-20260726';
-            mentorScript.dataset.mentor = 'true';
-            document.body.appendChild(mentorScript);
+            const labScript = document.createElement('script');
+            labScript.src = '/js/laboratorio.js?v=20260816a';
+            labScript.dataset.hvtLab = 'true';
+            document.body.appendChild(labScript);
         }
 
     })();
