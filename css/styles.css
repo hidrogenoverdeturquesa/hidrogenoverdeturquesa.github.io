@@ -10911,6 +10911,13 @@ body.search-is-visible {
     border: 0;
     color: rgba(255, 255, 255, .75);
     background: transparent;
+    font-family: var(--font-2);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.4;
+    text-transform: none;
+    white-space: nowrap;
     cursor: pointer;
 }
 
