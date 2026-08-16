@@ -10799,11 +10799,12 @@ body.search-is-visible {
     z-index: 20;
     top: calc(100% - .4rem);
     right: 0;
-    width: 18rem;
+    width: 20rem;
     padding: .8rem 0;
     border-radius: .4rem;
     background: #ffffff;
     box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, .28);
+    overflow: hidden;
 }
 
 .s-header__nav .language-switcher__menu[hidden] { display: none; }
@@ -10820,9 +10821,15 @@ body.search-is-visible {
     border: 0;
     color: #263b3a;
     background: transparent;
-    font: inherit;
+    box-sizing: border-box;
+    font-family: var(--font-2);
+    font-size: 1.5rem;
+    font-weight: 500;
     line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
     text-align: left;
+    white-space: nowrap;
     cursor: pointer;
 }
 
@@ -10833,6 +10840,7 @@ body.search-is-visible {
 }
 
 .language-switcher__check {
+    flex: 0 0 2.4rem;
     width: 2.4rem;
     color: transparent;
     font-size: 1.8rem;
