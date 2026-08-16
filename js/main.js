@@ -814,11 +814,11 @@
         if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
             const mentorStyle = document.createElement('link');
             mentorStyle.rel = 'stylesheet';
-            mentorStyle.href = 'css/mentor.css?v=20260719b';
+            mentorStyle.href = '/css/mentor.css?v=20260719b';
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = 'js/mentor.js?v=url-limpia-20260726';
+            mentorScript.src = '/js/mentor.js?v=url-limpia-20260726';
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);
         }
