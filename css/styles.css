@@ -4151,6 +4151,51 @@ body.search-is-visible {
     .volunteer-terms__grid article { padding: 2.4rem; }
 }
 
+/* Short, scalable careers hub. */
+.careers-page { background: #f4f6f3; color: #233031; }
+.careers-page .s-header__nav .current > .nav-dropdown__toggle { background: var(--color-1); color: white; font-weight: 600; }
+.careers-hero { padding: 18rem 0 8rem; background: #101718; color: white; }
+.careers-hero h1 { margin: 0 0 2.4rem; color: white; font-size: clamp(5.6rem, 8vw, 10rem); line-height: .9; letter-spacing: -.055em; }
+.careers-hero h1 em { color: var(--color-1); font-style: normal; }
+.careers-hero p:last-child { max-width: 72rem; margin: 0; color: rgba(255,255,255,.7); font-size: var(--text-lg); line-height: 1.5; }
+.careers-openings { padding: 8rem 0; }
+.careers-openings__head { align-items: flex-end; margin-bottom: 3.2rem; }
+.careers-openings__head h2 { margin: 1rem 0 0; color: #142122; font-size: clamp(3.4rem, 4.2vw, 5.4rem); line-height: 1.05; letter-spacing: -.035em; }
+.careers-openings__count { text-align: right; }
+.careers-openings__count span { display: inline-block; padding: .8rem 1.4rem; border-radius: 99rem; background: #dce9e5; color: #24504e; font-size: var(--text-xs); font-weight: 700; }
+.opening-card { display: grid; grid-template-columns: 18rem minmax(0,1fr) auto; gap: 3.2rem; align-items: center; padding: 3.2rem; border: 1px solid #d5ddda; background: white; transition: transform .25s ease, box-shadow .25s ease; }
+.opening-card:hover { transform: translateY(-.3rem); box-shadow: 0 1.8rem 4rem rgba(19,42,41,.09); }
+.opening-card__status { align-self: stretch; padding-right: 2rem; border-right: 1px solid #e0e5e3; color: #31706c; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.opening-card__status span { display: inline-block; width: .8rem; height: .8rem; margin-right: .8rem; border-radius: 50%; background: #0aa09e; }
+.opening-card__main > p { margin: 0 0 .5rem; color: #75817f; font-size: var(--text-xs); }
+.opening-card__main h3 { margin: 0 0 1.6rem; font-size: var(--text-lg); }
+.opening-card__main h3 a { color: #142122; }
+.opening-card__tags { display: flex; flex-wrap: wrap; gap: .8rem; }
+.opening-card__tags span { padding: .5rem 1rem; border: 1px solid #d7ddda; border-radius: 99rem; color: #63706e; font-size: 1.25rem; }
+.opening-card__link { color: #087e7d; font-size: var(--text-sm); font-weight: 700; white-space: nowrap; }
+.careers-note { align-items: center; margin-top: 5rem; padding-top: 4rem; border-top: 1px solid #d4dcda; }
+.careers-note h2 { margin: 0 0 1rem; color: #182525; font-size: var(--text-lg); }
+.careers-note p { margin: 0; color: #687472; font-size: var(--text-sm); }
+.careers-note__action { text-align: right; }
+.careers-note__action a { color: #087e7d; font-weight: 700; }
+.opportunity-back { position: absolute; z-index: 3; top: 10rem; left: 0; width: 100%; }
+.opportunity-back a { color: rgba(255,255,255,.68); font-size: var(--text-sm); }
+.opportunity-back a:hover, .opportunity-back a:focus { color: white; }
+@media screen and (max-width: 1000px) {
+    .careers-openings__count, .careers-note__action { margin-top: 2rem; text-align: left; }
+    .opening-card { grid-template-columns: 1fr; gap: 2rem; }
+    .opening-card__status { padding: 0 0 1.6rem; border-right: 0; border-bottom: 1px solid #e0e5e3; }
+    .opening-card__link { justify-self: start; }
+}
+@media screen and (max-width: 600px) {
+    .careers-hero { padding: 14rem 0 6rem; }
+    .careers-hero h1 { font-size: clamp(4.8rem, 16vw, 6.2rem); }
+    .careers-hero p:last-child { font-size: var(--text-md); }
+    .careers-openings { padding: 6rem 0; }
+    .opening-card { padding: 2.4rem; }
+    .opportunity-back { top: 8.8rem; }
+}
+
 
 
 /* ===================================================================
