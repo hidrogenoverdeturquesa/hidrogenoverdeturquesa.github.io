@@ -1,0 +1,306 @@
+% !TeX encoding = UTF-8
+% Fuente editable del cuadernillo Sistemas de energía del viento y del agua.
+\documentclass{../plantilla/hvtbook}
+
+\HVTTitulo{Sistemas de energía del viento y del agua}
+\HVTSubtitulo{Desarrollo de sistemas eólicos de baja altura e hidráulicos de pequeña escala inspirados en molinos, ruedas y mecanismos tradicionales. Cada solución se dimensiona para una demanda definida mediante memoria territorial, mapas, series históricas, medición en campo, cálculo, pruebas y evaluación ambiental.}
+\HVTNivel{Energía del viento y del agua en Boyacá}
+\HVTSerie{Publicación técnica}
+\HVTNumero{06}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Publicación técnica sobre sistemas eólicos de baja altura e hidráulicos de pequeña escala para servicios locales en Boyacá.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-granja-eolica}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../../images/portfolio/Eolica.jpg}{Figura 1. Recuperar principios tradicionales no significa copiarlos: significa comprenderlos, medirlos y rediseñarlos para el lugar.}
+
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Contenido}{Ruta del proyecto}{La escala nace de la necesidad y del territorio}
+\HVTLead{No se propone una ``granja'' con numerosos equipos. Se diseña uno o el número mínimo de módulos necesarios para prestar un servicio local, siempre que el recurso, la seguridad, el ambiente y el costo lo permitan.}
+\begin{HVTTaskOrdered}{Capítulos}
+  \item Propósito, servicio y escala.
+  \item Memoria territorial y conocimientos locales.
+  \item Cartografía, historia y preselección.
+  \item Campaña de medición en campo.
+  \item Caracterización del viento.
+  \item Caracterización del agua.
+  \item Demanda y arquitectura del sistema.
+  \item Diseño aerodinámico e hidráulico.
+  \item Madera, materiales y ciclo de vida.
+  \item Estructura, fatiga y seguridad.
+  \item Ambiente, comunidad y permisos.
+  \item Prototipo, instrumentación y pruebas.
+  \item Operación, verificación y escalamiento.
+\end{HVTTaskOrdered}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Propósito}{¿Qué servicio debe prestar?}
+\HVTLead{El proyecto comienza por la necesidad: electricidad, bombeo, molienda, aireación, accionamiento mecánico o respaldo de una carga concreta. La fuente y el mecanismo se eligen después.}
+\begin{HVTTable}{Servicio}{Datos mínimos}{Resultado de diseño}
+  \HVTTableRow{Electricidad}{Potencia, energía diaria, horario y calidad requerida}{Generador, electrónica, red o almacenamiento}
+  \HVTTableRow{Bombeo}{Volumen diario, altura, distancia y horario}{Bomba, transmisión y depósito}
+  \HVTTableRow{Acción mecánica}{Par, velocidad y ciclo de trabajo}{Eje, transmisión, carga y protección}
+  \HVTTableRow{Respaldo}{Cargas críticas y autonomía}{Combinación de fuentes y estrategia de operación}
+\end{HVTTable}
+\HVTEquation{E_{demanda}=\sum_i P_i\,t_i\,f_i}{}
+\begin{HVTWarning}{Puerta de decisión 1}
+No se define rotor, rueda, altura ni potencia nominal antes de conocer la demanda horaria y la calidad del servicio que debe garantizarse.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Memoria territorial}{Aprender de los usos históricos}
+\HVTLead{Molinos, ruedas, norias, canales, acequias, bombas y mecanismos rurales contienen conocimiento sobre temporadas, direcciones del viento, crecientes, sequías, mantenimiento y materiales disponibles. Ese conocimiento orienta preguntas y puntos de medición; no sustituye la verificación.}
+\begin{HVTFlow}
+  \HVTFlowItem{1}{Escuchar}{Conversar con habitantes, molineros, agricultores, mayores y usuarios del agua.}
+  \HVTFlowItem{2}{Recorrer}{Ubicar estructuras antiguas, corredores de viento, nacimientos, canales y cambios del paisaje.}
+  \HVTFlowItem{3}{Contrastar}{Comparar relatos, fotografías y calendarios con mapas, estaciones y mediciones actuales.}
+\end{HVTFlow}
+\begin{HVTTask}{Archivo territorial}
+  \item Nombres locales de vientos, corrientes y temporadas.
+  \item Usos tradicionales y servicios que prestaban.
+  \item Fechas de crecientes, sequías, vendavales y daños.
+  \item Cambios de cobertura, cauces, construcciones y obstáculos.
+  \item Personas y comunidades que aportaron el conocimiento.
+\end{HVTTask}
+\begin{HVTWarning}{Reconocimiento}
+La memoria y los saberes se documentan con consentimiento, atribución y respeto por la información que la comunidad decida reservar.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Preselección}{Mapas y series históricas}
+\HVTLead{El Atlas del Viento del IDEAM y el Atlas de Potencial Hidroenergético de la UPME permiten identificar zonas de interés. Son herramientas de preselección; la resolución del mapa no describe necesariamente la turbulencia, el caudal o la altura aprovechable en un punto específico. \HVTCite{1} \HVTCite{2}}
+\begin{HVTTable}{Capa}{Viento}{Agua}
+  \HVTTableRow{Recurso}{Velocidad, dirección, estacionalidad y extremos}{Caudal, nivel, precipitación, sequía y creciente}
+  \HVTTableRow{Terreno}{Elevación, pendiente, rugosidad y obstáculos}{Cuenca, pendiente, cauce, erosión y sedimentos}
+  \HVTTableRow{Ambiente}{Aves, murciélagos, coberturas y áreas sensibles}{Caudal ecológico, peces, conectividad y calidad}
+  \HVTTableRow{Sociedad}{Viviendas, paisaje, ruido, accesos y patrimonio}{Usuarios, acueductos, riego, pesca y sitios culturales}
+  \HVTTableRow{Infraestructura}{Carga, red, caminos y telecomunicaciones}{Tomas existentes, canales, puentes y red}
+\end{HVTTable}
+\begin{HVTWarning}{Puerta de decisión 3}
+Descartar tempranamente lugares con incompatibilidad ambiental, social, jurídica o de seguridad antes de invertir en una campaña extensa.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Instrumentación}{Medir en el terreno}
+\HVTLead{La campaña debe representar la ubicación y altura reales del dispositivo, documentar incertidumbre y relacionarse con series históricas de mayor duración. Las guías técnicas prefieren datos medidos en sitio para sistemas eólicos pequeños y prácticas hidrológicas trazables. \HVTCite{3} \HVTCite{4}}
+\begin{HVTTable}{Recurso}{Instrumentos mínimos}{Datos complementarios}
+  \HVTTableRow{Viento}{Anemómetro, veleta, registrador y soportes nivelados}{Temperatura, presión, segundo nivel de medición y sensor de control}
+  \HVTTableRow{Agua}{Regla limnimétrica o nivel, método de velocidad y levantamiento de desnivel}{Pluviómetro, presión, temperatura, turbidez, conductividad y sedimentos}
+  \HVTTableRow{Terreno}{GNSS, nivel topográfico, distanciómetro y registro fotográfico}{Dron o estación total cuando el alcance y permisos lo justifiquen}
+  \HVTTableRow{Demanda}{Medidor de energía, potencia o caudal según el servicio}{Registro horario de uso, fallas y estacionalidad}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Instrumentación}{Control de calidad}
+\begin{HVTTask}{Control de calidad}
+  \item Identificación, modelo, serie, rango y certificado de calibración.
+  \item Coordenadas, altura, orientación, obstáculos y fotografías.
+  \item Intervalo de muestreo, reloj sincronizado y respaldo.
+  \item Inspecciones, limpieza, cambios de sensor y datos faltantes.
+  \item Reglas documentadas de validación y estimación de incertidumbre.
+\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Viento}{Distribución, dirección y turbulencia}
+\HVTLead{Una velocidad media no basta. El equipo de baja altura trabaja dentro de una capa muy influida por árboles, edificaciones, relieve y cambios de rugosidad; deben estudiarse distribución, dirección, ráfagas, cizalladura y turbulencia.}
+\HVTEquation{P_{viento}=\frac{1}{2}\,\rho\,A\,v^3}{}
+\HVTEquation{P_{rotor}=\frac{1}{2}\,\rho\,A\,v^3\,C_p}{}
+\HVTEquation{I_t=\frac{\sigma_v}{\bar{v}}}{}
+\HVTText{La intensidad de turbulencia relaciona la desviación estándar con la velocidad media en un intervalo definido. Debido a la dependencia cúbica de la potencia disponible, los cálculos energéticos deben integrar la distribución de velocidades y la curva medida o validada del rotor.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Viento}{Productos del estudio}
+\begin{HVTTask}{Productos del estudio}
+  \item Rosa de frecuencias y rosa energética por temporada.
+  \item Distribución de velocidad, calmas y eventos extremos.
+  \item Turbulencia y cizalladura entre alturas medidas.
+  \item Mapa de obstáculos y zonas de recirculación.
+  \item Estimación de energía con pérdidas e incertidumbre.
+\end{HVTTask}
+\begin{HVTWarning}{Baja altura}
+Es una condición de diseño, no una garantía de buen desempeño. El equipo solo se selecciona si la medición demuestra que el recurso útil y las cargas turbulentas son compatibles con la demanda y la vida estructural.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Agua}{Caudal, altura neta y temporadas}
+\HVTLead{La potencia hidráulica depende simultáneamente del caudal aprovechable y de la altura neta. Ambos cambian con la temporada, los usos aguas arriba y las pérdidas del sistema.}
+\HVTEquation{P_{hid}=\rho\,g\,Q\,H_{neta}\,\eta_{total}}{}
+\HVTEquation{H_{\text{neta}}=H_{\text{bruta}}-h_{\text{pérdidas}}}{}
+\begin{HVTTable}{Variable}{Método}{Precaución}
+  \HVTTableRow{Caudal $Q$}{Área--velocidad, estructura aforadora o instrumento acústico según sitio}{Medir varias condiciones y documentar incertidumbre}
+  \HVTTableRow{Altura}{Nivelación topográfica o presión corregida}{No confundir desnivel geométrico con altura neta}
+  \HVTTableRow{Pérdidas}{Longitud, diámetro, rugosidad, accesorios y velocidad}{Incluir toma, conducción, transmisión y descarga}
+  \HVTTableRow{Variación}{Curva de duración de caudales y serie histórica}{Proteger caudal ambiental y derechos de otros usuarios}
+  \HVTTableRow{Sedimentos}{Observación y muestreo por temporada}{Abrasión, obstrucción y mantenimiento}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Agua}{Criterio de selección del caudal}
+\begin{HVTWarning}{Puerta de decisión 6}
+El caudal de diseño no es el máximo observado. Se selecciona considerando disponibilidad temporal, concesión, caudal ecológico, otros usuarios, crecientes, sequías y continuidad del servicio.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Arquitectura}{Viento, agua o sistema combinado}
+\HVTLead{Las dos fuentes no tienen que instalarse juntas. Se comparan por separado y solo se integran cuando sus perfiles se complementan y el servicio justifica la complejidad.}
+\HVTEquation{E_{\text{balance}}(t)=E_{\text{viento}}(t)+E_{\text{agua}}(t)+E_{\text{otra}}(t)-E_{\text{demanda}}(t)-E_{\text{pérdidas}}(t)}{}
+\begin{HVTTable}{Alternativa}{Aplicación posible}{Condición}
+  \HVTTableRow{Mecánica directa}{Bombeo, molienda o aireación}{Velocidad y par compatibles con la carga}
+  \HVTTableRow{Eléctrica aislada}{Cargas locales y almacenamiento}{Balance horario, protecciones y autonomía}
+  \HVTTableRow{Conectada}{Autoconsumo e intercambio}{Estudio eléctrico y requisitos del operador}
+  \HVTTableRow{Híbrida}{Continuidad con fuentes complementarias}{Control coordinado y beneficio demostrado}
+\end{HVTTable}
+\begin{HVTWarning}{Puerta de decisión 7}
+Se selecciona el sistema de menor complejidad capaz de cumplir la demanda. Añadir fuentes, baterías o electrónica sin necesidad comprobada aumenta materiales, fallas y mantenimiento.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 8}{Conversión}{Rotor, rueda y transmisión}
+\HVTLead{Los principios tradicionales se traducen en geometrías verificables. El diseño relaciona fuerza, par, velocidad de rotación y rendimiento con la carga que debe accionarse.}
+\HVTEquation{P_{eje}=T\,\omega}{}
+\HVTEquation{\lambda=\frac{\omega R}{v}}{}
+\HVTText{$T$ es el par, $\omega$ la velocidad angular y $\lambda$ la relación de velocidad de punta para el rotor eólico. En el sistema hidráulico se selecciona rueda o turbina según caudal, altura, velocidad, sedimentos y protección de fauna.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 8}{Conversión}{Validación de subsistemas}
+\begin{HVTTable}{Subsistema}{Variables}{Validación}
+  \HVTTableRow{Captador}{Geometría, área, ángulo, velocidad y cargas}{Modelo, simulación y ensayo}
+  \HVTTableRow{Eje y apoyos}{Par, flexión, velocidad crítica y rodamientos}{Cálculo y prueba térmica/vibratoria}
+  \HVTTableRow{Transmisión}{Relación, pérdidas, alineación y protección}{Rendimiento y desgaste}
+  \HVTTableRow{Generador o carga}{Curva par--velocidad y potencia}{Acoplamiento en todo el rango}
+  \HVTTableRow{Control}{Arranque, parada, sobrevelocidad y carga de desvío}{Prueba de fallas seguras}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 9}{Materiales}{Reducir plásticos con criterio de ciclo de vida}
+\HVTLead{Las aspas convencionales suelen emplear compuestos reforzados difíciles de reciclar. El proyecto estudia madera seleccionada y protegida para componentes de escala pequeña, buscando reducir materiales plásticos y facilitar reparación y fin de vida. La ventaja debe demostrarse por servicio prestado, no solo por masa de material. \HVTCite{5}}
+\begin{HVTTable}{Criterio}{Madera y protección}{Verificación}
+  \HVTTableRow{Procedencia}{Especie identificada y origen legal/trazable}{Densidad, dirección de fibra, defectos y humedad}
+  \HVTTableRow{Durabilidad}{Tratamiento compatible con exposición y uso}{Retención, penetración, sellado y mantenimiento}
+  \HVTTableRow{Estructura}{Laminación, uniones y orientación de fibras}{Resistencia, rigidez, balance y variabilidad}
+  \HVTTableRow{Ambiente}{Menor contenido plástico cuando sea viable}{Toxicidad del preservante, emisiones y fin de vida}
+  \HVTTableRow{Reparación}{Piezas inspeccionables y reemplazables}{Procedimiento y disponibilidad local}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 9}{Materiales}{Impacto y precisión técnica}
+\HVTEquation{I_{\text{ciclo de vida}}=\sum\left(I_{\text{materia}}+I_{\text{fabricación}}+I_{\text{transporte}}+I_{\text{uso}}+I_{\text{fin de vida}}\right)}{}
+\begin{HVTWarning}{Precisión técnica}
+El tratamiento de la madera ayuda a controlar humedad, hongos o insectos según el sistema empleado; no elimina la fatiga mecánica. Adhesivos, recubrimientos y preservantes también deben incluirse en la evaluación ambiental.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 10}{Integridad}{Cargas, fatiga y estados de falla}
+\HVTLead{La baja altura no elimina ráfagas, turbulencia, crecientes, objetos transportados por el agua ni cargas cíclicas. La filosofía de diseño para pequeñas turbinas exige integridad de todos los subsistemas, instalación, mantenimiento y operación. \HVTCite{6}}
+\HVTEquation{\sigma_{\text{flexión}}=\frac{M\,c}{I}}{}
+\HVTEquation{D_{fatiga}=\sum_i\frac{n_i}{N_i}}{}
+\HVTText{La suma de daño de Miner es una aproximación que requiere espectro de cargas y curvas de fatiga válidas para el material, uniones, humedad y fabricación reales. No reemplaza ensayos ni factores de seguridad normativos.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 10}{Integridad}{Casos de carga y seguridad}
+\begin{HVTTask}{Casos de carga}
+  \item Operación normal, arranque, parada y pérdida de carga.
+  \item Ráfaga, cambio de dirección, sobrevelocidad y tormenta.
+  \item Desbalance, vibración, frenado y fallo de control.
+  \item Creciente, sedimentos, residuos flotantes y obstrucción.
+  \item Fatiga de aspas, eje, uniones, torre, rueda y cimentación.
+  \item Transporte, montaje, mantenimiento e intervención humana.
+\end{HVTTask}
+\begin{HVTWarning}{Puerta de decisión 10}
+Ningún prototipo opera cerca de personas, animales, viviendas o cauces sin protecciones, distancias, parada segura, análisis de riesgos y pruebas estructurales proporcionales al peligro.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 11}{Territorio}{Ambiente, comunidad y permisos}
+\HVTLead{Un sistema pequeño puede producir impactos relevantes si ocupa un cauce, altera el flujo, afecta fauna, introduce ruido o cambia el paisaje. En Colombia, el uso del agua y las obras en cauce pueden requerir concesión y permiso ante la autoridad ambiental competente. \HVTCite{7} \HVTCite{8}}
+\begin{HVTTable}{Componente}{Evaluación}{Medida}
+  \HVTTableRow{Agua}{Caudal ecológico, conectividad, sedimentos y calidad}{Evitar barreras, garantizar flujo y diseñar toma/retorno}
+  \HVTTableRow{Fauna}{Aves, murciélagos, peces y otras especies}{Microlocalización, velocidad, rejillas y parada cuando aplique}
+  \HVTTableRow{Personas}{Ruido, sombra, seguridad, acceso y paisaje}{Acuerdos, distancias, cerramiento y señalización}
+  \HVTTableRow{Patrimonio}{Estructuras antiguas, caminos y lugares significativos}{Conservar, documentar y acordar intervención}
+  \HVTTableRow{Derechos}{Propiedad, agua, servidumbres y usos productivos}{Consentimiento, permisos y reglas de reparto}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 11}{Territorio}{Autorizaciones}
+\begin{HVTWarning}{Puerta de decisión 11}
+Disponer de viento o agua en un predio no equivale a tener autorización para aprovecharlos o construir. Se verifica ordenamiento, autoridad competente, red eléctrica, aviación y demás requisitos aplicables.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 12}{Prototipo}{Construir para medir y aprender}
+\HVTLead{El prototipo instrumentado debe demostrar conversión, estabilidad, seguridad, durabilidad y facilidad de mantenimiento antes de replicarse.}
+\begin{HVTFlow}
+  \HVTFlowItem{1}{Banco}{Probar material, uniones, transmisión, generador, freno y control sin exposición pública.}
+  \HVTFlowItem{2}{Campo controlado}{Operar con límites conservadores, instrumentación y exclusión física.}
+  \HVTFlowItem{3}{Validación}{Comparar energía y servicio medidos con el modelo y revisar fallas.}
+\end{HVTFlow}
+\begin{HVTTable}{Medición}{Viento}{Agua}
+  \HVTTableRow{Entrada}{Velocidad, dirección, densidad y turbulencia}{Caudal, niveles, altura neta y sedimentos}
+  \HVTTableRow{Mecánica}{rpm, par, vibración, deformación y temperatura}{rpm, par, vibración, presión y temperatura}
+  \HVTTableRow{Salida}{Potencia, energía, tensión, corriente o servicio mecánico}{Potencia, energía, tensión, corriente o servicio mecánico}
+  \HVTTableRow{Estado}{Humedad de madera, fisuras, uniones y recubrimiento}{Desgaste, corrosión, obstrucción, madera y apoyos}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 12}{Prototipo}{Eficiencia medida}
+\HVTEquation{\eta_{\text{medida}}=\frac{P_{\text{útil medida}}}{P_{\text{recurso medida}}}}{}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 13}{Desempeño}{Operar, verificar y escalar}
+\HVTLead{La aceptación se basa en el servicio entregado durante temporadas representativas, no en la potencia máxima observada. El número de módulos se decide después de validar uno.}
+\HVTEquation{FC=\frac{E_{real}}{P_{nominal}\,\Delta t}}{}
+\HVTEquation{Disponibilidad=\frac{t_{operable}}{t_{requerido}}}{}
+\begin{HVTTable}{Indicador}{Unidad}{Decisión}
+  \HVTTableRow{Servicio cubierto}{\% de energía, agua o trabajo requerido}{Cumplimiento de la necesidad}
+  \HVTTableRow{Energía neta}{kWh por periodo}{Comparación con modelo}
+  \HVTTableRow{Disponibilidad}{\%}{Confiabilidad}
+  \HVTTableRow{Mantenimiento}{horas y costo}{Operabilidad local}
+  \HVTTableRow{Materiales}{kg por componente y reposición}{Circularidad y fin de vida}
+  \HVTTableRow{Incidentes}{número, causa y cierre}{Mejora de seguridad}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 13}{Desempeño}{Entregable integral}
+\begin{HVTTask}{Entregable integral}
+  \item Memoria territorial, mapas y restricciones.
+  \item Base de datos y reporte de campaña de medición.
+  \item Curvas de recurso, demanda y energía esperada.
+  \item Planos, cálculos, materiales y evaluación de ciclo de vida.
+  \item Análisis de riesgos, permisos y plan ambiental.
+  \item Protocolo de fabricación, pruebas y control de calidad.
+  \item Manual de operación, mantenimiento y fin de vida.
+  \item Informe de validación y criterio de replicación.
+\end{HVTTask}
+\begin{HVTWarning}{Escalamiento responsable}
+Se añade capacidad solo cuando la medición confirma una demanda no cubierta, recurso suficiente y ausencia de impactos inaceptables. El objetivo no es multiplicar equipos, sino resolver el servicio con la menor intervención necesaria.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Base técnica}{Referencias consultadas}
+\begin{HVTReferences}
+  \HVTReference{IDEAM. \emph{Meteorología y Atlas del Viento de Colombia}}{https://ideam.gov.co/nuestra-entidad/meteorologia}
+  \HVTReference{UPME. \emph{Atlas del Potencial Hidroenergético de Colombia}}{https://www.upme.gov.co/simec/energia-electrica/generacion-de-energia-electrica/mapas-de-potencial-hidroenergetico-en-colombia/}
+  \HVTReference{U.S. Department of Energy, WINDExchange. \emph{Small Wind Guidebook}}{https://www.energy.gov/cmei/systems/windexchange/small-wind-guidebook}
+  \HVTReference{Organización Meteorológica Mundial. \emph{Guide to Hydrological Practices}}{https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications}
+\end{HVTReferences}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Base técnica}{Referencias consultadas}
+\begin{HVTReferences}
+  \HVTReference{Cooperman, A., Eberle, A. y Lantz, E. (2021). \emph{Wind turbine blade material in the United States: quantities, costs, and end-of-life options}. Resources, Conservation and Recycling, 168}{https://doi.org/10.1016/j.resconrec.2020.105439}
+  \HVTReference{International Electrotechnical Commission. \emph{IEC 61400-2:2013 --- Small wind turbines}}{https://webstore.iec.ch/en/publication/5433}
+  \HVTReference{Ministerio de Ambiente y Desarrollo Sostenible. \emph{Uso y aprovechamiento del agua}}{https://hac2-api.minambiente.gov.co/index.php/gestion-integral-del-recurso-hidrico/administracion-del-recurso-hidrico/demanda/uso-y-aprovechamiento-del-agua}
+  \HVTReference{ANLA. \emph{Permiso de ocupación de cauces, playas y lechos}}{https://www.anla.gov.co/01_anla/index.php/allcategories-es-es/244-tramites-y-servicios/tramites/permisos-y-autorizaciones/construccion-obras-cauce-o-deposito-agua}
+\end{HVTReferences}
+\HVTText{Las ecuaciones orientan la ingeniería conceptual. Los coeficientes, propiedades de la madera, tratamientos, cargas, eficiencias y factores de seguridad deben provenir de la documentación del prototipo, ensayos, normas vigentes y condiciones medidas en cada sitio.}
+\HVTText{Esta publicación contiene únicamente información autorizada para divulgación pública. Los resultados detallados, datos operativos, análisis económicos y demás información estratégica del proyecto son confidenciales.}
+\end{HVTPage}
+
+\begin{HVTPage}{Colaboración}{Conversemos}{¿Necesitas investigar, formular o evaluar un proyecto relacionado?}
+\HVTLead{Conversemos sobre tu necesidad de medición, diseño o evaluación de sistemas de energía del viento o del agua.}
+\HVTContact{Consultar proyecto eólico o hidráulico por WhatsApp}{https://wa.me/573209574884}
+\end{HVTPage}
+
+\end{document}

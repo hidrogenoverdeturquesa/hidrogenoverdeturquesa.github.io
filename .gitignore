@@ -9,3 +9,10 @@ Pueblito boyacense/
 
 # Propuesta comercial privada: no publicar en el repositorio.
 docs/PROPUESTA_HIDROPESO.md
+
+# Archivos auxiliares generados al compilar los cuadernillos LaTeX.
+cuadernillos/temporales/
+*.aux
+*.log
+*.out
+*.synctex.gz
