@@ -820,11 +820,11 @@
         if (LAB_ENABLED && !document.querySelector('script[data-hvt-lab]')) {
             const labStyle = document.createElement('link');
             labStyle.rel = 'stylesheet';
-            labStyle.href = '/css/laboratorio.css?v=20260816c';
+            labStyle.href = '/css/laboratorio.css?v=20260816d';
             document.head.appendChild(labStyle);
 
             const labScript = document.createElement('script');
-            labScript.src = '/js/laboratorio.js?v=20260816c';
+            labScript.src = '/js/laboratorio.js?v=20260816d';
             labScript.dataset.hvtLab = 'true';
             document.body.appendChild(labScript);
         }
