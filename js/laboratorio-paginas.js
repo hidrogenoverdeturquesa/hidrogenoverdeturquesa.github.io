@@ -41,6 +41,64 @@
         return values;
     }
 
+    const discoveryForm = document.querySelector('[data-lab-discovery-form]');
+    if (discoveryForm) {
+        const discoveryQuery = discoveryForm.querySelector('[data-lab-discovery-query]');
+        const discoveryStatus = discoveryForm.querySelector('[data-lab-discovery-status]');
+        const routes = [
+            {
+                words:['experimento','experimental','ensayo','prueba','factor','replica','aleator','doe','anova'],
+                url:'/laboratorio/diseno-experimentos/'
+            },
+            {
+                words:['fuente','articulo','evidencia','doi','paper','publicacion','cientific','bibliografia','referencia'],
+                url:'/laboratorio/fuentes-cientificas/'
+            },
+            {
+                words:['hidrogen','solar','fotovolta','panel','electrol','produccion','energia','kwp','costo','emision','agua'],
+                url:'/laboratorio/calculadora-hidrogeno-verde/'
+            }
+        ];
+
+        function normalized(value) {
+            return value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        discoveryForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const query = normalized(discoveryQuery.value.trim());
+            if (!query) {
+                discoveryStatus.textContent = 'Escribe una necesidad o selecciona uno de los ejemplos.';
+                discoveryStatus.hidden = false;
+                discoveryQuery.focus();
+                return;
+            }
+            const route = routes.find(function (candidate) {
+                return candidate.words.some(function (word) { return query.indexOf(word) !== -1; });
+            });
+            if (route) {
+                window.location.assign(route.url);
+                return;
+            }
+            discoveryStatus.innerHTML = 'Todavía no existe un módulo validado para esa consulta. Revisa las herramientas disponibles o <a href="/#contact">cuéntanos qué necesitas desarrollar</a>.';
+            discoveryStatus.hidden = false;
+            document.querySelector('#herramientas').scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+
+        discoveryForm.querySelectorAll('[data-lab-example]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                discoveryQuery.value = button.getAttribute('data-lab-example');
+                discoveryForm.requestSubmit();
+            });
+        });
+
+        const randomButton = discoveryForm.querySelector('[data-lab-random]');
+        randomButton.addEventListener('click', function () {
+            const options = routes.map(function (route) { return route.url; });
+            window.location.assign(options[Math.floor(Math.random() * options.length)]);
+        });
+    }
+
     const solarForm = document.querySelector('[data-hvt-solar-form]');
     if (solarForm) {
         let latestSolar = null;

@@ -41,7 +41,7 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816b">
+    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816c">
     <link rel="stylesheet" href="/css/mentor.css?v=20260719b">
 </head>
 <body class="lab-public">
@@ -60,15 +60,79 @@
     </header>
 
     <main>
-        <section class="lab-hero">
-            <div class="lab-container lab-hero__grid">
-                <div>
-                    <p class="lab-kicker">Laboratorio HVT · Acceso gratuito</p>
-                    <h1>De una pregunta técnica a un escenario que puedes revisar</h1>
-                    <p class="lab-hero__lead">Calcula, compara y diseña pruebas reales con fórmulas visibles, datos editables, exportación de resultados y fuentes científicas identificadas.</p>
-                    <div class="lab-actions"><a class="lab-button" href="/laboratorio/calculadora-hidrogeno-verde/">Calcular hidrógeno verde</a><a class="lab-button lab-button--outline" href="/laboratorio/diseno-experimentos/">Diseñar un experimento</a></div>
+        <section class="lab-hub">
+            <div class="lab-container">
+                <header class="lab-hub__intro">
+                    <p class="lab-hub__origin">Ingeniería abierta para decisiones sostenibles</p>
+                    <div class="lab-hub__identity" aria-label="Laboratorio HVT">
+                        <span class="lab-hub__flask" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" role="img"><path d="M18 5h12M21 5v11L10 36a5 5 0 0 0 4.4 7h19.2a5 5 0 0 0 4.4-7L27 16V5M15 32h18M18 37h12"/><path class="lab-hub__liquid" d="M14 35c4-2 7 2 11 0s6 1 9 0"/></svg>
+                        </span>
+                        <span><strong>LABORATORIO</strong><b>HVT</b></span>
+                    </div>
+                    <h1>¿Qué quieres calcular, comparar o diseñar?</h1>
+                    <p>Describe tu necesidad con palabras normales. El laboratorio te llevará a una herramienta verificable, sus fórmulas o la evidencia que la respalda.</p>
+                </header>
+
+                <form class="lab-discovery" data-lab-discovery-form action="/laboratorio/" role="search">
+                    <label class="lab-sr" for="lab-discovery-query">Consulta técnica</label>
+                    <div class="lab-discovery__field">
+                        <span class="lab-discovery__search" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+                        </span>
+                        <input id="lab-discovery-query" name="consulta" type="search" autocomplete="off" placeholder="Ejemplo: tengo 12 kWp solares y quiero estimar cuántos kg de H₂ puedo producir" data-lab-discovery-query>
+                        <button type="submit" aria-label="Buscar herramienta"><span>Orientarme</span><b aria-hidden="true">→</b></button>
+                    </div>
+                    <div class="lab-discovery__bar">
+                        <span class="lab-discovery__mode"><i aria-hidden="true">✦</i> Consulta técnica</span>
+                        <a href="#herramientas">Todas las herramientas</a>
+                        <a href="/laboratorio/fuentes-cientificas/">Fuentes</a>
+                        <button type="button" data-lab-random>Explorar una herramienta</button>
+                    </div>
+                    <div class="lab-discovery__examples" aria-label="Consultas de ejemplo">
+                        <span>Prueba un ejemplo:</span>
+                        <button type="button" data-lab-example="Tengo 12 kWp solares y quiero calcular producción de hidrógeno">12 kWp → H₂</button>
+                        <button type="button" data-lab-example="Quiero diseñar un experimento con tres factores y réplicas">Diseñar una prueba</button>
+                        <button type="button" data-lab-example="Necesito verificar artículos científicos y DOI">Verificar evidencia</button>
+                    </div>
+                    <p class="lab-discovery__status" data-lab-discovery-status aria-live="polite" hidden></p>
+                </form>
+
+                <p class="lab-hub__promise">Respuestas preliminares con <em>modelos visibles, datos editables y límites explícitos</em></p>
+
+                <div class="lab-directory" id="herramientas">
+                    <section class="lab-directory__group">
+                        <h2>Energía e hidrógeno</h2>
+                        <a class="lab-directory__item" href="/laboratorio/calculadora-hidrogeno-verde/#calculadora"><span class="lab-directory__icon">H₂</span><span><strong>Producción solar → H₂</strong><small>Calculadora activa</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/calculadora-hidrogeno-verde/?pv=12&amp;hsp=4.8&amp;pr=0.78&amp;electrolyzer=10&amp;hours=8&amp;specific=54&amp;water=10&amp;days=330"><span class="lab-directory__icon">±</span><span><strong>Escenarios y sensibilidad</strong><small>Conservador · esperado · favorable</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/calculadora-hidrogeno-verde/#metodo"><span class="lab-directory__icon">Σ</span><span><strong>Fórmulas y supuestos</strong><small>Balance energético transparente</small></span></a>
+                        <div class="lab-directory__item is-pending" aria-disabled="true"><span class="lab-directory__icon">BOP</span><span><strong>Balance de planta</strong><small>En desarrollo</small></span></div>
+                    </section>
+
+                    <section class="lab-directory__group">
+                        <h2>Experimentación</h2>
+                        <a class="lab-directory__item" href="/laboratorio/diseno-experimentos/#planificador"><span class="lab-directory__icon">2ᵏ</span><span><strong>Diseño factorial</strong><small>Hasta tres factores</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/diseno-experimentos/?experiment=Prueba%20HVT&amp;response=Produccion%20de%20H2&amp;responseUnit=kg%2Fh&amp;factorName1=Potencia&amp;factorLow1=40&amp;factorHigh1=80&amp;factorUnit1=%25&amp;repetitions=3&amp;seed=2026"><span class="lab-directory__icon">↝</span><span><strong>Réplicas y aleatorización</strong><small>Matriz reproducible</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/diseno-experimentos/#principios"><span class="lab-directory__icon">R</span><span><strong>Principios reproducibles</strong><small>Factores · respuestas · trazabilidad</small></span></a>
+                        <div class="lab-directory__item is-pending" aria-disabled="true"><span class="lab-directory__icon">AN</span><span><strong>ANOVA y optimización</strong><small>En desarrollo</small></span></div>
+                    </section>
+
+                    <section class="lab-directory__group">
+                        <h2>Evidencia científica</h2>
+                        <a class="lab-directory__item" href="/laboratorio/fuentes-cientificas/#articulos"><span class="lab-directory__icon">DOI</span><span><strong>Artículos verificados</strong><small>Identidad y alcance comprobables</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/fuentes-cientificas/#articulos"><span class="lab-directory__icon">PEM</span><span><strong>Modelación de electrólisis</strong><small>Modelo y validación experimental</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/fuentes-cientificas/#articulos"><span class="lab-directory__icon">Δt</span><span><strong>Dimensionamiento dinámico</strong><small>Producción · operación · costo</small></span></a>
+                        <div class="lab-directory__item is-pending" aria-disabled="true"><span class="lab-directory__icon">+</span><span><strong>Biblioteca ampliada</strong><small>En desarrollo</small></span></div>
+                    </section>
+
+                    <section class="lab-directory__group">
+                        <h2>Del cálculo al proyecto</h2>
+                        <a class="lab-directory__item" href="/laboratorio/calculadora-hidrogeno-verde/"><span class="lab-directory__icon">↓</span><span><strong>Guardar un escenario</strong><small>URL y archivo JSON</small></span></a>
+                        <a class="lab-directory__item" href="/laboratorio/diseno-experimentos/"><span class="lab-directory__icon">CSV</span><span><strong>Exportar corridas</strong><small>Matriz lista para registrar datos</small></span></a>
+                        <a class="lab-directory__item" href="/proyecto-planta-hidrogeno"><span class="lab-directory__icon">HVT</span><span><strong>Proyecto de planta H₂</strong><small>Aplicación y desarrollo</small></span></a>
+                        <a class="lab-directory__item" href="/#contact"><span class="lab-directory__icon">↗</span><span><strong>Revisión técnica</strong><small>Convertir supuestos en datos reales</small></span></a>
+                    </section>
                 </div>
-                <aside class="lab-hero__proof"><strong>No es una caja negra</strong><p>Cada resultado explica sus supuestos y límites. Tus datos se procesan localmente en el navegador y no se envían a HVT.</p></aside>
             </div>
         </section>
 
@@ -78,17 +142,6 @@
             <div><strong>3 DOI</strong><span>Fuentes científicas verificadas</span></div>
             <div><strong>Datos locales</strong><span>Sin registro ni envío de información</span></div>
         </div></section>
-
-        <section class="lab-section">
-            <div class="lab-container">
-                <header class="lab-section__head"><p class="lab-kicker">Herramientas disponibles</p><h2>Empieza por la decisión que necesitas tomar</h2><p>No acumulamos calculadoras sin propósito. Cada módulo responde una pregunta concreta y declara cuándo necesitas una revisión de ingeniería.</p></header>
-                <div class="lab-tool-grid">
-                    <article class="lab-tool-card"><span class="lab-tool-card__number">01</span><h2>Producción de hidrógeno verde</h2><p>Compara cuántos kilogramos de H₂ pueden producir un sistema fotovoltaico y un electrolizador bajo tres escenarios.</p><a class="lab-button" href="/laboratorio/calculadora-hidrogeno-verde/">Abrir calculadora</a></article>
-                    <article class="lab-tool-card"><span class="lab-tool-card__number">02</span><h2>Diseño de experimentos reales</h2><p>Convierte factores y niveles en un plan factorial aleatorizado, listo para documentar mediciones y revisión técnica.</p><a class="lab-button" href="/laboratorio/diseno-experimentos/">Crear plan DoE</a></article>
-                    <article class="lab-tool-card"><span class="lab-tool-card__number">03</span><h2>Fuentes científicas</h2><p>Consulta las publicaciones que orientan los modelos de electrólisis, dimensionamiento dinámico y optimización experimental.</p><a class="lab-button" href="/laboratorio/fuentes-cientificas/">Revisar evidencia</a></article>
-                </div>
-            </div>
-        </section>
 
         <section class="lab-section lab-section--white">
             <div class="lab-container">
@@ -117,6 +170,7 @@
     </main>
 
     <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Duitama, Boyacá, Colombia · NIT 901843838-0</p><p>Herramientas educativas con revisión técnica responsable.</p></div><nav aria-label="Enlaces legales"><a href="/politica-tratamiento-datos">Política de datos</a><a href="/aviso-privacidad">Privacidad</a><a href="/terminos-condiciones">Términos</a></nav></div></footer>
+    <script src="/js/laboratorio-paginas.js?v=20260816c"></script>
     <script src="/js/mentor.js?v=url-limpia-20260726"></script>
 </body>
 </html>
