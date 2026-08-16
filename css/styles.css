@@ -4145,11 +4145,11 @@ body.search-is-visible {
 .application-status.is-success { border-left: .4rem solid var(--color-1); background: rgba(8,158,157,.15); }
 
 /* Versión compacta de la convocatoria */
-.volunteer-hero { min-height: 56rem; padding-top: 15rem; padding-bottom: 6rem; }
+.volunteer-hero { min-height: 50rem; padding-top: 13rem; padding-bottom: 5rem; }
 .volunteer-hero h1 { margin-bottom: 2rem; font-size: clamp(5.2rem, 6vw, 8rem); }
 .volunteer-hero__actions { margin-top: 2.6rem; }
 .volunteer-hero__summary { padding: 2.4rem; }
-.volunteer-intro, .volunteer-process, .volunteer-terms { padding-top: 6rem; padding-bottom: 6rem; }
+.volunteer-intro, .volunteer-process, .volunteer-terms { padding-top: 4.5rem; padding-bottom: 4.5rem; }
 .volunteer-intro h2, .volunteer-process h2, .volunteer-terms h2 { font-size: clamp(3.4rem, 3.5vw, 5rem); }
 .volunteer-process__grid { margin-top: 3rem; }
 .volunteer-process__grid article { padding: 2rem; }
@@ -4161,6 +4161,14 @@ body.search-is-visible {
 .volunteer-apply { padding: 5rem 0; }
 .volunteer-application-form { gap: 1.4rem; padding: 2.4rem; }
 .application-file { min-height: 6rem; }
+.volunteer-terms-card { display: block; margin-top: 2.4rem; }
+.volunteer-terms-card summary { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 2rem 2.4rem; border: 1px solid #cad3d0; background: white; color: #122021; cursor: pointer; list-style: none; }
+.volunteer-terms-card summary::-webkit-details-marker { display: none; }
+.volunteer-terms-card summary span { display: flex; flex-direction: column; gap: .3rem; }
+.volunteer-terms-card summary small { color: #647170; font-weight: 400; }
+.volunteer-terms-card summary i { color: #078c8c; font-size: 3rem; font-style: normal; line-height: 1; transition: transform .2s ease; }
+.volunteer-terms-card[open] summary i { transform: rotate(45deg); }
+.volunteer-terms-card .volunteer-terms__grid { width: 100%; }
 .volunteer-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
