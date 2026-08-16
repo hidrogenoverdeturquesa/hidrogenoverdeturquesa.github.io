@@ -3428,11 +3428,13 @@ input::-moz-focus-inner {
 }
 
 .s-header .row {
+    max-width: none;
     min-height: var(--header-height);
     -ms-flex-pack: center;
     -webkit-box-pack: center;
     justify-content: center;
     padding: 0 calc(var(--gutter-lg) + 1.2rem);
+    flex-wrap: nowrap;
     position: relative;
 }
 
@@ -3475,6 +3477,7 @@ input::-moz-focus-inner {
     --logo-height: 40px;
     height: var(--header-height);
     width: var(--logo-width);
+    flex: 0 0 var(--logo-width);
     margin-right: 4rem;
     position: relative;
 }
@@ -3511,6 +3514,7 @@ input::-moz-focus-inner {
     font-weight: 600;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
 }
 
 .s-header__nav ul {
@@ -3821,6 +3825,24 @@ body.search-is-visible {
     }
     .s-header__nav a {
         padding: 0 9px;
+    }
+}
+
+@media screen and (min-width: 1381px) and (max-width: 1600px) {
+    .s-header .row {
+        padding-right: 2.4rem;
+        padding-left: 2.4rem;
+    }
+    .s-header__logo {
+        --logo-width: 135px;
+        margin-right: 2rem;
+    }
+    .s-header__nav {
+        font-size: 1.25rem;
+    }
+    .s-header__nav a {
+        padding-right: 7px;
+        padding-left: 7px;
     }
 }
 
