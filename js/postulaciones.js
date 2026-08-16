@@ -67,7 +67,13 @@
             showStatus('Postulación enviada correctamente. Tu número de referencia es ' + application.reference + '.', false);
         } catch (error) {
             console.error('Postulación: fallo en ' + stage, error);
-            showStatus('No pudimos completar la ' + stage + '. Intenta nuevamente. Si continúa, escríbenos a contacto@hidrogenoverdeturquesa.com.', true);
+            let message = 'No pudimos completar la ' + stage + '. Intenta nuevamente.';
+            if (stage === 'registro de los datos' && error.status === 400) {
+                message = 'Revisa los campos: nombre completo (mínimo 3 caracteres), disponibilidad (mínimo 2) y explicación (mínimo 20).';
+            } else if (error.status === 429) {
+                message = 'Se realizaron varios intentos seguidos. Espera unos minutos y vuelve a intentarlo.';
+            }
+            showStatus(message + ' Si continúa, escríbenos a contacto@hidrogenoverdeturquesa.com.', true);
             submit.disabled = false;
             submit.textContent = 'Enviar postulación';
         }
