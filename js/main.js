@@ -820,7 +820,7 @@
         if (LAB_ENABLED && !document.querySelector('script[data-hvt-lab]')) {
             const labStyle = document.createElement('link');
             labStyle.rel = 'stylesheet';
-            labStyle.href = '/css/laboratorio.css?v=20260816d';
+            labStyle.href = '/css/laboratorio.css?v=20260816e';
             document.head.appendChild(labStyle);
 
             const labScript = document.createElement('script');
