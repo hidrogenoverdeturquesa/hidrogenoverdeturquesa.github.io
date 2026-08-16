@@ -2661,10 +2661,10 @@ input[type="button"] {
     --btn-height: var(--vspace-btn);
     display: inline-block;
     font-family: var(--font-1);
-    font-weight: 700;
+    font-weight: 600;
     font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: .4em;
+    text-transform: none;
+    letter-spacing: .05em;
     height: var(--btn-height);
     line-height: calc(var(--btn-height) - .4rem);
     padding: 0 3.2rem;
@@ -3512,9 +3512,9 @@ input::-moz-focus-inner {
  * ## header nav
  * ------------------------------------------------------------------- */
 .s-header__nav {
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 400;
     margin: 0;
     padding: 0;
     white-space: nowrap;
@@ -3550,6 +3550,7 @@ input::-moz-focus-inner {
 .s-header__nav .current a {
     background-color: var(--color-1);
     color: white;
+    font-weight: 600;
 }
 
 /* ------------------------------------------------------------------- 

@@ -820,7 +820,7 @@
         if (LAB_ENABLED && !document.querySelector('script[data-hvt-lab]')) {
             const labStyle = document.createElement('link');
             labStyle.rel = 'stylesheet';
-            labStyle.href = '/css/laboratorio.css?v=entry-20260816';
+            labStyle.href = '/css/laboratorio.css?v=typography-20260816';
             document.head.appendChild(labStyle);
 
             const labScript = document.createElement('script');
@@ -834,7 +834,7 @@
         if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
             const mentorStyle = document.createElement('link');
             mentorStyle.rel = 'stylesheet';
-            mentorStyle.href = '/css/mentor.css?v=20260719b';
+            mentorStyle.href = '/css/mentor.css?v=20260816d';
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
