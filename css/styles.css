@@ -3931,8 +3931,20 @@ body.search-is-visible {
  * make sure the menu is visible on larger screens
  * ------------------------------------------------------------------- */
 @media only screen and (min-width: 1381px) {
+    .s-header {
+        height: var(--header-height);
+    }
+    .s-header .row {
+        height: var(--header-height);
+        min-height: var(--header-height);
+    }
+    .s-header__logo {
+        align-self: center;
+        height: var(--header-height);
+    }
     .s-header__nav {
         display: flex !important;
+        align-self: center;
         align-items: stretch;
         height: var(--header-height);
     }
@@ -3954,6 +3966,7 @@ body.search-is-visible {
     .s-header__nav > ul > li.language-switcher {
         display: flex;
         align-items: stretch;
+        align-self: center;
     }
 }
 
