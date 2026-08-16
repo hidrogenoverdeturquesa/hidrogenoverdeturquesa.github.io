@@ -308,7 +308,7 @@
 
    /* Mobile Menu
     * ---------------------------------------------------- */ 
-    const ssMobileMenu = function() {
+   const ssMobileMenu = function() {
 
         const $toggleButton = $('.s-header__menu-toggle');
         const $nav = $('.s-header__nav');
@@ -334,6 +334,37 @@
             }
         });
     }; 
+
+   /* About dropdown: click, keyboard and touch friendly.
+    * ------------------------------------------------------ */
+    const ssNavigationDropdown = function() {
+        const dropdown = document.querySelector('.nav-dropdown');
+        if (!dropdown) return;
+
+        const toggle = dropdown.querySelector('.nav-dropdown__toggle');
+        const menu = dropdown.querySelector('.nav-dropdown__menu');
+        const close = function(returnFocus) {
+            dropdown.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+            if (returnFocus) toggle.focus();
+        };
+
+        toggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const willOpen = !dropdown.classList.contains('is-open');
+            dropdown.classList.toggle('is-open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+            menu.hidden = !willOpen;
+        });
+        dropdown.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') close(true);
+        });
+        menu.addEventListener('click', function() { close(false); });
+        document.addEventListener('click', function(event) {
+            if (!dropdown.contains(event.target)) close(false);
+        });
+    };
 
 
    /* search
@@ -803,6 +834,7 @@
         ssPreloader();
         ssMoveHeader();
         ssMobileMenu();
+        ssNavigationDropdown();
         ssSearch();
         ssWaypoints();
         ssSlickSlider();

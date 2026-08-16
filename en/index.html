@@ -113,8 +113,16 @@
                     <li><a href="/investors">Support projects</a></li>
                     <li><a class="smoothscroll" href="#services">Focus areas</a></li>
                     <li><a class="smoothscroll" href="#portfolio">Projects</a></li>
-                    <li><a class="smoothscroll" href="#blog">News</a></li>
-                    <li><a class="smoothscroll" href="#about">About us</a></li>
+                    <li><a class="smoothscroll" href="#blog">Insights</a></li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="about-menu">
+                            About us <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="about-menu" hidden>
+                            <li><a class="smoothscroll" href="#about">Who we are</a></li>
+                            <li><a class="smoothscroll" href="#careers">Careers</a></li>
+                        </ul>
+                    </li>
                     <li><a class="smoothscroll" href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -675,8 +683,8 @@
 
         <div class="row section-head">
             <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>News</h2>
-                <p class="desc">Latest news and advances.</p>
+                <h2>Insights</h2>
+                <p class="desc">Ideas, lessons learned and progress we share.</p>
             </div>
         </div> <!-- end section-head -->
 
@@ -946,6 +954,26 @@
         </div> <!-- end team-block -->
 
     </section> <!-- end s-about -->
+
+    <section id="careers" class="s-careers target-section" aria-labelledby="careers-title">
+        <div class="row careers-card" data-aos="fade-up">
+            <div class="column large-8 medium-12">
+                <p class="careers-card__eyebrow">Open opportunity</p>
+                <h2 id="careers-title">Research volunteering</h2>
+                <p class="lead">
+                    We are looking for volunteers interested in contributing to research on hydrogen,
+                    clean energy, bioeconomy and applied sustainability. This is a collaborative
+                    opportunity to learn, conduct research and contribute to purpose-driven projects.
+                </p>
+            </div>
+            <div class="column large-4 medium-12 careers-card__action">
+                <a class="btn btn--primary" href="mailto:contacto@hidrogenoverdeturquesa.com?subject=Postulaci%C3%B3n%20al%20voluntariado%20en%20investigaci%C3%B3n">
+                    Apply to volunteer
+                </a>
+                <p>Tell us about your education, experience, research interests and availability.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- participation and recognitions
     ================================================== -->
@@ -1254,7 +1282,7 @@
             <div class="column large-7 medium-6 w-1000-stack ss-copyright">
                 <span>© Copyright Hidrógeno Verde Turquesa 2026</span>
                 <span>Hidrógeno Verde Turquesa S.A.S. · NIT 901843838-0</span>
-                <span><a href="/en/?lab=consult">HVT Laboratory</a> · <a href="/politica-tratamiento-datos">Data policy</a> · <a href="/aviso-privacidad">Privacy notice</a> · <a href="/terminos-condiciones">Terms and conditions</a></span>
+                <span><a href="/laboratorio/">HVT Lab</a> · <a href="/politica-tratamiento-datos">Data policy</a> · <a href="/aviso-privacidad">Privacy notice</a> · <a href="/terminos-condiciones">Terms and conditions</a></span>
                 <span>Clean energy for a sustainable future</span>
             </div>
         </div>
