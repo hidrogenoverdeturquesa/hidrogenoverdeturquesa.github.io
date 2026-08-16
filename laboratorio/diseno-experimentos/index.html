@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <title>Diseño de experimentos online | Plan factorial 2ᵏ y corridas aleatorias</title>
+    <meta name="description" content="Crea gratis un diseño experimental factorial de dos niveles, con réplicas, orden aleatorio y tabla CSV para pruebas reales de energía, electrólisis y sostenibilidad.">
+    <link rel="canonical" href="https://hidrogenoverdeturquesa.com/laboratorio/diseno-experimentos/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hidrógeno Verde Turquesa">
+    <meta property="og:title" content="Diseño de experimentos online | Laboratorio HVT">
+    <meta property="og:description" content="Convierte factores y niveles en un plan factorial aleatorizado y descargable.">
+    <meta property="og:url" content="https://hidrogenoverdeturquesa.com/laboratorio/diseno-experimentos/">
+    <meta property="og:image" content="https://hidrogenoverdeturquesa.com/images/portfolio/planta.jpg">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@graph":[
+        {
+          "@type":"WebApplication",
+          "name":"Generador de diseño de experimentos HVT",
+          "url":"https://hidrogenoverdeturquesa.com/laboratorio/diseno-experimentos/",
+          "description":"Herramienta gratuita para crear planes factoriales de dos niveles con réplicas y aleatorización.",
+          "applicationCategory":"EducationalApplication",
+          "operatingSystem":"Cualquier sistema con navegador web",
+          "inLanguage":"es-CO",
+          "isAccessibleForFree":true,
+          "offers":{"@type":"Offer","price":"0","priceCurrency":"COP"},
+          "publisher":{"@type":"Organization","name":"Hidrógeno Verde Turquesa S.A.S.","url":"https://hidrogenoverdeturquesa.com/"}
+        },
+        {
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Inicio","item":"https://hidrogenoverdeturquesa.com/"},
+            {"@type":"ListItem","position":2,"name":"Laboratorio HVT","item":"https://hidrogenoverdeturquesa.com/laboratorio/"},
+            {"@type":"ListItem","position":3,"name":"Diseño de experimentos","item":"https://hidrogenoverdeturquesa.com/laboratorio/diseno-experimentos/"}
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816b">
+    <link rel="stylesheet" href="/css/mentor.css?v=20260719b">
+</head>
+<body class="lab-public">
+    <header class="lab-site-header"><div class="lab-container lab-site-header__inner">
+        <a class="lab-site-header__brand" href="/" aria-label="Hidrógeno Verde Turquesa, inicio"><img src="/images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa"></a>
+        <nav aria-label="Navegación del Laboratorio HVT"><ul><li><a href="/">Inicio</a></li><li><a href="/laboratorio/">Laboratorio</a></li><li><a href="/laboratorio/calculadora-hidrogeno-verde/">Calculadora H₂</a></li><li><a href="/laboratorio/diseno-experimentos/" aria-current="page">Experimentos</a></li><li><a href="/laboratorio/fuentes-cientificas/">Fuentes</a></li><li><a href="/#contact">Contacto</a></li></ul></nav>
+    </div></header>
+    <div class="lab-breadcrumb"><div class="lab-container"><a href="/">Inicio</a><span>›</span><a href="/laboratorio/">Laboratorio</a><span>›</span>Diseño de experimentos</div></div>
+
+    <main>
+        <section class="lab-hero"><div class="lab-container lab-hero__grid"><div><p class="lab-kicker">Planificador DoE · Dos niveles</p><h1>Diseña corridas experimentales antes de tocar el equipo</h1><p class="lab-hero__lead">Define hasta tres factores, sus niveles y la respuesta que medirás. El laboratorio construye un diseño factorial completo, replica las condiciones y aleatoriza el orden.</p><div class="lab-actions"><a class="lab-button" href="#planificador">Crear plan experimental</a><a class="lab-button lab-button--outline" href="#principios">Comprender el método</a></div></div><aside class="lab-hero__proof"><strong>Experimentos en la realidad</strong><p>Un plan estadístico no autoriza una prueba. Hidrógeno, presión, electricidad, temperatura o sustancias peligrosas requieren revisión, permisos, infraestructura y supervisión.</p></aside></div></section>
+
+        <section class="lab-section" id="planificador"><div class="lab-container lab-app-layout">
+            <article class="lab-panel">
+                <h2>Generador factorial rápido</h2><p class="lab-panel__intro">Adecuado para explorar efectos principales e interacciones iniciales con uno, dos o tres factores a dos niveles.</p>
+                <form data-hvt-doe-form>
+                    <div class="lab-form-grid">
+                        <label class="lab-field lab-field--wide"><span>Nombre del experimento</span><input name="experiment" type="text" maxlength="120" placeholder="Ejemplo: rendimiento de un electrolizador PEM" required></label>
+                        <label class="lab-field"><span>Variable de respuesta</span><input name="response" type="text" maxlength="80" placeholder="Producción de H₂" required></label>
+                        <label class="lab-field"><span>Unidad de respuesta</span><input name="responseUnit" type="text" maxlength="30" placeholder="NL/min" required></label>
+                    </div>
+                    <div class="lab-factor-grid lab-factor-labels" aria-hidden="true"><span>Factor</span><span>Nivel bajo</span><span>Nivel alto</span><span>Unidad</span></div>
+                    <div class="lab-factor-grid"><input name="factorName1" aria-label="Nombre del factor 1" placeholder="Voltaje" required><input name="factorLow1" aria-label="Nivel bajo del factor 1" placeholder="1.8" required><input name="factorHigh1" aria-label="Nivel alto del factor 1" placeholder="2.0" required><input name="factorUnit1" aria-label="Unidad del factor 1" placeholder="V"></div>
+                    <div class="lab-factor-grid"><input name="factorName2" aria-label="Nombre del factor 2" placeholder="Temperatura"><input name="factorLow2" aria-label="Nivel bajo del factor 2" placeholder="50"><input name="factorHigh2" aria-label="Nivel alto del factor 2" placeholder="70"><input name="factorUnit2" aria-label="Unidad del factor 2" placeholder="°C"></div>
+                    <div class="lab-factor-grid"><input name="factorName3" aria-label="Nombre del factor 3" placeholder="Caudal de agua"><input name="factorLow3" aria-label="Nivel bajo del factor 3" placeholder="0.5"><input name="factorHigh3" aria-label="Nivel alto del factor 3" placeholder="1.0"><input name="factorUnit3" aria-label="Unidad del factor 3" placeholder="L/min"></div>
+                    <div class="lab-form-grid" style="margin-top:18px">
+                        <label class="lab-field"><span>Réplicas independientes</span><input name="repetitions" type="number" value="3" min="2" max="10" step="1" required></label>
+                        <label class="lab-field"><span>Semilla de aleatorización</span><input name="seed" type="number" value="2026" min="1" max="999999" step="1" required></label>
+                    </div>
+                    <div class="lab-form-actions"><button class="lab-button" type="submit">Generar corridas</button><button class="lab-button lab-button--dark" type="button" data-download-doe>Descargar CSV</button></div>
+                </form>
+                <div class="lab-results" data-hvt-doe-results hidden></div>
+                <div class="lab-note lab-note--warning" style="margin-top:22px"><strong>Antes de ejecutar:</strong> documenta hipótesis, unidad experimental, método de medición, calibración, criterios de parada, evaluación de riesgos, responsable técnico y lugar autorizado.</div>
+            </article>
+            <aside class="lab-aside">
+                <article><h2>Cuántas corridas genera</h2><p>Un diseño completo utiliza 2ᵏ condiciones. Con tres factores y tres réplicas se generan 2³ × 3 = 24 corridas.</p></article>
+                <article><h2>Qué todavía no analiza</h2><p>Esta versión prepara la matriz. No calcula ANOVA, significancia, potencia, curvatura ni superficie de respuesta después de introducir mediciones.</p></article>
+                <article><h2>Planificador ampliado</h2><p>El panel principal incorpora bloques, referencia y verificación preliminar de seguridad.</p><a class="lab-button" href="/?lab=experiment">Abrir versión completa</a></article>
+            </aside>
+        </div></section>
+
+        <section class="lab-section lab-section--white" id="principios"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Principios esenciales</p><h2>Qué hace reproducible un experimento</h2></header><div class="lab-feature-grid">
+            <article class="lab-feature"><strong>Pregunta e hipótesis</strong><p>La pregunta define qué relación quieres comprobar; la hipótesis anticipa una respuesta que pueda contrastarse con datos.</p></article>
+            <article class="lab-feature"><strong>Unidad experimental</strong><p>Es la unidad mínima que recibe una condición de forma independiente. Confundirla con una medición repetida produce pseudorreplicación.</p></article>
+            <article class="lab-feature"><strong>Réplicas independientes</strong><p>Permiten estimar variabilidad experimental. Repetir la lectura del mismo ensayo no equivale necesariamente a una réplica.</p></article>
+            <article class="lab-feature"><strong>Aleatorización</strong><p>Reduce la asociación sistemática entre el orden de ejecución y cambios ambientales, instrumentales u operativos.</p></article>
+            <article class="lab-feature"><strong>Bloques</strong><p>Agrupan corridas que comparten una fuente conocida de variación, como día, lote, operador o banco experimental.</p></article>
+            <article class="lab-feature"><strong>Criterios de parada</strong><p>Deben establecerse antes de comenzar y vincularse con límites de presión, temperatura, gas, corriente y estabilidad del sistema.</p></article>
+        </div></div></section>
+
+        <section class="lab-section"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Aplicación en electrólisis</p><h2>Ejemplo de una pregunta bien formada</h2><p>¿Cómo cambian la producción de H₂ y el consumo específico cuando se modifican voltaje, temperatura y caudal dentro del dominio autorizado del equipo?</p></header><div class="lab-equation">Respuesta = β₀ + β₁A + β₂B + β₃C + β₁₂AB + β₁₃AC + β₂₃BC + β₁₂₃ABC + error</div><div class="lab-note"><strong>Interpretación:</strong> un diseño factorial permite estimar efectos individuales e interacciones. La ecuación debe ajustarse después de obtener mediciones válidas; la matriz por sí sola no demuestra causalidad ni determina condiciones óptimas.</div></div></section>
+
+        <section class="lab-section lab-section--dark"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Evidencia</p><h2>Diseño experimental conectado con publicaciones reales</h2><p>La selección de factores y respuestas para electrólisis PEM se apoya en trabajos de validación experimental y optimización mediante metodología de superficie de respuesta.</p></header><div class="lab-actions"><a class="lab-button" href="/laboratorio/fuentes-cientificas/">Consultar artículo y DOI</a><a class="lab-button lab-button--outline" href="/#contact">Solicitar revisión técnica</a></div></div></section>
+    </main>
+
+    <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Duitama, Boyacá, Colombia · NIT 901843838-0</p><p>El plan generado no constituye autorización para ejecutar una prueba.</p></div><nav aria-label="Enlaces legales"><a href="/laboratorio/">Laboratorio</a><a href="/politica-tratamiento-datos">Política de datos</a><a href="/terminos-condiciones">Términos</a></nav></div></footer>
+    <script src="/js/laboratorio-paginas.js?v=20260816b"></script>
+    <script src="/js/mentor.js?v=url-limpia-20260726"></script>
+</body>
+</html>
