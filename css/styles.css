@@ -4171,13 +4171,15 @@ body.search-is-visible {
 .volunteer-terms-card .volunteer-terms__grid { width: 100%; }
 
 /* Ficha profesional: toda la convocatoria en una sola tarjeta */
-.volunteer-page main { padding-bottom: 6rem; background: #e9efec; }
-.volunteer-page .opportunity-back { background: #101718; }
+.volunteer-page main { padding-top: 9rem; padding-bottom: 6rem; background: #e9efec; }
 .volunteer-dossier { display: block; width: min(132rem, calc(100% - 4rem)); margin: 0 auto; overflow: hidden; border: 1px solid #d1dad6; border-radius: .4rem; background: white; box-shadow: 0 2.4rem 7rem rgba(20,43,40,.1); }
 .volunteer-dossier > section { width: 100%; }
 .volunteer-dossier > section > .row { width: 100%; max-width: none; padding-right: 5rem; padding-left: 5rem; }
 .volunteer-dossier .volunteer-hero { min-height: 0; padding: 6rem 0; }
 .volunteer-dossier .volunteer-hero h1 { font-size: clamp(4.8rem, 5.6vw, 7.6rem); }
+.volunteer-back-link { display: inline-block; margin-bottom: 2.4rem; color: rgba(255,255,255,.68); font-size: var(--text-sm); }
+.volunteer-back-link:hover, .volunteer-back-link:focus { color: white; }
+.volunteer-dossier h1, .volunteer-dossier h2, .volunteer-dossier p { overflow-wrap: anywhere; }
 .volunteer-dossier .volunteer-intro { padding: 4.5rem 0; border-bottom: 1px solid #dce3e0; }
 .volunteer-dossier .volunteer-process { padding: 4.5rem 0; border-bottom: 1px solid #cad7d2; }
 .volunteer-dossier .volunteer-terms { padding: 4.5rem 0; border-bottom: 1px solid #dce3e0; }
@@ -4187,7 +4189,7 @@ body.search-is-visible {
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
 @media screen and (max-width: 1200px) {
-    .volunteer-hero { min-height: 0; padding: 14rem 0 6rem; }
+    .volunteer-hero { min-height: 0; padding: 6rem 0; }
     .volunteer-hero__summary { max-width: none; margin-top: 5rem; }
     .volunteer-process__grid { grid-template-columns: repeat(2, 1fr); }
     .volunteer-process__grid article:nth-child(3) { border-top: 1px solid rgba(18,32,33,.17); }
@@ -4203,9 +4205,10 @@ body.search-is-visible {
     .volunteer-application-wrap { margin-top: 3.2rem; }
     .volunteer-dossier { width: min(100% - 2rem, 132rem); }
     .volunteer-dossier > section > .row { padding-right: 2.4rem; padding-left: 2.4rem; }
+    .volunteer-page main { padding-top: 7.6rem; }
 }
 @media screen and (max-width: 600px) {
-    .volunteer-hero { padding-top: 14rem; }
+    .volunteer-hero { padding-top: 4rem; padding-bottom: 4rem; }
     .volunteer-hero h1 { max-width: 100%; font-size: clamp(4.2rem, 12.2vw, 5.2rem); letter-spacing: -.045em; }
     .volunteer-hero__lead { font-size: var(--text-md); }
     .volunteer-hero__actions { align-items: flex-start; flex-direction: column; gap: 1.8rem; }
