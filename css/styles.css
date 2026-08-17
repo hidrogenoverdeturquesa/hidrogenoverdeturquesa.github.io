@@ -4173,13 +4173,11 @@ body.search-is-visible {
 
 /* Ficha profesional: toda la convocatoria en una sola tarjeta */
 .volunteer-page main { padding-top: 9rem; padding-bottom: 6rem; background: #e9efec; }
-.volunteer-dossier { display: block; width: min(132rem, calc(100% - 4rem)); margin: 0 auto; overflow: hidden; border: 1px solid #d1dad6; border-radius: .4rem; background: white; box-shadow: 0 2.4rem 7rem rgba(20,43,40,.1); }
+.volunteer-dossier { display: block; width: min(132rem, calc(100% - 4rem)); margin: 2.4rem auto 0; overflow: hidden; border: 1px solid #d1dad6; border-radius: .4rem; background: white; box-shadow: 0 2.4rem 7rem rgba(20,43,40,.1); }
 .volunteer-dossier > section { width: 100%; }
 .volunteer-dossier > section > .row { width: 100%; max-width: none; padding-right: 5rem; padding-left: 5rem; }
 .volunteer-dossier .volunteer-hero { min-height: 0; padding: 6rem 0; }
 .volunteer-dossier .volunteer-hero h1 { font-size: clamp(4.8rem, 5.6vw, 7.6rem); }
-.volunteer-back-link { display: inline-block; margin-bottom: 2.4rem; color: rgba(255,255,255,.68); font-size: var(--text-sm); }
-.volunteer-back-link:hover, .volunteer-back-link:focus { color: white; }
 .volunteer-dossier h1, .volunteer-dossier h2, .volunteer-dossier p { overflow-wrap: anywhere; }
 .volunteer-dossier .volunteer-intro { padding: 4.5rem 0; border-bottom: 1px solid #dce3e0; }
 .volunteer-dossier .volunteer-process { padding: 4.5rem 0; border-bottom: 1px solid #cad7d2; }
@@ -4189,6 +4187,13 @@ body.search-is-visible {
 .volunteer-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .volunteer-footer__logo { width: 16rem; margin-bottom: 1.6rem; }
 .volunteer-footer p { max-width: 40rem; color: rgba(255,255,255,.45); font-size: var(--text-sm); }
+.site-breadcrumb { width: 100%; border-bottom: 1px solid #d9e0dd; background: white; }
+.site-breadcrumb .row { padding-top: 2.2rem; padding-bottom: 2.2rem; }
+.site-breadcrumb ol { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; margin: 0; padding: 0; list-style: none; }
+.site-breadcrumb li { margin: 0; color: #5c6969; font-size: var(--text-sm); }
+.site-breadcrumb li + li::before { content: "›"; margin-right: .8rem; color: #91a09e; }
+.site-breadcrumb a { color: #087f7e; }
+.site-breadcrumb a:hover, .site-breadcrumb a:focus { color: #101718; }
 @media screen and (max-width: 1200px) {
     .volunteer-hero { min-height: 0; padding: 6rem 0; }
     .volunteer-hero__summary { max-width: none; margin-top: 5rem; }
@@ -4228,8 +4233,9 @@ body.search-is-visible {
 
 /* Short, scalable careers hub. */
 .careers-page { background: #f4f6f3; color: #233031; }
+.careers-page main { padding-top: 7.2rem; }
 .careers-page .s-header__nav .current > .nav-dropdown__toggle { background: var(--color-1); color: white; font-weight: 600; }
-.careers-hero { padding: 18rem 0 8rem; background: #101718; color: white; }
+.careers-hero { padding: 8rem 0; background: #101718; color: white; }
 .careers-hero h1 { margin: 0 0 2.4rem; color: white; font-size: clamp(5.6rem, 8vw, 10rem); line-height: .9; letter-spacing: -.055em; }
 .careers-hero h1 em { color: var(--color-1); font-style: normal; }
 .careers-hero p:last-child { max-width: 72rem; margin: 0; color: rgba(255,255,255,.7); font-size: var(--text-lg); line-height: 1.5; }
@@ -4263,7 +4269,7 @@ body.search-is-visible {
     .opening-card__link { justify-self: start; }
 }
 @media screen and (max-width: 600px) {
-    .careers-hero { padding: 14rem 0 6rem; }
+    .careers-hero { padding: 6rem 0; }
     .careers-hero h1 { font-size: clamp(4.8rem, 16vw, 6.2rem); }
     .careers-hero p:last-child { font-size: var(--text-md); }
     .careers-openings { padding: 6rem 0; }
