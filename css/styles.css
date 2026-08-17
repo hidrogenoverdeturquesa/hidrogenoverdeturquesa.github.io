@@ -4127,7 +4127,7 @@ body.search-is-visible {
 .application-field--wide { grid-column: 1 / -1; }
 .application-field label { display: block; margin-bottom: .8rem; color: white; font-size: var(--text-sm); font-weight: 600; }
 .application-field label span { color: rgba(255,255,255,.48); font-weight: 400; }
-.volunteer-application-form input[type="text"], .volunteer-application-form input[type="email"], .volunteer-application-form input[type="tel"], .volunteer-application-form select, .volunteer-application-form textarea { width: 100%; margin: 0; border: 1px solid rgba(255,255,255,.17); background: #0e1516; color: white; }
+.volunteer-application-form input[type="text"], .volunteer-application-form input[type="email"], .volunteer-application-form input[type="tel"], .volunteer-application-form input[type="number"], .volunteer-application-form select, .volunteer-application-form textarea { width: 100%; margin: 0; border: 1px solid rgba(255,255,255,.17); background: #0e1516; color: white; }
 .volunteer-application-form input:focus, .volunteer-application-form select:focus, .volunteer-application-form textarea:focus { border-color: var(--color-1); box-shadow: 0 0 0 1px var(--color-1); }
 .volunteer-application-form option { background: #172021; color: #fff; }
 .volunteer-application-form option:checked { background: #087f7e; color: #fff; }

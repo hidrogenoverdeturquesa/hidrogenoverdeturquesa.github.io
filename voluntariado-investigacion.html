@@ -148,7 +148,7 @@
                         <div class="application-field"><label for="application-email">Correo electrónico</label><input id="application-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
                         <div class="application-field"><label for="application-phone">Teléfono <span>(opcional)</span></label><input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
                         <div class="application-field"><label for="application-area">Área de interés</label><select id="application-area" name="interest_area" required><option value="">Selecciona una opción</option><option>Hidrógeno</option><option>Energías limpias</option><option>Bioeconomía</option><option>Sostenibilidad</option><option>Análisis de datos</option><option>Divulgación científica</option><option>Otra</option></select></div>
-                        <div class="application-field"><label for="application-availability">Disponibilidad estimada</label><input id="application-availability" name="availability" type="text" minlength="2" maxlength="160" placeholder="Ej. 4 horas semanales" required></div>
+                        <div class="application-field"><label for="application-availability">Horas disponibles por semana</label><input id="application-availability" name="availability" type="number" min="1" max="80" step="1" inputmode="numeric" placeholder="Ej. 4" required></div>
                         <div class="application-field application-field--wide"><label for="application-contribution">¿Qué te interesa investigar y qué puedes aportar?</label><textarea id="application-contribution" name="contribution" rows="3" minlength="20" maxlength="1500" required></textarea></div>
                         <div class="application-field application-field--wide">
                             <label class="application-file" for="application-cv"><span data-file-label>Seleccionar hoja de vida en PDF</span><small>PDF · máximo 5 MB</small></label>
@@ -175,6 +175,6 @@
     <script src="js/plugins.js?v=sin-prism-20260726"></script>
     <script src="js/main.js?v=voluntariado-page-20260816"></script>
     <script src="js/postulaciones-config.js?v=20260816"></script>
-    <script src="js/postulaciones.js?v=20260816c"></script>
+    <script src="js/postulaciones.js?v=20260816d"></script>
 </body>
 </html>

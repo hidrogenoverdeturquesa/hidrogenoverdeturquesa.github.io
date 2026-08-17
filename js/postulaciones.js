@@ -52,7 +52,7 @@
             stage = 'registro de los datos';
             const inserted = await request(config.supabaseUrl + '/rest/v1/volunteer_applications?select=id,reference', {
                 method: 'POST', headers: Object.assign({}, authHeaders, { 'Content-Type': 'application/json', Prefer: 'return=representation' }),
-                body: JSON.stringify({ full_name: String(fields.get('full_name') || '').trim(), email: String(fields.get('email') || '').trim(), phone: String(fields.get('phone') || '').trim() || null, interest_area: String(fields.get('interest_area') || '').trim(), availability: String(fields.get('availability') || '').trim(), contribution: String(fields.get('contribution') || '').trim(), processing_consent: fields.get('processing_consent') === 'on', consent_version: config.consentVersion, source_path: window.location.pathname })
+                body: JSON.stringify({ full_name: String(fields.get('full_name') || '').trim(), email: String(fields.get('email') || '').trim(), phone: String(fields.get('phone') || '').trim() || null, interest_area: String(fields.get('interest_area') || '').trim(), availability: String(fields.get('availability') || '').trim() + ' horas semanales', contribution: String(fields.get('contribution') || '').trim(), processing_consent: fields.get('processing_consent') === 'on', consent_version: config.consentVersion, source_path: window.location.pathname })
             });
             const application = inserted[0];
             const safeName = file.name.replace(/[^a-zA-Z0-9._-]+/g, '-').slice(-120);
@@ -69,7 +69,7 @@
             console.error('Postulación: fallo en ' + stage, error);
             let message = 'No pudimos completar la ' + stage + '. Intenta nuevamente.';
             if (stage === 'registro de los datos' && error.status === 400) {
-                message = 'Revisa los campos: nombre completo (mínimo 3 caracteres), disponibilidad (mínimo 2) y explicación (mínimo 20).';
+                message = 'Revisa los campos: nombre completo, horas disponibles y explicación (mínimo 20 caracteres).';
             } else if (error.status === 429) {
                 message = 'Se realizaron varios intentos seguidos. Espera unos minutos y vuelve a intentarlo.';
             }
