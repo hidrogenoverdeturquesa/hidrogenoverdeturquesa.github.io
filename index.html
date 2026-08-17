@@ -66,7 +66,7 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/styles.css?v=voluntariado-20260816">
+    <link rel="stylesheet" href="css/styles.css?v=mobile-gestures-20260816">
     <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
 
     <!-- script
@@ -104,7 +104,7 @@
                 </a>
             </div>
 
-            <nav class="s-header__nav">
+            <nav class="s-header__nav" id="site-navigation" aria-label="Navegación principal">
                 <ul>
                     <li class="current"><a class="smoothscroll" href="#home">Inicio</a></li>
                     <li><a href="/fundacion">Iniciativa Fundación</a></li>
@@ -126,9 +126,9 @@
                 </ul>
             </nav>
 
-            <a class="s-header__menu-toggle" href="#0" title="Menu">
-                <span class="s-header__menu-icon"></span>
-            </a>
+            <button class="s-header__menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation">
+                <span class="s-header__menu-icon" aria-hidden="true"></span>
+            </button>
 
         </div> <!-- end row -->
     </header> <!-- end s-header -->
@@ -1278,7 +1278,7 @@
     ================================================== -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js?v=sin-prism-20260726"></script>
-    <script src="js/main.js?v=voluntariado-20260816"></script>
+    <script src="js/main.js?v=mobile-gestures-20260816"></script>
 
 </body>
 

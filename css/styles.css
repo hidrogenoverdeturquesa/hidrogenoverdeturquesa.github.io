@@ -3805,6 +3805,12 @@ body.search-is-visible {
     position: absolute;
     right: 0;
     top: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .s-header__menu-toggle .s-header__menu-icon {
@@ -3900,6 +3906,11 @@ body.search-is-visible {
 }
 
 @media screen and (max-width: 1380px) {
+    body.menu-is-open {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
     .s-header .row {
         display: block;
         width: 100%;
@@ -3915,6 +3926,11 @@ body.search-is-visible {
         background-color: black;
         padding: var(--vspace-2_5) 6rem 3.6rem;
         border-top: 1px solid rgba(255, 255, 255, 0.07);
+        max-height: calc(100dvh - var(--header-height));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
     }
     .s-header__nav ul {
         display: block;
@@ -11293,4 +11309,37 @@ body.search-is-visible {
 
 .localized-page .s-contact a:not(.btn) {
     color: rgba(255, 255, 255, .9);
+}
+
+/* Touch behavior: keep vertical scrolling natural while deliberate horizontal
+ * gestures control sliders and scrollable rails. */
+@media (hover: none), (pointer: coarse) {
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    summary {
+        touch-action: manipulation;
+    }
+
+    .s-home__slider,
+    .testimonial-slider {
+        touch-action: pan-y pinch-zoom;
+    }
+
+    .pueblito-gallery-rail,
+    .pueblito-material-table,
+    .pueblito-territory-plan__drawing {
+        overscroll-behavior-x: contain;
+        scroll-padding-inline: 6vw;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pinch-zoom;
+    }
+
+    .slick-dots li,
+    .slick-dots li button {
+        min-width: 44px;
+        min-height: 44px;
+    }
 }
