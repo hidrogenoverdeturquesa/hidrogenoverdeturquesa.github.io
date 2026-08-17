@@ -26,3 +26,10 @@ Additional, non-repeated footage is used for the portfolio cards:
 - HidroEcoCaja — [Miguel Á. Padriñán](https://www.pexels.com/video/earthworms-and-bugs-burrowing-in-a-compost-soil-3046312/)
 - Efficient homes — [Abdullah | 4K](https://www.pexels.com/video/modern-house-interior-5744424/)
 - Wind and water — [Vincuk Konan](https://www.pexels.com/video/old-traditional-wooden-windmill-12616716/)
+# Supabase JavaScript Client
+
+- Component: `@supabase/supabase-js` 2.111.0
+- Source: https://github.com/supabase/supabase-js
+- License: MIT
+- Local file: `js/vendor/supabase-2.111.0.min.js`
+- SHA-256: `0C2562701C7AC6DA5F79607F1E001C5D7FA1A56A591CF383996C4212267A925D`

@@ -41,7 +41,7 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816f">
+    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816j">
     <link rel="stylesheet" href="/css/mentor.css?v=20260816d">
 </head>
 <body class="lab-public">
@@ -82,15 +82,88 @@
                         <span class="lab-discovery__search" aria-hidden="true">
                             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
                         </span>
-                        <input id="lab-discovery-query" name="consulta" type="search" autocomplete="off" placeholder="Ejemplo: tengo 12 kWp solares y quiero estimar cuántos kg de H₂ puedo producir" data-lab-discovery-query>
-                        <button type="submit" aria-label="Buscar herramienta"><span>Orientarme</span><b aria-hidden="true">→</b></button>
+                        <input id="lab-discovery-query" name="consulta" type="text" inputmode="search" autocomplete="off" placeholder="Ejemplo: tengo 12 kWp solares y quiero estimar cuántos kg de H₂ puedo producir" data-lab-discovery-query>
+                        <button class="lab-discovery__camera" type="button" aria-label="Tomar o adjuntar una foto" title="Tomar foto" aria-controls="lab-evidence-panel" aria-expanded="false" data-lab-camera-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+                        </button>
+                        <button class="lab-discovery__attach" type="button" aria-label="Adjuntar foto, PDF o CSV" title="Adjuntar foto, PDF o CSV" aria-controls="lab-evidence-panel" aria-expanded="false" data-lab-evidence-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.5 11.5-8.8 8.8a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg>
+                        </button>
+                        <button class="lab-discovery__submit" type="submit" aria-label="Buscar herramienta"><span>Orientarme</span><b aria-hidden="true">→</b></button>
                     </div>
+                    <section class="lab-evidence" id="lab-evidence-panel" data-lab-evidence hidden aria-labelledby="lab-evidence-title">
+                        <header class="lab-evidence__head">
+                            <div><p class="lab-kicker">Evidencia para un caso técnico</p><h2 id="lab-evidence-title">Adjunta una foto, PDF o archivo de datos</h2></div>
+                            <button type="button" class="lab-evidence__close" data-lab-evidence-close aria-label="Cerrar">×</button>
+                        </header>
+                        <p class="lab-evidence__intro">HVT recibirá los archivos únicamente cuando confirmes el envío. Puedes adjuntar placas de equipos, mediciones, fichas técnicas, informes o datos de sensores.</p>
+
+                        <div class="lab-evidence__picker">
+                            <input class="lab-sr" id="lab-evidence-camera" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" data-lab-camera>
+                            <input class="lab-sr" id="lab-evidence-files" type="file" accept="image/jpeg,image/png,image/webp,application/pdf,text/csv,.csv" multiple data-lab-files>
+                            <button type="button" data-lab-open-camera>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+                                Tomar foto
+                            </button>
+                            <button type="button" data-lab-open-files>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.5 11.5-8.8 8.8a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg>
+                                Subir foto, PDF o CSV
+                            </button>
+                            <small>JPG, PNG, WebP, PDF o CSV · máximo 5 archivos y 25 MB por caso</small>
+                        </div>
+                        <ul class="lab-evidence__files" data-lab-file-list aria-live="polite"></ul>
+
+                        <div class="lab-evidence__fields">
+                            <label><span>Correo para recibir respuesta <b aria-hidden="true">*</b></span><input type="email" autocomplete="email" maxlength="254" placeholder="nombre@empresa.com" data-lab-case-email></label>
+                            <label><span>Proyecto, empresa o lugar <small>(opcional)</small></span><input type="text" autocomplete="organization" maxlength="160" placeholder="Ejemplo: planta piloto Duitama" data-lab-case-project></label>
+                        </div>
+
+                        <div class="lab-evidence__consents">
+                            <label><input type="checkbox" data-lab-consent-required> <span>Autorizo a HVT a almacenar y procesar temporalmente estos archivos para atender mi solicitud. Declaro que puedo compartirlos. <a href="/politica-tratamiento-datos" target="_blank" rel="noopener">Política de datos</a>. <b aria-hidden="true">*</b></span></label>
+                            <label><input type="checkbox" data-lab-consent-improvement> <span>Autorizo voluntariamente el uso de datos técnicos desidentificados para mejorar las herramientas y servicios de HVT.</span></label>
+                        </div>
+
+                        <div class="lab-evidence__actions">
+                            <button type="button" class="lab-button" data-lab-case-submit>Enviar caso a HVT</button>
+                            <p>Nada se carga antes de pulsar este botón. Los originales vencen en 30 días.</p>
+                        </div>
+                        <div class="lab-evidence__status" data-lab-case-status role="status" aria-live="polite"></div>
+                    </section>
                     <div class="lab-discovery__bar">
-                        <span class="lab-discovery__mode"><i aria-hidden="true">✦</i> Consulta técnica</span>
+                        <button class="lab-discovery__mode" type="button" aria-expanded="false" aria-controls="lab-guided-query" data-lab-guided-toggle><i aria-hidden="true">✦</i> Consulta técnica</button>
                         <a href="#herramientas">Todas las herramientas</a>
                         <a href="/laboratorio/fuentes-cientificas/">Fuentes</a>
                         <button type="button" data-lab-random>Explorar una herramienta</button>
                     </div>
+                    <section class="lab-guided" id="lab-guided-query" data-lab-guided hidden aria-labelledby="lab-guided-title">
+                        <header class="lab-guided__head">
+                            <div><p class="lab-kicker">Orientación local en tres datos</p><h2 id="lab-guided-title">Construye una consulta técnica útil</h2></div>
+                            <button type="button" class="lab-guided__close" aria-label="Cerrar consulta guiada" data-lab-guided-close>×</button>
+                        </header>
+                        <p class="lab-guided__intro">Elige el objetivo y el sistema. HVT organizará la pregunta para llevarte a la herramienta más adecuada.</p>
+                        <div class="lab-guided__grid">
+                            <label><span>1. Quiero</span><select data-lab-guided-goal>
+                                <option value="estimar la producción, el consumo y el rendimiento">Estimar producción y rendimiento</option>
+                                <option value="comparar alternativas y escenarios">Comparar alternativas</option>
+                                <option value="diseñar un experimento real y reproducible">Diseñar un experimento real</option>
+                                <option value="revisar datos, mediciones o sensores">Analizar datos o sensores</option>
+                                <option value="verificar evidencia y fuentes científicas">Verificar evidencia científica</option>
+                            </select></label>
+                            <label><span>2. Sobre</span><select data-lab-guided-topic>
+                                <option value="un sistema solar fotovoltaico e hidrógeno verde">Solar e hidrógeno verde</option>
+                                <option value="un electrolizador y su balance de planta">Electrolizador</option>
+                                <option value="sensores, mediciones y adquisición de datos">Sensores y mediciones</option>
+                                <option value="bioeconomía, biomasa o fermentación">Bioeconomía</option>
+                                <option value="infraestructura sostenible y hábitat">Infraestructura sostenible</option>
+                                <option value="otro sistema técnico">Otro sistema</option>
+                            </select></label>
+                            <label><span>3. Datos disponibles <small>(opcional)</small></span><input type="text" maxlength="240" placeholder="Ej.: 12 kWp, 5 h solares, mediciones CSV" data-lab-guided-context></label>
+                        </div>
+                        <div class="lab-guided__actions">
+                            <button class="lab-button" type="button" data-lab-guided-build>Preparar mi consulta</button>
+                            <p>Se procesa en tu dispositivo; no se envía información.</p>
+                        </div>
+                    </section>
                     <div class="lab-discovery__examples" aria-label="Consultas de ejemplo">
                         <span>Prueba un ejemplo:</span>
                         <button type="button" data-lab-example="Tengo 12 kWp solares y quiero calcular producción de hidrógeno">12 kWp → H₂</button>
@@ -142,7 +215,7 @@
             <div><strong>3 escenarios</strong><span>Análisis de sensibilidad inicial</span></div>
             <div><strong>2ᵏ factorial</strong><span>Corridas experimentales aleatorias</span></div>
             <div><strong>3 DOI</strong><span>Fuentes científicas verificadas</span></div>
-            <div><strong>Datos locales</strong><span>Sin registro ni envío de información</span></div>
+            <div><strong>Privacidad por elección</strong><span>Nada se envía sin tu confirmación</span></div>
         </div></section>
 
         <section class="lab-section lab-section--white">
@@ -172,7 +245,10 @@
     </main>
 
     <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Duitama, Boyacá, Colombia · NIT 901843838-0</p><p>Herramientas educativas con revisión técnica responsable.</p></div><nav aria-label="Enlaces legales"><a href="/politica-tratamiento-datos">Política de datos</a><a href="/aviso-privacidad">Privacidad</a><a href="/terminos-condiciones">Términos</a></nav></div></footer>
-    <script src="/js/laboratorio-paginas.js?v=20260816c"></script>
+    <script src="/js/laboratorio-paginas.js?v=20260816d"></script>
+    <script src="/js/laboratorio-casos-config.js?v=20260816a"></script>
+    <script src="/js/vendor/supabase-2.111.0.min.js"></script>
+    <script src="/js/laboratorio-casos.js?v=20260816b"></script>
     <script src="/js/mentor.js?v=url-limpia-20260726"></script>
 </body>
 </html>

@@ -10,8 +10,10 @@
     /* Solo activar cuando todos los costos utilizados estén revisados y aprobados. */
     const PUBLIC_PRICE_RANGES_ENABLED = false;
 
-    const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    const isPueblitoPage = page === 'pueblito-boyacense.html';
+    const page = (location.pathname.split('/').pop() || 'index')
+        .toLowerCase()
+        .replace(/\.html$/i, '');
+    const isPueblitoPage = page === 'pueblito-boyacense';
     const state = {
         page: page,
         section: '',
@@ -26,7 +28,7 @@
         home: {
             label: 'este panorama',
             prompt: 'Toda transformación comienza con una mirada atenta. Puedo mostrarte las rutas de conocimiento, los proyectos o los servicios que habitan este espacio.',
-            actions: [['Explorar servicios', '#services'], ['Conocer la fundación', 'fundacion.html']]
+            actions: [['Explorar servicios', '#services'], ['Conocer la fundación', '/fundacion']]
         },
         impact: {
             label: 'nuestro impacto',
@@ -46,7 +48,7 @@
         blog: {
             label: 'estas reflexiones',
             prompt: 'Leer es permitir que una idea encuentre nuevas preguntas. Puedo ayudarte a relacionar este contenido con una ruta de aprendizaje o con una aplicación concreta.',
-            actions: [['Quiero aprender', 'fundacion.html#cursos'], ['Buscar una aplicación', 'chat:aplicacion']]
+            actions: [['Quiero aprender', '/fundacion#cursos'], ['Buscar una aplicación', 'chat:aplicacion']]
         },
         about: {
             label: 'nuestra forma de trabajar',
@@ -66,7 +68,7 @@
         course: {
             label: 'esta lección',
             prompt: 'Cada concepto dominado ensancha el horizonte de lo posible. Si algo parece complejo, puedo ayudarte a mirarlo desde una perspectiva más sencilla.',
-            actions: [['Explícamelo sencillo', 'chat:sencillo'], ['Ver otros cursos', 'fundacion.html#cursos']]
+            actions: [['Explícamelo sencillo', 'chat:sencillo'], ['Ver otros cursos', '/fundacion#cursos']]
         },
         project: {
             label: 'este proyecto',
@@ -106,7 +108,7 @@
         'proyectos-relacionados': {
             label: 'el archivo de investigación',
             prompt: 'Estas cinco rutas conectan vivienda, territorio, hidrógeno y bioeconomía. Son investigaciones y formulaciones relacionadas con la visión; no son obras que afirmemos haber ejecutado en Pueblito Boyacense.',
-            actions: [['Ver hogares eficientes', 'proyecto-hogares-eficientes.html'], ['Resolver una duda', '#preguntas-pueblito']]
+            actions: [['Ver hogares eficientes', '/proyecto-hogares-eficientes'], ['Resolver una duda', '#preguntas-pueblito']]
         },
         'memoria-visual': {
             label: 'la memoria visual',
@@ -129,8 +131,8 @@
         if (isPueblitoPage) return (location.hash || '#pueblito').slice(1) || 'pueblito';
         if (page.indexOf('curso-') === 0) return 'course';
         if (page.indexOf('proyecto-') === 0) return 'project';
-        if (page === 'fundacion.html') return location.hash === '#cursos' ? 'cursos' : 'foundation';
-        if (page.indexOf('blog') !== -1 || page === 'category.html') return 'blog';
+        if (page === 'fundacion') return location.hash === '#cursos' ? 'cursos' : 'foundation';
+        if (page.indexOf('blog') !== -1 || page === 'category') return 'blog';
         return (location.hash || '#home').slice(1) || 'home';
     }
 
@@ -619,11 +621,11 @@
             [['Cotizar por WhatsApp', 'https://wa.me/573209574884?text=' + encodeURIComponent('Hola, deseo cotizar una puerta de madera. Necesito orientación sobre medidas, tipo de madera, acabado, herrajes e instalación.')], ['Explorar servicios', '/#services']]
         ];
         if (/precio|costo|cotiza|presupuesto/.test(q)) return ['El costo no es una cifra aislada: es el reflejo de una escala, un territorio y un propósito. Para orientarte con rigor, conviene conocer la ubicación, la necesidad y el alcance de tu iniciativa.', [['Preparar consulta', 'chat:consulta'], ['Contactar al equipo', '/#contact']]];
-        if (/curso|aprender|estudi|principiante/.test(q)) return ['El aprendizaje más sólido comienza donde la curiosidad encuentra una ruta. Puedes iniciar con nuestros cursos y avanzar desde los fundamentos hacia aplicaciones concretas.', [['Ver cursos', 'fundacion.html#cursos']]];
+        if (/curso|aprender|estudi|principiante/.test(q)) return ['El aprendizaje más sólido comienza donde la curiosidad encuentra una ruta. Puedes iniciar con nuestros cursos y avanzar desde los fundamentos hacia aplicaciones concretas.', [['Ver cursos', '/fundacion#cursos']]];
         if (/servicio|proyecto|asesor|idea|similar/.test(q)) return ['Una idea adquiere forma cuando se reconocen sus condiciones. Cuéntame, en una frase, qué deseas transformar y en qué territorio; con ello podré señalarte una línea de trabajo adecuada.', [['Ver líneas de servicio', '/#services'], ['Contactar', '/#contact']]];
-        if (/hidrogen|electrol|energ/.test(q)) return ['La energía es posibilidad antes de convertirse en servicio. En el hidrógeno, esa posibilidad depende de cómo se produce, almacena y utiliza. Puedo conducirte hacia formación o hacia una evaluación aplicada.', [['Quiero aprender', 'fundacion.html#cursos'], ['Tengo un proyecto', '/#services']]];
-        if (/fundaci|particip|miembro/.test(q)) return ['El conocimiento crece cuando circula. La fundación reúne formación, participación y acción territorial para convertir el aprendizaje en capacidad compartida.', [['Conocer la fundación', 'fundacion.html'], ['Ver cursos', 'fundacion.html#cursos']]];
-        return ['Toda pregunta señala un horizonte, aunque aún no tenga un nombre preciso. Puedo orientarte mejor si eliges entre aprender sobre el tema, explorar un servicio o conversar acerca de un proyecto.', [['Quiero aprender', 'fundacion.html#cursos'], ['Explorar servicios', '/#services'], ['Tengo un proyecto', 'chat:proyecto']]];
+        if (/hidrogen|electrol|energ/.test(q)) return ['La energía es posibilidad antes de convertirse en servicio. En el hidrógeno, esa posibilidad depende de cómo se produce, almacena y utiliza. Puedo conducirte hacia formación o hacia una evaluación aplicada.', [['Quiero aprender', '/fundacion#cursos'], ['Tengo un proyecto', '/#services']]];
+        if (/fundaci|particip|miembro/.test(q)) return ['El conocimiento crece cuando circula. La fundación reúne formación, participación y acción territorial para convertir el aprendizaje en capacidad compartida.', [['Conocer la fundación', '/fundacion'], ['Ver cursos', '/fundacion#cursos']]];
+        return ['Toda pregunta señala un horizonte, aunque aún no tenga un nombre preciso. Puedo orientarte mejor si eliges entre aprender sobre el tema, explorar un servicio o conversar acerca de un proyecto.', [['Quiero aprender', '/fundacion#cursos'], ['Explorar servicios', '/#services'], ['Tengo un proyecto', 'chat:proyecto']]];
     }
 
     function handleTarget(target, label) {

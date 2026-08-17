@@ -45,9 +45,13 @@
     if (discoveryForm) {
         const discoveryQuery = discoveryForm.querySelector('[data-lab-discovery-query]');
         const discoveryStatus = discoveryForm.querySelector('[data-lab-discovery-status]');
+        const guidedToggle = discoveryForm.querySelector('[data-lab-guided-toggle]');
+        const guidedPanel = discoveryForm.querySelector('[data-lab-guided]');
+        const guidedClose = discoveryForm.querySelector('[data-lab-guided-close]');
+        const guidedBuild = discoveryForm.querySelector('[data-lab-guided-build]');
         const routes = [
             {
-                words:['experimento','experimental','ensayo','prueba','factor','replica','aleator','doe','anova'],
+                words:['experimento','experimental','ensayo','prueba','factor','replica','aleator','doe','anova','sensor','medicion','datos'],
                 url:'/laboratorio/diseno-experimentos/'
             },
             {
@@ -63,6 +67,30 @@
         function normalized(value) {
             return value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
+
+        function setGuidedOpen(open) {
+            guidedPanel.hidden = !open;
+            guidedToggle.setAttribute('aria-expanded', String(open));
+            if (open) guidedPanel.querySelector('select').focus();
+            else guidedToggle.focus();
+        }
+
+        guidedToggle.addEventListener('click', function () {
+            setGuidedOpen(guidedPanel.hidden);
+        });
+        guidedClose.addEventListener('click', function () { setGuidedOpen(false); });
+        guidedBuild.addEventListener('click', function () {
+            const goal = guidedPanel.querySelector('[data-lab-guided-goal]').value;
+            const topic = guidedPanel.querySelector('[data-lab-guided-topic]').value;
+            const context = guidedPanel.querySelector('[data-lab-guided-context]').value.trim();
+            discoveryQuery.value = 'Quiero ' + goal + ' para ' + topic + '.' +
+                (context ? ' Cuento con estos datos o condiciones: ' + context.replace(/[.\s]+$/, '') + '.' : '');
+            setGuidedOpen(false);
+            discoveryStatus.textContent = 'Consulta preparada. Puedes ajustarla o pulsar Orientarme.';
+            discoveryStatus.hidden = false;
+            discoveryQuery.focus();
+        });
+        if (new URLSearchParams(window.location.search).get('consulta') === 'guiada') setGuidedOpen(true);
 
         discoveryForm.addEventListener('submit', function (event) {
             event.preventDefault();
