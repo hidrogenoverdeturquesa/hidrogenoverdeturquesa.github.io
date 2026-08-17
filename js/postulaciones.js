@@ -64,6 +64,7 @@
             form.reset();
             fileLabel.textContent = 'Seleccionar hoja de vida en PDF';
             form.querySelectorAll('input, textarea, select, button').forEach(function(control) { control.disabled = true; });
+            submit.textContent = 'Postulación enviada';
             showStatus('Postulación enviada correctamente. Tu número de referencia es ' + application.reference + '.', false);
         } catch (error) {
             console.error('Postulación: fallo en ' + stage, error);
