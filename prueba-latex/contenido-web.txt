@@ -1,0 +1,15 @@
+﻿PÁGINA 1
+Capítulo 1 Editar sin tocar HTML Objetivo de la prueba Al cambiar estas frases en TeXstudio y volver a generar, se actualizan tanto el PDF como la página web. Lo que vamos a comprobar Que las tildes y la letra ñ funcionen correctamente. Que las listas sean fáciles de reorganizar. Que el diseño web conserve sus hojas y colores. Cambios sugeridos Cambia el título de esta columna. Agrega un elemento nuevo a esta lista. Modifica el texto de la siguiente figura. Figura de prueba. Este pie se edita directamente en LaTeX.
+
+PÁGINA 2
+Práctica Haz un cambio pequeño Prueba la edición en TeXstudio Ejemplo 1 Mi primer cambio Abre este archivo en TeXstudio, cambia una frase y guarda. Después ejecuta el generador para verla en la web y en el PDF. Cambia el título. Modifica el contenido de \HVTTitulo . Edita una lista. Agrega o elimina cualquier elemento escrito con \item . Genera los resultados. Ejecuta generar-prueba.cmd . Comprueba el diseño. Abre cuadernillo-prueba-web.pdf .
+
+PÁGINA 3
+Componentes Fórmulas, diagramas y figuras Balance de un sistema renovable Esta hoja permite aprobar cómo se presentan relaciones matemáticas, procesos técnicos e imágenes antes de migrar los cuadernillos reales. 1 Recurso Viento, agua o radiación disponible. 2 Conversión El equipo transforma el recurso en energía útil. 3 Servicio La energía cubre una demanda identificada. 1 4 - x - 3 1 6 + 1 6 4 ( x - 3 ) 2 - 1 2 5 6 ( x - 3 ) 3 + ( x - 3 ) 4 1 0 2 4 - ( x - 3 ) 5 4 0 9 6 + O ( ( x - 3 ) 6 ) Ejemplo de una expansión presentada como ecuación independiente, con fracciones apiladas y potencias. Figura A. Controlador usado para registrar las variables del sistema. Figura B. Equipo técnico representado dentro del mismo lenguaje visual.
+
+PÁGINA 4
+Validación Datos, seguridad y fuentes Ficha técnica de una medición Medición Viento Agua Entrada Velocidad, dirección, densidad y turbulencia. Caudal, niveles, altura neta y sedimentos. Mecánica rpm, par, vibración, deformación y temperatura. rpm, par, vibración, presión y temperatura. Salida Potencia, energía, tensión, corriente o servicio mecánico. Potencia, energía, tensión, corriente o servicio mecánico. Estado Humedad de madera, fisuras, uniones y recubrimiento. Desgaste, corrosión, obstrucción, madera y apoyos. Puerta de decisión: No seleccionar equipos antes de contar con mediciones representativas, revisión de seguridad y condiciones de mantenimiento.
+
+PÁGINA 5
+Evidencia Actividad, código y fuentes Registro reproducible Actividad de comprobación Registrar fecha, lugar, instrumento y responsable. Anotar unidades, incertidumbre y condiciones ambientales. Comparar el resultado con la demanda identificada. Pseudocódigo de validación leer medicion si medicion esta en rango: guardar dato si no: registrar alerta Referencias Guía de instrumentos y métodos de observación de la OMM. https://community.wmo.int/ Material educativo de la Fundación. https://hidrogenoverdeturquesa.com/fundacion
+

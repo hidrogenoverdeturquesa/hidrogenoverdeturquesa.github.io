@@ -886,6 +886,75 @@
     };
 
 
+   /* Improved Language Selector Dropdown
+    * ------------------------------------------------------ */
+    const ssLanguageSelectorDropdown = function() {
+        // Wait for elements to exist in DOM
+        const toggle = document.querySelector('.s-header__language-toggle');
+        const menu = document.querySelector('.s-header__language-menu');
+        const current = document.querySelector('.s-header__language-current');
+
+        if (!toggle || !menu) {
+            console.warn('Language selector elements not found');
+            return;
+        }
+
+        // Determine current language
+        const path = window.location.pathname;
+        const currentLang = /^\/en(?:\/|$)/.test(path) ? 'en' : (/^\/ru(?:\/|$)/.test(path) ? 'ru' : 'es');
+         
+        // Update the current language display
+        const langMap = { es: 'ES', en: 'EN', ru: 'РУ' };
+        if (current) current.textContent = langMap[currentLang] || 'ES';
+
+        // Toggle menu on button click
+        toggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const isOpen = menu.hidden;
+            menu.hidden = !isOpen;
+            toggle.classList.toggle('is-open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !menu.hidden) {
+                menu.hidden = true;
+                toggle.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.focus();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.s-header__language')) {
+                if (!menu.hidden) {
+                    menu.hidden = true;
+                    toggle.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        // Close menu when selecting a language
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.hidden = true;
+                toggle.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Handle touch events
+        menu.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+         
+        console.log('Language selector initialized successfully');
+    };
+
+
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -907,6 +976,7 @@
         ssPortfolioVideos();
         ssWorkLines();
         ssImpactCounters();
+        ssLanguageSelectorDropdown();
 
         /* El laboratorio es autónomo y puede retirarse sin afectar el sitio. */
         const LAB_ENABLED = true;

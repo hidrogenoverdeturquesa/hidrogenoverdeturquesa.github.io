@@ -1,0 +1,118 @@
+GUÍA FORMATIVA 00 · NIVEL DE PRUEBA
+
+
+
+
+Prueba editable en LaTeX
+Una muestra para comprobar si editar el cuadernillo resulta có-
+modo y si la web conserva su diseño.
+                                                                  Imagen de portada utilizada únicamente en
+                                                                                esta prueba.
+                   Objetivo de la prueba
+CAPÍTULO 1
+                   Al cambiar estas frases en TeXstudio y volver a generar, se actualizan tanto el PDF como la
+Editar sin tocar
+                   página web.
+HTML
+
+                      Lo que vamos a comprobar                              Cambios sugeridos
+
+                        Que las tildes y la letra ñ funcionen correc-           Cambia el título de esta columna.
+                        tamente.
+                                                                               Agrega un elemento nuevo a esta lista.
+                        Que las listas sean fáciles de reorganizar.
+                                                                                Modifica el texto de la siguiente figura.
+                        Que el diseño web conserve sus hojas y
+                        colores.
+
+
+
+
+                                           Figura de prueba. Este pie se edita directamente en LaTeX.
+                Prueba la edición en TeXstudio
+PRÁCTICA
+Haz un cambio
+pequeño              EJEMPLO 1
+                     Mi primer cambio
+                     Abre este archivo en TeXstudio, cambia una frase y guarda. Después ejecuta el generador para verla
+                     en la web y en el PDF.
+
+
+
+                 1      Cambia el título. Modifica el contenido de \HVTTitulo.
+
+
+                 2      Edita una lista. Agrega o elimina cualquier elemento escrito con \item.
+
+
+                 3      Genera los resultados. Ejecuta generar-prueba.cmd.
+
+
+                 4      Comprueba el diseño. Abre cuadernillo-prueba-web.pdf.
+COMPONENTES
+                      Balance de un sistema renovable
+Fórmulas,             Esta hoja permite aprobar cómo se presentan relaciones matemáticas, procesos técnicos e
+diagramas y figuras   imágenes antes de migrar los cuadernillos reales.
+
+
+                           1                                     2                                      3
+                         Recurso                               Conversión                            Servicio
+                        Viento, agua o radiación dispo-        El equipo transforma el recur-        La energía cubre una deman-
+                        nible.                                 so en energía útil.                   da identificada.
+
+
+
+                                    1 x−3    1           1             (x − 3)4 (x − 3)5
+                                      −    + (x − 3)2 −     (x − 3)3 +         −         + O((x − 3)6 )
+                                    4   16  64          256              1024     4096
+                           Ejemplo de una expansión presentada como ecuación independiente, con fracciones apiladas y potencias.
+
+
+
+
+                         Figura A. Controlador usado para registrar las             Figura B. Equipo técnico representado dentro
+                                     variables del sistema.                                   del mismo lenguaje visual.
+                     Ficha técnica de una medición
+VALIDACIÓN
+Datos, seguridad y    Medición           Viento                                       Agua
+fuentes
+                      Entrada            Velocidad, dirección, densidad y turbulen-   Caudal, niveles, altura neta y sedimentos.
+                                         cia.
+
+                      Mecánica           rpm, par, vibración, deformación y tempe-    rpm, par, vibración, presión y temperatura.
+                                         ratura.
+
+                      Salida             Potencia, energía, tensión, corriente o      Potencia, energía, tensión, corriente o
+                                         servicio mecánico.                           servicio mecánico.
+
+                      Estado             Humedad de madera, fisuras, uniones y        Desgaste, corrosión, obstrucción, madera
+                                         recubrimiento.                               y apoyos.
+
+
+
+                       Puerta de decisión
+                       No seleccionar equipos antes de contar con mediciones representativas, revisión de seguridad y
+                       condiciones de mantenimiento.
+EVIDENCIA
+                      Registro reproducible
+Actividad, código y
+fuentes                 Actividad de comprobación
+
+                           Registrar fecha, lugar, instrumento y responsable.
+
+                           Anotar unidades, incertidumbre y condiciones ambientales.
+
+                           Comparar el resultado con la demanda identificada.
+
+
+                        Pseudocódigo de validación
+                        leer medicion
+                        si medicion esta en rango:
+                        guardar dato
+                        si no:
+                        registrar alerta
+
+                      1. Guía de instrumentos y métodos de observación de la OMM. https://community.wmo.int/
+
+                      2. Material educativo de la Fundación. https://hidrogenoverdeturquesa.com/fundacion
+

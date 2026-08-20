@@ -1,0 +1,164 @@
+/* El PDF se imprime desde el mismo HTML para evitar mantener dos diseños. */
+@page {
+    size: A4 landscape;
+    margin: 10mm;
+}
+
+@media print {
+    html,
+    body {
+        background: #eef1f0 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    #preloader,
+    .s-header,
+    .s-footer,
+    .course-book__actions {
+        display: none !important;
+    }
+
+    .course-book {
+        background: #eef1f0 !important;
+    }
+
+    .course-book__hero {
+        min-height: 185mm;
+        display: flex;
+        align-items: center;
+        padding: 12mm 0 !important;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .course-book__hero .row {
+        width: 92%;
+        max-width: none;
+    }
+
+    .course-book__hero h1 {
+        font-size: 38pt;
+    }
+
+    .book-sheet {
+        min-height: 0;
+        height: 175mm;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 0 !important;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .book-sheet:last-child {
+        min-height: 0;
+        height: 175mm;
+        overflow: hidden;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .book-page {
+        width: 132%;
+        max-width: none;
+        grid-template-columns: 48mm minmax(0, 1fr);
+        gap: 10mm;
+        padding: 10mm;
+        zoom: 0.70;
+        box-shadow: 0 4mm 10mm rgba(0, 0, 0, 0.08);
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .book-page__content h2 {
+        font-size: 25pt;
+    }
+
+    .book-learning-grid {
+        gap: 5mm;
+        margin: 5mm 0;
+    }
+
+    .book-figure {
+        margin-top: 5mm;
+    }
+
+    .book-figure--wide img {
+        max-height: 70mm;
+    }
+
+    .book-figure-grid .book-figure {
+        margin-top: 0;
+    }
+
+    .book-figure-grid .book-figure img {
+        height: 45mm;
+    }
+
+    .project-parameter-table,
+    .project-warning,
+    .book-task,
+    .book-code-card,
+    .book-references {
+        margin-top: 3mm;
+        margin-bottom: 3mm;
+    }
+}
+
+.project-equation .math-fraction {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    line-height: 1.05;
+    text-align: center;
+}
+
+.project-equation .math-fraction > span:first-child {
+    border-bottom: 1px solid currentColor;
+    padding: 0 .25em .08em;
+}
+
+.project-equation .math-fraction > span:last-child {
+    padding: .08em .25em 0;
+}
+
+.hvt-display-equation {
+    overflow-x: auto;
+}
+
+.hvt-display-equation .math-display {
+    display: block;
+    width: 100%;
+    font-size: clamp(2.2rem, 3vw, 3.8rem);
+    line-height: 1.65;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.hvt-display-equation math[display="block"] {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    margin: 0 auto;
+    font-size: 1em;
+    text-align: center;
+}
+
+.hvt-display-equation > p {
+    margin: .8rem 0 0;
+    color: var(--color-text-light);
+    font-family: var(--font-1);
+    font-size: var(--text-xs);
+    font-style: normal;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .hvt-display-equation .math-display {
+        font-size: 2.1rem;
+    }
+}

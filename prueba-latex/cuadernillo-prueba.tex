@@ -1,0 +1,114 @@
+% !TeX encoding = UTF-8
+% El diseño está separado en hvtbook.cls. Aquí solo editas el contenido.
+% ARCHIVO PRINCIPAL: abra y compile este archivo en TeXstudio.
+% Los estilos visuales (incluida la tabla actualizada) están en hvtbook.cls.
+\documentclass{hvtbook}
+
+\HVTTitulo{Prueba editable en LaTeX}
+\HVTSubtitulo{Una muestra para comprobar si editar el cuadernillo resulta cómodo y si la web conserva su diseño.}
+\HVTNivel{Nivel de prueba}
+\HVTNumero{00}
+\HVTPortada{../images/Microbit.png}{Imagen de portada utilizada únicamente en esta prueba.}
+
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Capítulo 1}{Editar sin tocar HTML}{Objetivo de la prueba}
+
+\HVTLead{Al cambiar estas frases en TeXstudio y volver a generar, se actualizan tanto el PDF como la página web.}
+
+\begin{HVTGrid}
+  \begin{HVTColumn}{Lo que vamos a comprobar}
+    \begin{itemize}
+      \item Que las tildes y la letra ñ funcionen correctamente.
+      \item Que las listas sean fáciles de reorganizar.
+      \item Que el diseño web conserve sus hojas y colores.
+    \end{itemize}
+  \end{HVTColumn}
+
+  \begin{HVTColumn}{Cambios sugeridos}
+    \begin{itemize}
+      \item Cambia el título de esta columna.
+      \item Agrega un elemento nuevo a esta lista.
+      \item Modifica el texto de la siguiente figura.
+    \end{itemize}
+  \end{HVTColumn}
+\end{HVTGrid}
+
+\HVTImagen{../images/Microbit.png}{Figura de prueba. Este pie se edita directamente en LaTeX.}
+
+\end{HVTPage}
+
+\begin{HVTPage}{Práctica}{Haz un cambio pequeño}{Prueba la edición en TeXstudio}
+
+\begin{HVTExample}{Ejemplo 1}{Mi primer cambio}
+Abre este archivo en TeXstudio, cambia una frase y guarda. Después ejecuta el generador para verla en la web y en el PDF.
+\end{HVTExample}
+
+\begin{HVTSteps}
+  \item \textbf{Cambia el título.} Modifica el contenido de \texttt{\textbackslash HVTTitulo}.
+  \item \textbf{Edita una lista.} Agrega o elimina cualquier elemento escrito con \texttt{\textbackslash item}.
+  \item \textbf{Genera los resultados.} Ejecuta \texttt{generar-prueba.cmd}.
+  \item \textbf{Comprueba el diseño.} Abre \texttt{cuadernillo-prueba-web.pdf}.
+\end{HVTSteps}
+
+\end{HVTPage}
+
+\begin{HVTPage}{Componentes}{Fórmulas, diagramas y figuras}{Balance de un sistema renovable}
+
+\HVTLead{Esta hoja permite aprobar cómo se presentan relaciones matemáticas, procesos técnicos e imágenes antes de migrar los cuadernillos reales.}
+
+\begin{HVTFlow}
+  \HVTFlowItem{1}{Recurso}{Viento, agua o radiación disponible.}
+  \HVTFlowItem{2}{Conversión}{El equipo transforma el recurso en energía útil.}
+  \HVTFlowItem{3}{Servicio}{La energía cubre una demanda identificada.}
+\end{HVTFlow}
+
+\HVTEquation{\frac{1}{4} - \frac{x-3}{16} + \frac{1}{64}(x-3)^2 - \frac{1}{256}(x-3)^3 + \frac{(x-3)^4}{1024} - \frac{(x-3)^5}{4096} + \mathcal{O}((x-3)^6)}{Ejemplo de una expansión presentada como ecuación independiente, con fracciones apiladas y potencias.}
+
+\begin{HVTGallery}
+  \HVTImagen{../images/Esp32.png}{Figura A. Controlador usado para registrar las variables del sistema.}
+  \HVTImagen{../images/Electrolizador.png}{Figura B. Equipo técnico representado dentro del mismo lenguaje visual.}
+\end{HVTGallery}
+
+\end{HVTPage}
+
+\begin{HVTPage}{Validación}{Datos, seguridad y fuentes}{Ficha técnica de una medición}
+
+\begin{HVTTable}{Medición}{Viento}{Agua}
+  \HVTTableRow{Entrada}{Velocidad, dirección, densidad y turbulencia.}{Caudal, niveles, altura neta y sedimentos.}
+  \HVTTableRow{Mecánica}{rpm, par, vibración, deformación y temperatura.}{rpm, par, vibración, presión y temperatura.}
+  \HVTTableRow{Salida}{Potencia, energía, tensión, corriente o servicio mecánico.}{Potencia, energía, tensión, corriente o servicio mecánico.}
+  \HVTTableRow{Estado}{Humedad de madera, fisuras, uniones y recubrimiento.}{Desgaste, corrosión, obstrucción, madera y apoyos.}
+\end{HVTTable}
+
+\begin{HVTWarning}{Puerta de decisión}
+No seleccionar equipos antes de contar con mediciones representativas, revisión de seguridad y condiciones de mantenimiento.
+\end{HVTWarning}
+
+\end{HVTPage}
+
+\begin{HVTPage}{Evidencia}{Actividad, código y fuentes}{Registro reproducible}
+
+\begin{HVTTask}{Actividad de comprobación}
+  \item Registrar fecha, lugar, instrumento y responsable.
+  \item Anotar unidades, incertidumbre y condiciones ambientales.
+  \item Comparar el resultado con la demanda identificada.
+\end{HVTTask}
+
+\begin{HVTCode}{Pseudocódigo de validación}
+leer medicion
+si medicion esta en rango:
+    guardar dato
+si no:
+    registrar alerta
+\end{HVTCode}
+
+\begin{HVTReferences}
+  \HVTReference{Guía de instrumentos y métodos de observación de la OMM}{https://community.wmo.int/}
+  \HVTReference{Material educativo de la Fundación}{https://hidrogenoverdeturquesa.com/fundacion}
+\end{HVTReferences}
+
+\end{HVTPage}
+
+\end{document}

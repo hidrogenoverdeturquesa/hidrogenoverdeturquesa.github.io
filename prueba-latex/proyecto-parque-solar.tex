@@ -1,0 +1,229 @@
+% !TeX encoding = UTF-8
+% MIGRACIÓN PILOTO. Edite este archivo en TeXstudio.
+\documentclass{hvtbook}
+
+\HVTTitulo{Parque Solar Comunitario}
+\HVTSubtitulo{Documento técnico para estructurar el proyecto desde la responsabilidad social y la selección del sitio hasta la medición del recurso, la validación de los datos y el dimensionamiento del sistema fotovoltaico.}
+\HVTNivel{Proyecto de energía solar en Boyacá}
+\HVTSerie{Publicación técnica}
+\HVTNumero{02}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Publicación técnica del proyecto de investigación y diseño de un parque solar comunitario en Boyacá, desarrollado por Hidrógeno Verde Turquesa.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-parque-solar}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../images/portfolio/parque.jpg}{Figura 1. Proyecto fotovoltaico articulado con el territorio y sus usuarios.}
+
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Contenido}{Ruta del proyecto}{Primero comprender, después dimensionar}
+\HVTLead{El tamaño del parque no se define únicamente con una fórmula. Antes se deben conocer la comunidad, el territorio, el punto de conexión, la demanda y la calidad del recurso solar disponible.}
+\begin{HVTTaskOrdered}{Secuencia de capítulos}
+  \item Responsabilidad social y participación.
+  \item Ubicación y viabilidad territorial.
+  \item Recurso solar preliminar.
+  \item Estación solar y meteorológica.
+  \item Control y validación de datos.
+  \item Demanda y modelo comunitario.
+  \item Dimensionamiento fotovoltaico.
+\end{HVTTaskOrdered}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Responsabilidad social}{Participación antes de intervenir}
+\HVTLead{Un parque comunitario debe partir de una relación transparente con las personas que pueden beneficiarse o verse afectadas. La participación temprana mejora la sostenibilidad social, la aceptación y el diseño del proyecto. \HVTCite{1}}
+\begin{HVTFlow}
+  \HVTFlowItem{1}{Identificar}{Usuarios, propietarios, vecinos, organizaciones, autoridades y grupos vulnerables.}
+  \HVTFlowItem{2}{Escuchar}{Necesidades energéticas, expectativas, riesgos percibidos y condiciones del territorio.}
+  \HVTFlowItem{3}{Acordar}{Beneficios, responsabilidades, comunicación, seguimiento y mecanismo de atención.}
+\end{HVTFlow}
+\begin{HVTTask}{Entregables sociales}
+  \item Mapa de actores y área de influencia.
+  \item Registro de reuniones y observaciones.
+  \item Principios para distribución de beneficios.
+  \item Canal de preguntas, quejas y respuestas.
+  \item Esquema preliminar de gobernanza, propiedad y mantenimiento.
+\end{HVTTask}
+\begin{HVTWarning}{Puerta de decisión 1}
+No se avanza con un sitio que tenga conflictos no evaluados sobre propiedad, uso del suelo, acceso, beneficios o impactos comunitarios.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Ubicación}{Viabilidad territorial del sitio}
+\HVTLead{La ubicación condiciona el recurso solar, la obra civil, el acceso, la conexión eléctrica, las pérdidas, los permisos y la relación con el entorno.}
+\begin{HVTTable}{Grupo}{Datos mínimos}{Resultado}
+  \HVTTableRow{Territorio}{Coordenadas, área, topografía, uso del suelo y propiedad}{Polígono viable}
+  \HVTTableRow{Entorno}{Vegetación, agua, viviendas, patrimonio y restricciones}{Condicionantes}
+  \HVTTableRow{Infraestructura}{Vías, seguridad, red eléctrica y distancia al punto de conexión}{Alternativas técnicas}
+  \HVTTableRow{Geotecnia}{Suelo, pendiente, drenaje y amenaza natural}{Base para estructuras}
+\end{HVTTable}
+\begin{HVTTask}{Visita técnica}
+  \item Levantamiento fotográfico y georreferenciado.
+  \item Horizonte visible y obstáculos que producen sombras.
+  \item Zonas inundables, erosión y escorrentía.
+  \item Acceso de equipos y espacio de mantenimiento.
+  \item Ubicación posible de módulos, inversores, transformador y medición.
+\end{HVTTask}
+\begin{HVTWarning}{Puerta de decisión 2}
+Comparar varias alternativas de ubicación antes de seleccionar el sitio de estudio detallado.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Recurso preliminar}{Irradiancia e irradiación}
+\HVTLead{El Atlas Climatológico del IDEAM permite consultar radiación global e insolación como referencia inicial para Colombia. Estos datos ayudan a comparar ubicaciones y formular la campaña de medición. \HVTCite{2}}
+\begin{HVTTable}{Magnitud}{Símbolo}{Unidad}
+  \HVTTableRow{Irradiancia instantánea}{$G$}{W/m²}
+  \HVTTableRow{Irradiación acumulada}{$H$}{kWh/m² por periodo}
+  \HVTTableRow{Irradiancia global horizontal}{$GHI$}{W/m²}
+  \HVTTableRow{Irradiación en plano de los módulos}{$H_{POA}$}{kWh/m² por periodo}
+\end{HVTTable}
+\HVTEquation{H = \int G(t)\,dt}{}
+\HVTText{La irradiancia es una potencia por unidad de área en un instante; la irradiación es su acumulación durante un intervalo. No deben utilizarse como si fueran la misma variable.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Recurso preliminar}{Estudio de prefactibilidad}
+\begin{HVTTask}{Estudio de prefactibilidad}
+  \item Serie mensual y anual de radiación.
+  \item Temperatura ambiente, lluvia, nubosidad y viento.
+  \item Horizonte y pérdidas preliminares por sombra.
+  \item Comparación entre fuentes disponibles.
+  \item Registro de resolución espacial, periodo histórico e incertidumbre.
+\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Instrumentación}{Estación solar y meteorológica}
+\HVTLead{El piranómetro es el sensor principal de radiación, pero el estudio requiere una estación de medición. La configuración base debe registrar el recurso solar y las variables meteorológicas que afectan la generación, las pérdidas, el diseño estructural y la calidad de los datos. \HVTCite{5} \HVTCite{8}}
+\HVTHeading{Instrumentación base del estudio}
+\begin{HVTTable}{Instrumento o sistema}{Variable o función}{Uso técnico}
+  \HVTTableRow{Piranómetro primario horizontal}{GHI, W/m²}{Caracterizar el recurso global del sitio}
+  \HVTTableRow{Piranómetro inclinado}{POA o GTI, W/m²}{Medir la radiación en el plano representativo del arreglo}
+  \HVTTableRow{Termohigrómetro con abrigo}{Temperatura y humedad relativa}{Modelar temperatura de operación y revisar condiciones ambientales}
+  \HVTTableRow{Anemómetro y veleta}{Velocidad y dirección del viento}{Apoyar el análisis térmico y caracterizar las condiciones del sitio}
+  \HVTTableRow{Pluviómetro}{Precipitación}{Relacionar lluvia, limpieza natural, drenaje y disponibilidad de campo}
+  \HVTTableRow{Registrador de datos}{Muestreo, promedio y almacenamiento}{Centralizar señales con reloj sincronizado y datos sin procesar}
+  \HVTTableRow{Alimentación y respaldo}{Panel, controlador, batería y protecciones}{Mantener continuidad ante fallas de red}
+  \HVTTableRow{Comunicaciones}{Telemetría y alarmas}{Detectar fallas y recuperar datos oportunamente}
+  \HVTTableRow{Mástil, soportes y protecciones}{Nivelación, puesta a tierra y sobretensión}{Asegurar montaje estable y protección de la estación}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Instrumentación}{Selección técnica de sensores}
+\HVTText{La información de viento de la campaña ayuda a caracterizar el sitio, pero el cálculo estructural debe utilizar las acciones de viento y combinaciones exigidas por la normativa de diseño aplicable; no se reemplaza con una serie meteorológica corta.}
+\HVTText{Los piranómetros deben seleccionarse conforme a ISO 9060 y utilizarse de acuerdo con ISO/TR 9901. El sensor horizontal mide GHI; el sensor inclinado permite observar irradiancia global en el plano previsto del generador. La clase, redundancia y exactitud se definen según la etapa y la incertidumbre aceptable. \HVTCite{3} \HVTCite{4}}
+\HVTHeading{Instrumentos condicionados por el diseño}
+\begin{HVTTable}{Condición del proyecto}{Instrumentación adicional}{Finalidad}
+  \HVTTableRow{Seguidores o análisis avanzado}{Pirheliómetro y piranómetro sombreado, o sistema equivalente}{Obtener DNI y DHI además de GHI}
+  \HVTTableRow{Módulos bifaciales}{Albedómetro o piranómetros frontal y posterior}{Caracterizar radiación reflejada y plano posterior}
+  \HVTTableRow{Pérdidas por suciedad relevantes}{Estación de suciedad o pares de celdas de referencia}{Cuantificar la pérdida y definir limpieza}
+  \HVTTableRow{Piloto fotovoltaico instalado}{Celda de referencia y sensores de temperatura de módulo}{Relacionar recurso, temperatura y respuesta del módulo}
+  \HVTTableRow{Alta variabilidad atmosférica}{Barómetro y sensores meteorológicos complementarios}{Mejorar análisis y control de calidad}
+\end{HVTTable}
+\begin{HVTWarning}{Alcance}
+Una celda de referencia fotovoltaica es útil para irradiancia efectiva y seguimiento del desempeño, pero no sustituye automáticamente la medición radiométrica de banda ancha requerida para una evaluación general del recurso. \HVTCite{5}
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Instrumentación}{Instalación, verificación y mantenimiento}
+\begin{HVTFlow}
+  \HVTFlowItem{1}{Seleccionar}{Clase del sensor, registrador, intervalo de muestreo y variables meteorológicas.}
+  \HVTFlowItem{2}{Instalar}{Nivelación, orientación, altura, horizonte despejado y puesta a tierra.}
+  \HVTFlowItem{3}{Mantener}{Limpieza, inspección, verificación de nivel, reloj, cableado y alimentación.}
+\end{HVTFlow}
+\begin{HVTTable}{Elemento}{Verificación}{Evidencia}
+  \HVTTableRow{Sensores}{Clase, rango, sensibilidad, número de serie y calibración vigente}{Certificados y fichas}
+  \HVTTableRow{Registrador}{Canales, resolución, reloj, memoria, promedios y respaldo}{Archivo de configuración}
+  \HVTTableRow{Montaje}{Nivel, orientación, alturas, abrigo y ausencia de sombras}{Plano, fotografías y coordenadas}
+  \HVTTableRow{Protección}{Tierra, sobretensiones, gabinete, cableado y seguridad física}{Lista de inspección}
+  \HVTTableRow{Mantenimiento}{Limpieza, nivelación, desecante, fallas y visitas programadas}{Bitácora trazable}
+\end{HVTTable}
+\HVTText{La duración de la campaña se define según la etapa, escala y nivel de incertidumbre del proyecto. Los datos de campo deben relacionarse con series históricas de largo plazo; una medición corta aislada no representa por sí sola la variabilidad interanual. Las buenas prácticas de NREL recomiendan documentar selección, instalación, mantenimiento, calibración y control de calidad. \HVTCite{5}}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Datos}{Control, validación y estudio solar}
+\HVTLead{Antes de calcular potencia se debe demostrar que los datos son trazables, completos y físicamente consistentes. La IEC 61724-1 establece terminología, equipos y métodos para el monitoreo del desempeño fotovoltaico. \HVTCite{6}}
+\begin{HVTTaskOrdered}{Proceso de calidad}
+  \item Conservar los datos originales sin modificarlos.
+  \item Revisar marcas de tiempo, duplicados, vacíos y disponibilidad.
+  \item Aplicar límites físicos y pruebas de consistencia solar.
+  \item Contrastar eventos anómalos con la bitácora de campo.
+  \item Marcar datos válidos, sospechosos y faltantes.
+  \item Comparar y correlacionar con fuentes históricas.
+  \item Estimar incertidumbre y documentar el método de corrección.
+\end{HVTTaskOrdered}
+\begin{HVTWarning}{Precisión técnica}
+El control posterior no puede corregir completamente un sensor sucio, desnivelado, sombreado o con calibración desconocida. NREL diferencia la evaluación de calidad de las actividades preventivas de aseguramiento y control durante la medición. \HVTCite{7}
+\end{HVTWarning}
+\begin{HVTWarning}{Puerta de decisión 3}
+Solo se autoriza el dimensionamiento cuando exista una serie aceptada, su incertidumbre esté declarada y las hipótesis sean trazables.
+\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Demanda comunitaria}{Cuánta energía y para quién}
+\HVTLead{El parque debe responder a una demanda documentada y a un acuerdo sobre quién recibe la energía, cómo se mide, quién opera el sistema y cómo se cubren sus costos.}
+\begin{HVTTask}{Línea base}
+  \item Facturas y consumos horarios, diarios y mensuales.
+  \item Cargas críticas y crecimiento esperado.
+  \item Usuarios participantes y porcentaje de cobertura acordado.
+  \item Calidad del suministro y capacidad de la red existente.
+  \item Medición individual o colectiva y reglas de reparto.
+  \item Presupuesto de operación, mantenimiento y reposición.
+\end{HVTTask}
+\HVTEquation{E_{objetivo}=E_{demanda}\cdot f_{cobertura}}{}
+\HVTText{El factor de cobertura debe acordarse y justificarse; no se asume automáticamente que el parque cubrirá el 100\% del consumo.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Dimensionamiento}{Dimensionar con datos validados}
+\HVTLead{Con la demanda objetivo, la irradiación en el plano del arreglo y las pérdidas justificadas se realiza el predimensionamiento energético.}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+  \HVTTableRow{Energía objetivo del periodo}{$E_{objetivo}$}{kWh}
+  \HVTTableRow{Potencia fotovoltaica DC}{$P_{DC}$}{kWp}
+  \HVTTableRow{Irradiación en plano del arreglo}{$H_{POA}$}{kWh/m²}
+  \HVTTableRow{Irradiancia de referencia}{$G_{STC}$}{1 kW/m²}
+  \HVTTableRow{Índice global de desempeño}{$PR$}{adimensional}
+\end{HVTTable}
+\HVTEquation{E_{AC}\approx P_{DC}\cdot\left(\frac{H_{POA}}{G_{STC}}\right)\cdot PR}{}
+\HVTEquation{P_{DC}\approx\frac{E_{objetivo}\cdot G_{STC}}{H_{POA}\cdot PR}}{}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Dimensionamiento}{Alcance del predimensionamiento}
+\HVTText{El PR debe construirse con pérdidas explícitas por temperatura, suciedad, sombras, desajuste, cableado, conversión, disponibilidad y limitaciones de red. Estas expresiones sirven para predimensionamiento; el diseño definitivo requiere simulación temporal, selección de equipos, configuración eléctrica, estudios de conexión, protecciones, estructura y evaluación económica.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Procedimiento S-1}{Secuencia de cálculo}
+\begin{HVTExample}{Procedimiento S-1}{Secuencia de cálculo}
+\begin{enumerate}
+  \item Aprobar la serie solar y su incertidumbre.
+  \item Definir demanda y cobertura objetivo.
+  \item Estimar irradiación POA según orientación e inclinación.
+  \item Construir el balance de pérdidas y el PR.
+  \item Calcular potencia DC preliminar.
+  \item Verificar área, inversores, red, sombras y restricciones.
+  \item Comparar alternativas y realizar análisis de sensibilidad.
+\end{enumerate}
+\end{HVTExample}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+  \HVTReference{Banco Mundial. \emph{Environmental and Social Standard 10: Stakeholder Engagement and Information Disclosure}}{https://www.worldbank.org/en/projects-operations/environmental-and-social-framework/brief/environmental-and-social-standards}
+  \HVTReference{IDEAM. \emph{Atlas Climatológico y Atlas de Radiación Solar de Colombia}}{https://ideam.gov.co/nuestra-entidad/meteorologia}
+  \HVTReference{ISO (2018). \emph{ISO 9060:2018. Solar energy — Specification and classification of instruments for measuring hemispherical solar and direct solar radiation}}{https://www.iso.org/standard/67464.html}
+  \HVTReference{ISO (2021). \emph{ISO/TR 9901:2021. Solar energy — Pyranometers — Recommended practice for use}}{https://www.iso.org/es/contents/data/standard/08/19/81937.html}
+\end{HVTReferences}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+  \HVTReference{Sengupta, M. et al. (2024). \emph{Best Practices Handbook for the Collection and Use of Solar Resource Data for Solar Energy Applications, Fourth Edition}. NREL/TP-5D00-88300}{https://www.nrel.gov/docs/fy24osti/88300.pdf}
+  \HVTReference{IEC (2021). \emph{IEC 61724-1:2021. Photovoltaic system performance — Part 1: Monitoring}}{https://webstore.iec.ch/en/publication/65561}
+  \HVTReference{National Renewable Energy Laboratory. \emph{Quality Assessment with SERI QC}}{https://www.nrel.gov/grid/solar-resource/seri-qc}
+  \HVTReference{Organización Meteorológica Mundial. \emph{Guide to Instruments and Methods of Observation (WMO-No. 8)}. Guía para mediciones de temperatura, humedad, viento, precipitación y radiación}{https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8}
+\end{HVTReferences}
+\HVTText{Esta publicación presenta información técnica autorizada para divulgación pública. Los resultados detallados, datos operativos, análisis económicos y demás información estratégica del proyecto son confidenciales. Los valores definitivos se establecen con acuerdos verificables, estudios del sitio, mediciones trazables, análisis de incertidumbre y diseño especializado.}
+\end{HVTPage}
+
+\begin{HVTPage}{Colaboración}{Conversemos}{¿Necesitas investigar, formular o evaluar un proyecto relacionado?}
+\HVTLead{Conversemos sobre tu necesidad de investigación, diseño o evaluación de un proyecto de energía solar.}
+\HVTContact{Consultar proyecto solar por WhatsApp}{https://wa.me/573209574884}
+\end{HVTPage}
+
+\end{document}
