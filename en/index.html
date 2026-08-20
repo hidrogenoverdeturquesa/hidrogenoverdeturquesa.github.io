@@ -67,7 +67,7 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../css/styles.css?v=voluntariado-20260816">
+    <link rel="stylesheet" href="../css/styles.css?v=navigation-20260816">
     <link rel="stylesheet" href="../css/vendor.css?v=sin-prism-20260726">
 
     <!-- script
@@ -105,31 +105,53 @@
                 </a>
             </div>
 
-            <nav class="s-header__nav">
+            <nav class="s-header__nav" id="site-navigation" aria-label="Primary navigation">
                 <ul>
-                    <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-                    <li><a href="/fundacion">Foundation Initiative</a></li>
-                    <li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li>
-                    <li><a href="/investors">Support projects</a></li>
-                    <li><a class="smoothscroll" href="#services">Focus areas</a></li>
-                    <li><a class="smoothscroll" href="#portfolio">Projects</a></li>
-                    <li><a class="smoothscroll" href="#blog">Insights</a></li>
+                    <li class="current"><a href="#home">Home</a></li>
                     <li class="nav-dropdown">
-                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="about-menu">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-work-menu">
+                            What we do <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-work-menu" hidden>
+                            <li><a href="#services">Focus areas</a></li>
+                            <li><a href="#portfolio">Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-knowledge-menu">
+                            Knowledge <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-knowledge-menu" hidden>
+                            <li><a href="/blog">Library</a></li>
+                            <li><a href="/laboratorio/">HVT Laboratory</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-ecosystem-menu">
+                            Ecosystem <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-ecosystem-menu" hidden>
+                            <li><a href="/fundacion">Foundation</a></li>
+                            <li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li>
+                            <li><a href="/investors">Support projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-about-menu">
                             About us <span class="nav-dropdown__chevron" aria-hidden="true"></span>
                         </button>
-                        <ul class="nav-dropdown__menu" id="about-menu" hidden>
-                            <li><a class="smoothscroll" href="#about">Who we are</a></li>
+                        <ul class="nav-dropdown__menu" id="nav-about-menu" hidden>
+                            <li><a href="#about">Who we are</a></li>
                             <li><a href="/trabaja-con-nosotros">Careers</a></li>
                         </ul>
                     </li>
-                    <li><a class="smoothscroll" href="#contact">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
-            <a class="s-header__menu-toggle" href="#0" title="Menu">
-                <span class="s-header__menu-icon"></span>
-            </a>
+            <button class="s-header__menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+                <span class="s-header__menu-icon" aria-hidden="true"></span>
+            </button>
 
         </div> <!-- end row -->
     </header> <!-- end s-header -->
@@ -1279,7 +1301,7 @@
     ================================================== -->
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/plugins.js?v=sin-prism-20260726"></script>
-    <script src="../js/main.js?v=voluntariado-20260816"></script>
+    <script src="../js/main.js?v=navigation-20260816"></script>
 
 </body>
 

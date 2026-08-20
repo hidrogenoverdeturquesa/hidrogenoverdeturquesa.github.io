@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Prueba editable en LaTeX | Prueba HVT</title>
+  <meta name="description" content="Prueba temporal de un cuadernillo escrito en LaTeX.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css?v=fuentes-locales-20260726">
+  <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
+  <link rel="stylesheet" href="prueba-latex/pdf.css">
+  <script src="js/modernizr.js"></script>
+  <script defer src="js/fontawesome/all.min.js"></script>
+</head>
+<body id="top">
+  <div id="preloader"><div id="loader"></div></div>
+  <header class="s-header"><div class="row">
+    <div class="s-header__logo"><a href="/"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height:40px;width:auto"></a></div>
+    <nav class="s-header__nav"><ul><li><a href="/">Inicio</a></li><li><a href="/fundacion">Fundación</a></li><li class="current"><a href="/fundacion#cursos">Cursos</a></li><li><a href="/investors">Apoyar proyectos</a></li><li><a href="/#contact">Contacto</a></li></ul></nav>
+    <a class="s-header__menu-toggle" href="#0" title="Menu"><span class="s-header__menu-icon"></span></a>
+  </div></header>
+  <main class="course-book">
+    <section class="course-book__hero"><div class="row">
+      <div class="column large-7 medium-12"><p class="course-book__eyebrow">Guía formativa 00 · Nivel de prueba</p><h1>Prueba editable en LaTeX</h1><p class="course-book__lead">Una muestra para comprobar si editar el cuadernillo resulta cómodo y si la web conserva su diseño.</p><div class="course-book__actions"><a href="#capitulo-1" class="btn btn--primary smoothscroll">Empezar</a><a href="/fundacion#cursos" class="btn btn--stroke">Volver al catálogo</a></div></div>
+      <div class="column large-5 medium-12"><figure class="book-cover-figure"><img src="images/Microbit.png" alt="Portada de prueba"><figcaption>Imagen de portada utilizada únicamente en esta prueba.</figcaption></figure></div>
+    </div></section>
+    
+<section class="book-sheet" id="capitulo-1">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Capítulo 1</span><strong>Editar sin tocar HTML</strong></aside>
+    <article class="book-page__content"><h2>Objetivo de la prueba</h2><p class="book-lead">Al cambiar estas frases en TeXstudio y volver a generar, se actualizan tanto el PDF como la página web.</p><div class="book-learning-grid"><div><h3>Lo que vamos a comprobar</h3><ul><li>Que las tildes y la letra ñ funcionen correctamente.</li>
+<li>Que las listas sean fáciles de reorganizar.</li>
+<li>Que el diseño web conserve sus hojas y colores.</li></ul></div><div><h3>Cambios sugeridos</h3><ul><li>Cambia el título de esta columna.</li>
+<li>Agrega un elemento nuevo a esta lista.</li>
+<li>Modifica el texto de la siguiente figura.</li></ul></div></div><figure class="book-figure book-figure--wide"><img src="images/Microbit.png" alt="Figura de prueba. Este pie se edita directamente en LaTeX."><figcaption>Figura de prueba. Este pie se edita directamente en LaTeX.</figcaption></figure></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Práctica</span><strong>Haz un cambio pequeño</strong></aside>
+    <article class="book-page__content"><h2>Prueba la edición en TeXstudio</h2><div class="book-example"><p class="book-example__label">Ejemplo 1</p><h3>Mi primer cambio</h3><p>Abre este archivo en TeXstudio, cambia una frase y guarda. Después ejecuta el generador para verla en la web y en el PDF.</p></div><ol class="book-steps"><li><strong>Cambia el título.</strong> Modifica el contenido de <code>\HVTTitulo</code>.</li>
+<li><strong>Edita una lista.</strong> Agrega o elimina cualquier elemento escrito con <code>\item</code>.</li>
+<li><strong>Genera los resultados.</strong> Ejecuta <code>generar-prueba.cmd</code>.</li>
+<li><strong>Comprueba el diseño.</strong> Abre <code>cuadernillo-prueba-web.pdf</code>.</li></ol></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Componentes</span><strong>Fórmulas, diagramas y figuras</strong></aside>
+    <article class="book-page__content"><h2>Balance de un sistema renovable</h2><p class="book-lead">Esta hoja permite aprobar cómo se presentan relaciones matemáticas, procesos técnicos e imágenes antes de migrar los cuadernillos reales.</p><div class="book-flow"><div><span>1</span><strong>Recurso</strong><p>Viento, agua o radiación disponible.</p></div><div><span>2</span><strong>Conversión</strong><p>El equipo transforma el recurso en energía útil.</p></div><div><span>3</span><strong>Servicio</strong><p>La energía cubre una demanda identificada.</p></div></div><div class="project-equation hvt-display-equation"><div class="math-display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\frac{1}{4} - \frac{x-3}{16} + \frac{1}{64}(x-3)^2 - \frac{1}{256}(x-3)^3 + \frac{(x-3)^4}{1024} - \frac{(x-3)^5}{4096} + \mathcal{O}((x-3)^6)"><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>4</mn></mrow></mfrac><mo>-</mo><mfrac><mrow><mi>x</mi><mo>-</mo><mn>3</mn></mrow><mrow><mn>1</mn><mn>6</mn></mrow></mfrac><mo>+</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>6</mn><mn>4</mn></mrow></mfrac><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><msup><mo>)</mo><mn>2</mn></msup><mo>-</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mn>5</mn><mn>6</mn></mrow></mfrac><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><msup><mo>)</mo><mn>3</mn></msup><mo>+</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><msup><mo>)</mo><mn>4</mn></msup></mrow><mrow><mn>1</mn><mn>0</mn><mn>2</mn><mn>4</mn></mrow></mfrac><mo>-</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><msup><mo>)</mo><mn>5</mn></msup></mrow><mrow><mn>4</mn><mn>0</mn><mn>9</mn><mn>6</mn></mrow></mfrac><mo>+</mo><mi mathvariant="script">O</mi><mo>(</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><msup><mo>)</mo><mn>6</mn></msup><mo>)</mo></mrow></math></div><p>Ejemplo de una expansión presentada como ecuación independiente, con fracciones apiladas y potencias.</p></div><div class="book-learning-grid book-figure-grid"><figure class="book-figure"><img src="images/Esp32.png" alt="Figura A. Controlador usado para registrar las variables del sistema."><figcaption>Figura A. Controlador usado para registrar las variables del sistema.</figcaption></figure><figure class="book-figure"><img src="images/Electrolizador.png" alt="Figura B. Equipo técnico representado dentro del mismo lenguaje visual."><figcaption>Figura B. Equipo técnico representado dentro del mismo lenguaje visual.</figcaption></figure></div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Validación</span><strong>Datos, seguridad y fuentes</strong></aside>
+    <article class="book-page__content"><h2>Ficha técnica de una medición</h2><table class="project-parameter-table"><thead><tr><th>Medición</th><th>Viento</th><th>Agua</th></tr></thead><tbody><tr><td>Entrada</td><td>Velocidad, dirección, densidad y turbulencia.</td><td>Caudal, niveles, altura neta y sedimentos.</td></tr><tr><td>Mecánica</td><td>rpm, par, vibración, deformación y temperatura.</td><td>rpm, par, vibración, presión y temperatura.</td></tr><tr><td>Salida</td><td>Potencia, energía, tensión, corriente o servicio mecánico.</td><td>Potencia, energía, tensión, corriente o servicio mecánico.</td></tr><tr><td>Estado</td><td>Humedad de madera, fisuras, uniones y recubrimiento.</td><td>Desgaste, corrosión, obstrucción, madera y apoyos.</td></tr></tbody></table><div class="project-warning"><strong>Puerta de decisión:</strong> No seleccionar equipos antes de contar con mediciones representativas, revisión de seguridad y condiciones de mantenimiento.</div></article>
+  </div>
+</section>
+
+<section class="book-sheet">
+  <div class="book-page">
+    <aside class="book-page__index"><span>Evidencia</span><strong>Actividad, código y fuentes</strong></aside>
+    <article class="book-page__content"><h2>Registro reproducible</h2><div class="book-task"><h3>Actividad de comprobación</h3><ul><li>Registrar fecha, lugar, instrumento y responsable.</li>
+<li>Anotar unidades, incertidumbre y condiciones ambientales.</li>
+<li>Comparar el resultado con la demanda identificada.</li></ul></div><div class="book-code-card"><h3>Pseudocódigo de validación</h3><pre><code>leer medicion
+si medicion esta en rango:
+    guardar dato
+si no:
+    registrar alerta</code></pre></div><div class="book-references"><h3>Referencias</h3><ol><li>Guía de instrumentos y métodos de observación de la OMM. <a href="https://community.wmo.int/" target="_blank" rel="noopener">https://community.wmo.int/</a></li><li>Material educativo de la Fundación. <a href="https://hidrogenoverdeturquesa.com/fundacion" target="_blank" rel="noopener">https://hidrogenoverdeturquesa.com/fundacion</a></li></ol></div></article>
+  </div>
+</section>
+  </main>
+  <footer class="s-footer"><div class="row"><div class="column large-7 medium-6 w-1000-stack ss-copyright"><span>© Copyright Hidrógeno Verde Turquesa 2026</span><span>Prueba temporal de edición con LaTeX</span></div></div><div class="ss-go-top"><a class="smoothscroll" title="Volver arriba" href="#top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg></a></div></footer>
+  <script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js?v=sin-prism-20260726"></script><script src="js/main.js?v=urls-limpias-20260727"></script>
+</body></html>

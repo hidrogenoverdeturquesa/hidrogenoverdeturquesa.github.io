@@ -1,0 +1,354 @@
+% !TeX encoding = UTF-8
+\documentclass{../plantilla/hvtbook}
+\HVTTitulo{Prototipo escalable de planta de hidrógeno}
+\HVTSubtitulo{Documento técnico del prototipo modular y escalable de planta de hidrógeno. Integra criterios de diseño, cálculos, componentes, procesos, operación, control, seguridad, validación y escalamiento.}
+\HVTNivel{Proyecto de investigación en Boyacá}
+\HVTSerie{Publicación técnica}
+\HVTNumero{01}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Documento técnico del prototipo modular y escalable de planta de hidrógeno en Boyacá.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-planta-hidrogeno}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../../images/portfolio/planta.jpg}{Figura 1. Concepto inicial del prototipo modular y escalable.}
+
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Contenido}{Mapa de la publicación}{Arquitectura técnica del prototipo}
+\HVTLead{El prototipo reúne electrólisis, pirólisis de residuos orgánicos y biohidrógeno como módulos tecnológicos diferenciados, articulados mediante sistemas comunes de acondicionamiento, almacenamiento, control y seguridad.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Ruta electroquímica}Electrólisis del agua utilizando electricidad y un electrolizador.\end{HVTColumn}
+\begin{HVTColumn}{Ruta termoquímica}Pirólisis de residuos orgánicos y tratamiento posterior de los productos gaseosos y líquidos.\end{HVTColumn}
+\begin{HVTColumn}{Ruta biológica}Producción de biohidrógeno mediante microorganismos y sustratos biodegradables.\end{HVTColumn}
+\end{HVTGrid}
+\begin{HVTTaskOrdered}{Capítulos}\item Criterios de diseño. \item Electrólisis. \item Pirólisis de residuos orgánicos. \item Biohidrógeno. \item Acondicionamiento y pureza. \item Arquitectura modular. \item Instrumentación y seguridad. \item Selección tecnológica.\end{HVTTaskOrdered}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Escala base del prototipo y dimensionamiento inverso}
+\HVTLead{El primer criterio de diseño no es una figura arbitraria ni una etiqueta de capacidad: es la demanda final que la planta debe satisfacer. A partir de esa demanda se retrocede hacia los flujos de hidrógeno, las materias primas, los servicios y los equipos.}
+\HVTText{El caso base del libro es un requerimiento neto de entrega de energía eléctrica de 1 MW, entendido como potencia útil disponible al punto final de servicio. Esta premisa permite comparar rutas, definir balances, seleccionar módulos y estimar en qué escala se requiere producir hidrógeno.}
+\begin{HVTTable}{Magnitud}{Símbolo}{Unidad}
+\HVTTableRow{Potencia neta de entrega}{$P_{\mathrm{net,entrega}}$}{W, kW, MW}
+\HVTTableRow{Potencia bruta del sistema}{$P_{\mathrm{bruta}}$}{W, kW, MW}
+\HVTTableRow{Potencia de hidrógeno útil}{$P_{H_2}$}{W, kW, MW}
+\HVTTableRow{Flujo másico de hidrógeno}{$\dot{m}_{H_2}$}{kg/h}
+\HVTTableRow{Energía específica de producción}{$E_{esp}$}{kWh/kg H2}
+\HVTTableRow{Rendimiento o eficiencia}{$\eta$}{--}
+\end{HVTTable}
+\HVTEquation{P_{\mathrm{net,entrega}} = 1\;\mathrm{MW_e}}{}
+\HVTText{Este valor debe entenderse como una demanda final de energía útil. No significa directamente la potencia nominal del electrolizador, la potencia eléctrica consumida por la planta, la energía química contenida en el hidrógeno ni la potencia bruta de generación. El enfoque del libro es inverso: partir de la demanda final y retroceder hasta el hidrógeno requerido, la alimentación, la infraestructura y los equipos.}
+\begin{HVTWarning}{Importante}La potencia neta de entrega es una restricción de diseño. La planta puede consumir más energía que la que entrega si su objetivo es producir hidrógeno, convertir energía renovable o almacenar energía. Por ello, las eficiencias, los consumos auxiliares y la disponibilidad operativa deben estimarse con rigor. \end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Lógica del dimensionamiento inverso}
+\HVTLead{La planta debe dimensionarse desde la demanda final hacia el proceso: energía útil, hidrógeno necesario, recursos, equipos y servicios.}
+\HVTEquation{P_{\mathrm{net,entrega}} \rightarrow P_{\mathrm{bruta}} \rightarrow P_{H_2} \rightarrow \dot{m}_{H_2} \rightarrow \text{alimentación} \rightarrow \text{equipos} \rightarrow \text{servicios}}{}
+\HVTText{En ingeniería, la demanda no se construye a partir del equipo primero; se define la función que debe cumplir la planta y luego se dimensionan los subsistemas. En este caso, la salida funcional es una entrega de energía útil, normalmente como energía eléctrica disponible o como hidrógeno con una especificación determinada.}
+\begin{HVTTask}{Secuencia lógica de diseño}\item Definir la demanda final y la calidad requerida. \item Calcular la energía o hidrógeno necesario. \item Estimar eficiencias, consumos auxiliares y pérdidas internas. \item Definir el flujo de materia prima y servicios. \item Dimensionar reactores, separadores, compresores, almacenamiento, instrumentación y seguridad. \item Evaluar funcionamiento en operación nominal, parcial y en escenarios de contingencia. \end{HVTTask}
+\HVTText{La escala base de 1 MW no representa un número aislado. Debe entenderse como un caso de referencia que permite aplicar el mismo razonamiento a 100 kW, 500 kW, 2 MW o 10 MW, siempre con un criterio técnico consistente.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Propósito pedagógico}
+\HVTLead{El capítulo no se limita a presentar fórmulas. Busca formar un criterio de ingeniería capaz de reconocer qué representa cada magnitud, cómo se expresa, qué unidades usa y cómo influye en el diseño.}
+\begin{HVTTaskOrdered}{Preguntas de diseño}\item ¿Qué representa físicamente esta variable? \item ¿Es escalar, vectorial o tensorial? \item ¿En qué unidades se expresa? \item ¿Cómo se calcula? \item ¿De qué depende? \item ¿Qué incertidumbre tiene? \item ¿Qué equipo la determina? \item ¿Cómo cambia cuando se escala la planta? \end{HVTTaskOrdered}
+\HVTText{El lector no debe memorizar fórmulas desconectadas del proceso. Debe aprender a asociar cada variable con una pieza del sistema, una restricción física o un balance de energía y masa. En la práctica, este capítulo prepara la transición hacia el análisis de electrólisis, pirólisis y biohidrógeno, donde cada ruta tendrá su propia lógica de conversión, consumo y pureza.}
+\begin{HVTWarning}{La ingeniería no se basa únicamente en una ecuación final. Las ecuaciones son herramientas de análisis, pero el criterio técnico exige definir supuestos, restricciones, rango de operación y nivel de incertidumbre.} \end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Lenguaje de ingeniería}
+\HVTLead{Antes de dimensionar el caso base, conviene fijar el lenguaje que se usará en todo el libro.}
+\begin{HVTTable}{Concepto}{Definición}{Ejemplo}
+\HVTTableRow{Magnitud física}{Propiedad medible del sistema}{Masa, presión, energía, flujo}
+\HVTTableRow{Escalar}{Magnitud determinada por valor y unidad}{$T=60^\circ\mathrm{C}$}
+\HVTTableRow{Vector}{Magnitud con módulo y dirección}{Velocidad del gas}
+\HVTTableRow{Tensor}{Magnitud que requiere más de una dirección}{Esfuerzo o deformación}
+\HVTTableRow{Variable}{Cantidad que cambia o se estima}{$\dot{m}_{H_2}$}
+\HVTTableRow{Parámetro}{Magnitud que caracteriza el sistema}{$\eta$, $E_{esp}$}
+\HVTTableRow{Constante}{Valor fijo en un rango específico}{$F$, constante de Faraday}
+\HVTTableRow{Requisito de diseño}{Meta funcional o de operación}{$P_{\mathrm{net,entrega}}=1\;\mathrm{MW}$}
+\end{HVTTable}
+\HVTText{En la planta de hidrógeno, muchas magnitudes se expresan como flujos, ritmos y eficiencias. Por ello, la precisión conceptual es tan importante como la precisión numérica. Un valor puede estar bien definido en términos de unidades, pero mal interpretado si se confunde con otra gran magnitud: potencia, energía, caudal, capacidad de almacenamiento o energía química.}
+\HVTEquation{E=P\cdot t}{}
+\HVTText{Esta ecuación permite distinguir claramente la potencia de la energía: si una planta entrega 1 MW, en una hora habrá entregado 1 MWh. Esta diferencia es crítica para evitar errores comunes de cálculo y para interpretar correctamente la operación continua, la disponibilidad y los perfiles de demanda.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Variables, parámetros, constantes y requisitos}
+\HVTLead{En un proyecto de ingeniería, cada símbolo debe clasificarse para no mezclar lo que se fija, lo que se calcula y lo que se mide.}
+\begin{HVTTable}{Tipo}{Definición}{Ejemplo técnico}
+\HVTTableRow{Variable independiente}{Valor que se fija con libertad de diseño o de operación}{Caudal de alimentación, presión de operación}
+\HVTTableRow{Variable dependiente}{Resultado que cambia cuando cambian las condiciones}{$\dot{m}_{H_2}$, temperatura de salida}
+\HVTTableRow{Parámetro}{Cantidad que caracteriza un sistema o una ruta}{$\eta$, rendimiento específico}
+\HVTTableRow{Constante}{Valor fijo en condiciones dadas}{$F = 96485.33212\;\mathrm{C/mol}$}
+\HVTTableRow{Requisito}{Meta funcional del proyecto}{$P_{\mathrm{net,entrega}}=1\;\mathrm{MW}$}
+\HVTTableRow{Restricción}{Límite técnico o normativo}{Pureza mínima, límite de presión, corriente máxima}
+\HVTTableRow{Supuesto}{Hipótesis elegida para un análisis}{Eficiencia de compresión, factor de disponibilidad}
+\HVTTableRow{Indicador}{Medida de desempeño}{Energía específica, rendimiento neto, disponibilidad}
+\end{HVTTable}
+\HVTText{La decisión de diseño no es solo asignar números; también implica distinguir entre lo que el proyecto exige, lo que el proceso permite y lo que aún requiere validación experimental o bibliográfica. En este capítulo, el caso base fijado en 1 MW es un requisito de diseño. Las eficiencias y los rendimientos, en cambio, son parámetros que se deben estimar y actualizar.}
+\HVTEquation{\dot{m}_{H_2} = f(P_{\mathrm{net,entrega}},\,\eta,\,E_{esp},\,\text{pérdidas},\,\text{auxiliares})}{}
+\HVTText{La ecuación anterior no pretende ser una fórmula cerrada universal; representa la dependencia funcional del flujo de hidrógeno respecto a la demanda final y a la eficiencia global del sistema. Este mismo principio se aplica a cada ruta tecnológica del libro.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Magnitudes extensivas e intensivas}
+\HVTLead{La planta no puede tratar todas las variables como si fueran equivalentes. Algunas crecen con la capacidad; otras deben mantenerse dentro de rangos operativos.}
+\begin{HVTTable}{Tipo}{Definición}{Ejemplos}
+\HVTTableRow{Extensiva}{Depende de la escala o del tamaño del sistema}{Masa, volumen, energía, cantidad de sustancia}
+\HVTTableRow{Intensiva}{No depende de la escala del sistema}{Temperatura, presión, densidad, concentración}
+\HVTTableRow{Operación escalada}{Cambia según aumento de capacidad}{Flujo, almacenamiento, potencia}
+\HVTTableRow{Estado local}{Se define en un punto del sistema}{Temperatura local, presión local, composición}
+\end{HVTTable}
+\HVTText{Un principio esencial del diseño es que no todo escala linealmente. Si la planta duplica su capacidad, el caudal puede duplicarse, pero la temperatura, la presión o la pureza no necesariamente siguen la misma proporción. Además, la operación bajo carga parcial y las pérdidas por transporte, separación y compresión no son lineales.}
+\begin{HVTWarning}{El escalado no es una regla de cálculo automática. Un diseño debe verificarse con balances, restricciones operativas, análisis de seguridad y validación de rendimiento.} \end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Sistema Internacional y análisis dimensional}
+\HVTLead{La ingeniería exige precisión en las unidades y consistencia dimensional.}
+\begin{HVTTable}{Magnitud}{Símbolo}{Unidad principal}
+\HVTTableRow{Potencia}{$P$}{W, kW, MW}
+\HVTTableRow{Energía}{$E$}{J, kWh, MWh}
+\HVTTableRow{Masa}{$m$}{kg}
+\HVTTableRow{Flujo másico}{$\dot{m}$}{kg/h, kg/s}
+\HVTTableRow{Volumen}{$V$}{m$^3$}
+\HVTTableRow{Caudal volumétrico}{$\dot{V}$}{m$^3$/h, Nm$^3$/h}
+\HVTTableRow{Presión}{$p$}{Pa, kPa, bar}
+\HVTTableRow{Temperatura}{$T$}{K, $^\circ$C}
+\end{HVTTable}
+\HVTEquation{E=P\cdot t}{}
+\HVTText{La diferencia entre potencia y energía es crítica. 1 MW es una potencia; 1 MWh es una energía. En un año, una planta que funciona continuamente a 1 MW podría producir aproximadamente 8.76 GWh, siempre que la disponibilidad y el factor de capacidad lo permitan. Esta diferencia debe mantenerse nítida en todo el libro para evitar confundir capacidad de generación con energía entregada.}
+\begin{HVTTask}{Regla de consistencia}\item Las ecuaciones deben ser dimensionalmente consistentes. \item Los flujos deben expresarse con unidades compatibles con el tiempo. \item La presión y la temperatura deben especificarse en referencia a la condición de operación. \item La energía química no debe compararse directamente con la energía eléctrica sin una eficiencia o un factor de conversión explícito. \end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Escala física del caso de referencia}
+\HVTLead{La figura de 1 MW no es abstracta: tiene un significado físico claro en energía y producción.}
+\HVTEquation{1\;\mathrm{MW}\times 1\;\mathrm{h}=1\;\mathrm{MWh}}{}
+\HVTEquation{1\;\mathrm{MW}\times 24\;\mathrm{h}=24\;\mathrm{MWh/día}}{}
+\HVTEquation{1\;\mathrm{MW}\times 720\;\mathrm{h}\approx 720\;\mathrm{MWh/mes}}{}
+\HVTEquation{1\;\mathrm{MW}\times 8760\;\mathrm{h}=8.76\;\mathrm{GWh/año}}{}
+\HVTText{Estas cifras son útiles para comprender la escala del sistema. Sin embargo, no deben confundirse con una producción nominal garantizada en todas las condiciones. El mundo real exige considerar: disponibilidad, mantenimientos, fallos, consumo auxiliar, variabilidad de carga, pérdidas de conversión y operación parcial.}
+\HVTText{Por ello, la producción útil anual real se escribe como:}
+\HVTEquation{E_{\mathrm{real}} = P_{\mathrm{net,entrega}} \cdot t \cdot \mathrm{FD} \cdot \mathrm{Disponibilidad} \cdot \mathrm{Eficiencia\_global}}{}
+\HVTText{Donde FD es el factor de demanda o factor de carga operativo. Un valor de referencia puede darse como escenario, pero no como resultado universal.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Equivalencias comprensibles para el lector}
+\HVTLead{La mejor forma de entender la escala del proyecto es traducirla a usos cotidianos y aplicaciones técnicas.}
+\begin{HVTTable}{Aplicación}{Base de comparación}{Comentario}
+\HVTTableRow{Viviendas}{Consumo típico entre 150 y 300 kWh/mes}{Depende del clima, la eficiencia y la tarifa}
+\HVTTableRow{Edificios}{Cargas elevadas y perfiles horarios}{Requieren considerar simultaneidad}
+\HVTTableRow{Vehículos eléctricos}{Energía por vehículo y recarga}{Se usa para estimar demanda de servicio}
+\HVTTableRow{Bombeo de agua}{Energía por volumen elevado}{Importante en zonas rurales o industriales}
+\HVTTableRow{Infraestructura}{Ventilación, iluminación y servicios públicos}{Los perfiles varían mucho}
+\HVTTableRow{Almacenamiento}{Energía entregada en horas de pico}{Puede requerir sincronización con la planta}
+\end{HVTTable}
+\HVTText{Estas equivalencias no deben entenderse como cifras definitivas de mercado. Son herramientas pedagógicas para visualizar la escala del proyecto y para comparar la energía disponible con diversas aplicaciones. La clave es separar equivalencia energética de capacidad real de suministro: un sistema puede aportar una energía media, pero la demanda real puede ser mucho más variable.}
+\HVTEquation{N_{\mathrm{hogares}} \approx \frac{E_{\mathrm{disponible}}}{E_{\mathrm{hogar}}}}{}
+\HVTText{La equivalencia depende fuertemente de la tasa de consumo por hogar, la estacionalidad, los perfiles horarios y la operación y, por tanto, debe presentarse como una estimación de escenario y no como una verdad absoluta.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Del MW eléctrico al hidrógeno requerido}
+\HVTLead{La ingeniería de la planta se construye desde la demanda final de energía útil, pero no se puede concluir el diseño sin cuantificar el hidrógeno necesario.}
+\HVTEquation{P_{\mathrm{net,entrega}} = P_{\mathrm{bruta}} - P_{\mathrm{aux}}}{}
+\HVTEquation{P_{H_2} = \frac{P_{\mathrm{bruta}}}{\eta_{\mathrm{conv}}}}{}
+\HVTEquation{\dot{m}_{H_2} = \frac{P_{H_2}}{\mathrm{PCI}_{H_2}}}{}
+\HVTText{Estas ecuaciones muestran la lógica general del diseño. La demanda final define la potencia útil disponible. Después se debe estimar la demanda total de conversión, las pérdidas y los consumos auxiliares. Finalmente, se calcula el hidrógeno necesario en masa o en flujo másico.}
+\HVTText{La energía que contiene el hidrógeno puede expresarse en términos de poder calorífico inferior o superior. Para un análisis técnico riguroso, deben diferenciarse ambos conceptos:}
+\HVTEquation{\mathrm{PCI}_{H_2} \neq \mathrm{PCS}_{H_2}}{}
+\HVTText{El PCI es normalmente la referencia aplicable para una comparación de energía útil a partir de combustión directa o conversión térmica. El PCS puede ser útil para análisis de procesos con condensación de vapor. No deben intercambiarse sin una justificación técnica.}
+\begin{HVTWarning}{En hidrógeno, la elección del indicador energético afecta directamente el cálculo de producción y del consumo específico. Es necesario indicar claramente qué base se utiliza: PCI, PCS, electricidad útil o energía química disponible.} \end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Análisis de sensibilidad inicial}
+\HVTLead{La elección de la eficiencia afecta directamente el hidrógeno requerido y, por tanto, la planta completa.}
+\begin{HVTTable}{Escenario}{Eficiencia de conversión}{Impacto}
+\HVTTableRow{Bajo}{Menor que la referencia}{Mayor flujo de H2 requerido y mayor masa de alimentación}
+\HVTTableRow{Referencia}{Rango técnico aceptado}{Diseño base y equilibrio de balances}
+\HVTTableRow{Alto}{Eficiencia más favorable}{Menor consumo, menor capacidad de equipos, mayor exigencia de rendimiento}
+\end{HVTTable}
+\HVTEquation{\eta \uparrow \Rightarrow \dot{m}_{H_2} \downarrow}{}
+\HVTEquation{\eta \downarrow \Rightarrow \dot{m}_{H_2} \uparrow}{}
+\HVTText{Esto no significa que un valor más alto sea automáticamente mejor; la eficiencia debe evaluarse en conjunto con robustez operativa, disponibilidad, consumo auxiliar, costo de capital, mantenimiento y complejidad de la operación. El diseño técnico no se decide únicamente por la mejor eficiencia ya que cada ruta tiene sus propios límites.}
+\HVTText{El análisis de sensibilidad es la herramienta para identificar cuánto cambia la planta cuando cambia un parámetro crítico. En hidrógeno, estas variaciones afectan el almacenamiento, la compresión, la separación, la purificación y la seguridad.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Base común para las rutas tecnológicas}
+\HVTLead{Todas las rutas del libro deben satisfacer una misma demanda funcional: producir, acondicionar y entregar hidrógeno útil.}
+\begin{HVTFlow}\HVTFlowItem{1}{Demanda de la planta}{Se fija la entrega final de energía útil o hidrógeno útil.}\HVTFlowItem{2}{Conversión}{Electrólisis, pirólisis o biohidrógeno convierten una entrada en hidrógeno.}\HVTFlowItem{3}{Acondicionamiento}{Purificación, secado, compresión y almacenamiento.}\HVTFlowItem{4}{Entregable}{Gas con especificación, presión, pureza y seguridad operativa.}\end{HVTFlow}
+\HVTText{La ruta electroquímica convierte electricidad y agua en hidrógeno y oxígeno. La ruta termoquímica transforma residuos o biomasa en gas y subproductos; el hidrógeno requiere reformado y limpieza. La ruta biológica genera hidrógeno a partir de sustratos orgánicos y requiere control de reactores, pH, temperatura, carga orgánica y separación gas-líquido.}
+\HVTEquation{\dot{m}_{H_2} \rightarrow E_{esp} \rightarrow P_{\mathrm{electrolisis}} \rightarrow \dot{m}_{agua} \rightarrow \text{servicios}}{}
+\HVTEquation{\dot{m}_{H_2} \rightarrow Y_{H_2} \rightarrow \dot{m}_{\mathrm{residuo}} \rightarrow \text{reactor} \rightarrow \text{purificación}}{}
+\HVTEquation{\dot{m}_{H_2} \rightarrow Y_{H_2,s} \rightarrow V_{\mathrm{reactor}} \rightarrow \dot{m}_{\mathrm{sustrato}}}{}
+\HVTText{Lo importante es que, aunque las rutas sean distintas, comparten una misma lógica de diseño: producir hidrógeno útil con la capacidad, pureza, seguridad y rendimiento que requiere la aplicación final.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Variables fundamentales del libro}
+\HVTLead{Para construir una planta técnica, el primer paso es definir el conjunto de variables que gobiernan el comportamiento.}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Potencia neta de entrega}{$P_{\mathrm{net,entrega}}$}{W, kW, MW}
+\HVTTableRow{Potencia bruta del sistema}{$P_{\mathrm{bruta}}$}{W, kW, MW}
+\HVTTableRow{Potencia auxiliar}{$P_{\mathrm{aux}}$}{W, kW, MW}
+\HVTTableRow{Potencia química asociada}{$P_{H_2}$}{W, kW, MW}
+\HVTTableRow{Flujo másico de hidrógeno}{$\dot{m}_{H_2}$}{kg/h}
+\HVTTableRow{Rendimiento específico}{$Y_{H_2}$}{kg H2/kg alimentación}
+\HVTTableRow{Consumo específico de energía}{$E_{esp}$}{kWh/kg H2}
+\HVTTableRow{Pureza de hidrógeno}{$x_{H_2}$}{\% vol.}
+\HVTTableRow{Presión de operación}{$p$}{bar, kPa}
+\HVTTableRow{Temperatura operativa}{$T$}{$^\circ$C}
+\end{HVTTable}
+\HVTText{Estas variables no son meras notaciones: cada una representa un criterio operativo que define el diseño del proceso. Por ejemplo, \(\dot{m}_{H_2}\) define la necesidad de producción; \(E_{esp}\) define la energía demandada por la ruta; \(x_{H_2}\) define la calidad del gas; \(p\) y \(T\) definen el condicionamiento y la seguridad.}
+\HVTText{Posteriormente, estas mismas variables se conectarán con balances de masa, balances de energía, selección de equipos, almacenamiento y análisis de riesgos.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Parámetros inciertos y validación}
+\HVTLead{No todo parámetro se conoce con la misma certeza. Lo técnico exige distinguir entre dato conocido, dato estimado y dato experimental.}
+\HVTText{Para cada variable o parámetro del libro se debe distinguir:}
+\begin{HVTTask}{Clasificación de la evidencia}\item \textbf{Teórico}: derivado de principios físicos o ecuaciones generales. \item \textbf{Bibliográfico}: reportado por literatura técnica y científica. \item \textbf{Experimental}: obtenido en ensayos. \item \textbf{Fabricante}: informado por proveedores o equipos. \item \textbf{Simulado}: resultado de modelado. \item \textbf{Operacional}: obtenidos en campo o planta. \end{HVTTask}
+\HVTText{Un rendimiento bibliográfico no debe asumirse como rendimiento de diseño real. Un dato de laboratorio no debe extrapolarse sin análisis de escala, selección de condiciones y revisión crítica de supuestos.}
+\HVTEquation{x = \bar{x} \pm U}{}
+\HVTText{La incertidumbre no es una debilidad del análisis: es una herramienta para expresar el nivel de confianza del valor. En diseño, expresar incertidumbre es tan importante como usar un número.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Escalamiento y modularidad}
+\HVTLead{El caso base de 1 MW debe entenderse como punto de partida de una familia de escalas.}
+\begin{HVTTable}{Escala}{Interpretación}{Aplicación}
+\HVTTableRow{100 kW}{Módulo de laboratorio o demostración}{Pruebas y validación}
+\HVTTableRow{500 kW}{Módulo intermedio}{Demostración industrial parcial}
+\HVTTableRow{1 MW}{Caso base del libro}{Prototipo modular y escalable}
+\HVTTableRow{2 MW}{Escala de ampliación}{Aumento de capacidad por duplicación}
+\HVTTableRow{5 MW}{Escala de despliegue}{Aplicaciones regionales o industriales}
+\HVTTableRow{10 MW}{Escala mayor}{Más integración y servicios auxiliares}
+\end{HVTTable}
+\HVTText{La modularidad cambia la estrategia de diseño. En vez de un único bloque enorme, puede diseñarse una planta a partir de módulos repetibles. Esto facilita mantenimiento, expansión, operación parcial, reducción de riesgo y mejora de disponibilidad.}
+\HVTText{Sin embargo, modularidad no significa que todas las variables escalen linealmente. Algunas se reparten bien entre módulos y otras requieren análisis de integración, transporte, almacenamiento y control.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Casos de operación y condiciones de frontera}
+\HVTLead{La planta no puede diseñarse solo para el caso nominal. Debe contemplar condiciones de arranque, parada, carga parcial, contingencias y operación fuera de especificación.}
+\begin{HVTTask}{Casos de operación}\item Caso nominal. \item Carga mínima. \item Carga máxima. \item Arranque. \item Parada segura. \item Pérdida de alimentación eléctrica. \item Producción fuera de especificación. \item Mantenimientos programados. \item Operación intermitente. \end{HVTTask}
+\HVTText{Cada caso define un estado operativo distinto y, por tanto, una condición límite distinta para los equipos, los sensores y la seguridad. La planta debe diseñarse para ser robusta, no solo eficiente.}
+\HVTText{La frontera del sistema incluye entradas, salidas y restricciones: materias primas, energía, agua, residuos, emisiones, seguridad y especificación del hidrógeno.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Criterios de diseño}{Filosofía de dimensionamiento del libro}
+\HVTLead{La lógica del libro es simple y poderosa: comenzar desde la demanda, llegar a la producción, y luego definir el proceso, los equipos y los servicios.}
+\HVTEquation{\text{Demanda} \rightarrow \text{H}_2 \rightarrow \text{proceso} \rightarrow \text{equipos} \rightarrow \text{servicios} \rightarrow \text{infraestructura}}{}
+\HVTText{El capítulo 1 prepara la base para que, en los capítulos siguientes, la planta pueda entenderse como un conjunto de módulos interactuantes. El lector aprenderá a proyectar la operación desde la energía útil final hacia la producción, el acondicionamiento y la seguridad.}
+\HVTText{La intención es que el cuadernillo permita un dimensionamiento técnico riguroso, con variables bien definidas, supuestos razonables y un criterio de escalamiento claro. El lector no solo verá fórmulas, sino también la lógica con la que se deciden capacidades, rangos operativos y criterios de diseño.}
+\begin{HVTWarning}{Los números que se presenten en los capítulos posteriores deben tratarse como escenarios de ingeniería, no como valores universales. Se deben identificar claramente fuentes, supuestos y niveles de validación.} \end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Electrólisis}{Ruta electroquímica}
+\HVTLead{La electrólisis separa el agua en hidrógeno y oxígeno mediante electricidad. El diseño debe considerar calidad del agua, potencia, eficiencia, temperatura, presión y tecnología del electrolizador.}
+\begin{HVTFlow}\HVTFlowItem{1}{Agua tratada}{Filtración, desmineralización y control de conductividad.}\HVTFlowItem{2}{Electrolizador}{Conversión electroquímica y separación inicial.}\HVTFlowItem{3}{Secado}{Eliminación de humedad, medición y control de pureza.}\end{HVTFlow}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Corriente eléctrica}{$I$}{A}
+\HVTTableRow{Eficiencia faradaica}{$\eta_F$}{--}
+\HVTTableRow{Constante de Faraday}{$F$}{C/mol}
+\HVTTableRow{Potencia eléctrica}{$P$}{kW}
+\end{HVTTable}
+\HVTEquation{\dot{n}_{H_2}=\frac{\eta_F\cdot I}{2\cdot F}}{}
+\HVTText{La expresión se deriva de la ley de Faraday para una reacción que requiere dos electrones por mol de H2. Se adopta F = 96 485,332 12 C/mol, valor exacto reportado por NIST. \HVTCite{1} La revisión de Carmo et al. documenta los fundamentos y variables de la electrólisis PEM. \HVTCite{2}}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Ejemplo E-1}{Estimación con corriente conocida}
+\begin{HVTExample}{Ejemplo E-1}{Estimación con corriente conocida}\begin{enumerate}\item Definir la corriente estable del módulo. \item Establecer la eficiencia faradaica esperada. \item Calcular el flujo molar de H2. \item Convertir el resultado a caudal volumétrico o másico. \item Verificar capacidad de secado, venteo y almacenamiento.\end{enumerate}\end{HVTExample}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Pirólisis de residuos}{Ruta termoquímica}
+\HVTLead{La pirólisis transforma residuos orgánicos mediante calentamiento en ausencia o fuerte limitación de oxígeno. Sus productos principales son biocarbón, bioaceite y gas; la obtención de una corriente rica en H2 requiere reformado y acondicionamiento posteriores.}
+\HVTEquation{\text{Residuos orgánicos}+\text{calor}\rightarrow\text{biocarbón}+\text{bioaceite}+\text{gas}}{}
+\HVTText{La expresión es una representación conceptual de productos y no una ecuación estequiométrica. Sus fracciones dependen de la biomasa, la temperatura, la velocidad de calentamiento y el tiempo de residencia. \HVTCite{3}}
+\begin{HVTFlow}\HVTFlowItem{1}{Preparación}{Clasificación, secado, reducción de tamaño y caracterización.}\HVTFlowItem{2}{Pirólisis}{Control de temperatura, tiempo de residencia y atmósfera.}\HVTFlowItem{3}{Conversión del gas}{Reformado, conversión de CO y purificación de H2.}\end{HVTFlow}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Pirólisis de residuos}{Variables y precisión técnica}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Humedad del residuo}{$X_{H_2O}$}{\% masa}
+\HVTTableRow{Temperatura del reactor}{$T_p$}{°C}
+\HVTTableRow{Tiempo de residencia}{$t_r$}{s o min}
+\HVTTableRow{Rendimiento de gas}{$Y_g$}{kg gas/kg residuo}
+\HVTTableRow{Fracción de H2 en gas}{$x_{H_2,g}$}{\% vol.}
+\end{HVTTable}
+\begin{HVTWarning}{Precisión técnica}El desempeño depende de la composición del residuo, especialmente humedad, cenizas y fracciones de celulosa, hemicelulosa y lignina. \HVTCite{4} La producción de H2 a partir de bioaceite requiere etapas posteriores, como reformado catalítico con vapor y purificación. \HVTCite{5} No debe asignarse un rendimiento único sin caracterización y ensayos.\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Biohidrógeno}{Ruta biológica}
+\HVTLead{La fermentación oscura utiliza microorganismos para degradar materia orgánica y producir una mezcla gaseosa que puede contener H2 y CO2, además de metabolitos líquidos.}
+\HVTEquation{C_6H_{12}O_6+2H_2O\rightarrow2CH_3COOH+2CO_2+4H_2}{}
+\HVTText{La reacción representa la ruta estequiométrica teórica hacia acetato, cuyo límite es 4 mol H2/mol glucosa; no representa el rendimiento garantizado de un residuo real. \HVTCite{6} Los rendimientos experimentales dependen del sustrato, la comunidad microbiana, el pH, la temperatura, la carga orgánica y el tiempo de retención. \HVTCite{7}}
+\begin{HVTTable}{Variable}{Símbolo}{Unidad}
+\HVTTableRow{Demanda química de oxígeno}{DQO}{g O2/L}
+\HVTTableRow{pH}{pH}{--}
+\HVTTableRow{Temperatura}{$T_b$}{°C}
+\HVTTableRow{Tiempo de retención hidráulica}{TRH}{h}
+\HVTTableRow{Rendimiento de H2}{$Y_{H_2,s}$}{mol H2/mol sustrato}
+\end{HVTTable}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Biohidrógeno}{Caracterización mínima}
+\begin{HVTTask}{Caracterización mínima}\item Origen y variabilidad del residuo. \item Materia seca, sólidos volátiles y DQO. \item Carbohidratos disponibles e inhibidores. \item Producción y composición del biogás. \item Ácidos orgánicos y estabilidad del reactor.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Acondicionamiento}{Del gas de proceso al hidrógeno útil}
+\HVTLead{Las rutas termoquímica y biológica producen mezclas gaseosas. Antes de almacenar o utilizar H2 deben medirse y reducirse impurezas según la aplicación final.}
+\begin{HVTFlow}\HVTFlowItem{1}{Separación primaria}{Partículas, condensados, alquitranes y humedad.}\HVTFlowItem{2}{Conversión y limpieza}{Tratamiento de CO, CO2, CH4, H2S y compuestos traza.}\HVTFlowItem{3}{Purificación}{Membranas, adsorción u otra tecnología seleccionada.}\end{HVTFlow}
+\begin{HVTTask}{Especificación de salida}\item Caudal y presión. \item Pureza y punto de rocío. \item Concentración de CO, CO2, CH4, H2S y O2. \item Destino del gas fuera de especificación. \item Método y frecuencia de análisis.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Arquitectura modular}{Integración por bloques funcionales}
+\HVTLead{Una planta multirruta no debe operar como una sola caja de proceso. Cada módulo conserva sus protecciones y controles, mientras comparte servicios auxiliares cuando sea técnica y operativamente viable.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Módulo A · Electrólisis}Agua tratada, potencia, electrolizador, separación y secado.\end{HVTColumn}
+\begin{HVTColumn}{Módulo B · Pirólisis}Preparación de residuos, reactor, separación de sólidos y tratamiento del gas.\end{HVTColumn}
+\begin{HVTColumn}{Módulo C · Biohidrógeno}Pretratamiento, biorreactor, separación gas-líquido y limpieza.\end{HVTColumn}
+\begin{HVTColumn}{Módulo D · Servicios comunes}Analítica, purificación final, compresión, almacenamiento y control.\end{HVTColumn}
+\end{HVTGrid}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Arquitectura modular}{Entregables de ingeniería conceptual}
+\begin{HVTTask}{Entregables de ingeniería conceptual}\item Diagrama de bloques y PFD por ruta. \item Balances preliminares de masa y energía. \item Lista de equipos, instrumentos y servicios. \item Filosofía de operación y parada. \item Matriz de interfaces entre módulos.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Control y seguridad}{Capas de protección}
+\HVTLead{La seguridad debe desarrollarse desde la ingeniería conceptual y actualizarse cuando cambien las materias primas, capacidades, presiones o composiciones del gas.}
+\begin{HVTSteps}\item Caracterizar materiales combustibles, tóxicos, corrosivos y biológicos. \item Definir ventilación, detección de H2 y clasificación de áreas. \item Establecer límites de presión, temperatura, nivel, flujo y composición. \item Diseñar alarmas, enclavamientos, alivio, purga y parada segura. \item Realizar análisis de riesgos y procedimientos de respuesta.\end{HVTSteps}
+\begin{HVTWarning}{Criterio obligatorio}Ningún cálculo preliminar autoriza la construcción u operación. La ingeniería detallada debe incluir revisión normativa, HAZOP u otra metodología aplicable, compatibilidad de materiales, protección eléctrica y protocolos de emergencia.\end{HVTWarning}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 8}{Selección tecnológica}{Comparar antes de integrar}
+\begin{HVTTableFour}{Criterio}{Electrólisis}{Pirólisis de residuos}{Biohidrógeno}
+\HVTTableRowFour{Alimentación principal}{Agua y electricidad}{Residuo orgánico seco o acondicionado}{Sustrato orgánico biodegradable}
+\HVTTableRowFour{Conversión}{Electroquímica}{Termoquímica}{Biológica}
+\HVTTableRowFour{Corriente inicial}{H2 y O2 separados}{Gas, bioaceite y biocarbón}{Biogás y efluente líquido}
+\HVTTableRowFour{Reto principal}{Consumo eléctrico}{Variabilidad, alquitranes y acondicionamiento}{Rendimiento y estabilidad microbiana}
+\HVTTableRowFour{Escala inicial recomendada}{Módulo demostrativo}{Ensayo de residuo y reactor piloto}{Biorreactor de laboratorio o piloto}
+\end{HVTTableFour}
+\begin{HVTTask}{Próxima fase}\item Seleccionar residuos orgánicos representativos. \item Ejecutar caracterización fisicoquímica y bioquímica. \item Construir balances por ruta con datos experimentales. \item Definir el producto objetivo y su especificación. \item Comparar desempeño, riesgos y costo por kilogramo de H2.\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+\HVTReference{National Institute of Standards and Technology. \emph{NIST Special Publication 260}. Constante de Faraday: 96 485,332 12 C/mol}{https://www.govinfo.gov/content/pkg/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195/pdf/GOVPUB-C13-0dd1458c29aace6b60ecba3311f8a195.pdf}
+\HVTReference{International Energy Agency. \emph{The Future of Hydrogen}. Paris: IEA, 2019}{https://www.iea.org/reports/the-future-of-hydrogen}
+\HVTReference{U.S. Department of Energy. \emph{Hydrogen Production: Electrolysis}}{https://www.energy.gov/eere/fuelcells/hydrogen-production-electrolysis}
+\HVTReference{Carmo, M.; Fritz, D. L.; Mergel, J.; Stolten, D. (2013). \emph{A comprehensive review on PEM water electrolysis}. International Journal of Hydrogen Energy, 38(12), 4901--4934}{https://doi.org/10.1016/j.ijhydene.2013.01.151}
+\HVTReference{Bridgwater, A. V. (2012). \emph{Review of fast pyrolysis of biomass and product upgrading}. Biomass and Bioenergy, 38, 68--94}{https://doi.org/10.1016/j.biombioe.2011.01.048}
+\HVTReference{Parra-Alvarez, M.; Sitaraman, H. (2024). \emph{Optimization of hydrogen production from pyrolysis of biomass waste}. NREL/PO-2C00-86731}{https://www.nrel.gov/docs/fy24osti/86731.pdf}
+\end{HVTReferences}
+\end{HVTPage}
+\begin{HVTPage}{Fuentes}{Referencias técnicas}{Documentos de consulta}
+\begin{HVTReferences}
+\HVTReference{Czernik, S.; Evans, R.; French, R. (2007). \emph{Hydrogen from biomass-production by steam reforming of biomass pyrolysis oil}. Catalysis Today, 129(3--4), 265--268}{https://doi.org/10.1016/j.cattod.2006.08.071}
+\HVTReference{Hawkes, F. R.; Dinsdale, R.; Hawkes, D. L.; Hussy, I. (2002). \emph{Sustainable fermentative hydrogen production: challenges for process optimisation}}{https://doi.org/10.1016/S0360-3199(02)00090-3}
+\HVTReference{Hawkes, F. R.; Hussy, I.; Kyazze, G.; Dinsdale, R.; Hawkes, D. L. (2007). \emph{Continuous dark fermentative hydrogen production by mesophilic microflora: principles and progress}}{https://doi.org/10.1016/j.ijhydene.2006.08.014}
+\HVTReference{U.S. Department of Energy. \emph{Hydrogen Production: Microbial Biomass Conversion}}{https://www.energy.gov/cmei/fuels/hydrogen-production-microbial-biomass-conversion}
+\end{HVTReferences}
+\HVTText{Esta publicación presenta criterios de ingeniería conceptual autorizados para divulgación pública. Los resultados experimentales, diseños detallados, datos operativos, análisis económicos y demás información estratégica del proyecto son confidenciales. Los valores definitivos deben establecerse mediante caracterización, ensayos, balances validados y diseño especializado.}
+\end{HVTPage}
+
+\begin{HVTPage}{Colaboración}{Conversemos}{¿Necesitas investigar, formular o evaluar un proyecto relacionado?}
+\HVTLead{Conversemos sobre tu necesidad de investigación, diseño conceptual o evaluación de un proyecto de hidrógeno.}
+\HVTContact{Consultar proyecto de hidrógeno por WhatsApp}{https://wa.me/573209574884}
+\end{HVTPage}
+
+
+\end{document}

@@ -8,7 +8,7 @@
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://hidrogenoverdeturquesa.com/politica-tratamiento-datos">
-    <link rel="stylesheet" href="css/styles.css?v=fuentes-locales-20260726">
+    <link rel="stylesheet" href="css/styles.css?v=navigation-20260816">
     <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
     <script src="js/modernizr.js"></script>
     <script defer src="js/fontawesome/all.min.js"></script>
@@ -29,8 +29,52 @@
     <header class="s-header">
         <div class="row">
             <div class="s-header__logo"><a href="/"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height:40px;width:auto;"></a></div>
-            <nav class="s-header__nav"><ul><li><a href="/">Inicio</a></li><li><a href="/#contact">Contacto</a></li></ul></nav>
-            <a class="s-header__menu-toggle" href="#0" title="Menú"><span class="s-header__menu-icon"></span></a>
+            <nav class="s-header__nav" id="site-navigation" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-work-menu">
+                            Qué hacemos <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-work-menu" hidden>
+                            <li><a href="/#services">Líneas de trabajo</a></li>
+                            <li><a href="/#portfolio">Proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-knowledge-menu">
+                            Conocimiento <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-knowledge-menu" hidden>
+                            <li><a href="/blog">Biblioteca</a></li>
+                            <li><a href="/laboratorio/">Laboratorio HVT</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-ecosystem-menu">
+                            Ecosistema <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-ecosystem-menu" hidden>
+                            <li><a href="/fundacion">Fundación</a></li>
+                            <li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li>
+                            <li><a href="/investors">Apoyar proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown current">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-about-menu">
+                            Nosotros <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-about-menu" hidden>
+                            <li><a href="/#about">Quiénes somos</a></li>
+                            <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="s-header__menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation">
+                <span class="s-header__menu-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </header>
 
@@ -108,6 +152,6 @@
             </div>
         </div></div>
     </main>
-    <script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js?v=sin-prism-20260726"></script><script src="js/main.js?v=urls-limpias-20260727"></script>
+    <script src="js/jquery-3.7.1.min.js"></script><script src="js/plugins.js?v=sin-prism-20260726"></script><script src="js/main.js?v=navigation-20260816"></script>
 </body>
 </html>
