@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>Casos técnicos | Equipo HVT</title>
+    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=20260816g">
+    <link rel="icon" type="image/svg+xml" href="/images/logo-hvt.svg">
+</head>
+<body class="lab-public">
+    <header class="lab-site-header"><div class="lab-container lab-site-header__inner">
+        <a class="lab-site-header__brand" href="/" aria-label="Hidrógeno Verde Turquesa, inicio"><img src="/images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa"></a>
+        <nav aria-label="Navegación privada"><ul><li><a href="/laboratorio/">Laboratorio</a></li><li><a href="/laboratorio/equipo/" aria-current="page">Casos técnicos</a></li></ul></nav>
+    </div></header>
+
+    <nav class="lab-breadcrumb" aria-label="Ruta de navegación"><div class="lab-container"><ol><li><a href="/">Inicio</a></li><li><a href="/laboratorio/">Laboratorio</a></li><li aria-current="page">Equipo HVT</li></ol></div></nav>
+
+    <main class="lab-team-main">
+        <section class="lab-team-login" data-team-login>
+            <p class="lab-kicker">Acceso restringido</p>
+            <h1>Casos técnicos HVT</h1>
+            <p>Esta sección contiene información privada compartida voluntariamente por los usuarios.</p>
+            <form data-team-login-form>
+                <label><span>Correo del equipo</span><input type="email" autocomplete="username" required data-team-email></label>
+                <label><span>Contraseña</span><input type="password" autocomplete="current-password" required minlength="10" data-team-password></label>
+                <div data-team-captcha hidden></div>
+                <button class="lab-button" type="submit">Entrar de forma segura</button>
+            </form>
+            <div data-team-login-status class="lab-team-login__status" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="lab-container lab-team-dashboard" data-team-dashboard hidden>
+            <header class="lab-team-dashboard__head"><div><p class="lab-kicker">Buzón privado</p><h1>Casos técnicos temporales</h1><p data-team-identity></p></div><div class="lab-team-actions"><button type="button" data-team-refresh>Actualizar</button><button type="button" data-team-cleanup hidden>Eliminar vencidos</button><button type="button" data-team-signout>Cerrar sesión</button></div></header>
+            <div class="lab-team-stats"><div><strong data-stat-new>0</strong><span>Nuevos</span></div><div><strong data-stat-review>0</strong><span>En revisión</span></div><div><strong data-stat-files>0</strong><span>Archivos privados</span></div><div><strong data-stat-expiring>0</strong><span>Vencen en 7 días</span></div></div>
+            <div class="lab-team-filters"><input type="search" placeholder="Buscar referencia, correo, proyecto o consulta" data-team-search><select data-team-filter><option value="">Todos los estados</option><option value="new">Nuevos</option><option value="reviewing">En revisión</option><option value="answered">Respondidos</option><option value="closed">Cerrados</option></select></div>
+            <div class="lab-team-message" data-team-message role="status" aria-live="polite"></div>
+            <div class="lab-team-layout">
+                <section class="lab-team-list" aria-label="Listado de casos"><div class="lab-team-table-wrap"><table class="lab-team-table"><thead><tr><th>Referencia</th><th>Recibido</th><th>Proyecto</th><th>Estado</th><th>Archivos</th></tr></thead><tbody data-team-case-list></tbody></table></div><p class="lab-team-empty" data-team-empty hidden>No hay casos que coincidan.</p></section>
+                <aside class="lab-team-detail" data-team-detail hidden aria-live="polite"></aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Acceso reservado para personal autorizado.</p></div><nav><a href="/politica-tratamiento-datos">Política de datos</a></nav></div></footer>
+    <script src="/js/laboratorio-casos-config.js?v=20260816a"></script>
+    <script src="/js/vendor/supabase-2.111.0.min.js"></script>
+    <script src="/js/laboratorio-equipo.js?v=20260816a"></script>
+</body>
+</html>
