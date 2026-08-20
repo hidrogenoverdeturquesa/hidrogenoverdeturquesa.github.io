@@ -3553,6 +3553,17 @@ input::-moz-focus-inner {
     font-weight: 600;
 }
 
+.s-header__nav .nav-dropdown.current > .nav-dropdown__toggle {
+    background-color: var(--color-1);
+    color: white;
+    font-weight: 600;
+}
+
+.s-header__nav a[aria-current="page"] {
+    color: white;
+    font-weight: 700;
+}
+
 /* Accessible one-level navigation dropdown. */
 .s-header__nav .nav-dropdown__toggle {
     display: flex;
@@ -3947,6 +3958,10 @@ body.search-is-visible {
         line-height: var(--vspace-0_75);
     }
     .s-header__nav .current a {
+        background-color: transparent;
+        color: var(--color-1);
+    }
+    .s-header__nav .nav-dropdown.current > .nav-dropdown__toggle {
         background-color: transparent;
         color: var(--color-1);
     }
