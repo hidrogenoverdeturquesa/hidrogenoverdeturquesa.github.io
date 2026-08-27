@@ -53,77 +53,8 @@
         let preferred;
         try { preferred = window.localStorage.getItem('hvt-language'); } catch (error) {}
 
-        if (nav && !nav.querySelector('.language-switcher')) {
-            const item = document.createElement('li');
-            const toggle = document.createElement('button');
-            const menu = document.createElement('div');
-            const selectorLabel = current === 'es' ? 'Seleccionar idioma' : (current === 'ru' ? 'Выбрать язык' : 'Choose language');
-            item.className = 'language-switcher';
-            toggle.className = 'language-switcher__toggle';
-            toggle.type = 'button';
-            toggle.setAttribute('aria-label', selectorLabel);
-            toggle.setAttribute('aria-haspopup', 'menu');
-            toggle.setAttribute('aria-expanded', 'false');
-            toggle.innerHTML = '<span class="language-switcher__globe" aria-hidden="true"><i class="fas fa-globe-americas"></i></span><span class="language-switcher__chevron" aria-hidden="true"></span>';
-            menu.className = 'language-switcher__menu';
-            menu.setAttribute('role', 'menu');
-            menu.hidden = true;
-
-            const automatic = document.createElement('button');
-            automatic.type = 'button';
-            automatic.className = 'language-switcher__option' + (!preferred ? ' is-active' : '');
-            automatic.setAttribute('role', 'menuitem');
-            automatic.innerHTML = '<span class="language-switcher__check" aria-hidden="true">✓</span>' + (current === 'es' ? 'Automático' : (current === 'ru' ? 'Автоматически' : 'Automatic'));
-            automatic.addEventListener('click', function() {
-                try { window.localStorage.removeItem('hvt-language'); } catch (error) {}
-                window.location.href = destinations[suggested];
-            });
-            menu.appendChild(automatic);
-
-            supported.forEach(function(language) {
-                const link = document.createElement('a');
-                link.href = destinations[language];
-                link.lang = language;
-                link.hreflang = language;
-                link.setAttribute('role', 'menuitem');
-                link.className = 'language-switcher__option' + (preferred === language ? ' is-active' : '');
-                link.innerHTML = '<span class="language-switcher__check" aria-hidden="true">✓</span>' + names[language];
-                link.title = names[language];
-                if (language === current) {
-                    link.setAttribute('aria-current', 'page');
-                }
-                link.addEventListener('click', function() {
-                    try { window.localStorage.setItem('hvt-language', language); } catch (error) {}
-                });
-                menu.appendChild(link);
-            });
-            toggle.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const opening = menu.hidden;
-                menu.hidden = !opening;
-                item.classList.toggle('is-open', opening);
-                toggle.setAttribute('aria-expanded', String(opening));
-                if (opening) menu.querySelector('[role="menuitem"]').focus();
-            });
-            document.addEventListener('click', function(event) {
-                if (!item.contains(event.target)) {
-                    menu.hidden = true;
-                    item.classList.remove('is-open');
-                    toggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-            item.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    menu.hidden = true;
-                    item.classList.remove('is-open');
-                    toggle.setAttribute('aria-expanded', 'false');
-                    toggle.focus();
-                }
-            });
-            item.appendChild(toggle);
-            item.appendChild(menu);
-            nav.appendChild(item);
-        }
+        // Dynamic language selector has been replaced with a dedicated HTML element
+        // handled by ssLanguageSelectorDropdown() function
 
         if (preferred || window.sessionStorage.getItem('hvt-language-prompted')) return;
 
