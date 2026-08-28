@@ -3717,6 +3717,11 @@ input::-moz-focus-inner {
     outline: none;
 }
 
+.s-header__language-menu a[aria-current="page"] {
+    background: rgba(0, 191, 196, 0.2);
+    color: white;
+}
+
 .s-header__language-menu .flag {
     font-size: 1.3rem;
     display: inline-block;
@@ -4160,18 +4165,27 @@ body.search-is-visible {
         height: var(--header-height);
     }
     .s-header .row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        grid-template-areas: "logo navigation language";
         height: var(--header-height);
         min-height: var(--header-height);
     }
     .s-header__logo {
+        grid-area: logo;
         align-self: center;
         height: var(--header-height);
+        justify-self: start;
+        margin-right: 0;
     }
     .s-header__nav {
+        grid-area: navigation;
         display: flex !important;
         align-self: center;
         align-items: stretch;
+        flex: 0 0 auto;
         height: var(--header-height);
+        justify-self: center;
     }
     .s-header__nav > ul {
         display: flex;
@@ -4188,16 +4202,13 @@ body.search-is-visible {
         align-items: center;
         line-height: 1.2;
     }
-    .s-header__nav > ul > li.language-switcher {
-        display: flex;
-        align-items: stretch;
-        align-self: center;
-    }
     .s-header__language {
+       grid-area: language;
        position: relative;
        display: flex;
        align-items: center;
        height: var(--header-height);
+       justify-self: end;
     }
     .s-header__language-toggle {
        height: var(--header-height);
@@ -5432,6 +5443,21 @@ body.search-is-visible {
         right: auto;
     }
 
+    .s-header__language-menu {
+        top: calc(100% + .4rem);
+        right: auto;
+        bottom: auto;
+        left: 0;
+        width: clamp(17rem, calc(100vw - 2.4rem), 19rem);
+        min-width: 0;
+        max-width: calc(100vw - 2.4rem);
+    }
+
+    .s-header__language-menu a {
+        min-height: 4.6rem;
+        padding: 1rem 1.2rem;
+    }
+
     .s-header__logo {
         --logo-width: 150px;
         margin-right: auto;
@@ -5440,12 +5466,27 @@ body.search-is-visible {
 
     .ss-go-top {
         right: 1.2rem;
-        bottom: 8.4rem;
+        bottom: calc(8.4rem + env(safe-area-inset-bottom));
         z-index: 8990;
     }
 
+    .ss-go-top a {
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+
+    .mentor-is-open .ss-go-top {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
     .s-footer {
-        padding-bottom: calc(var(--vspace-2) + 7.2rem);
+        padding-bottom: calc(var(--vspace-2) + 8.4rem + env(safe-area-inset-bottom));
+    }
+
+    body:not(.doe-poster) > main {
+        padding-bottom: calc(7.2rem + env(safe-area-inset-bottom));
     }
 
     .doe-hero {
@@ -11382,136 +11423,6 @@ body.search-is-visible {
         margin-top: 0;
     }
 }
-/* -------------------------------------------------------------------
- * Language navigation
- * ------------------------------------------------------------------- */
-.s-header__nav .language-switcher {
-    display: inline-block;
-    margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid rgba(255, 255, 255, .28);
-    position: relative;
-}
-
-.s-header__nav .language-switcher__toggle {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    width: 6.2rem;
-    height: var(--header-height);
-    margin: 0;
-    padding: 0 1.2rem;
-    border: 0;
-    color: rgba(255, 255, 255, .72);
-    background: transparent;
-    cursor: pointer;
-}
-
-.language-switcher__globe {
-    display: grid;
-    place-items: center;
-    flex: 0 0 2.2rem;
-    width: 2.2rem;
-    height: 2.2rem;
-    color: currentColor;
-    font-size: 2.1rem;
-    line-height: 1;
-}
-
-.language-switcher__globe svg {
-    display: block;
-    width: 2.1rem;
-    height: 2.1rem;
-}
-
-.language-switcher__chevron {
-    width: .8rem;
-    height: .8rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg) translateY(-2px);
-    transition: transform .2s ease;
-}
-
-.language-switcher.is-open .language-switcher__chevron {
-    transform: rotate(225deg) translate(-2px, -2px);
-}
-
-.s-header__nav .language-switcher__toggle:hover,
-.s-header__nav .language-switcher__toggle:focus {
-    color: #ffffff;
-}
-
-.s-header__nav .language-switcher__menu {
-    position: absolute;
-    z-index: 20;
-    top: calc(100% - .4rem);
-    right: 0;
-    width: 20rem;
-    padding: .8rem 0;
-    border-radius: .4rem;
-    background: #ffffff;
-    box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, .28);
-    overflow: hidden;
-}
-
-.s-header__nav .language-switcher__menu[hidden] { display: none; }
-
-.s-header__nav .language-switcher__option,
-.s-header__nav a.language-switcher__option {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    min-height: 4.4rem;
-    margin: 0;
-    padding: .8rem 1.6rem;
-    border: 0;
-    color: #263b3a;
-    background: transparent;
-    box-sizing: border-box;
-    font-family: var(--font-2);
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0;
-    text-transform: none;
-    text-align: left;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.s-header__nav .language-switcher__option:hover,
-.s-header__nav .language-switcher__option:focus {
-    color: #087e73;
-    background: #edf8f6;
-}
-
-.language-switcher__check {
-    flex: 0 0 2.4rem;
-    width: 2.4rem;
-    color: transparent;
-    font-size: 1.8rem;
-}
-
-.language-switcher__option.is-active .language-switcher__check { color: #e84e1b; }
-
-@media screen and (max-width: 1380px) {
-    .s-header__nav .language-switcher {
-        display: block;
-        margin: 1.5rem 0 0;
-        padding: 1.2rem 0 0;
-        border-top: 1px solid rgba(255, 255, 255, .18);
-        border-left: 0;
-    }
-    .s-header__nav .language-switcher__toggle { height: 4.8rem; padding-left: .4rem; }
-    .s-header__nav .language-switcher__menu {
-        position: static;
-        width: min(100%, 24rem);
-        margin-top: .4rem;
-    }
-}
-
 .language-suggestion {
     position: fixed;
     z-index: 1000;

@@ -255,6 +255,7 @@
             document.body.classList.toggle('menu-is-open', open);
             if (animate) $nav.stop(true, true)[open ? 'slideDown' : 'slideUp'](220);
             else $nav.toggle(open);
+            if (open) document.dispatchEvent(new CustomEvent('hvt:mobile-menu-opening'));
         };
 
 
@@ -303,6 +304,9 @@
                 setMenuState(false, true);
                 toggleButton.focus();
             }
+        });
+        document.addEventListener('hvt:language-opening', function() {
+            if ($toggleButton.attr('aria-expanded') === 'true') setMenuState(false, true);
         });
     }; 
 
@@ -838,10 +842,21 @@
         const langMap = { es: 'ES', en: 'EN', ru: 'РУ' };
         if (current) current.textContent = langMap[currentLang] || 'ES';
 
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.toggleAttribute('aria-current', link.lang === currentLang);
+        });
+
+        const closeMenu = function() {
+            menu.hidden = true;
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        };
+
         // Toggle menu on button click
         toggle.addEventListener('click', function(event) {
             event.stopPropagation();
             const isOpen = menu.hidden;
+            if (isOpen) document.dispatchEvent(new CustomEvent('hvt:language-opening'));
             menu.hidden = !isOpen;
             toggle.classList.toggle('is-open', isOpen);
             toggle.setAttribute('aria-expanded', String(isOpen));
@@ -850,9 +865,7 @@
         // Close menu on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && !menu.hidden) {
-                menu.hidden = true;
-                toggle.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
                 toggle.focus();
             }
         });
@@ -861,9 +874,7 @@
         document.addEventListener('click', function(event) {
             if (!event.target.closest('.s-header__language')) {
                 if (!menu.hidden) {
-                    menu.hidden = true;
-                    toggle.classList.remove('is-open');
-                    toggle.setAttribute('aria-expanded', 'false');
+                    closeMenu();
                 }
             }
         });
@@ -871,9 +882,7 @@
         // Close menu when selecting a language
         menu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
-                menu.hidden = true;
-                toggle.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
             });
         });
 
@@ -881,6 +890,8 @@
         menu.addEventListener('click', function(event) {
             event.stopPropagation();
         });
+
+        document.addEventListener('hvt:mobile-menu-opening', closeMenu);
          
         console.log('Language selector initialized successfully');
     };

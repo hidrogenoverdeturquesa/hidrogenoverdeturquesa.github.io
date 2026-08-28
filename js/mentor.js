@@ -167,6 +167,21 @@
     const actions = root.querySelector('.mentor__actions');
     const hint = root.querySelector('.mentor__hint');
     const input = root.querySelector('input');
+    const mentorSlot = document.querySelector('[data-mentor-slot]');
+    let dockToggle = null;
+    if (mentorSlot) {
+        dockToggle = document.createElement('button');
+        dockToggle.className = 'hvt-mobile-utility-dock__action hvt-mobile-utility-dock__action--mentor';
+        dockToggle.type = 'button';
+        dockToggle.setAttribute('aria-label', 'Abrir Mentor');
+        dockToggle.setAttribute('aria-expanded', 'false');
+        dockToggle.innerHTML = '<span class="mentor__mark" aria-hidden="true"><i></i><i></i></span><span>Mentor</span>';
+        mentorSlot.appendChild(dockToggle);
+        dockToggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            toggle.click();
+        });
+    }
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const typingQueue = [];
     let typingActive = false;
@@ -228,6 +243,8 @@
         root.classList.add('mentor--open');
         panel.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded', 'true');
+        if (dockToggle) dockToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mentor-is-open');
         window.clearTimeout(hintTypingTimer);
         window.clearTimeout(hintHideTimer);
         hint.classList.remove('mentor__hint--show', 'mentor__hint--typing');
@@ -240,9 +257,11 @@
         root.classList.remove('mentor--open');
         panel.setAttribute('aria-hidden', 'true');
         toggle.setAttribute('aria-expanded', 'false');
+        if (dockToggle) dockToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mentor-is-open');
         state.dismissed += 1;
         sessionStorage.setItem('mentor-dismissed', state.dismissed);
-        toggle.focus();
+        (dockToggle || toggle).focus();
     }
 
     function contextFor(id) {
