@@ -293,7 +293,7 @@
             window.history.replaceState({}, '', next);
 
             doeResults.innerHTML = '<div class="lab-status">Plan aleatorizado generado · Borrador para revisión técnica</div>' +
-                '<div class="lab-table-wrap"><table class="lab-table"><thead><tr><th>Corrida</th><th>Réplica</th>' +
+                '<div class="lab-table-wrap" role="region" aria-label="Matriz de corridas experimentales" tabindex="0"><table class="lab-table"><thead><tr><th>Corrida</th><th>Réplica</th>' +
                 factors.map(function (factor) { return '<th>' + escapeHtml(factor.name) + '</th>'; }).join('') +
                 '<th>' + escapeHtml(latestDoe.response) + ' (' + escapeHtml(latestDoe.responseUnit) + ')</th></tr></thead><tbody>' +
                 runs.map(function (run) { return '<tr><td>' + run.run + '</td><td>' + run.repetition + '</td>' +

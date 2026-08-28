@@ -859,7 +859,7 @@ body {
 /* ------------------------------------------------------------------- 
  * ## media
  * ------------------------------------------------------------------- */
-svg, img, video embed, iframe, object {
+svg, img, video, canvas, embed, iframe, object {
     max-width: 100%;
     height: auto;
 }
@@ -4116,17 +4116,21 @@ body.search-is-visible {
     .s-header__language {
        position: absolute;
        top: var(--vspace-0_5);
-       right: var(--vspace-0_5);
+       right: auto;
+       left: max(1.2rem, env(safe-area-inset-left));
        z-index: 250;
     }
     .s-header__language-toggle {
        padding: 0 8px;
     }
     .s-header__language-menu {
-       top: auto;
-       bottom: calc(100% - 0.8rem);
-       right: 0;
-       min-width: 12rem;
+       top: calc(100% + .4rem);
+       right: auto;
+       bottom: auto;
+       left: 0;
+       width: clamp(17rem, calc(100vw - 2.4rem), 19rem);
+       min-width: 0;
+       max-width: calc(100vw - 2.4rem);
     }
 }
 
@@ -5141,6 +5145,7 @@ body.search-is-visible {
 
 .book-page {
     width: min(92%, 1120px);
+    min-width: 0;
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
     gap: var(--vspace-2);
@@ -5149,6 +5154,11 @@ body.search-is-visible {
     background: white;
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
     padding: var(--vspace-2);
+}
+
+.book-page > *,
+.book-page__content {
+    min-width: 0;
 }
 
 .book-page__index {
@@ -5382,6 +5392,18 @@ body.search-is-visible {
     font-size: var(--text-sm);
 }
 
+.project-parameter-table__caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .project-parameter-table th,
 .project-parameter-table td {
     border: 1px solid var(--color-border);
@@ -5496,27 +5518,6 @@ body.search-is-visible {
         margin-left: auto;
     }
 
-    .ss-go-top {
-        right: 1.2rem;
-        bottom: calc(8.4rem + env(safe-area-inset-bottom));
-        z-index: 8990;
-    }
-
-    .ss-go-top a {
-        width: 4.8rem;
-        height: 4.8rem;
-    }
-
-    .mentor-is-open .ss-go-top {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    .s-footer {
-        padding-bottom: calc(var(--vspace-2) + 8.4rem + env(safe-area-inset-bottom));
-    }
-
     body:not(.doe-poster) > main {
         padding-bottom: calc(7.2rem + env(safe-area-inset-bottom));
     }
@@ -5550,8 +5551,68 @@ body.search-is-visible {
 
     .doe-book .project-parameter-table {
         display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        margin: var(--vspace-1) 0;
+        overflow: visible;
+        border-collapse: separate;
+    }
+
+    .doe-book .project-parameter-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .doe-book .project-parameter-table tbody {
+        display: grid;
+        gap: 1.2rem;
+        width: 100%;
+    }
+
+    .doe-book .project-parameter-table tbody tr {
+        display: block;
+        min-width: 0;
+        padding: 1.4rem;
+        border: 1px solid var(--color-border);
+        border-top: 4px solid var(--color-1);
+        background: #fff;
+    }
+
+    .doe-book .project-parameter-table td {
+        display: block;
+        width: 100%;
+        padding: .9rem 0;
+        border: 0;
+        border-bottom: 1px solid var(--color-border);
+        overflow-wrap: anywhere;
+    }
+
+    .doe-book .project-parameter-table td:first-child {
+        padding-top: 0;
+    }
+
+    .doe-book .project-parameter-table td:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .doe-book .project-parameter-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: .35rem;
+        color: var(--color-1);
+        font-family: var(--font-2);
+        font-size: 1.1rem;
+        font-weight: 900;
+        letter-spacing: .1em;
+        line-height: 1.35;
+        text-transform: uppercase;
     }
 }
 
@@ -5707,11 +5768,12 @@ body.search-is-visible {
         display: block;
         margin-bottom: 0.4rem;
     }
-    .course-book__hero {
+    .course-book__hero:not(.doe-hero) {
         padding-top: calc(var(--vspace-4) + 7.2rem);
     }
     .course-book__hero h1 {
-        font-size: 4rem;
+        font-size: clamp(3.2rem, 10vw, 4rem);
+        line-height: 1.05;
     }
     .course-book__lead {
         font-size: var(--text-md);
@@ -5720,9 +5782,46 @@ body.search-is-visible {
         width: 100%;
         margin-right: 0;
     }
+    .btn {
+        height: auto;
+        min-height: 4.8rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+        white-space: normal;
+    }
     .book-page {
-        width: 92%;
-        padding: var(--vspace-1);
+        width: calc(100% - 4rem);
+        gap: var(--vspace-1);
+        padding: clamp(1.6rem, 5vw, 2.4rem);
+    }
+    .book-page__content h2 {
+        font-size: clamp(2.5rem, 8vw, 3.4rem);
+        overflow-wrap: anywhere;
+    }
+    .book-page__content h3,
+    .book-page__index strong {
+        overflow-wrap: anywhere;
+    }
+    .book-flow {
+        gap: 1.2rem;
+    }
+    .book-flow div {
+        width: 100%;
+        padding: 1.6rem;
+    }
+    .project-equation {
+        padding: 1.6rem 1.2rem;
+        overflow-wrap: anywhere;
+    }
+    .project-equation code,
+    .project-equation .math-display {
+        max-width: 100%;
+        font-size: clamp(2rem, 6vw, 2.8rem);
     }
     .book-learning-grid {
         grid-template-columns: 1fr;
@@ -5735,7 +5834,7 @@ body.search-is-visible {
         width: 100%;
     }
     .s-home__slider .row {
-        padding: 16rem 6rem 10vh;
+        padding: 16rem 3.2rem 10vh;
     }
     .s-home__slider h2 {
         font-size: 4rem;
@@ -5752,7 +5851,7 @@ body.search-is-visible {
 
 @media screen and (max-width: 500px) {
     .s-home__slider .row {
-        padding: 14.4rem 4.8rem 10vh;
+        padding: 14.4rem 2.4rem 10vh;
     }
     .s-home__slider h2 {
         font-size: 3.8rem;
@@ -10490,8 +10589,8 @@ body.search-is-visible {
     }
 
     .pueblito-gallery-rail {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
         padding: 1rem 0 3rem;
         overflow-x: auto;
         scrollbar-width: thin;
@@ -10565,8 +10664,8 @@ body.search-is-visible {
     }
 
     .pueblito-house-lab {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
     }
 
     .pueblito-house-lab__visual {
@@ -10635,9 +10734,9 @@ body.search-is-visible {
 
     .pueblito-material-table {
         display: flex;
-        width: 100vw;
+        width: 100%;
         max-width: none;
-        margin-left: calc(50% - 50vw);
+        margin-left: 0;
         padding: 1rem 6vw 3rem;
         gap: 1.4rem;
         overflow-x: auto;
@@ -11366,9 +11465,9 @@ body.search-is-visible {
 
 @media screen and (max-width: 600px) {
     .pueblito-territory-plan {
-        width: 100vw;
+        width: 100%;
         max-width: none;
-        margin-left: calc(50% - 50vw);
+        margin-left: 0;
     }
 
     .pueblito-territory-plan__drawing {
@@ -11493,7 +11592,7 @@ body.search-is-visible {
 @media screen and (max-width: 600px) {
     .language-suggestion {
         right: 1rem;
-        bottom: 1rem;
+        bottom: calc(8.4rem + env(safe-area-inset-bottom));
         left: 1rem;
         flex-wrap: wrap;
         max-width: none;
@@ -11554,5 +11653,40 @@ body.search-is-visible {
     .slick-dots li button {
         min-width: 44px;
         min-height: 44px;
+    }
+}
+
+/* Persistent mobile controls share one reserved vertical zone. */
+@media screen and (max-width: 1100px) {
+    .s-footer {
+        padding-bottom: calc(var(--vspace-2) + 8.4rem + env(safe-area-inset-bottom));
+    }
+
+    .ss-go-top {
+        right: 1.2rem;
+        bottom: calc(8.4rem + env(safe-area-inset-bottom));
+        z-index: 8990;
+    }
+
+    .ss-go-top a {
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+
+    .mentor-is-open .ss-go-top {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .language-suggestion {
+        bottom: calc(8.4rem + env(safe-area-inset-bottom));
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .s-contact__info-block .contact-email {
+        overflow-wrap: anywhere;
+        white-space: normal;
     }
 }
