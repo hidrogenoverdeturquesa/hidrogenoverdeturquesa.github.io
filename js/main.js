@@ -920,16 +920,30 @@
         ssImpactCounters();
         ssLanguageSelectorDropdown();
 
+        /* Navegacion mobile compartida por el sitio corporativo y DOE-001. */
+        if (!document.querySelector('script[data-hvt-mobile-navigation]')) {
+            const mobileNavigationStyle = document.createElement('link');
+            mobileNavigationStyle.rel = 'stylesheet';
+            mobileNavigationStyle.href = '/css/mobile-navigation.css?v=20260828a';
+            document.head.appendChild(mobileNavigationStyle);
+
+            const mobileNavigationScript = document.createElement('script');
+            mobileNavigationScript.src = '/js/mobile-navigation.js?v=20260828a';
+            mobileNavigationScript.async = false;
+            mobileNavigationScript.dataset.hvtMobileNavigation = 'true';
+            document.body.appendChild(mobileNavigationScript);
+        }
+
         /* El laboratorio es autónomo y puede retirarse sin afectar el sitio. */
         const LAB_ENABLED = true;
         if (LAB_ENABLED && !document.querySelector('script[data-hvt-lab]')) {
             const labStyle = document.createElement('link');
             labStyle.rel = 'stylesheet';
-            labStyle.href = '/css/laboratorio.css?v=mobile-dock-20260827b';
+            labStyle.href = '/css/laboratorio.css?v=mobile-navigation-20260828a';
             document.head.appendChild(labStyle);
 
             const labScript = document.createElement('script');
-            labScript.src = '/js/laboratorio.js?v=mobile-dock-20260827b';
+            labScript.src = '/js/laboratorio.js?v=mobile-navigation-20260828a';
             labScript.async = false;
             labScript.dataset.hvtLab = 'true';
             document.body.appendChild(labScript);
@@ -940,11 +954,11 @@
         if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
             const mentorStyle = document.createElement('link');
             mentorStyle.rel = 'stylesheet';
-            mentorStyle.href = '/css/mentor.css?v=mobile-dock-20260827b';
+            mentorStyle.href = '/css/mentor.css?v=mobile-navigation-20260828a';
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = '/js/mentor.js?v=mobile-dock-20260827b';
+            mentorScript.src = '/js/mentor.js?v=mobile-navigation-20260828a';
             mentorScript.async = false;
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);

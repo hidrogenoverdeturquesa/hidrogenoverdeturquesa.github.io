@@ -4013,7 +4013,7 @@ body.search-is-visible {
     }
 }
 
-@media screen and (min-width: 1381px) and (max-width: 1600px) {
+@media screen and (min-width: 1101px) and (max-width: 1600px) {
     .s-header .row {
         padding-right: 2.4rem;
         padding-left: 2.4rem;
@@ -4031,7 +4031,7 @@ body.search-is-visible {
     }
 }
 
-@media screen and (max-width: 1380px) {
+@media screen and (max-width: 1100px) {
     body.menu-is-open {
         overflow: hidden;
         overscroll-behavior: none;
@@ -4111,7 +4111,7 @@ body.search-is-visible {
         right: var(--header-height);
     }
     .s-header__menu-toggle {
-        display: block;
+        display: none;
     }
     .s-header__language {
        position: absolute;
@@ -4164,7 +4164,7 @@ body.search-is-visible {
 /* -------------------------------------------------------------------
  * make sure the menu is visible on larger screens
  * ------------------------------------------------------------------- */
-@media only screen and (min-width: 1381px) {
+@media only screen and (min-width: 1101px) {
     .s-header {
         height: var(--header-height);
     }
@@ -5432,9 +5432,17 @@ body.search-is-visible {
 .doe-status { color: var(--color-text-dark); font-weight: 800; margin-bottom: .4rem; }
 .doe-status span { color: var(--color-1); margin-right: .5rem; }
 .doe-date { color: var(--color-text-light); font-size: var(--text-sm); font-weight: 700; }
+.doe-hero .row { display:grid; grid-template-columns:minmax(0,7fr) minmax(28rem,5fr); grid-template-areas:"copy media" "meta media"; align-items:start; }
+.doe-hero__copy { grid-area:copy; }
+.doe-hero__media { grid-area:media; }
+.doe-hero__meta { grid-area:meta; }
+.doe-hero__copy,.doe-hero__media,.doe-hero__meta { width:auto; max-width:none; min-width:0; float:none; }
+.doe-hero__meta .course-book__lead { margin-top:var(--vspace-0_5); }
 .doe-hero__figure img { object-fit: cover; aspect-ratio: 4 / 3; }
 .doe-chapter-nav { background: var(--color-text-dark); padding: 1.4rem 0; }
-.doe-chapter-nav .row { display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; }
+.doe-chapter-nav .row { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:1rem 2rem; }
+.doe-chapter-nav__title { color:var(--color-1); font-family:var(--font-2); font-size:1.15rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+.doe-chapter-nav__links { min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:.8rem 1.6rem; }
 .doe-chapter-nav a { color: white; font-family: var(--font-2); font-size: 1.2rem; font-weight: 800; letter-spacing: .05em; }
 .doe-chapter-nav a:hover, .doe-chapter-nav a:focus { color: var(--color-1); }
 .doe-sequence { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: var(--vspace-1_5); color: var(--color-text-dark); font-family: var(--font-2); font-size: 1.35rem; font-weight: 800; text-transform: uppercase; }
@@ -5487,7 +5495,7 @@ body.search-is-visible {
 .doe-poster strong { font-family: var(--font-2); font-size: 1.45rem; letter-spacing: .1em; }
 .doe-poster small { font-size: 1.2rem; font-weight: 700; }
 @media screen and (max-width: 760px) { .doe-evidence-grid,.doe-mechanism__grid { grid-template-columns:1fr; } .doe-evidence-card__actions .btn { flex:1 1 12rem; justify-content:center; } .doe-evidence-matrix > div { grid-template-columns:1fr; gap:.4rem; } .doe-evidence-matrix strong { text-align:left; } .doe-physical-variables { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media screen and (max-width: 600px) { .doe-gallery { grid-template-columns: 1fr; } .doe-gallery__wide { grid-column: auto; } .doe-gallery img { max-height: none; } .doe-principles { grid-template-columns: 1fr; } .doe-chapter-nav { overflow-x: auto; } .doe-chapter-nav .row { flex-wrap: nowrap; width: max-content; padding-right: 2rem; } }
+@media screen and (max-width: 600px) { .doe-gallery { grid-template-columns: 1fr; } .doe-gallery__wide { grid-column: auto; } .doe-gallery img { max-height: none; } .doe-principles { grid-template-columns: 1fr; } }
 @media print { .doe-poster { background: white; } .doe-poster main { width: 210mm; min-height: 297mm; border-top-width: 8mm; } }
 
 /* Mobile refinements: keep persistent controls distinct and DOE-001 scannable after a QR visit. */
@@ -5518,13 +5526,21 @@ body.search-is-visible {
         margin-left: auto;
     }
 
-    body:not(.doe-poster) > main {
-        padding-bottom: calc(7.2rem + env(safe-area-inset-bottom));
-    }
-
     .doe-hero {
         padding-top: calc(var(--header-height) + var(--vspace-1_5));
         padding-bottom: var(--vspace-2);
+    }
+
+    .doe-hero .row {
+        grid-template-columns: minmax(0,1fr);
+        grid-template-areas: "copy" "media" "meta";
+    }
+
+    .doe-hero h1 {
+        margin-bottom: var(--vspace-0_75);
+        font-size: clamp(3.5rem, 10.5vw, 5.4rem);
+        line-height: 1.02;
+        overflow-wrap: anywhere;
     }
 
     .doe-hero .course-book__eyebrow {
@@ -5540,13 +5556,36 @@ body.search-is-visible {
     }
 
     .doe-hero__figure {
-        margin-top: var(--vspace-1);
+        margin-top: var(--vspace-0_75);
+        padding: var(--vspace-0_5);
+    }
+
+    .doe-chapter-nav .row {
+        grid-template-columns: minmax(0,1fr);
+        gap: .8rem;
+    }
+
+    .doe-chapter-nav__links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: .8rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .doe-chapter-nav__links::-webkit-scrollbar {
+        display: none;
     }
 
     .doe-chapter-nav a {
         min-height: 4.4rem;
+        padding: 0 1.1rem;
         display: inline-flex;
         align-items: center;
+        flex: 0 0 auto;
+        border: 1px solid rgba(255,255,255,.2);
     }
 
     .doe-book .project-parameter-table {
@@ -11659,7 +11698,7 @@ body.search-is-visible {
 /* Persistent mobile controls share one reserved vertical zone. */
 @media screen and (max-width: 1100px) {
     .s-footer {
-        padding-bottom: calc(var(--vspace-2) + 8.4rem + env(safe-area-inset-bottom));
+        padding-bottom: var(--vspace-3);
     }
 
     .ss-go-top {

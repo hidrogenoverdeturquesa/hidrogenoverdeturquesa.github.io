@@ -365,7 +365,7 @@ body.lab-public h1,body.lab-public h2,body.lab-public h3,.lab-hub__identity { fo
     .lab-trust__grid div:nth-child(-n+2) { border-bottom:1px solid rgba(255,255,255,.22); }
 }
 @media (max-width:1100px) {
-    .lab-site-footer { padding-bottom:calc(42px + 76px + env(safe-area-inset-bottom)); }
+    .lab-site-footer { padding-bottom:42px; }
 }
 @media (max-width:760px) {
     .lab-section { padding:52px 0; }
@@ -374,7 +374,7 @@ body.lab-public h1,body.lab-public h2,body.lab-public h3,.lab-hub__identity { fo
     .lab-hero__lead { margin-top:18px; font-size:1rem; }
     .lab-actions,.lab-form-actions { align-items:stretch; }
     .lab-actions .lab-button,.lab-form-actions .lab-button { min-height:48px; }
-    .lab-site-footer { padding-bottom:calc(42px + 76px + env(safe-area-inset-bottom)); }
+    .lab-site-footer { padding-bottom:42px; }
 }
 @media (max-width:620px) {
     .lab-container { width:min(calc(100% - 40px),1160px); }

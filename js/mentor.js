@@ -167,34 +167,6 @@
     const actions = root.querySelector('.mentor__actions');
     const hint = root.querySelector('.mentor__hint');
     const input = root.querySelector('input');
-    let mentorSlot = document.querySelector('[data-mentor-slot]');
-    let dockToggle = null;
-    if (!mentorSlot) {
-        root.classList.add('mentor--standalone');
-        const standaloneDock = document.createElement('div');
-        standaloneDock.className = 'hvt-mobile-utility-dock hvt-mobile-utility-dock--standalone';
-        standaloneDock.setAttribute('role', 'group');
-        standaloneDock.setAttribute('aria-label', 'Herramientas rápidas de HVT');
-        standaloneDock.innerHTML = `<a class="hvt-mobile-utility-dock__action hvt-mobile-utility-dock__action--lab" href="/laboratorio/" aria-label="Ir al inicio del Laboratorio HVT">
-            <span class="hvt-mobile-utility-dock__lab-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M12 3h8M14 3v8L6.5 24.5A3 3 0 0 0 9.1 29h13.8a3 3 0 0 0 2.6-4.5L18 11V3"/><path class="hvt-mobile-utility-dock__liquid" d="M9 22h14M11 18.5h10"/><circle cx="13" cy="25" r="1"/><circle cx="19" cy="23.5" r="1"/></svg></span>
-            <span>Laboratorio</span>
-        </a><div class="hvt-mobile-utility-dock__mentor" data-mentor-slot></div>`;
-        root.appendChild(standaloneDock);
-        mentorSlot = standaloneDock.querySelector('[data-mentor-slot]');
-    }
-    if (mentorSlot) {
-        dockToggle = document.createElement('button');
-        dockToggle.className = 'hvt-mobile-utility-dock__action hvt-mobile-utility-dock__action--mentor';
-        dockToggle.type = 'button';
-        dockToggle.setAttribute('aria-label', 'Abrir Mentor');
-        dockToggle.setAttribute('aria-expanded', 'false');
-        dockToggle.innerHTML = '<span class="mentor__mark" aria-hidden="true"><i></i><i></i></span><span>Mentor</span>';
-        mentorSlot.appendChild(dockToggle);
-        dockToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            toggle.click();
-        });
-    }
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const typingQueue = [];
     let typingActive = false;
@@ -252,12 +224,12 @@
     }
 
     function openMentor() {
+        document.dispatchEvent(new CustomEvent('hvt:mentor-opening'));
         state.opened = true;
         root.classList.add('mentor--open');
         panel.setAttribute('aria-hidden', 'false');
         panel.setAttribute('aria-modal', String(window.matchMedia('(max-width: 1100px)').matches));
         toggle.setAttribute('aria-expanded', 'true');
-        if (dockToggle) dockToggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('mentor-is-open');
         window.clearTimeout(hintTypingTimer);
         window.clearTimeout(hintHideTimer);
@@ -272,12 +244,10 @@
         panel.setAttribute('aria-hidden', 'true');
         panel.setAttribute('aria-modal', 'false');
         toggle.setAttribute('aria-expanded', 'false');
-        if (dockToggle) dockToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('mentor-is-open');
         state.dismissed += 1;
         sessionStorage.setItem('mentor-dismissed', state.dismissed);
-        const returnToggle = dockToggle && window.matchMedia('(max-width: 1100px)').matches ? dockToggle : toggle;
-        returnToggle.focus();
+        toggle.focus();
     }
 
     function contextFor(id) {
@@ -714,6 +684,12 @@
     root.querySelector('.mentor__close').addEventListener('click', closeMentor);
     hint.addEventListener('click', openMentor);
     document.addEventListener('click', function (event) {
+        const opener = event.target.closest('[data-open-mentor]');
+        if (opener) {
+            event.preventDefault();
+            openMentor();
+            return;
+        }
         if (state.opened && !root.contains(event.target)) closeMentor();
     });
     actions.addEventListener('click', function (event) {
