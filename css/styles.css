@@ -4772,6 +4772,40 @@ body.search-is-visible {
     box-shadow: 0 14px 30px rgba(18, 32, 33, 0.08);
 }
 
+.foundation-audience__media {
+    position: relative;
+    height: 18rem;
+    margin: -3.2rem -2.8rem 2.6rem;
+    overflow: hidden;
+    background: #172222;
+}
+
+.foundation-audience__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(9, 16, 16, 0.22));
+    pointer-events: none;
+}
+
+.foundation-audience__media img,
+.foundation-audience__media video,
+.foundation-action-card__media img,
+.foundation-action-card__media video,
+.foundation-territory__media img,
+.foundation-territory__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foundation-audience__media video,
+.foundation-action-card__media video,
+.foundation-territory__media video {
+    position: absolute;
+    inset: 0;
+}
+
 .foundation-audience__eyebrow {
     margin: 0 0 1.6rem;
     color: var(--color-1);
@@ -4899,14 +4933,30 @@ body.search-is-visible {
  * ## foundation territory
  * ------------------------------------------------------------------- */
 .foundation-territory {
+    position: relative;
+    overflow: hidden;
     padding: var(--vspace-5) 0;
     color: white;
-    background-image: linear-gradient(90deg, rgba(10, 18, 18, 0.88) 0%, rgba(10, 18, 18, 0.74) 44%, rgba(10, 18, 18, 0.55) 100%), url("../images/about-photo.jpg");
-    background-position: center;
-    background-size: cover;
+    background: #101b1b;
+}
+
+.foundation-territory::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(10, 18, 18, 0.9) 0%, rgba(10, 18, 18, 0.78) 44%, rgba(10, 18, 18, 0.62) 100%);
+}
+
+.foundation-territory__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
 }
 
 .foundation-territory__content {
+    position: relative;
+    z-index: 2;
     align-items: end;
     justify-content: space-between;
 }
@@ -4976,6 +5026,7 @@ body.search-is-visible {
 }
 
 .foundation-action-card {
+    position: relative;
     background: #f7f9f8;
     border-top: 5px solid var(--color-1);
     color: var(--color-text);
@@ -4983,6 +5034,14 @@ body.search-is-visible {
     min-height: 19rem;
     padding: var(--vspace-1_25);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.foundation-action-card__media {
+    position: relative;
+    height: 15rem;
+    margin: calc(var(--vspace-1_25) * -1) calc(var(--vspace-1_25) * -1) 2.4rem;
+    overflow: hidden;
+    background: #172222;
 }
 
 .foundation-action-card h5 {
@@ -6021,11 +6080,18 @@ body.search-is-visible {
     .foundation-audience {
         padding: 2.6rem 2rem;
     }
+    .foundation-audience__media {
+        height: 19rem;
+        margin: -2.6rem -2rem 2.4rem;
+    }
     .foundation-audience h3 {
         font-size: clamp(2.8rem, 8vw, 3.8rem);
     }
     .foundation-audience .btn {
         width: 100%;
+    }
+    .foundation-action-card__media {
+        height: 17rem;
     }
     .foundation-participation__item {
         grid-template-columns: 1fr;
@@ -12000,5 +12066,13 @@ body.search-is-visible {
     .s-contact__info-block .contact-email {
         overflow-wrap: anywhere;
         white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .foundation-audience__media video,
+    .foundation-action-card__media video,
+    .foundation-territory__media video {
+        display: none;
     }
 }
