@@ -4747,6 +4747,219 @@ body.search-is-visible {
 }
 
 /* -------------------------------------------------------------------
+ * ## foundation participation
+ * ------------------------------------------------------------------- */
+.foundation-participation {
+    padding: var(--vspace-5) 0;
+    background: #f4f6f4;
+}
+
+.foundation-audiences {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: var(--vspace-2);
+    margin-bottom: var(--vspace-3);
+}
+
+.foundation-audience {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem 2.8rem;
+    border-top: 5px solid var(--color-1);
+    background: #ffffff;
+    box-shadow: 0 14px 30px rgba(18, 32, 33, 0.08);
+}
+
+.foundation-audience__eyebrow {
+    margin: 0 0 1.6rem;
+    color: var(--color-1);
+    font-family: var(--font-2);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.foundation-audience h3 {
+    margin: 0 0 1.4rem;
+    color: #122021;
+    font-size: clamp(2.6rem, 2.4vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+}
+
+.foundation-audience > p:not(.foundation-audience__eyebrow) {
+    margin-bottom: 1.8rem;
+    color: #596666;
+}
+
+.foundation-audience__list {
+    margin: 0 0 2.4rem;
+    padding: 0;
+    list-style: none;
+    color: #314243;
+    font-size: var(--text-sm);
+    line-height: 1.55;
+}
+
+.foundation-audience__list li {
+    position: relative;
+    padding: 0 0 1rem 1.8rem;
+}
+
+.foundation-audience__list li::before {
+    content: "";
+    position: absolute;
+    top: 0.65em;
+    left: 0;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: var(--color-1);
+}
+
+.foundation-audience .btn {
+    margin: auto 0 0;
+    align-self: flex-start;
+}
+
+.foundation-participation__subhead {
+    margin-bottom: 1.2rem;
+}
+
+.foundation-participation__subhead p {
+    margin: 0;
+    color: #314243;
+    font-family: var(--font-2);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.foundation-participation__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: var(--vspace-2);
+    border-top: 1px solid rgba(18, 32, 33, 0.16);
+    border-left: 1px solid rgba(18, 32, 33, 0.16);
+}
+
+.foundation-participation__item {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 7.2rem minmax(0, 1fr);
+    gap: 2rem;
+    padding: 3.2rem 3rem 3.4rem;
+    border-right: 1px solid rgba(18, 32, 33, 0.16);
+    border-bottom: 1px solid rgba(18, 32, 33, 0.16);
+    background: transparent;
+}
+
+.foundation-participation__item--wide {
+    grid-column: span 2;
+}
+
+.foundation-participation__index {
+    color: var(--color-1);
+    font-family: var(--font-2);
+    font-size: clamp(2.6rem, 3vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.foundation-participation__item h3 {
+    margin: 0 0 1.2rem;
+    color: #122021;
+    font-size: clamp(2.7rem, 3vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+.foundation-participation__item p {
+    max-width: 72rem;
+    margin-bottom: 1.8rem;
+    color: #596666;
+}
+
+.foundation-participation__note {
+    color: #1d3132;
+    font-size: var(--text-sm);
+}
+
+.foundation-participation__item .btn {
+    margin: 0;
+}
+
+/* -------------------------------------------------------------------
+ * ## foundation territory
+ * ------------------------------------------------------------------- */
+.foundation-territory {
+    padding: var(--vspace-5) 0;
+    color: white;
+    background-image: linear-gradient(90deg, rgba(10, 18, 18, 0.88) 0%, rgba(10, 18, 18, 0.74) 44%, rgba(10, 18, 18, 0.55) 100%), url("../images/about-photo.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.foundation-territory__content {
+    align-items: end;
+    justify-content: space-between;
+}
+
+.foundation-territory__eyebrow {
+    margin: 0 0 2rem;
+    color: var(--color-1-light);
+    font-family: var(--font-2);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.foundation-territory h2 {
+    margin: 0 0 2rem;
+    color: white;
+    font-size: clamp(4.8rem, 6vw, 8.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+}
+
+.foundation-territory__lead {
+    max-width: 72rem;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-lg);
+}
+
+.foundation-territory__panel {
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(9, 16, 16, 0.58);
+}
+
+.foundation-territory__panel p {
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.foundation-territory__panel .foundation-territory__prompt {
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+}
+
+.foundation-territory__panel .btn {
+    margin: 0;
+}
+
+/* -------------------------------------------------------------------
  * ## foundation action lines
  * ------------------------------------------------------------------- */
 .foundation-action-lines {
@@ -4783,6 +4996,22 @@ body.search-is-visible {
 .foundation-action-card p {
     color: var(--color-text);
     margin-bottom: 0;
+}
+
+.foundation-action-card a {
+    display: inline-flex;
+    margin-top: 1.6rem;
+    color: var(--color-1);
+    font-family: var(--font-2);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.foundation-action-card a:hover,
+.foundation-action-card a:focus {
+    color: var(--color-black);
 }
 
 /* -------------------------------------------------------------------
@@ -5718,6 +5947,21 @@ body.search-is-visible {
     .foundation-hero__lead {
         font-size: var(--text-md);
     }
+    .foundation-participation__grid {
+        grid-template-columns: 1fr;
+    }
+    .foundation-audiences {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+    .foundation-participation__item,
+    .foundation-participation__item--wide {
+        grid-column: auto;
+    }
+    .foundation-territory__content {
+        align-items: start;
+        gap: 3rem;
+    }
     .academy-feature {
         grid-template-columns: 1fr;
     }
@@ -5770,6 +6014,35 @@ body.search-is-visible {
     }
     .foundation-hero h1 {
         font-size: 4.2rem;
+    }
+    .foundation-participation {
+        padding: var(--vspace-3) 0;
+    }
+    .foundation-audience {
+        padding: 2.6rem 2rem;
+    }
+    .foundation-audience h3 {
+        font-size: clamp(2.8rem, 8vw, 3.8rem);
+    }
+    .foundation-audience .btn {
+        width: 100%;
+    }
+    .foundation-participation__item {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+        padding: 2.4rem 2rem;
+    }
+    .foundation-participation__item h3 {
+        font-size: clamp(2.8rem, 8vw, 3.8rem);
+    }
+    .foundation-territory {
+        padding: var(--vspace-3) 0;
+    }
+    .foundation-territory h2 {
+        font-size: clamp(3.8rem, 11vw, 5.4rem);
+    }
+    .foundation-territory__panel {
+        padding: 2.2rem 2rem;
     }
     .foundation-hero__actions .btn {
         width: 100%;
