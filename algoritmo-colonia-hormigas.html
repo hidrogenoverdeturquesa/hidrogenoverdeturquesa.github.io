@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Colonia de hormigas | Hidrógeno Verde Turquesa</title>
+    <meta name="description" content="Simulación visual de optimización por colonia de hormigas para explorar rutas y redes con datos, restricciones y criterios de decisión.">
+    <meta name="author" content="Hidrógeno Verde Turquesa">
+    <link rel="canonical" href="https://hidrogenoverdeturquesa.com/algoritmo-colonia-hormigas">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css?v=method-lab-20260902a">
+    <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=h2vt">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=h2vt">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=h2vt">
+    <link rel="manifest" href="site.webmanifest?v=h2vt">
+</head>
+<body id="top" class="ant-lab">
+    <div id="preloader"><div id="loader"></div></div>
+    <header class="s-header s-header--blog">
+        <div class="row">
+            <div class="s-header__logo"><a href="/"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height: 40px; width: auto;"></a></div>
+            <nav class="s-header__nav" id="site-navigation" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li class="nav-dropdown"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-work-menu">Qué hacemos <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-work-menu" hidden><li><a href="/#services">Líneas de trabajo</a></li><li><a href="/#portfolio">Proyectos</a></li></ul></li>
+                    <li class="nav-dropdown current"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-knowledge-menu">Conocimiento <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-knowledge-menu" hidden><li><a href="/blog">Métodos e instrumentos</a></li><li><a href="/laboratorio/">Laboratorio HVT</a></li></ul></li>
+                    <li class="nav-dropdown"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-ecosystem-menu">Ecosistema <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-ecosystem-menu" hidden><li><a href="/fundacion">Iniciativa social</a></li><li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li><li><a href="/investors">Apoyar proyectos</a></li></ul></li>
+                    <li><a href="/#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="s-header__menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation"><span class="s-header__menu-icon" aria-hidden="true"></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="ant-lab__hero">
+            <div class="row">
+                <div class="column large-8">
+                    <p class="ant-lab__eyebrow">Laboratorio de optimización</p>
+                    <h1>Una colonia no conoce <em>la ruta</em>. La encuentra.</h1>
+                    <p>Este modelo didáctico simula cómo agentes simples exploran conexiones entre puntos, dejan una señal sobre los recorridos más eficientes y convergen gradualmente hacia alternativas de menor distancia.</p>
+                </div>
+                <aside class="column large-4 ant-lab__hero-note"><span>Uso posible</span><strong>Rutas de campo, recolección, mantenimiento, distribución o conexión entre nodos.</strong><p>La simulación no reemplaza validación en terreno, seguridad ni criterios sociales.</p></aside>
+            </div>
+        </section>
+
+        <section class="ant-lab__workbench" aria-labelledby="simulacion-title">
+            <div class="row">
+                <div class="column large-12">
+                    <div class="ant-lab__workbench-head"><div><p class="ant-lab__eyebrow">Simulación</p><h2 id="simulacion-title">Explora la red</h2></div><p id="ant-status" class="ant-lab__status" aria-live="polite">Lista para iniciar</p></div>
+                    <div class="ant-lab__grid">
+                        <div class="ant-lab__canvas-wrap"><canvas id="ant-canvas" aria-label="Red de rutas con feromonas y agentes de optimización"></canvas><p class="ant-lab__canvas-hint">Arrastra un nodo para crear otra red de prueba.</p><div class="ant-lab__legend"><span><i class="ant-lab__legend-trail"></i> Feromona</span><span><i class="ant-lab__legend-best"></i> Mejor ruta</span><span><i class="ant-lab__legend-ant"></i> Agente</span></div></div>
+                        <aside class="ant-lab__controls" aria-label="Controles de simulación">
+                            <div class="ant-lab__metric"><span>Mejor recorrido</span><strong id="ant-best">--</strong><small>unidades de distancia</small></div>
+                            <div class="ant-lab__metric"><span>Iteración</span><strong id="ant-iteration">0</strong><small>18 agentes por iteración</small></div>
+                            <div class="ant-lab__phase" aria-label="Estado del algoritmo"><span>Estado del algoritmo</span><ol><li data-ant-stage="initialize"><b>01</b> Inicializar red</li><li data-ant-stage="explore"><b>02</b> Explorar alternativas</li><li data-ant-stage="reinforce"><b>03</b> Reforzar y evaporar</li></ol></div>
+                            <label for="ant-alpha">Influencia de feromona <output id="ant-alpha-value">1.2</output></label><input id="ant-alpha" type="range" min="0.4" max="2.8" step="0.1" value="1.2">
+                            <label for="ant-beta">Influencia de distancia <output id="ant-beta-value">3.2</output></label><input id="ant-beta" type="range" min="1" max="6" step="0.2" value="3.2">
+                            <label for="ant-evaporation">Evaporación <output id="ant-evaporation-value">0.38</output></label><input id="ant-evaporation" type="range" min="0.1" max="0.8" step="0.01" value="0.38">
+                            <label for="ant-speed">Velocidad <output id="ant-speed-value">Media</output></label><input id="ant-speed" type="range" min="1" max="3" step="1" value="2">
+                            <div class="ant-lab__actions"><button id="ant-step" class="btn btn--stroke" type="button">Siguiente paso</button><button id="ant-run" class="btn btn--primary" type="button">Iniciar exploración</button><button id="ant-reset" class="btn btn--stroke" type="button">Reiniciar red</button></div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ant-lab__how">
+            <div class="row"><div class="column large-4"><p class="ant-lab__eyebrow">Qué está pasando</p><h2>Tres reglas, una ruta emergente.</h2></div><div class="column large-8 ant-lab__steps"><div><b>01</b><h3>Explorar</h3><p>Cada agente elige probabilísticamente su siguiente nodo, combinando distancia y señal acumulada.</p></div><div><b>02</b><h3>Reforzar</h3><p>Los recorridos cortos depositan más feromona y se vuelven más atractivos para la siguiente ronda.</p></div><div><b>03</b><h3>Evaporar</h3><p>La señal se reduce para evitar que una decisión temprana bloquee nuevas alternativas.</p></div></div></div>
+        </section>
+
+        <section class="ant-lab__application"><div class="row"><div class="column large-7"><p class="ant-lab__eyebrow">Aplicación responsable</p><h2>Antes de optimizar, define qué significa “mejor”.</h2><p>Una ruta más corta puede no ser la más segura, accesible o conveniente para un territorio. En un caso real se integran restricciones, costos, tiempos, emisiones, condiciones de seguridad y decisiones de quienes usan la red.</p></div><div class="column large-5"><a class="btn btn--primary" href="https://wa.me/573209574884" target="_blank" rel="noopener">Proponer un caso real</a><a class="ant-lab__back" href="/blog">← Volver a métodos e instrumentos</a></div></div></section>
+    </main>
+
+    <footer class="s-footer"><div class="row"><div class="column large-4 medium-6 w-1000-stack s-footer__social-block"><ul class="s-footer__social"><li><a href="https://wa.me/573209574884" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li><li><a href="https://www.instagram.com/hidrogenoverdeturquesa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li><li><a href="https://www.linkedin.com/company/hidr-geno-verde-turquesa/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li></ul></div><div class="column large-7 medium-6 w-1000-stack ss-copyright"><span>© Hidrógeno Verde Turquesa 2026</span><span>Laboratorio de métodos aplicados</span></div></div></footer>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js?v=sin-prism-20260726"></script>
+    <script src="js/main.js?v=mobile-navigation-20260828a"></script>
+    <script src="js/ant-colony-lab.js?v=20260902a"></script>
+</body>
+</html>
