@@ -12291,3 +12291,9 @@ body.search-is-visible {
 @media screen and (max-width:900px) { .beyond-project__case { padding:0; }.beyond-project__case .row { padding:7rem 0; } }
 
 .course-book .book-cover-figure video { display:block; width:100%; min-height:30rem; object-fit:cover; }
+
+/* Solar pyrolysis research page */
+.solar-pyrolysis__figure { overflow:hidden; background:#dfeee9; }
+.solar-pyrolysis__figure img { display:block; width:100%; min-height:30rem; object-fit:cover; }
+.solar-pyrolysis .project-equation { background:#e4f1ed; }
+.solar-pyrolysis .book-flow span { background:#0a786e; }
