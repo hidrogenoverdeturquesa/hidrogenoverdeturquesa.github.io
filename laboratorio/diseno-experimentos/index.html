@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=mobile-navigation-20260828a">
     <link rel="stylesheet" href="/css/mobile-navigation.css?v=20260828a">
     <link rel="stylesheet" href="/css/mentor.css?v=mobile-navigation-20260828a">
+    <link rel="stylesheet" href="/css/diseno-experimentos.css?v=20260906a">
 </head>
 <body class="lab-public">
     <header class="lab-site-header"><div class="lab-container lab-site-header__inner">
@@ -53,54 +54,115 @@
     </div><nav class="lab-tool-nav" aria-label="Herramientas del Laboratorio HVT"><div class="lab-container"><ul><li><a href="/laboratorio/">Laboratorio</a></li><li><a href="/laboratorio/calculadora-hidrogeno-verde/">Calculadora H₂</a></li><li><a href="/laboratorio/diseno-experimentos/" aria-current="page">Experimentos</a></li><li><a href="/laboratorio/fuentes-cientificas/">Fuentes científicas</a></li></ul></div></nav></header>
     <nav class="lab-breadcrumb" aria-label="Ruta de navegación"><div class="lab-container"><ol><li><a href="/">Inicio</a></li><li><a href="/laboratorio/">Laboratorio</a></li><li aria-current="page">Diseño de experimentos</li></ol></div></nav>
 
-    <main>
-        <section class="lab-hero"><div class="lab-container lab-hero__grid"><div><p class="lab-kicker">Planificador DoE · Dos niveles</p><h1>Diseña corridas experimentales antes de tocar el equipo</h1><p class="lab-hero__lead">Define hasta tres factores, sus niveles y la respuesta que medirás. El laboratorio construye un diseño factorial completo, replica las condiciones y aleatoriza el orden.</p><div class="lab-actions"><a class="lab-button" href="#planificador">Crear plan experimental</a><a class="lab-button lab-button--outline" href="#principios">Comprender el método</a></div></div><aside class="lab-hero__proof"><strong>Experimentos en la realidad</strong><p>Un plan estadístico no autoriza una prueba. Hidrógeno, presión, electricidad, temperatura o sustancias peligrosas requieren revisión, permisos, infraestructura y supervisión.</p></aside></div></section>
+    <main class="doe-page">
+        <section class="doe-intro lab-container">
+            <p class="lab-kicker">Diseño de experimentos · Paso a paso</p>
+            <h1>De tu pregunta<br>a un plan de pruebas.</h1>
+            <p>Decide qué cambiar, qué medir y cómo organizar tus pruebas. Te acompañamos en cada paso para que construyas tu propio experimento.</p>
+            <a class="lab-button" href="#planificador">Empezar mi diseño →</a>
+            <span class="doe-intro-note">1 a 3 factores · 2 niveles por factor · Plan y tabla descargables</span>
+        </section>
 
-        <section class="lab-section" id="planificador"><div class="lab-container lab-app-layout">
-            <article class="lab-panel">
-                <h2>Generador factorial rápido</h2><p class="lab-panel__intro">Adecuado para explorar efectos principales e interacciones iniciales con uno, dos o tres factores a dos niveles.</p>
-                <form data-hvt-doe-form>
-                    <div class="lab-form-grid">
-                        <label class="lab-field lab-field--wide"><span>Nombre del experimento</span><input name="experiment" type="text" maxlength="120" placeholder="Ejemplo: rendimiento de un electrolizador PEM" required></label>
-                        <label class="lab-field"><span>Variable de respuesta</span><input name="response" type="text" maxlength="80" placeholder="Producción de H₂" required></label>
-                        <label class="lab-field"><span>Unidad de respuesta</span><input name="responseUnit" type="text" maxlength="30" placeholder="NL/min" required></label>
-                    </div>
-                    <div class="lab-factor-grid lab-factor-labels" aria-hidden="true"><span>Factor</span><span>Nivel bajo</span><span>Nivel alto</span><span>Unidad</span></div>
-                    <div class="lab-factor-grid"><label><span>Factor 1</span><input name="factorName1" aria-label="Nombre del factor 1" placeholder="Voltaje" required></label><label><span>Nivel bajo</span><input name="factorLow1" aria-label="Nivel bajo del factor 1" placeholder="1.8" required></label><label><span>Nivel alto</span><input name="factorHigh1" aria-label="Nivel alto del factor 1" placeholder="2.0" required></label><label><span>Unidad</span><input name="factorUnit1" aria-label="Unidad del factor 1" placeholder="V"></label></div>
-                    <div class="lab-factor-grid"><label><span>Factor 2</span><input name="factorName2" aria-label="Nombre del factor 2" placeholder="Temperatura"></label><label><span>Nivel bajo</span><input name="factorLow2" aria-label="Nivel bajo del factor 2" placeholder="50"></label><label><span>Nivel alto</span><input name="factorHigh2" aria-label="Nivel alto del factor 2" placeholder="70"></label><label><span>Unidad</span><input name="factorUnit2" aria-label="Unidad del factor 2" placeholder="°C"></label></div>
-                    <div class="lab-factor-grid"><label><span>Factor 3</span><input name="factorName3" aria-label="Nombre del factor 3" placeholder="Caudal de agua"></label><label><span>Nivel bajo</span><input name="factorLow3" aria-label="Nivel bajo del factor 3" placeholder="0.5"></label><label><span>Nivel alto</span><input name="factorHigh3" aria-label="Nivel alto del factor 3" placeholder="1.0"></label><label><span>Unidad</span><input name="factorUnit3" aria-label="Unidad del factor 3" placeholder="L/min"></label></div>
-                    <div class="lab-form-grid" style="margin-top:18px">
-                        <label class="lab-field"><span>Réplicas independientes</span><input name="repetitions" type="number" value="3" min="2" max="10" step="1" required></label>
-                        <label class="lab-field"><span>Semilla de aleatorización</span><input name="seed" type="number" value="2026" min="1" max="999999" step="1" required></label>
-                    </div>
-                    <div class="lab-form-actions"><button class="lab-button" type="submit">Generar corridas</button><button class="lab-button lab-button--dark" type="button" data-download-doe>Descargar CSV</button></div>
+        <section id="planificador" class="lab-container doe-workspace">
+            <noscript><p class="lab-note">Activa JavaScript para usar el asistente y descargar tu plan. Puedes consultar el método al final de esta página.</p></noscript>
+            <div class="doe-toolbar">
+                <p><strong>Tu experimento, una decisión a la vez.</strong><br><span>Los campos de cada paso son necesarios, salvo los marcados como opcionales.</span></p>
+                <button type="button" class="doe-secondary" data-example>Cargar ejemplo de aviones de papel</button>
+            </div>
+            <div class="doe-notice" data-draft-banner hidden>Hay un borrador guardado en este navegador. <button type="button" data-restore>Continuar mi borrador</button><button type="button" data-dismiss>Descartar borrador guardado</button></div>
+            <div class="doe-notice" data-example-confirm hidden>El ejemplo reemplazará lo escrito y la tabla actual. <button type="button" data-example-accept>Reemplazar con el ejemplo</button><button type="button" data-example-cancel>Conservar mi trabajo</button></div>
+            <nav aria-label="Pasos de tu experimento" class="doe-steps">
+                <ol>
+                    <li><button type="button" data-step-link="0" aria-current="step"><b>1</b>Tu pregunta</button></li>
+                    <li><button type="button" data-step-link="1"><b>2</b>Qué medir</button></li>
+                    <li><button type="button" data-step-link="2"><b>3</b>Qué cambiar</button></li>
+                    <li><button type="button" data-step-link="3"><b>4</b>Cómo hacerlo</button></li>
+                    <li><button type="button" data-step-link="4"><b>5</b>Organizar</button></li>
+                    <li><button type="button" data-step-link="5"><b>6</b>Tu plan</button></li>
+                </ol>
+            </nav>
+            <div class="doe-layout">
+                <form id="doe-wizard" novalidate>
+                    <p class="doe-progress" data-progress aria-live="polite">Paso 1 de 6 · Tu pregunta</p>
+                    <div class="doe-error" data-error role="alert" hidden></div>
+                    <section data-step="0" aria-labelledby="doe-title-0">
+                        <h2 id="doe-title-0" tabindex="-1">¿Qué quieres comprobar?</h2>
+                        <p class="doe-lead">Empieza con una pregunta concreta. Piensa en algo que puedas cambiar y un resultado que puedas observar.</p>
+                        <label class="doe-field">Ponle un nombre a tu experimento<input name="experiment" maxlength="120" required placeholder="Ej.: vuelo de aviones de papel"></label>
+                        <label class="doe-field">Escribe tu pregunta<textarea name="question" maxlength="700" required placeholder="¿Cómo cambian la distancia de vuelo el tipo de papel y el tamaño de las alas?"></textarea><small>Evita preguntas demasiado amplias, como «¿cuál avión es mejor?».</small></label>
+                        <label class="doe-field">¿Qué crees que va a pasar?<textarea name="hypothesis" maxlength="700" required placeholder="Creo que las alas anchas aumentarán la distancia, y que el efecto dependerá del papel."></textarea><small>Esta es tu hipótesis. Las mediciones pueden apoyarla o mostrar algo diferente.</small></label>
+                    </section>
+                    <section data-step="1" aria-labelledby="doe-title-1" hidden>
+                        <h2 id="doe-title-1" tabindex="-1">¿Cómo sabrás qué pasó?</h2>
+                        <p class="doe-lead">Elige un resultado principal y una forma de medirlo igual en todas las pruebas.</p>
+                        <div class="doe-grid">
+                            <label class="doe-field">Resultado que medirás<input name="response" maxlength="80" required placeholder="Distancia de vuelo"></label>
+                            <label class="doe-field">Unidad de medida<input name="responseUnit" maxlength="30" required placeholder="m"><small>Ej.: segundos, gramos, metros o porcentaje.</small></label>
+                        </div>
+                        <label class="doe-field">¿Qué resultado buscas?<select name="goal"><option value="compare">Comparar las condiciones</option><option value="increase">Aumentar el resultado</option><option value="decrease">Reducir el resultado</option></select></label>
+                        <label class="doe-field">¿Qué será una prueba independiente?<input name="experimentalUnit" maxlength="300" required placeholder="Un avión nuevo, construido para una sola prueba"><small>Medir varias veces el mismo avión no equivale a construir y probar varios aviones independientes.</small></label>
+                        <label class="doe-field">¿Con qué, cómo y cuándo medirás?<textarea name="measurement" maxlength="1200" required placeholder="Con una cinta métrica, desde la línea de lanzamiento hasta el primer contacto con el suelo. Registrar en metros al terminar cada vuelo."></textarea><small>Incluye la resolución del instrumento y cómo comprobarás su funcionamiento.</small></label>
+                        <label class="doe-field">¿Qué diferencia sería útil para ti?<input name="meaningfulDifference" maxlength="300" required placeholder="Una diferencia de 0,5 m entre condiciones"><small>Define una diferencia práctica antes de ver los datos. Esto no es un cálculo de significancia estadística.</small></label>
+                    </section>
+                    <section data-step="2" aria-labelledby="doe-title-2" hidden>
+                        <h2 id="doe-title-2" tabindex="-1">¿Qué condiciones vas a cambiar?</h2>
+                        <p class="doe-lead">Cada condición que cambias es un <strong>factor</strong>. Elige dos valores u opciones para cada uno: sus <strong>niveles</strong>.</p>
+                        <label class="doe-field">¿Cuántos factores compararás?<select name="factorCount"><option value="1">1 factor · 2 combinaciones</option><option value="2">2 factores · 4 combinaciones</option><option value="3">3 factores · 8 combinaciones</option></select></label>
+                        <div data-factors></div>
+                        <p class="doe-tip">El plan probará todas las combinaciones. Elige factores que puedas ajustar por separado y niveles que puedas ejecutar con tus recursos. Si una combinación es imposible, este diseño completo no es adecuado.</p>
+                    </section>
+                    <section data-step="3" aria-labelledby="doe-title-3" hidden>
+                        <h2 id="doe-title-3" tabindex="-1">¿Cómo repetirás el procedimiento?</h2>
+                        <p class="doe-lead">Describe lo necesario para que otra persona pueda seguir tus pruebas de la misma manera.</p>
+                        <label class="doe-field">¿Qué mantendrás igual?<textarea name="constants" maxlength="1200" required placeholder="Mismo modelo de avión, persona que lanza, altura de lanzamiento y lugar interior sin viento."></textarea></label>
+                        <label class="doe-field">Materiales y equipos necesarios<textarea name="materials" maxlength="1200" required placeholder="Papel de ambos tipos, regla, cinta métrica, plantilla y cinta para marcar el suelo."></textarea></label>
+                        <label class="doe-field">Escribe las instrucciones de una prueba<textarea name="procedure" maxlength="2400" rows="5" required placeholder="1. Construir un avión nuevo con las condiciones de la fila.&#10;2. Lanzarlo desde la marca.&#10;3. Medir la distancia.&#10;4. Anotar el resultado y cualquier incidencia."></textarea></label>
+                        <label class="doe-field">Condición de referencia (opcional)<input name="reference" maxlength="400" placeholder="Ej.: papel de 80 g/m² y alas de 4 cm"><small>Sirve para interpretar la comparación. Escribirla aquí no añade una corrida: debe estar entre tus combinaciones o planificarse aparte.</small></label>
+                        <label class="doe-field">¿Cuándo pararás o marcarás una prueba como no válida?<textarea name="stopRules" maxlength="1200" required placeholder="Parar si alguien entra en la zona de vuelo. Marcar como no válido un vuelo que choque con un obstáculo y anotar el motivo."></textarea><small>Define los límites del montaje y cómo registrar fallos antes de empezar. No borres resultados solo porque sean inesperados.</small></label>
+                    </section>
+                    <section data-step="4" aria-labelledby="doe-title-4" hidden>
+                        <h2 id="doe-title-4" tabindex="-1">¿Cuántas pruebas harás?</h2>
+                        <p class="doe-lead">Repite cada combinación con unidades independientes para observar cuánto varían los resultados.</p>
+                        <div class="doe-grid">
+                            <label class="doe-field">Pruebas independientes por combinación<input name="repetitions" type="number" min="2" max="10" step="1" value="3" required><small>Son las réplicas. Tres es un punto de partida editable, no una garantía de precisión.</small></label>
+                            <label class="doe-field">Minutos por prueba<input name="minutes" type="number" min="0.1" max="100000" step="any" value="5" required><small>Incluye preparación y medición; se estima ejecución secuencial.</small></label>
+                        </div>
+                        <div class="doe-total" data-run-count aria-live="polite"></div>
+                        <label class="doe-field">¿Cómo organizarás las pruebas?<select name="blocking"><option value="none">En un solo conjunto, con orden aleatorio</option><option value="replicate">Por grupos completos, como días o lotes</option></select><small>Aleatorizar evita probar siempre una condición al principio y otra al final.</small></label>
+                        <label class="doe-field" data-block-field hidden>¿Qué distingue a cada grupo?<input name="blockName" maxlength="80" placeholder="Día, lote o sesión"><small>Cada grupo contendrá una prueba de TODAS las combinaciones, en orden aleatorio. Habrá tantos grupos como réplicas. Si no puedes completar un grupo, necesitarás otro diseño.</small></label>
+                        <details class="doe-details"><summary>Opciones de reproducibilidad</summary><label class="doe-field">Código del orden aleatorio<input name="seed" type="number" min="1" max="999999" step="1" value="2026" required><small>Con el mismo código y los mismos factores, réplicas y grupos obtendrás el mismo orden.</small></label></details>
+                        <label class="doe-check"><input type="checkbox" name="feasible" required><span>Revisé que puedo realizar todas las combinaciones y disponer de las unidades, el tiempo y las condiciones necesarias.</span></label>
+                        <p class="doe-tip">Si tu montaje usa hidrógeno, presión, electricidad o sustancias peligrosas, los niveles y el procedimiento deben revisarse con el responsable técnico antes de ejecutar las pruebas.</p>
+                    </section>
+                    <section data-step="5" aria-labelledby="doe-title-5" hidden>
+                        <h2 id="doe-title-5" tabindex="-1">Revisa tu diseño y prepara las pruebas.</h2>
+                        <p class="doe-lead">Esta es la información que irá en tu protocolo. Puedes volver a cualquier paso para corregirla.</p>
+                        <div data-review></div>
+                        <button type="submit" class="lab-button" data-generate>Generar mi plan y tabla →</button>
+                        <div class="doe-notice" data-replace-confirm hidden>Ya tienes una tabla con el diseño anterior. Descárgala abajo si contiene mediciones que quieras conservar antes de reemplazarla. <button type="button" data-replace-plan>Reemplazar tabla y generar el nuevo plan</button><button type="button" data-replace-cancel>Conservar tabla anterior</button></div>
+                        <p class="doe-tip">El plan compara las condiciones elegidas. Todavía no calcula ANOVA, potencia estadística ni un punto óptimo.</p>
+                    </section>
+                    <div class="doe-navigation"><button type="button" class="doe-secondary" data-back hidden>← Anterior</button><button type="button" class="lab-button" data-next>Continuar →</button></div>
+                    <p class="doe-save" data-save-status role="status">El borrador se guarda solo en este navegador. No se envía a HVT.</p>
                 </form>
-                <div class="lab-results" data-hvt-doe-results hidden></div>
-                <div class="lab-note lab-note--warning" style="margin-top:22px"><strong>Antes de ejecutar:</strong> documenta hipótesis, unidad experimental, método de medición, calibración, criterios de parada, evaluación de riesgos, responsable técnico y lugar autorizado.</div>
-            </article>
-            <aside class="lab-aside">
-                <article><h2>Cuántas corridas genera</h2><p>Un diseño completo utiliza 2ᵏ condiciones. Con tres factores y tres réplicas se generan 2³ × 3 = 24 corridas.</p></article>
-                <article><h2>Qué todavía no analiza</h2><p>Esta versión prepara la matriz. No calcula ANOVA, significancia, potencia, curvatura ni superficie de respuesta después de introducir mediciones.</p></article>
-                <article><h2>Planificador ampliado</h2><p>El panel principal incorpora bloques, referencia y verificación preliminar de seguridad.</p><a class="lab-button" href="/?lab=experiment">Abrir versión completa</a></article>
-            </aside>
-        </div></section>
-
-        <section class="lab-section lab-section--white" id="principios"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Principios esenciales</p><h2>Qué hace reproducible un experimento</h2></header><div class="lab-feature-grid">
-            <article class="lab-feature"><strong>Pregunta e hipótesis</strong><p>La pregunta define qué relación quieres comprobar; la hipótesis anticipa una respuesta que pueda contrastarse con datos.</p></article>
-            <article class="lab-feature"><strong>Unidad experimental</strong><p>Es la unidad mínima que recibe una condición de forma independiente. Confundirla con una medición repetida produce pseudorreplicación.</p></article>
-            <article class="lab-feature"><strong>Réplicas independientes</strong><p>Permiten estimar variabilidad experimental. Repetir la lectura del mismo ensayo no equivale necesariamente a una réplica.</p></article>
-            <article class="lab-feature"><strong>Aleatorización</strong><p>Reduce la asociación sistemática entre el orden de ejecución y cambios ambientales, instrumentales u operativos.</p></article>
-            <article class="lab-feature"><strong>Bloques</strong><p>Agrupan corridas que comparten una fuente conocida de variación, como día, lote, operador o banco experimental.</p></article>
-            <article class="lab-feature"><strong>Criterios de parada</strong><p>Deben establecerse antes de comenzar y vincularse con límites de presión, temperatura, gas, corriente y estabilidad del sistema.</p></article>
-        </div></div></section>
-
-        <section class="lab-section"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Aplicación en electrólisis</p><h2>Ejemplo de una pregunta bien formada</h2><p>¿Cómo cambian la producción de H₂ y el consumo específico cuando se modifican voltaje, temperatura y caudal dentro del dominio autorizado del equipo?</p></header><div class="lab-equation">Respuesta = β₀ + β₁A + β₂B + β₃C + β₁₂AB + β₁₃AC + β₂₃BC + β₁₂₃ABC + error</div><div class="lab-note"><strong>Interpretación:</strong> un diseño factorial permite estimar efectos individuales e interacciones. La ecuación debe ajustarse después de obtener mediciones válidas; la matriz por sí sola no demuestra causalidad ni determina condiciones óptimas.</div></div></section>
-
-        <section class="lab-section lab-section--dark"><div class="lab-container"><header class="lab-section__head"><p class="lab-kicker">Evidencia</p><h2>Diseño experimental conectado con publicaciones reales</h2><p>La selección de factores y respuestas para electrólisis PEM se apoya en trabajos de validación experimental y optimización mediante metodología de superficie de respuesta.</p></header><div class="lab-actions"><a class="lab-button" href="/laboratorio/fuentes-cientificas/">Consultar artículo y DOI</a><a class="lab-button lab-button--outline" href="/#contact">Solicitar revisión técnica</a></div></div></section>
+                <aside class="doe-companion" aria-label="Ayuda para este paso"><p class="lab-kicker">Te acompañamos</p><h2 data-help-title></h2><p data-help-text></p><div class="doe-companion-example"><strong>Un ejemplo sencillo</strong><p data-help-example></p></div><p class="doe-companion-footer">Tu respuesta de este paso se incluirá en el plan final.</p></aside>
+            </div>
+            <section class="doe-output" data-output hidden aria-labelledby="doe-output-title">
+                <p class="lab-kicker">Listo para preparar tus pruebas</p><h2 id="doe-output-title" tabindex="-1">Tu plan experimental</h2>
+                <p data-output-summary></p>
+                <p class="doe-error" data-outdated hidden>Esta tabla pertenece al diseño anterior. Puedes descargarla con sus mediciones. Para usar tus cambios, vuelve al paso 6 y genera un nuevo plan.</p>
+                <ol class="doe-execution"><li>Descarga el protocolo: contiene tus materiales, instrucciones y criterios.</li><li>Prepara una unidad independiente para cada fila y sigue el orden indicado.</li><li>Registra el resultado con su unidad. Si una prueba falla, déjala sin resultado y explica el motivo en observaciones.</li><li>Descarga la tabla al terminar para conservar tus mediciones.</li></ol>
+                <div class="doe-downloads"><button type="button" class="lab-button" data-protocol>Descargar protocolo (.txt)</button><button type="button" class="doe-secondary" data-csv>Descargar tabla (.csv)</button></div>
+                <p class="doe-save">Las mediciones de esta tabla no se guardan al cerrar o recargar. Descarga el CSV para conservarlas. Si cambias el diseño, tendrás que generar una nueva tabla.</p>
+                <div class="doe-table-wrap" tabindex="0" role="region" aria-label="Corridas y registro de resultados"><table class="doe-table"><caption data-caption></caption><thead data-table-head></thead><tbody data-table-body></tbody></table></div>
+                <p class="doe-tip">Una tabla completa permite comenzar el análisis. Compara la variación entre réplicas y los efectos conjuntos; una diferencia observada por sí sola no demuestra significancia.</p>
+            </section>
+        </section>
+        <section id="principios" class="lab-container doe-method"><h2>El método detrás de tu plan</h2><p>Usamos un diseño factorial completo de dos niveles: se prueban todas las combinaciones de los factores elegidos, con réplicas independientes y orden aleatorio. Si agrupas por día o lote, la aleatorización ocurre dentro de cada grupo completo.</p><a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3.htm" target="_blank" rel="noopener noreferrer">Consultar el método en NIST ↗</a></section>
     </main>
 
     <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Duitama, Boyacá, Colombia · NIT 901843838-0</p><p>El plan generado no constituye autorización para ejecutar una prueba.</p></div><nav aria-label="Enlaces legales"><a href="/laboratorio/">Laboratorio</a><a href="/politica-tratamiento-datos">Política de datos</a><a href="/terminos-condiciones">Términos</a></nav></div></footer>
-<script src="/js/laboratorio-paginas.js?v=20260816b"></script>
+<script src="/js/diseno-experimentos.js?v=20260906a"></script>
 <script src="/js/laboratorio-navegacion.js?v=20260816"></script>
     <script src="/js/mobile-navigation.js?v=20260828a"></script>
     <script src="/js/mentor.js?v=mobile-navigation-20260828a"></script>
