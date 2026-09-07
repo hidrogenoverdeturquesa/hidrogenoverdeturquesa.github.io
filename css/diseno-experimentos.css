@@ -4,6 +4,15 @@
 .doe-page .lab-button:hover { color:#fff !important; background:#00665d; border-color:#00665d; }
 .doe-page .lab-button:disabled { cursor:default; background:#e0eeea; border-color:#bdd2cb; color:#355e53 !important; }
 .doe-page [hidden] { display:none !important; }
+.doe-example-context { margin:0 0 24px; padding:14px 18px; font-size:.86rem; border-left:3px solid #76b7a5; background:#eef6f1; color:#385b4f; }
+.doe-formula { margin:0 0 24px; padding:22px; border-radius:8px; border:1px solid #9acfc2; background:#edf8f3; color:#184f42; }
+.doe-formula-main { display:block; font-size:1.2rem; }.doe-formula-main strong { font-size:2.5rem; margin-left:8px; }.doe-formula sup { font-size:.65em; }
+.doe-formula p { margin:8px 0; }.doe-formula small { display:block; margin-top:12px; line-height:1.6; }.doe-formula--compact>strong { font-size:1.6rem; }
+.doe-table-section { margin:28px 0; padding-top:22px; border-top:1px solid var(--lab-line); min-width:0; }.doe-table-section h3 { margin:0 0 10px; font-size:1.12rem; }.doe-table-section p { font-size:.9rem; color:#52665f; }
+.doe-table-section .doe-table-wrap { margin-top:12px; }.doe-table-tag { display:inline-block; margin-left:6px; padding:3px 9px; border-radius:20px; background:#edf1ef; color:#476258; font-size:.72rem; font-weight:500; vertical-align:middle; }.doe-table-tag--fill { color:#075e46; background:#d8f2e4; }
+.doe-readings-setup { border-top:1px solid var(--lab-line); margin:28px 0 0; padding-top:20px; }.doe-readings-setup h3 { font-size:1.1rem; }.doe-readings-setup p { font-size:.9rem; color:var(--lab-muted); }
+.doe-table-section .doe-table td { min-width:90px; }.doe-table td:first-child { position:sticky; left:0; background:#fff; font-weight:600; }.doe-table th:first-child { position:sticky; left:0; z-index:1; }.doe-table input[readonly] { background:#e8f5ec; font-weight:600; color:#14553e; }
+.doe-table :is(select,input[type="datetime-local"]) { width:190px; padding:10px; border:1px solid #a8b8b5; border-radius:4px; font:inherit; background:#fff; }
 .doe-intro { padding-top:54px; padding-bottom:42px; }
 .doe-intro h1 { margin:10px 0 20px; font-size:clamp(2.2rem,4.6vw,3.7rem); letter-spacing:-.045em; line-height:1.12; max-width:850px; }
 .doe-intro > p:not(.lab-kicker) { max-width:720px; font-size:1.13rem; color:var(--lab-muted); }
