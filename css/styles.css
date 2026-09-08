@@ -4655,6 +4655,59 @@ body.search-is-visible {
     outline: none;
 }
 
+.s-home__eyebrow {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 2.8rem;
+    padding-bottom: 2rem;
+    color: white;
+    font-family: var(--font-1);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: .52rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.s-home__eyebrow::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 5.6rem;
+    height: .4rem;
+    content: "";
+    background: var(--color-1);
+    transform: translateX(-50%);
+}
+
+/* Firma institucional para los heroes de las áreas públicas de HVT. */
+.hvt-page-signature,
+.course-book__hero .row > :first-child::before {
+    display: block;
+    margin: 0 0 1.2rem;
+    color: var(--color-1);
+    font-family: var(--font-2);
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: .24em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.course-book__hero .row > :first-child::before {
+    content: "STARTUP DE I+D APLICADA";
+}
+
+.hvt-page-signature--light {
+    color: rgba(255, 255, 255, .88);
+}
+
+.course-book__hero .row > :first-child::before {
+    width: fit-content;
+    padding-bottom: .9rem;
+    border-bottom: .25rem solid var(--color-1);
+}
+
 .s-home__slider h1,
 .s-home__slider h2 {
     font-family: var(--font-2);
