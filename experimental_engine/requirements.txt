@@ -1,0 +1,10 @@
+# Validated on Python 3.11. Pin direct scientific/runtime dependencies.
+fastapi==0.141.1
+uvicorn==0.40.0
+numpy==1.24.2
+pandas==2.0.1
+scipy==1.11.3
+statsmodels==0.15.0
+sympy==1.14.0
+plotly==6.1.2
+matplotlib==3.7.1

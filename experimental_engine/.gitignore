@@ -1,0 +1,6 @@
+__pycache__/
+tests/__pycache__/
+tests/calculated-fixture.json
+.venv/
+.pytest_cache/
+qa-output/

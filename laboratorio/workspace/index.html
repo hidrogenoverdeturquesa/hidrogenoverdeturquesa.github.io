@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Workspace experimental | HVT LAB</title>
+    <link rel="stylesheet" href="/css/laboratorio-paginas.css?v=mobile-navigation-20260828a">
+    <link rel="stylesheet" href="/css/experimental-workspace.css?v=20260913a">
+</head>
+<body class="lab-public hvt-workspace">
+    <a class="ws-skip" href="#ws-content">Ir al espacio de trabajo</a>
+    <header class="ws-header"><a href="/laboratorio/" class="ws-brand">HVT <span>LAB</span></a><div class="ws-identity"><strong id="ws-name">Workspace experimental</strong><small id="ws-identity">Diseño · ejecución · análisis verificable</small></div><span id="ws-state">Sin experimento abierto</span><button type="button" id="ws-open">Expedientes</button><button type="button" id="ws-export" disabled>Exportar JSON</button></header>
+    <div class="ws-toolbar"><button type="button" id="ws-nav-toggle" aria-controls="ws-nav" aria-expanded="true">Etapas</button><label>Modo <select id="ws-mode"><option value="guided">Guiado</option><option value="advanced">Avanzado</option></select></label><span id="ws-save-state" role="status">Almacenamiento local provisional</span><button type="button" id="ws-mentor-toggle" aria-controls="ws-mentor" aria-expanded="true">Mentor contextual</button></div>
+    <div id="ws-message" class="ws-message" role="alert" hidden></div>
+    <div class="ws-layout">
+        <nav class="ws-nav" id="ws-nav" aria-label="Etapas del experimento"><p>EXPERIMENTO</p><ol>
+            <li><button type="button" data-stage="define">01 <span>Definir</span></button></li>
+            <li><button type="button" data-stage="model">02 <span>Modelar</span></button></li>
+            <li><button type="button" data-stage="design">03 <span>Diseñar</span></button></li>
+            <li><button type="button" data-stage="execute">04 <span>Ejecutar</span></button></li>
+            <li><button type="button" data-stage="data">05 <span>Datos</span></button></li>
+            <li><button type="button" data-stage="analyze">06 <span>Analizar</span></button></li>
+            <li><button type="button" data-stage="predict">07 <span>Predecir</span></button></li>
+            <li><button type="button" disabled title="RSM y optimización aún no implementadas">08 <span>Optimizar<small>Próximamente</small></span></button></li>
+            <li><button type="button" disabled title="Campañas de confirmación aún no implementadas">09 <span>Validar<small>Próximamente</small></span></button></li>
+            <li><button type="button" data-stage="report">10 <span>Informar</span></button></li>
+        </ol><a href="/laboratorio/diseno-experimentos/">Crear otro diseño ↗</a><p class="ws-local-note">El expediente se guarda en este navegador. Exporta copias para conservarlo fuera del dispositivo.</p></nav>
+        <main id="ws-content" class="ws-content" tabindex="-1"><noscript>Activa JavaScript para abrir tus experimentos.</noscript><p>Abriendo el repositorio local…</p></main>
+        <aside id="ws-mentor" class="ws-mentor" aria-label="Mentor metodológico"><h2>Mentor</h2><p>Revisión metodológica contextual</p><div id="ws-mentor-notes"></div><small>Recomendaciones basadas en reglas explícitas. Los resultados estadísticos proceden del motor Python.</small></aside>
+    </div>
+    <footer class="ws-status"><span id="ws-engine">Motor: comprobando conexión</span><span id="ws-dataset">Dataset: —</span><span id="ws-calculation">Último cálculo: —</span><span>HVT Experimental · MVP 1.0</span></footer>
+    <input type="file" id="ws-import" accept=".json,application/json" hidden>
+    <script src="/js/diseno-experimentos.js?v=20260913a"></script>
+    <script src="/js/experimental/experiment.js?v=20260913a"></script>
+    <script src="/js/experimental/storage.js?v=20260913a"></script>
+    <script src="/js/experimental/mentor.js?v=20260913a"></script>
+    <script src="/js/experimental/workspace.js?v=20260913a"></script>
+</body>
+</html>

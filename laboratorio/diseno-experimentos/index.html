@@ -60,6 +60,7 @@
             <h1>De tu pregunta<br>a un plan de pruebas.</h1>
             <p>Decide qué cambiar, qué medir y cómo organizar tus pruebas. Te acompañamos en cada paso para que construyas tu propio experimento.</p>
             <a class="lab-button" href="#planificador">Empezar mi diseño →</a>
+            <a class="doe-secondary" href="/laboratorio/workspace/">Abrir mis experimentos</a>
             <span class="doe-intro-note">Diseño factorial 2<sup>k</sup> · 1 a 4 factores · 2 niveles por factor</span>
         </section>
 
@@ -161,6 +162,8 @@
             <section class="doe-output" data-output hidden aria-labelledby="doe-output-title">
                 <p class="lab-kicker">Listo para preparar tus pruebas</p><h2 id="doe-output-title" tabindex="-1">Tu plan experimental</h2>
                 <p data-output-summary></p>
+                <p><button type="button" class="lab-button" data-workspace-open>Crear expediente y continuar en el workspace →</button></p>
+                <p data-workspace-status role="status">Conserva diseño, mediciones e historial en este navegador. El análisis estadístico requiere el motor Python conectado.</p>
                 <p class="doe-error" data-outdated hidden>Estas tablas pertenecen al diseño anterior. Puedes descargarla con sus mediciones. Para usar tus cambios, vuelve al paso 6 y genera un nuevo plan.</p>
                 <ol class="doe-execution"><li>Descarga el protocolo: contiene tus materiales, instrucciones y criterios.</li><li>Prepara una unidad independiente para cada fila y sigue el orden indicado.</li><li>Registra el resultado con su unidad. Si una prueba falla, déjala sin resultado y explica el motivo en observaciones.</li><li>Descarga la tabla al terminar para conservar tus mediciones.</li></ol>
                 <div class="doe-downloads"><button type="button" class="lab-button" data-protocol>Descargar protocolo (.txt)</button><button type="button" class="doe-secondary" data-design-csv>Descargar matriz (.csv)</button><button type="button" class="doe-secondary" data-csv>Descargar registro y resultados (.csv)</button></div>
@@ -177,7 +180,10 @@
     </main>
 
     <footer class="lab-site-footer"><div class="lab-container lab-site-footer__inner"><div><strong>Hidrógeno Verde Turquesa S.A.S.</strong><p>Duitama, Boyacá, Colombia · NIT 901843838-0</p><p>El plan generado no constituye autorización para ejecutar una prueba.</p></div><nav aria-label="Enlaces legales"><a href="/laboratorio/">Laboratorio</a><a href="/politica-tratamiento-datos">Política de datos</a><a href="/terminos-condiciones">Términos</a></nav></div></footer>
-<script src="/js/diseno-experimentos.js?v=20260906b"></script>
+<script src="/js/diseno-experimentos.js?v=20260913a"></script>
+<script src="/js/experimental/experiment.js?v=20260913a"></script>
+<script src="/js/experimental/storage.js?v=20260913a"></script>
+<script src="/js/experimental/bridge.js?v=20260913a"></script>
 <script src="/js/laboratorio-navegacion.js?v=20260816"></script>
     <script src="/js/mobile-navigation.js?v=20260828a"></script>
     <script src="/js/mentor.js?v=mobile-navigation-20260828a"></script>

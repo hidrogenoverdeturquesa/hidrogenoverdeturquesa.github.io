@@ -224,6 +224,7 @@
         "feasible": false
 };
     if (typeof module !== 'undefined' && module.exports) module.exports={validate,generate,csv,designCsv,matrix,resultValue,protocol,numeric,example};
+    if (typeof window !== 'undefined') window.HVTDOE={validate,generate,csv,designCsv,matrix,resultValue,protocol,numeric,example};
     if (typeof document === 'undefined') return;
     const form=document.getElementById('doe-wizard');
     if (!form) return;
@@ -275,6 +276,8 @@
         ]
 ];
     let current=0,plan=null,dirty=false,stale=false;
+    window.HVTDOE.currentPlan=()=>plan ? JSON.parse(JSON.stringify(plan)) : null;
+    window.HVTDOE.isStale=()=>stale;
     const storageKey='hvt-doe-guided-v1';
     let stored=null;
     try { const raw=localStorage.getItem(storageKey); if(raw && raw.length<50000) { const parsed=JSON.parse(raw); if(parsed.version===1 && parsed.data && typeof parsed.data==='object') stored=parsed.data; } } catch (_) { /* Storage may be disabled. The calculator remains available. */ }
