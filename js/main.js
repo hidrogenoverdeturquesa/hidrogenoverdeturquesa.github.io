@@ -45,6 +45,10 @@
             en: '/en/?lang-release=20260816a',
             ru: '/ru/?lang-release=20260816a'
         };
+        const lineRoute = path.match(/^(?:\/(?:en|ru))?(\/lineas\/[^/]+\/)$/);
+        if (lineRoute) supported.forEach(function(locale) {
+            destinations[locale] = (locale === 'es' ? '' : '/' + locale) + lineRoute[1];
+        });
         const nav = document.querySelector('.s-header__nav ul');
         const browserLanguages = navigator.languages || [navigator.language || 'es'];
         const suggested = browserLanguages.map(function(language) {
@@ -667,6 +671,15 @@
     * ------------------------------------------------------ */
     const ssWorkLines = function() {
 
+        document.querySelectorAll('.line-service').forEach(function(service) {
+            service.addEventListener('toggle', function() {
+                if (!service.open) return;
+                service.closest('.line-detail').querySelectorAll('.line-service').forEach(function(other) {
+                    if (other !== service) other.open = false;
+                });
+            });
+        });
+
         const triggers = Array.from(document.querySelectorAll('.services-item__trigger'));
         const panels = Array.from(document.querySelectorAll('.line-detail'));
         const detailsHolder = document.querySelector('.line-details');
@@ -735,14 +748,15 @@
             if (event.key === 'Escape' && activeTrigger) closeAll(true);
         });
 
-        document.querySelectorAll('.line-service').forEach(function(service) {
-            service.addEventListener('toggle', function() {
-                if (!service.open) return;
-                service.closest('.line-detail').querySelectorAll('.line-service').forEach(function(other) {
-                    if (other !== service) other.open = false;
-                });
+        const openLinkedLine = function() {
+            if (!/^#line-detail-00[1-4]$/.test(window.location.hash)) return;
+            const trigger = triggers.find(function(item) {
+                return '#' + item.getAttribute('aria-controls') === window.location.hash;
             });
-        });
+            if (trigger && trigger.getAttribute('aria-expanded') !== 'true') trigger.click();
+        };
+        window.addEventListener('hashchange', openLinkedLine);
+        openLinkedLine();
 
     };
 

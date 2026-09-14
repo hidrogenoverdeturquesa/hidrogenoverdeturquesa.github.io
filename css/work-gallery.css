@@ -1,0 +1,64 @@
+/* Field evidence, scoped to the habitat service panel. */
+.work-gallery { margin: 0 0 4rem; }
+.work-gallery__intro { max-width: 72rem; margin-bottom: 2.4rem; }
+.line-detail .work-gallery h4 { font-size: clamp(2.8rem, 3vw, 4rem); margin: 0 0 1rem; }
+.work-gallery__intro p { color: #52605e; font-size: 1.7rem; line-height: 1.6; margin: 0; }
+.work-gallery__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: repeat(2, 20rem); gap: 1.2rem; }
+.work-gallery__photo { position: relative; display: block; min-width: 0; overflow: hidden; background: #173b35; color: white; border-radius: .4rem; }
+.work-gallery__photo:first-child { grid-row: span 2; }
+.work-gallery__photo:nth-child(2) { grid-column: span 2; }
+.work-gallery__photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s ease; }
+.work-gallery__photo:nth-child(2) img { object-position: center 42%; }
+.work-gallery__photo::after { content: ''; position: absolute; inset: 40% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); pointer-events: none; }
+.work-gallery__photo span { position: absolute; z-index: 1; left: 1.6rem; right: 3rem; bottom: 1.6rem; font-family: var(--font-2); font-size: 1.5rem; font-weight: 700; line-height: 1.4; }
+.work-gallery__photo b { position: absolute; z-index: 1; right: 1.2rem; top: 1.2rem; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; background: rgba(0,0,0,.5); border-radius: 50%; font-size: 2rem; font-weight: 400; }
+.work-gallery__photo:hover { color: white; }
+.work-gallery__photo:hover img { transform: scale(1.025); }
+.work-gallery__photo:focus-visible, .work-gallery__more:focus-visible, .work-gallery__contact:focus-visible { outline: 3px solid #007c70; outline-offset: 4px; }
+.work-gallery__extra { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.2rem; }
+.work-gallery__extra[hidden] { display: none; }
+.work-gallery__extra .work-gallery__photo { grid-column: auto; grid-row: auto; height: 23rem; }
+.work-gallery__actions { display: flex; flex-wrap: wrap; gap: 1.6rem 2.4rem; justify-content: space-between; align-items: center; margin-top: 2rem; }
+.work-gallery__more { margin: 0; height: auto; padding: 1.2rem 2rem; border: 1px solid #54726d; border-radius: .3rem; background: transparent; color: #163f37; font-size: 1.4rem; line-height: 1.5; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.work-gallery__contact { color: #00766a; font-size: 1.5rem; font-weight: 700; }
+/* A borderless photographic lightbox, inspired by PhotoSwipe / Fancybox.
+   Native dialog retains focus containment and background inertness. */
+.work-gallery__viewer { box-sizing: border-box; position: fixed; inset: 0; width: 100%; height: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 6.4rem 7.2rem 2.4rem; border: 0; border-radius: 0; box-shadow: none; background: #111; color: white; overflow: hidden; }
+.work-gallery__viewer::backdrop { background: #111; }
+.work-gallery__viewer:not([open]) { display: none; }
+.work-gallery__toolbar h2 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.work-gallery__viewer button { position: absolute; z-index: 2; display: grid; place-items: center; width: 4.8rem; height: 4.8rem; min-width: 44px; min-height: 44px; margin: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; color: #eee; background: transparent; font-size: 0; line-height: 1; text-transform: none; letter-spacing: 0; opacity: .8; cursor: pointer; transition: opacity .15s; }
+.work-gallery__viewer button:hover { background: transparent; opacity: 1; }
+.work-gallery__viewer button:focus-visible { outline: 2px solid white; outline-offset: 2px; opacity: 1; }
+.work-gallery__viewer [data-work-close] { top: max(1rem, env(safe-area-inset-top)); right: max(1.2rem, env(safe-area-inset-right)); }
+.work-gallery__viewer [data-work-close]::before, .work-gallery__viewer [data-work-close]::after { content: ''; position: absolute; width: 2.2rem; height: 2px; background: currentColor; transform: rotate(45deg); }
+.work-gallery__viewer [data-work-close]::after { transform: rotate(-45deg); }
+.work-gallery__viewer [data-work-prev], .work-gallery__viewer [data-work-next] { top: 50%; transform: translateY(-50%); }
+.work-gallery__viewer [data-work-prev] { left: max(1.2rem, env(safe-area-inset-left)); }
+.work-gallery__viewer [data-work-next] { right: max(1.2rem, env(safe-area-inset-right)); }
+.work-gallery__viewer [data-work-prev]::before, .work-gallery__viewer [data-work-next]::before { content: ''; width: 1.4rem; height: 1.4rem; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(-135deg); }
+.work-gallery__viewer [data-work-next]::before { transform: rotate(45deg); }
+.work-gallery__viewer figure { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 1.6rem; height: 100%; margin: 0; }
+.work-gallery__full { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; touch-action: pan-y pinch-zoom; user-select: none; }
+.work-gallery__caption { color: #c9c9c9; text-align: center; font: 400 1.4rem/1.5 var(--font-1); margin: 0; padding: 0 1rem; }
+.work-gallery__count { position: absolute; top: max(2.4rem, env(safe-area-inset-top)); left: max(2.4rem, env(safe-area-inset-left)); color: #bcbcbc; font: 400 1.3rem/1 var(--font-1); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+body.work-gallery-is-open { overflow: hidden; }
+body.work-gallery-is-open .mentor, body.work-gallery-is-open .hvt-lab, body.work-gallery-is-open .ss-go-top { visibility: hidden; }
+@media (max-width: 700px) {
+    .work-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: 28rem 20rem; }
+    .work-gallery__photo:first-child { grid-row: auto; }
+    .work-gallery__photo:nth-child(2) { grid-column: auto; }
+    .work-gallery__extra { grid-template-columns: 1fr 1fr; }
+    .work-gallery__photo span { left: 1rem; right: 1rem; bottom: 1rem; font-size: 1.3rem; }
+    .work-gallery__viewer { padding: max(6.4rem, env(safe-area-inset-top)) 0 max(2rem, env(safe-area-inset-bottom)); }
+    .work-gallery__viewer [data-work-prev], .work-gallery__viewer [data-work-next] { top: auto; bottom: max(.8rem, env(safe-area-inset-bottom)); transform: none; }
+    .work-gallery__caption { padding-inline: 6rem; min-height: 3rem; }
+    .work-gallery__viewer figure { gap: 2rem; }
+}
+@media (max-width: 400px) {
+    .work-gallery__grid { grid-template-rows: 23rem 18rem; gap: .8rem; }
+    .work-gallery__extra { gap: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .work-gallery__photo img, .work-gallery__viewer button { transition: none; }
+}

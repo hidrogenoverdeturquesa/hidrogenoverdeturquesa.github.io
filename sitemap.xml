@@ -25,4 +25,18 @@
   <url><loc>https://hidrogenoverdeturquesa.com/curso-organicos-fermentacion</loc><lastmod>2026-07-15</lastmod><priority>0.6</priority></url>
   <url><loc>https://hidrogenoverdeturquesa.com/curso-esp32</loc><lastmod>2026-07-15</lastmod><priority>0.5</priority></url>
   <url><loc>https://hidrogenoverdeturquesa.com/curso-microbit</loc><lastmod>2026-07-15</lastmod><priority>0.5</priority></url>
+  <!-- service-pages:start -->
+  <url><loc>https://hidrogenoverdeturquesa.com/lineas/energia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/lineas/bioeconomia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/lineas/inteligencia-territorial/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/lineas/infraestructura/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/en/lineas/energia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/en/lineas/bioeconomia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/en/lineas/inteligencia-territorial/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/en/lineas/infraestructura/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/ru/lineas/energia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/ru/lineas/bioeconomia/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/ru/lineas/inteligencia-territorial/</loc><priority>0.8</priority></url>
+  <url><loc>https://hidrogenoverdeturquesa.com/ru/lineas/infraestructura/</loc><priority>0.8</priority></url>
+  <!-- service-pages:end -->
 </urlset>

@@ -309,6 +309,7 @@ def localize_document(source: str, locale: str, translations: dict[str, str]) ->
         output = output.replace(f'href="{filename}', f'href="../{filename}')
 
     output = output.replace('href="/"', f'href="/{locale}/"', 1)
+    output = output.replace('href="/lineas/', f'href="/{locale}/lineas/')
     return output
 
 
@@ -336,6 +337,9 @@ def main() -> None:
         destination.parent.mkdir(exist_ok=True)
         destination.write_text(localized, encoding="utf-8", newline="\n")
         print(f"wrote {destination.relative_to(ROOT)}")
+
+    from build_service_pages import build_all
+    build_all()
 
 
 if __name__ == "__main__":
