@@ -1,0 +1,26 @@
+/* Ajustes del cuadernillo RP-01; mantiene la plantilla editorial HVT. */
+.reactores-book .book-sheet { scroll-margin-top: 9rem; }
+.reactores-book .reactores-status { color: #40534f; font-size: 1.5rem; }
+.reactores-book .book-cover-figure img { height: auto; }
+.reactores-book .reactores-video { width: 100%; display: block; background: #050706; aspect-ratio: 16 / 9; }
+.reactores-book .reactores-video-figure { margin: 0 0 3rem; }
+.reactores-book .reactores-video-figure figcaption { font-size: 1.4rem; line-height: 1.7; margin-top: 1rem; }
+.reactores-book .reactores-table-wrap { max-width: 100%; overflow-x: auto; margin-bottom: 2.4rem; }
+.reactores-book .reactores-table-wrap table { margin-bottom: 0; }
+.reactores-book .reactores-table-wrap:focus-visible { outline: 2px solid #007d6c; outline-offset: 4px; }
+.reactores-book .project-equation { max-width: 100%; overflow-x: auto; }
+.reactores-book math { font-size: clamp(1.7rem, 2.1vw, 2.8rem); }
+.reactores-book .book-references li { scroll-margin-top: 10rem; }
+.reactores-book .book-page__content sup a { text-decoration: underline; }
+.reactores-book .reactores-downloads { margin: 3rem 0; }
+@media (max-width: 600px) {
+  .reactores-book .reactores-table-wrap table { min-width: 52rem; }
+  .reactores-book .book-cover-figure { margin-top: 2.4rem; }
+  .reactores-book .book-page__index strong { font-size: 1.9rem; }
+}
+@media print {
+  .reactores-book .book-sheet { height: auto !important; overflow: visible !important; break-after: auto; }
+  .reactores-book .book-page { width: 100% !important; zoom: 1; box-shadow: none; break-inside: auto; }
+  .reactores-book .reactores-table-wrap { overflow: visible; }
+  .reactores-book .reactores-video-figure { display: none; }
+}

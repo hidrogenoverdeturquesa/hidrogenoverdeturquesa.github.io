@@ -1,0 +1,317 @@
+% !TeX encoding = UTF-8
+% Fuente editorial única del PDF y del cuadernillo web.
+\documentclass{../plantilla/hvtbook}
+\usepackage{amsmath}
+\pagestyle{plain}
+\hypersetup{pdftitle={Reactores pulsantes},pdfauthor={Hidrógeno Verde Turquesa}}
+\HVTTitulo{Reactores pulsantes}
+\HVTSubtitulo{Diseño experimental inspirado en la química del escarabajo bombardero. Fundamentos, instrumentación, balances y ruta de escalado hacia una aplicación real.}
+\HVTNivel{Biomimética e investigación experimental}
+\HVTSerie{Publicación técnica}
+\HVTNumero{RP-01}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Cuadernillo técnico de Reactores pulsantes: química del escarabajo bombardero, diseño de experimentos, medición, balances, escalado y validación.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-reactores-pulsantes}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../../images/portfolio/reactores-pulsantes-escarabajo.png}{Brachinus crepitans. U. Schmidt, 2024. CC BY-SA 4.0. Fotografía reducida de Wikimedia Commons.}
+
+\begin{document}
+\HVTMakeTitle
+
+\begin{HVTPage}{Contenido}{RP-01 · Versión 1}{Una investigación con una ruta verificable}
+\HVTLead{El objetivo es desarrollar conocimiento y un prototipo instrumentado de operación pulsante. Esta publicación formula el estudio; todavía no presenta resultados de un reactor construido por HVT.}
+\begin{HVTGrid}
+\begin{HVTColumn}{Fundamento y diseño}
+\begin{itemize}
+\item 1. Química y mecanismo biológico.
+\item 2. Antecedentes y alcance de la evidencia.
+\item 3. Pregunta, hipótesis y aplicación inicial.
+\item 4. Arquitectura del banco experimental.
+\item 5. Balances y variables de respuesta.
+\item 6. Instrumentación y calidad de datos.
+\end{itemize}
+\end{HVTColumn}
+\begin{HVTColumn}{Experimento y desarrollo}
+\begin{itemize}
+\item 7. Factores, matriz y secuencia de ensayos.
+\item 8. Análisis estadístico y decisiones.
+\item 9. Escalado y ejemplo de cálculo.
+\item 10. Materiales, control y protección.
+\item 11. Validación, aplicación y recursos.
+\item 12. Registro, referencias y créditos.
+\end{itemize}
+\end{HVTColumn}
+\end{HVTGrid}
+\HVTText{Lectura de las cifras: los ejemplos numéricos son didácticos; las metas son propuestas por acordar; los hallazgos publicados se identifican mediante referencias. Edición del 17 de septiembre de 2026. El alcance inicial es un banco no reactivo; la etapa química depende de caracterización y revisión de ingeniería.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1}{Inspiración biológica}{Química que libera calor y genera una descarga}
+\HVTLead{El escarabajo bombardero transforma energía química en calor y movimiento de un fluido. La secreción contiene quinonas; el mecanismo combina química, estructuras de regulación y respuesta del fluido.}
+\HVTText{Los estudios clásicos identifican hidroquinonas y peróxido de hidrógeno en el sistema, con enzimas catalasa y peroxidasa asociadas a la cámara de reacción. El trabajo bioquímico describe la descomposición del peróxido y la oxidación de hidroquinona a benzoquinona. Las siguientes expresiones resumen transformaciones ideales, sin especificar una formulación experimental. \HVTCite{1} \HVTCite{2}}
+\HVTEquation{2H_{2}O_{2} \rightarrow 2H_{2}O + O_{2}}{Descomposición del peróxido de hidrógeno.}
+\HVTEquation{C_{6}H_{6}O_{2} + H_{2}O_{2} \rightarrow C_{6}H_{4}O_{2} + 2H_{2}O}{Oxidación idealizada de hidroquinona a benzoquinona.}
+\HVTText{La energía procede de los reactivos. Evaluar un dispositivo exige contabilizar su consumo, la energía auxiliar y los productos generados. El interés del proyecto está en estudiar la regulación temporal y el intercambio térmico, sin asumir una producción neta de energía.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 1.1}{Mecanismo}{Cómo se relacionan cámara, flujo y pulsación}
+\HVTLead{Una descarga visible puede contener eventos internos mucho más rápidos. La observación externa del chorro no basta para identificar el mecanismo que genera cada pulso.}
+\HVTText{Arndt y colaboradores observaron el interior del sistema mediante rayos X de sincrotrón. Su estudio relaciona la pulsación con estructuras cuticulares situadas entre el reservorio y la cámara, y propone una regulación pasiva por realimentación mecánica de los eventos internos. Esa evidencia es más específica que la idea general de una mezcla que se calienta. \HVTCite{3}}
+\begin{HVTFlow}
+\HVTFlowItem{1}{Alimentación}{El sistema biológico permite el ingreso de fluido a la región de reacción.}
+\HVTFlowItem{2}{Respuesta acoplada}{La liberación de calor y la formación de vapor modifican las condiciones internas.}
+\HVTFlowItem{3}{Regulación}{La respuesta mecánica condiciona el flujo y la repetición de eventos.}
+\end{HVTFlow}
+\HVTText{Traducción propuesta por HVT: registrar simultáneamente caudal, presión, temperatura y estado del actuador. Un banco con válvula programada sirve para estudiar la respuesta forzada; una futura oscilación pasiva deberá demostrarse por separado. La fotografía y el video presentan especies de referencia diferentes, no un prototipo HVT.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 2}{Estado del conocimiento}{Lo que ya se estudió y lo que falta comprobar}
+\begin{HVTTable}{Fuente}{Aporte publicado}{Límite para este proyecto}
+\HVTTableRow{1969 y 1970 \HVTCite{1,2}}{Caracterización térmica y bioquímica de la defensa del escarabajo.}{No proporcionan una receta de diseño industrial ni un rendimiento del reactor HVT.}
+\HVTTableRow{2007 \HVTCite{4}}{Modelo de descarga bifásica con participación de válvulas y descompresión.}{Es un antecedente de modelación; sus supuestos requieren contraste en cada equipo.}
+\HVTTableRow{2008 \HVTCite{5}}{Banco biomimético de pulverización y medición de gotas, con aporte térmico y control del ciclo.}{Demuestra un dispositivo particular, no una ventaja universal frente a otras tecnologías.}
+\HVTTableRow{2015 \HVTCite{3}}{Observación interna del sistema biológico y realimentación mecánica.}{Su anatomía no equivale directamente a una válvula industrial.}
+\end{HVTTable}
+\HVTText{La revisión identifica antecedentes de equipos inspirados en el escarabajo. La contribución que se propone aquí es evaluar una configuración propia mediante datos trazables, comparación con una referencia y criterios de escalado. La novedad técnica deberá contrastarse con literatura y patentes antes de formular una reivindicación.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 3}{Objetivos}{Una pregunta concreta para la primera campaña}
+\HVTLead{¿Cómo afectan la frecuencia de accionamiento, el tiempo relativo de apertura y el caudal medio a la repetibilidad de una dosificación pulsante en un banco acuoso no reactivo?}
+\begin{HVTTask}{Objetivos específicos propuestos}
+\item Caracterizar la respuesta del conjunto alimentación, actuador, cámara y receptor.
+\item Estimar efectos e interacciones entre tres factores controlables.
+\item Comparar la masa entregada y el consumo específico con una referencia de flujo continuo.
+\item Medir el cambio de desempeño al aumentar capacidad o incorporar otro módulo.
+\end{HVTTask}
+\HVTText{Hipótesis experimental: dentro de una región de operación previamente aprobada, una combinación de factores puede reducir la variabilidad de la masa entregada sin aumentar de forma inaceptable el consumo específico. El efecto mínimo útil y el margen de consumo se fijarán con el usuario del proceso antes de analizar resultados.}
+\HVTText{Esta primera campaña valida instrumentación e hidrodinámica. Una etapa térmica y luego una eventual etapa reactiva tendrán sus propios objetivos, factores y revisión de riesgos. Sus resultados no se deducen automáticamente del ensayo con agua.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 4}{Arquitectura}{Un banco modular para observar el sistema}
+\begin{HVTFlow}
+\HVTFlowItem{01}{Alimentación}{Depósito identificado, medición de entrada y suministro regulado.}
+\HVTFlowItem{02}{Módulo de ensayo}{Actuador, cámara intercambiable e instrumentación sincronizada.}
+\HVTFlowItem{03}{Recepción}{Captura del líquido, medición de masa y retorno o gestión del efluente.}
+\end{HVTFlow}
+\begin{HVTTable}{Subsistema}{Función}{Criterio de selección}
+\HVTTableRow{Accionamiento}{Producir y registrar una orden de apertura.}{Respuesta y vida cíclica compatibles con el experimento.}
+\HVTTableRow{Cámara}{Definir volumen y superficies mojadas.}{Trazabilidad geométrica y compatibilidad con el fluido.}
+\HVTTableRow{Adquisición}{Registrar señales y eventos en un reloj común.}{Resolución temporal, calibración y almacenamiento íntegro.}
+\HVTTableRow{Protección}{Contener fugas y llevar el banco a un estado definido.}{Independencia del registro de datos y acceso de mantenimiento.}
+\end{HVTTable}
+\HVTText{En esta fase, la pulsación se impone externamente. El diagrama es funcional: dimensiones, materiales y componentes comerciales se seleccionan después del balance y la especificación del ensayo. La descarga se recoge; no se optimiza su alcance como chorro libre.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5}{Balances}{Masa y energía: cerrar las cuentas}
+\HVTEquation{\frac{dm}{dt}=\dot{m}_{e}-\dot{m}_{s}}{m: inventario dentro del volumen de control; e: entrada; s: salida. Todas las corrientes deben estar incluidas.}
+\HVTEquation{\frac{dE}{dt}=\dot{Q}+P_{e}+\dot{m}_{e}h_{e}-\dot{m}_{s}h_{s}}{E: energía almacenada; Q: calor neto hacia el equipo; Pe: potencia de accionamiento que cruza la frontera; h: entalpía específica.}
+\HVTText{Es un modelo inicial de un volumen fijo, con energías cinética y potencial despreciables en las corrientes. Si esas contribuciones importan, se incluyen. Una reacción exige incorporar composición y entalpías químicas de forma consistente; no se suma de nuevo el calor de reacción si ya está incluido en las entalpías.}
+\HVTText{En régimen periódico, el inventario puede retornar al mismo estado al final de cada ciclo aunque cambie durante el pulso. El cierre se calcula tanto por ciclo como para la corrida completa. Las pérdidas térmicas, retenciones y fugas deben distinguirse del error instrumental.}
+\HVTText{Antes de ensayos reactivos se requerirán propiedades, cinética y calorimetría de la química seleccionada. Los balances anteriores organizan la información; no sustituyen una validación térmica ni el diseño mecánico del equipo.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 5.1}{Indicadores}{Qué significa que un pulso sea repetible}
+\HVTEquation{m_{p}=\int_{t_{0}}^{t_{1}}\dot{m}_{s}(t)\,dt}{Masa por pulso: integral de la señal de caudal másico durante el evento.}
+\HVTEquation{CV_{m}=100\frac{s_{m}}{\bar{m}_{p}}}{Coeficiente de variación de la masa por pulso, en porcentaje, para una media positiva y suficientemente alejada de cero.}
+\HVTEquation{e_{s}=\frac{E_{aux}}{m_{entregada}}}{Energía auxiliar específica: energía total de la corrida dividida entre la masa entregada que cumple la función.}
+\HVTText{Registrar además frecuencia observada, duración del evento, retardo respecto a la orden, presión y temperatura máximas, fallos de entrega y deriva durante la corrida. El consumo incluye bomba, actuador, control y cualquier calefacción o refrigeración utilizada.}
+\HVTText{La respuesta primaria propuesta es el coeficiente de variación de la masa entregada entre ventanas de igual duración, resumido por corrida. También se mide el error de entrega frente al objetivo. La variación entre pulsos es secundaria y exige que la cadena instrumental resuelva cada evento.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6}{Instrumentación}{Elegir sensores según la pregunta}
+\begin{HVTTable}{Medición}{Instrumento candidato}{Verificación necesaria}
+\HVTTableRow{Presión}{Transductor y adquisición sincronizada.}{Rango, respuesta dinámica, ubicación y diferencia entre presión absoluta y manométrica.}
+\HVTTableRow{Temperatura}{Sensor del fluido y sensor de pared.}{Retardo térmico, contacto y calibración; una lectura lenta no resuelve un pico rápido.}
+\HVTTableRow{Entrega}{Balanza en el receptor y medición de caudal.}{La balanza verifica masa acumulada; el caudalímetro solo resuelve pulsos si su ancho de banda lo permite.}
+\HVTTableRow{Consumo}{Medidor de energía eléctrica.}{Integrar todo el periodo, incluyendo espera y auxiliares.}
+\HVTTableRow{Eventos}{Señal de mando y confirmación del actuador.}{Distinguir la orden digital del movimiento y de la respuesta del fluido.}
+\end{HVTTable}
+\HVTText{El criterio de muestreo se establecerá a partir del evento más rápido que se quiera observar, con filtrado antialias y ancho de banda conocido. Tener muchas muestras de un sensor lento no recupera la dinámica perdida. Se verificará la cadena completa con una señal o evento de referencia.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 6.1}{Metrología}{Incertidumbre y trazabilidad del resultado}
+\HVTLead{Cada resultado debe incluir unidad, método, calibración y una estimación de incertidumbre. La guía GUM permite estructurar las contribuciones de medición y su propagación. \HVTCite{8}}
+\HVTEquation{u_{c}^{2}(y)=\sum_{i}c_{i}^{2}u^{2}(x_{i})}{Modelo linealizado con entradas no correlacionadas. ci representa la sensibilidad de y a cada entrada xi.}
+\HVTText{Si existen correlaciones deben añadirse los términos de covarianza. El presupuesto incluirá calibración, resolución, repetibilidad, deriva, sincronización y procesamiento. Las contribuciones instrumentales no reemplazan la variabilidad real del proceso.}
+\begin{HVTTask}{Registro mínimo de calidad}
+\item Conservar señales originales y una copia separada de datos procesados.
+\item Identificar equipo, sensor, calibración, fecha, montaje y versión del procesamiento.
+\item Marcar saturaciones, pérdidas de muestras, fugas y corridas interrumpidas.
+\item Documentar el criterio para identificar inicio y fin de cada pulso antes de comparar tratamientos.
+\end{HVTTask}
+\HVTText{Un cierre de balance se juzgará frente a la incertidumbre combinada y al inventario del sistema. Si el desajuste persiste fuera de ese margen, se revisará el modelo y la adquisición antes de interpretar una mejora de desempeño.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7}{Diseño experimental}{Tres factores para una campaña interpretable}
+\HVTLead{Propuesta inicial: factorial completo de tres factores a dos niveles, con réplicas independientes y puntos centrales. La estructura permite estudiar efectos e interacciones. \HVTCite{6,7}}
+\begin{HVTTable}{Factor}{Definición operacional}{Condición del diseño}
+\HVTTableRow{A}{Frecuencia de accionamiento programada.}{Nivel bajo, centro y alto dentro de la respuesta verificada del actuador.}
+\HVTTableRow{B}{Fracción del periodo en que se ordena apertura.}{Apertura y cierre efectivos medibles en toda la región experimental.}
+\HVTTableRow{C}{Caudal medio objetivo de alimentación.}{Control estable y suministro compatible con todas las combinaciones.}
+\end{HVTTable}
+\HVTText{Los valores físicos se fijarán después de comisionar el banco. Primero se comprobará que A, B y C pueden variarse de manera suficientemente independiente. Si una combinación no es realizable, se rediseña la región; no se la reemplaza silenciosamente durante la campaña.}
+\HVTText{Mantener constantes geometría, fluido, temperatura inicial y montaje. Registrar jornada y operador como condiciones de ejecución. Los cambios de geometría difíciles de realizar se investigarán después con un diseño que reconozca esa restricción de aleatorización.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7.1}{Matriz de ensayo}{Ocho combinaciones, todavía sin datos}
+\HVTText{Matriz en orden estándar, no en orden de ejecución. Los símbolos -1, 0 y +1 representan niveles codificados; no son presiones, temperaturas ni concentraciones.}
+\begin{HVTTableFour}{Tratamiento}{A · Frecuencia}{B · Apertura}{C · Caudal}
+\HVTTableRowFour{T1}{-1}{-1}{-1}
+\HVTTableRowFour{T2}{+1}{-1}{-1}
+\HVTTableRowFour{T3}{-1}{+1}{-1}
+\HVTTableRowFour{T4}{+1}{+1}{-1}
+\HVTTableRowFour{T5}{-1}{-1}{+1}
+\HVTTableRowFour{T6}{+1}{-1}{+1}
+\HVTTableRowFour{T7}{-1}{+1}{+1}
+\HVTTableRowFour{T8}{+1}{+1}{+1}
+\HVTTableRowFour{Centro}{0}{0}{0}
+\end{HVTTableFour}
+\HVTText{Diseño de planificación HVT: dos bloques completos de ocho tratamientos y tres corridas centrales por bloque. Total: 22 corridas pulsantes. Añadir una referencia continua por bloque da 24 corridas iniciales, excluyendo comisionamiento y confirmación. La suficiencia estadística se revisará con la variabilidad piloto.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 7.2}{Ejecución}{Aleatorización, réplicas y comparación continua}
+\begin{HVTTaskOrdered}{Secuencia propuesta por bloque}
+\item Verificar sensores, inventario inicial y condición del banco; ejecutar una corrida central.
+\item Ejecutar cuatro tratamientos de un orden aleatorio previamente guardado.
+\item Ejecutar la segunda corrida central y los cuatro tratamientos restantes.
+\item Ejecutar la tercera corrida central y la referencia continua en una posición documentada.
+\item Restablecer el banco y repetir el bloque con una nueva aleatorización.
+\end{HVTTaskOrdered}
+\HVTText{Los centros permiten observar estabilidad y curvatura; se distribuyen a lo largo de la campaña. Las réplicas requieren corridas reiniciadas de manera independiente. Cientos de pulsos dentro de una misma corrida son observaciones anidadas, no cientos de réplicas experimentales. \HVTCite{6,7}}
+\HVTText{La referencia continua conserva fluido, trayectoria y caudal medio del centro del diseño. Se compara masa entregada por una misma ventana temporal y energía específica, no masa por pulso. Dos referencias iniciales sirven para diagnóstico; una demostración de superioridad necesitará más repeticiones independientes y potencia estadística justificada.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 8}{Análisis}{Separar efecto, ruido e interacción}
+\HVTEquation{y=\beta_{0}+\sum_{i}\beta_{i}x_{i}+\sum_{i<j}\beta_{ij}x_{i}x_{j}+\beta_{ABC}ABC+b+\varepsilon}{Modelo factorial inicial: efectos principales, interacciones de dos y tres factores y efecto de bloque b. Epsilon es el error entre corridas.}
+\HVTText{Analizar la respuesta primaria por corrida. Revisar residuales, variación entre bloques, observaciones influyentes y dependencia temporal. Los intervalos de confianza deben acompañar los efectos; un valor p aislado no demuestra importancia práctica.}
+\HVTText{Comparar la media de centros con la media factorial para explorar curvatura global. Este diseño no identifica por separado los tres términos cuadráticos. Si aparece curvatura relevante, se formula una segunda campaña de superficie de respuesta dentro de una región admisible.}
+\begin{HVTTask}{Decisiones antes de optimizar}
+\item Definir la mejora mínima útil y el margen de consumo aceptable.
+\item Tratar corridas fallidas como evidencia del funcionamiento; explicar toda exclusión.
+\item Confirmar la configuración seleccionada en corridas nuevas, otra jornada y una condición de carga representativa.
+\end{HVTTask}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 9}{Escalado}{El tamaño cambia las relaciones físicas}
+\HVTLead{Aumentar todas las dimensiones por el mismo factor no conserva automáticamente la capacidad de disipar calor ni la dinámica del fluido.}
+\HVTEquation{A_{2}=\lambda^{2}A_{1},\quad V_{2}=\lambda^{3}V_{1},\quad \frac{A_{2}}{V_{2}}=\frac{1}{\lambda}\frac{A_{1}}{V_{1}}}{Relaciones geométricas para formas semejantes; lambda es el factor de escala lineal.}
+\HVTText{Si la generación de calor por unidad de volumen se mantuviera, la demanda de extracción por unidad de superficie crecería con la escala. La conclusión depende de esa hipótesis: deberá revisarse con la cinética, el coeficiente térmico y la distribución de temperaturas.}
+\begin{HVTTable}{Ruta}{Ventaja a evaluar}{Nueva dificultad}
+\HVTTableRow{Mayor cámara}{Más capacidad en una sola unidad.}{Gradientes térmicos, tiempos de mezcla, esfuerzos y respuesta del actuador.}
+\HVTTableRow{Más módulos}{Conservar una geometría caracterizada.}{Distribuir alimentación, sincronizar, aislar fallos y contabilizar auxiliares compartidos.}
+\end{HVTTable}
+\HVTText{La decisión se basará en capacidad útil, variabilidad, energía específica, mantenimiento y costo por servicio. No se extrapolará una frecuencia del insecto como objetivo obligatorio del reactor.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 9.1}{Similitud}{Qué relaciones comparar entre escalas}
+\HVTEquation{Re=\frac{\rho uL}{\mu},\quad St=\frac{fL}{u},\quad \tau=\frac{V}{Q}}{Reynolds: relación inercial-viscosa. Strouhal: frecuencia relativa al tránsito. Tau: tiempo nominal de residencia.}
+\HVTText{rho es densidad; u, velocidad característica; L, longitud; mu, viscosidad; f, frecuencia; V, volumen mojado; Q, caudal volumétrico medio. Las propiedades se evalúan a las condiciones del ensayo.}
+\HVTText{Estos números permiten comparar tendencias, no constituyen por sí solos un criterio completo de similitud. Mantener simultáneamente geometría, Reynolds, Strouhal y transferencia de calor puede ser imposible al cambiar de tamaño. Se priorizará el fenómeno que gobierne la aplicación.}
+\HVTText{El valor V/Q es un tiempo nominal; un reactor pulsante puede tener recirculación y una distribución de tiempos de residencia amplia. En una fase posterior, un ensayo con trazador compatible permitirá contrastar ese supuesto. Para una reacción se compararán además los tiempos de mezcla, reacción y evacuación de calor.}
+\HVTText{Antes del piloto se confrontarán dos modelos: un balance concentrado de baja complejidad y, solo si los datos lo requieren, una representación espacial. La complejidad del modelo debe responder a un error observado, con parámetros identificables y validación independiente.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 9.2}{Ejemplo didáctico}{De masa por pulso a capacidad media}
+\HVTLead{Ejemplo aritmético con agua y cifras supuestas. No son resultados medidos ni consignas autorizadas para un equipo.}
+\HVTText{Supongamos una masa media entregada de 0,50 g por pulso, dos pulsos por segundo y una densidad aproximada de 1 g/mL. Si cada pulso se recoge íntegramente y el régimen se mantiene:}
+\HVTEquation{\dot{m}_{media}=m_{p}f=0{,}50\times 2=1{,}00\ \mathrm{g/s}}{La entrega equivale aproximadamente a 1 mL/s o 3,6 L/h.}
+\HVTText{En diez minutos se recogerían 0,60 kg. Si el consumo auxiliar total de esa corrida fuese 12 kJ, la energía específica sería 20 kJ/kg, equivalente a unos 0,0056 kWh/kg. Ambas cifras deben medirse: una estimación basada solo en la potencia nominal del actuador sería incompleta.}
+\HVTEquation{e_{s}=\frac{12\ \mathrm{kJ}}{0{,}60\ \mathrm{kg}}=20\ \mathrm{kJ/kg}}{Ejercicio de balance; no representa una eficiencia ni una ventaja tecnológica demostrada.}
+\HVTText{Cuatro módulos idénticos darían una capacidad ideal de 14,4 L/h únicamente si mantienen su entrega y reciben alimentación suficiente. El resultado real incluirá disponibilidad, pérdidas y desbalance entre módulos.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 10}{Materiales y control}{Seleccionar por la condición real del servicio}
+\begin{HVTTable}{Elemento}{Pregunta de diseño}{Evidencia requerida}
+\HVTTableRow{Superficies mojadas}{¿Resisten el fluido, la limpieza y los ciclos previstos?}{Compatibilidad química y térmica, inspección y trazabilidad del material.}
+\HVTTableRow{Sellos y uniones}{¿Conservan estanqueidad tras muchas actuaciones?}{Ensayos de fuga y envejecimiento representativos.}
+\HVTTableRow{Actuador}{¿Su respuesta cambia con carga o temperatura?}{Medición del retardo, histéresis, ciclos y modo de fallo.}
+\HVTTableRow{Control}{¿Qué ocurre con pérdida de señal o suministro?}{Estado seguro definido, enclavamientos y registro de eventos.}
+\end{HVTTable}
+\HVTText{La validación con agua no certifica compatibilidad con peróxidos, quinonas u otra química. La selección reactiva exigirá revisar materiales, contaminantes, catalizadores y residuos del proceso completo.}
+\HVTText{El control de proceso y la protección cumplen funciones distintas. Una orden de software no sustituye un medio físico de protección cuando el análisis de ingeniería lo requiere. Los límites de presión y temperatura se derivarán del componente más restrictivo y de la evaluación del sistema.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 10.1}{Desviaciones}{Qué debe resolver la revisión de ingeniería}
+\begin{HVTTable}{Desviación}{Consecuencia a evaluar}{Respuesta de diseño}
+\HVTTableRow{Salida bloqueada}{Acumulación de presión o inventario.}{Detección, corte del aporte y protección dimensionada para el escenario.}
+\HVTTableRow{Fallo de válvula}{Flujo continuo, ausencia de pulso o retorno.}{Diagnóstico por señal física y aislamiento definido.}
+\HVTTableRow{Pérdida de enfriamiento}{Acumulación de calor en una etapa térmica o reactiva.}{Interrupción del aporte y evaluación del calor residual.}
+\HVTTableRow{Fuga o arrastre}{Exposición, pérdida de balance y contaminación.}{Contención, captura del efluente y procedimiento de intervención.}
+\end{HVTTable}
+\HVTText{La lista es un punto de partida para el análisis de desviaciones, no una evaluación terminada. En la etapa reactiva se necesitarán datos de calorimetría, generación de gas, compatibilidad y escenarios de pérdida de control antes de definir inventarios y condiciones operativas.}
+\HVTText{Las quinonas del sistema biológico justifican estudiar alternativas de proceso según la aplicación. El escalado se orienta a una función útil y medible, con el manejo de productos y residuos integrado al diseño.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 11}{Validación}{Puertas de decisión entre etapas}
+\begin{HVTTable}{Etapa}{Trabajo propuesto}{Evidencia para avanzar}
+\HVTTableRow{A · Banco}{Comisionamiento no reactivo y verificación de medición.}{Señales válidas, captura del fluido y balance compatible con incertidumbre.}
+\HVTTableRow{B · DOE}{24 corridas iniciales y campaña de confirmación diseñada con datos piloto.}{Efectos estimables, repetibilidad y comparación funcional documentada.}
+\HVTTableRow{C · Térmica}{Estudiar aporte y evacuación de calor con un sistema caracterizado.}{Modelo contrastado, gradientes conocidos y protección verificada.}
+\HVTTableRow{D · Reactiva}{Seleccionar química de aplicación y evaluar cinética y calorimetría.}{Revisión favorable del proceso, materiales, residuos y control.}
+\HVTTableRow{E · Piloto}{Operación representativa en una aplicación definida.}{Capacidad útil, disponibilidad, mantenimiento y costo verificables.}
+\end{HVTTable}
+\HVTText{Las etapas son una ruta propuesta, no un calendario comprometido. Los criterios numéricos de aceptación se acordarán antes de cada campaña. Si no existe una ventaja funcional frente a la referencia, el resultado puede ser reformular el concepto o detener el escalado.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 11.1}{Aplicaciones}{Elegir primero una función de proceso}
+\HVTLead{La primera aplicación candidata es dosificación acuosa capturada en un receptor. Permite medir entrega y consumo con una referencia sencilla, antes de abordar atomización o reacción.}
+\begin{HVTTable}{Aplicación candidata}{Métrica de utilidad}{Trabajo adicional}
+\HVTTableRow{Dosificación}{Masa por ventana, error de entrega y repetibilidad.}{Compatibilidad con el producto y respuesta ante demanda variable.}
+\HVTTableRow{Mezcla}{Tiempo de homogeneización a igual volumen y consumo.}{Trazador, criterio de mezcla y comparación con un mezclador de referencia.}
+\HVTTableRow{Transferencia de calor}{Calor útil transferido y uniformidad térmica.}{Sensores distribuidos, pérdidas y referencia térmica equivalente.}
+\HVTTableRow{Atomización}{Distribución de tamaño de gota y fracción capturada.}{Medición óptica y balance de aerosol; antecedentes en \HVTCite{5}.}
+\end{HVTTable}
+\HVTText{Son líneas por evaluar, no prestaciones garantizadas. La pulverización biomimética publicada no demuestra directamente mejor mezcla, conversión química o eficiencia en el equipo HVT. Cada función necesita su propia variable de respuesta y comparación.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 11.2}{Recursos}{Qué presupuestar y qué entregar}
+\begin{HVTTable}{Paquete}{Recursos por cotizar}{Entregable verificable}
+\HVTTableRow{Ingeniería}{Diseño mecánico, selección de fluidos y revisión de desviaciones.}{Especificación y planos revisados del banco.}
+\HVTTableRow{Instrumentación}{Sensores, adquisición, medidor de energía y calibración.}{Cadena de medición y presupuesto de incertidumbre.}
+\HVTTableRow{Fabricación}{Módulos, actuadores, contención y montaje.}{Banco identificado y expediente de componentes.}
+\HVTTableRow{Experimentación}{Personal, consumibles, mantenimiento y análisis.}{Datos originales, registro de incidencias y análisis reproducible.}
+\HVTTableRow{Escalado}{Ensayos de duración, integración y seguimiento.}{Comparación técnico-económica y decisión de siguiente etapa.}
+\end{HVTTable}
+\HVTText{El costo unitario incluirá inversión anualizada, operación, energía, mantenimiento, calibración y gestión de residuos, dividido entre servicio útil efectivamente entregado. Una cifra monetaria se incorporará al disponer de cotizaciones fechadas y una utilización prevista del equipo.}
+\HVTText{Roles mínimos: responsable de proceso, responsable mecánico y de protección, instrumentación, experimentación y análisis. La duración del proyecto se estimará según suministro, comisionamiento, estabilidad observada y recursos disponibles.}
+\end{HVTPage}
+
+\begin{HVTPage}{Capítulo 12}{Registro de ensayo}{Una corrida que otra persona pueda reconstruir}
+\begin{HVTTable}{Registro}{Campos mínimos}{Uso}
+\HVTTableRow{Identidad}{Código de corrida, fecha, bloque, operador y tratamiento.}{Relacionar datos con la matriz aleatorizada.}
+\HVTTableRow{Configuración}{Equipo, geometría, fluido, niveles reales y versión de control.}{Reconstruir las condiciones iniciales.}
+\HVTTableRow{Datos originales}{Tiempo, presión, temperatura, caudal, orden y energía.}{Conservar evidencia antes de filtros o resúmenes.}
+\HVTTableRow{Resultado}{Masa por ventana, frecuencia observada, consumo y dispersión.}{Comparar respuestas con unidades e incertidumbre.}
+\HVTTableRow{Incidencias}{Interrupciones, saturaciones, fugas y decisión de validez.}{Evitar exclusiones silenciosas y documentar fallos.}
+\end{HVTTable}
+\HVTText{Una fila por corrida resume el experimento; otra tabla puede contener los pulsos identificados dentro de cada corrida. Mantener esa relación impide confundir observaciones repetidas con ensayos independientes.}
+\HVTText{Próximo entregable propuesto: especificación del banco no reactivo, selección de sensores y plan de comisionamiento. Con esos datos se cerrarán los niveles físicos del DOE y el presupuesto de la primera campaña.}
+\end{HVTPage}
+
+\begin{HVTPage}{Referencias}{Fuentes 1 a 5}{Fundamento biológico y antecedentes de ingeniería}
+\begin{HVTReferences}
+\HVTReference{Aneshansley, D. J.; Eisner, T.; Widom, J. M.; Widom, B. (1969). Biochemistry at 100 degrees C: Explosive Secretory Discharge of Bombardier Beetles (Brachinus). Science 165, 61-63}{https://doi.org/10.1126/science.165.3888.61}
+\HVTReference{Schildknecht y colaboradores (1970). Die Explosionschemie der Bombardierkäfer: Struktur und Eigenschaften der Brennkammerenzyme. Journal of Insect Physiology}{https://doi.org/10.1016/0022-1910(70)90105-8}
+\HVTReference{Arndt, E. M.; Moore, W.; Lee, W.-K.; Ortiz, C. (2015). Mechanistic origins of bombardier beetle (Brachinini) explosion-induced defensive spray pulsation. Science 348, 563-567}{https://doi.org/10.1126/science.1261166}
+\HVTReference{Beheshti, N.; McIntosh, A. C. (2007). The bombardier beetle and its use of a pressure relief valve system to deliver a periodic pulsed spray. Bioinspiration and Biomimetics 2, 57-64}{https://doi.org/10.1088/1748-3182/2/4/001}
+\HVTReference{Beheshti, N.; McIntosh, A. C. (2008). A novel spray system inspired by the bombardier beetle. WIT Transactions on Ecology and the Environment 114, 13-21}{https://doi.org/10.2495/DN080021}
+\end{HVTReferences}
+\HVTText{Alcance de consulta: resúmenes científicos de las referencias 1 a 4 y texto completo del artículo 5. Los antecedentes sustentan la inspiración y el mecanismo; los balances, el DOE y la ruta de desarrollo son una propuesta de ingeniería de esta publicación.}
+\end{HVTPage}
+
+\begin{HVTPage}{Referencias adicionales}{Fuentes 6 a 9}{Diseño experimental, metrología y video}
+\begin{HVTReferences}
+\setcounter{enumi}{5}
+\HVTReference{NIST/SEMATECH. e-Handbook of Statistical Methods, 5.3.3.3.2. Full factorial example}{https://www.itl.nist.gov/div898/handbook/pri/section3/pri3332.htm}
+\HVTReference{NIST/SEMATECH. e-Handbook of Statistical Methods, 5.3.3.7. Adding centerpoints}{https://www.itl.nist.gov/div898/handbook/pri/section3/pri337.htm}
+\HVTReference{JCGM (2008). Evaluation of measurement data: Guide to the expression of uncertainty in measurement. JCGM 100:2008, GUM}{https://doi.org/10.59161/JCGM100-2008E}
+\HVTReference{Sugiura, S.; Hayashi, M. (2023). Bombardiers and assassins: mimetic interactions between unequally defended insects. PeerJ 11, e15380. Video S1, crédito Shinji Sugiura}{https://doi.org/10.7717/peerj.15380}
+\end{HVTReferences}
+\HVTText{El video científico muestra Pheropsophus occipitalis jessoensis y se reutiliza bajo CC BY 4.0. La versión web incluye el enlace al suplemento y detalla la adaptación del archivo. Es evidencia visual del organismo, no una medición de la frecuencia interna ni un ensayo del reactor HVT.}
+\HVTText{Fotografía de portada: Brachinus crepitans (Linnaeus, 1758), U. Schmidt / URSchmidt, Wikimedia Commons, 2024. Licencia CC BY-SA 4.0; imagen reducida. La fotografía conserva su licencia. Las dos especies ilustran la inspiración biológica sin asumir parámetros idénticos.}
+\href{https://commons.wikimedia.org/wiki/File:Brachinus_crepitans_(Linnaeus,_1758).png}{Fuente de la fotografía}\quad
+\href{https://creativecommons.org/licenses/by-sa/4.0/}{Licencia de la fotografía}\quad
+\href{https://creativecommons.org/licenses/by/4.0/}{Licencia del video}
+\HVTText{Consulta de fuentes: 17 de septiembre de 2026. Los enlaces y el registro de fuentes permiten revisar el alcance de cada afirmación.}
+\end{HVTPage}
+
+\end{document}
