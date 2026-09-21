@@ -82,14 +82,14 @@
 .school h1 { font-size:clamp(25px,2vw,34px); line-height:1.25; margin:0 0 8px; letter-spacing:-.02em; }
 .school-access { margin:0; font-size:12px; color:#58716b; }
 .school-tabs { display:flex; gap:12px; flex-wrap:wrap; }
-.school-tabs a { padding:7px 20px; border-radius:24px; background:#e9eceb; color:#3d615d; font-size:13px; font-weight:700; line-height:1.4; }
+.school-tabs a { padding:7px 20px; border-radius:0; background:#e9eceb; color:#3d615d; font-size:13px; font-weight:700; line-height:1.4; }
 .school-tabs [aria-current] { background:#007f74; color:white; }
 .school-catalog { padding:35px 0 65px; min-height:480px; }
 .school-catalog h2,.school-learning h2 { font-size:30px; line-height:1.25; margin:0 0 24px; }
 .school-filters { justify-content:flex-end; flex-wrap:wrap; gap:10px; border:0; padding:0; margin:0 0 20px; }
 .school-filters>div:first-child { flex:0 1 250px; }
 .school-filters label { font-size:11px; margin-bottom:4px; }
-.school-filters input,.school-filters select { min-height:34px; height:34px; padding:4px 26px 4px 10px; border-radius:5px; font-size:13px; }
+.school-filters input,.school-filters select { min-height:34px; height:34px; padding:4px 26px 4px 10px; border-radius:0; font-size:13px; }
 .school-filters select { width:190px; }
 .school-filters #school-count { order:-1; margin:0 auto 6px 0; font-size:12px; }
 .school-grid { grid-template-columns:repeat(auto-fill,minmax(235px,280px)); gap:22px; }
