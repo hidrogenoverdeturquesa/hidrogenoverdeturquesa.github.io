@@ -16,18 +16,91 @@
   <meta name="twitter:description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="/css/observatorio-satelital.css?v=20260921a">
+  <link rel="stylesheet" href="/css/observatorio-satelital.css?v=20260921b">
+  <link rel="stylesheet" href="/css/observatorio-navigation.css?v=20260921b">
+  <link rel="stylesheet" href="/css/mobile-navigation.css?v=20260828a">
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script defer src="/js/observatorio-satelital.js?v=20260921a"></script>
+  <script defer src="/js/fontawesome/all.min.js"></script>
+  <script defer src="/js/observatorio-navigation.js?v=20260921b"></script>
+  <script defer src="/js/mobile-navigation.js?v=20260828a" data-hvt-mobile-navigation></script>
 </head>
 <body>
 <a class="skip" href="#explorador">Ir al explorador</a>
-<header class="site-header">
-  <a href="/" aria-label="Hidrógeno Verde Turquesa, inicio"><img src="/images/logo-hvt.svg" width="146" height="42" alt="Hidrógeno Verde Turquesa"></a>
-  <a class="back" href="/lineas/inteligencia-territorial/">← Inteligencia Territorial</a>
-  <span class="open-badge"><i></i> Datos abiertos</span>
-</header>
+<header class="s-header">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="/">
+                    <img src="/images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height: 40px; width: auto;">
+                </a>
+            </div>
+
+            <nav class="s-header__nav" id="site-navigation" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="/#home">Inicio</a></li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-work-menu">
+                            Qué hacemos <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-work-menu" hidden>
+                            <li><a href="/#services">Líneas de trabajo</a></li>
+                            <li><a href="/#portfolio">Proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-knowledge-menu">
+                            Conocimiento <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-knowledge-menu" hidden>
+                            <li><a href="/blog">Biblioteca</a></li>
+                            <li><a href="/laboratorio/">Laboratorio HVT</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-ecosystem-menu">
+                            Ecosistema <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-ecosystem-menu" hidden>
+                            <li><a href="/fundacion">Iniciativa social</a></li>
+                            <li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li>
+                            <li><a href="/investors">Apoyar proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-about-menu">
+                            Nosotros <span class="nav-dropdown__chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="nav-dropdown__menu" id="nav-about-menu" hidden>
+                            <li><a href="/#about">Quiénes somos</a></li>
+                            <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/#contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="s-header__language">
+                <button class="s-header__language-toggle" type="button" aria-label="Cambiar idioma" aria-expanded="false" aria-controls="language-menu" title="Selecciona tu idioma">
+                    <i class="fas fa-globe" aria-hidden="true"></i>
+                    <span class="s-header__language-current">ES</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="s-header__language-menu" id="language-menu" hidden>
+                    <li><a href="/observatorio-satelital/" hreflang="es" lang="es"><span class="flag">🇪🇸</span> Español</a></li>
+                    <li><a href="/en/" hreflang="en" lang="en"><span class="flag">🇬🇧</span> English</a></li>
+                    <li><a href="/ru/" hreflang="ru" lang="ru"><span class="flag">🇷🇺</span> Русский</a></li>
+                </ul>
+            </div>
+
+            <button class="s-header__menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation">
+                <span class="s-header__menu-icon" aria-hidden="true"></span>
+            </button>
+
+        </div> <!-- end row -->
+    </header>
 <main>
+  <div class="observatory-context"><a href="/lineas/inteligencia-territorial/">← Inteligencia Territorial</a><span>Datos abiertos</span></div>
   <section class="intro">
     <div><p class="eyebrow">HVT / Observación de la Tierra</p><h1>La energía comienza<br>por entender el <em>territorio.</em></h1></div>
     <div class="intro-copy"><p>Observatorio Satelital de Energía y Territorio</p><p>Una ventana a los datos abiertos del planeta. Explora tu región, observa sus cambios y encuentra información para formular proyectos energéticos.</p><a href="#metodologia">Conocer las fuentes y el alcance ↗</a></div>
