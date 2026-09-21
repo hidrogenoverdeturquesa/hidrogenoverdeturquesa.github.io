@@ -283,8 +283,79 @@ cuando botón B presionado:
                             <span>Siguiente lección</span>
                             <strong>Medición de luz y temperatura</strong>
                         </div>
-                        <a href="/fundacion#cursos" class="btn btn--primary">Volver al catálogo</a>
+                        <a href="#leccion-2" class="btn btn--primary smoothscroll">Siguiente lección</a>
                     </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="leccion-2">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Lección 2</span><strong>Luz, temperatura y unidades</strong></aside>
+                <article class="book-page__content">
+                    <h2>Lee una variable antes de tomar una decisión</h2>
+                    <p class="book-lead">Un sensor no “entiende” el problema: entrega un valor. La tarea del equipo es identificar qué representa, en qué unidad se expresa y cuándo conviene observarlo.</p>
+                    <div class="book-learning-grid">
+                        <div><h3>Explora</h3><ul><li>La lectura de luz como valor relativo del entorno.</li><li>La temperatura reportada por la tarjeta como una aproximación.</li><li>La diferencia entre observar un dato y sacar una conclusión.</li></ul></div>
+                        <div><h3>Práctica segura</h3><ul><li>Usa el sensor integrado, sin conectar fuentes externas.</li><li>Evita agua, calor directo y superficies metálicas energizadas.</li><li>Registra lugar, hora y condición de cada lectura.</li></ul></div>
+                    </div>
+                    <div class="book-example"><p class="book-example__label">Reto 1-2</p><h3>Mapa de luz del aula</h3><p>Selecciona tres lugares: cerca de una ventana, en el centro y en una zona sombreada. Registra cinco lecturas en cada lugar y calcula un promedio simple.</p><div class="book-solution"><strong>Evidencia</strong><ol><li>Tabla con lugar, lecturas y promedio.</li><li>Gráfica de barras hecha a mano.</li><li>Una explicación de por qué las lecturas cambian.</li></ol></div></div>
+                    <div class="book-next"><div><span>Siguiente lección</span><strong>Umbrales y alertas para una decisión</strong></div><a href="#leccion-3" class="btn btn--primary smoothscroll">Continuar</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="leccion-3">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Lección 3</span><strong>Umbrales y alertas</strong></aside>
+                <article class="book-page__content">
+                    <h2>Convierte un dato en una regla clara</h2>
+                    <p>Un umbral es un valor acordado para diferenciar una condición de otra. No reemplaza el criterio humano: permite que una alerta sea comprensible y revisable.</p>
+                    <div class="book-flow"><div><span>1</span><strong>Observar</strong><p>Recoge datos en condiciones distintas.</p></div><div><span>2</span><strong>Definir</strong><p>Elige un valor de referencia y explica por qué.</p></div><div><span>3</span><strong>Comunicar</strong><p>Muestra un icono o texto que indique el estado.</p></div></div>
+                    <div class="book-code-card"><h3>Pseudocódigo</h3><pre><code>si luz &lt; umbral:
+    mostrar "REVISAR"
+si no:
+    mostrar "NORMAL"</code></pre></div>
+                    <div class="book-task"><h3>Entrega</h3><ul><li>Explica cómo elegiste tu umbral.</li><li>Prueba el programa en dos condiciones de luz.</li><li>Describe un caso en que la alerta podría equivocarse.</li><li>Propón cómo mejorarlo.</li></ul></div>
+                    <div class="book-next"><div><span>Siguiente lección</span><strong>Registrar, ordenar y visualizar datos</strong></div><a href="#leccion-4" class="btn btn--primary smoothscroll">Continuar</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="leccion-4">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Lección 4</span><strong>Datos que cuentan una historia</strong></aside>
+                <article class="book-page__content">
+                    <h2>Del registro a una gráfica útil</h2>
+                    <p>Medir muchas veces no garantiza aprender. Un registro útil tiene variable, unidad, fecha, condición y una pregunta que se pueda responder.</p>
+                    <div class="book-learning-grid"><div><h3>Tabla mínima</h3><ul><li>Fecha y hora.</li><li>Lugar o condición.</li><li>Valor leído.</li><li>Observación breve.</li></ul></div><div><h3>Matemáticas aplicadas</h3><ul><li>Promedio de varias lecturas.</li><li>Valor máximo y mínimo.</li><li>Diferencia entre dos momentos.</li><li>Gráfica de línea o barras.</li></ul></div></div>
+                    <div class="book-example"><p class="book-example__label">Reto 1-4</p><h3>¿Qué cambia durante una jornada?</h3><p>Registra luz o temperatura en tres momentos del día. No necesitas buscar una respuesta perfecta: busca explicar con evidencia qué observaste y qué falta por medir.</p></div>
+                    <div class="book-next"><div><span>Siguiente lección</span><strong>Pruebas, errores y mejora</strong></div><a href="#leccion-5" class="btn btn--primary smoothscroll">Continuar</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="leccion-5">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Lección 5</span><strong>Probar y mejorar</strong></aside>
+                <article class="book-page__content">
+                    <h2>Un prototipo se valida, no se adivina</h2>
+                    <p>La misma medición puede cambiar por la ubicación de la tarjeta, el tiempo de espera o el ambiente. Probar significa documentar esas condiciones y corregir el diseño cuando sea necesario.</p>
+                    <div class="book-task"><h3>Protocolo de prueba</h3><ul><li>Escribe qué esperas que ocurra antes de empezar.</li><li>Haz tres pruebas bajo la misma condición.</li><li>Compara resultados y anota diferencias.</li><li>Modifica una sola variable y vuelve a probar.</li><li>Declara qué no puede medir tu prototipo.</li></ul></div>
+                    <div class="book-steam-note"><h3>Diseño responsable</h3><p>La Micro:bit permite aprender sobre sensores, pero no sustituye instrumentos calibrados ni decisiones técnicas. La evidencia debe servir para hacer mejores preguntas, no para afirmar conclusiones que el montaje no puede demostrar.</p></div>
+                    <div class="book-next"><div><span>Siguiente lección</span><strong>Reto final: tablero de estado energético</strong></div><a href="#leccion-6" class="btn btn--primary smoothscroll">Continuar</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="book-sheet" id="leccion-6">
+            <div class="book-page">
+                <aside class="book-page__index"><span>Lección 6</span><strong>Reto integrador</strong></aside>
+                <article class="book-page__content">
+                    <h2>Diseña un tablero de estado para un reto cercano</h2>
+                    <p class="book-lead">Elige una situación educativa: iluminación de un aula, sombra en un huerto o comodidad térmica de una maqueta. Diseña un indicador sencillo que ayude a observar, no a controlar equipos reales.</p>
+                    <div class="book-learning-grid"><div><h3>Debe incluir</h3><ul><li>Pregunta que se quiere investigar.</li><li>Variable y unidad o escala de referencia.</li><li>Regla de alerta explicada.</li><li>Registro de al menos tres pruebas.</li></ul></div><div><h3>Presentación final</h3><ul><li>Foto o video corto del prototipo.</li><li>Tabla y gráfica de resultados.</li><li>Qué funcionó y qué debe mejorarse.</li><li>Una decisión que el dato podría apoyar.</li></ul></div></div>
+                    <div class="book-next"><div><span>Continúa tu formación</span><strong>ESP32, monitoreo y datos</strong></div><a href="/curso-esp32" class="btn btn--primary">Ir a ESP32</a></div>
                 </article>
             </div>
         </section>
