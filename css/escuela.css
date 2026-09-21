@@ -1,0 +1,133 @@
+.school { background:#fff; color:#263d3b; }
+.school * { box-sizing:border-box; }
+.school a { color:inherit; }
+.school [hidden] { display:none!important; }
+.school :focus-visible { outline:3px solid #007c70; outline-offset:5px; }
+.school-wrap { width:min(1320px,90%); margin-inline:auto; }
+.school-header { display:flex; align-items:center; justify-content:space-between; padding:20px 5%; background:#101a1a; color:white; gap:24px; }
+.school-header img { display:block; background:white; padding:5px; border-radius:4px; object-fit:contain; }
+.school-header nav { display:flex; gap:30px; font-size:15px; flex-wrap:wrap; }
+.school-header [aria-current] { color:#6ee7d4; }
+.school-skip { position:absolute; top:-100px; background:white; padding:14px; z-index:5; }
+.school-skip:focus { top:0; }
+.school-hero { background:radial-gradient(ellipse at 80% 10%,#c5e7dd,transparent 65%),linear-gradient(135deg,#edf3ec,#e0ede7); padding:72px 0 64px; }
+.school-hero-grid { display:grid; grid-template-columns:1.3fr 1fr; align-items:center; gap:80px; }
+.school-eyebrow { font-size:12px; letter-spacing:.24em; text-transform:uppercase; padding-bottom:15px; border-bottom:3px solid #008b7d; width:fit-content; margin:0 0 36px; }
+.school-overline { text-transform:uppercase; letter-spacing:.12em; font-size:12px; font-weight:700; color:#006f64; margin:0 0 18px; }
+.school h1 { font-size:clamp(40px,4.5vw,70px); line-height:1.04; letter-spacing:-.045em; margin:0 0 26px; color:#122f2c; }
+.school h1 em { font-style:normal; color:#007e70; }
+.school-lead { font-size:19px; max-width:580px; line-height:1.65; }
+.school-button { display:inline-flex; align-items:center; justify-content:space-between; gap:32px; padding:16px 24px; background:#007f72; color:white!important; font-size:15px; font-weight:700; }
+.school-button:hover { background:#005e55; }
+.school-access { font-size:13px; margin:20px 0 0; }
+.school-access span { color:#007e70; margin-right:7px; }
+.school-feature { background:white; box-shadow:0 20px 55px #183d3010; border-bottom:4px solid #008f80; }
+.school-feature-photo { position:relative; background:#e9ebe5; }
+.school-feature-photo img { display:block; width:100%; height:255px; object-fit:cover; }
+.school-feature-photo span { position:absolute; top:18px; left:18px; padding:6px 12px; background:#12332e; color:white; font-size:12px; }
+.school-feature-copy { padding:28px 32px; }
+.school-feature h2 { font-size:30px; margin:0 0 12px; line-height:1.12; }
+.school-feature p:not(.school-overline) { font-size:16px; line-height:1.5; margin-bottom:20px; }
+.school-feature a { color:#006f64; font-size:15px; font-weight:700; }
+.school-strip { display:flex; justify-content:space-between; gap:24px; padding-block:26px; border-bottom:1px solid #cfdbd3; font-size:14px; }
+.school-strip strong { margin-right:8px; font-size:24px; color:#143b34; }
+.school-catalog { padding-block:70px; scroll-margin-top:24px; }
+.school-section-head { display:grid; grid-template-columns:1.2fr 1fr; align-items:end; gap:70px; }
+.school h2 { color:#15342f; }
+.school-section-head h2,.school-learning h2,.school-help h2 { font-size:clamp(32px,3.4vw,48px); line-height:1.1; letter-spacing:-.035em; margin:0 0 26px; }
+.school-section-head>p { font-size:18px; line-height:1.65; }
+.school-filters { display:flex; align-items:end; gap:20px; padding:24px 0; margin:0 0 26px; border-bottom:1px solid #cbd8d0; }
+.school-filters>div:first-child { flex:1; }
+.school-filters label { display:block; font-size:12px; margin-bottom:8px; }
+.school-filters input,.school-filters select { width:100%; min-height:50px; height:auto; margin:0; padding:12px 15px; background:white; border:1px solid #bbcfc5; color:#183e34; font-size:15px; }
+.school-filters p { margin:0 0 12px; font-size:13px; min-width:130px; }
+.school-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+.school-card { display:flex; flex-direction:column; background:white; border:1px solid #dae3dc; }
+.school-card-image { position:relative; display:block; }
+.school-card-image img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+.school-card-image>span { position:absolute; bottom:12px; left:12px; background:white; padding:4px 10px; color:#21453d; font-size:12px; }
+.school-card-copy { padding:24px; display:flex; flex-direction:column; flex:1; }
+.school-card .school-overline { font-size:10px; }
+.school-card h3 { margin:0 0 16px; font-size:24px; line-height:1.15; letter-spacing:-.025em; }
+.school-card h3 a { color:#193b32; }
+.school-card p { font-size:15px; line-height:1.55; margin-bottom:20px; }
+.school-result { padding-top:16px; border-top:1px solid #e3eae4; }
+.school-tags { display:flex; gap:5px; flex-wrap:wrap; margin:auto 0 24px; }
+.school-tags span { font-size:11px; background:#eef5f0; color:#2c594d; padding:4px 7px; }
+.school-course-link { display:flex; justify-content:space-between; padding-top:18px; border-top:1px solid #dce6df; font-weight:700; font-size:14px; color:#007769!important; }
+.school-empty { padding:32px; background:white; }
+.school-learning { background:#122e29; color:#d7e6dc; padding:65px 0; }
+.school-learning h2,.school-learning h3 { color:#fff; }
+.school-learning .school-overline { color:#8be0c8; }
+.school-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:50px; margin-top:40px; }
+.school-steps span { color:#8be0c8; font-size:16px; }
+.school-steps h3 { font-size:24px; margin:12px 0; }
+.school-steps p { font-size:17px; line-height:1.6; }
+.school-learning-note { border-top:1px solid #426057; padding-top:24px; margin:15px 0 0; font-size:14px; }
+.school-help { display:flex; align-items:center; justify-content:space-between; gap:40px; padding-block:65px; }
+.school-help p:not(.school-overline) { max-width:630px; font-size:17px; margin-bottom:0; }
+.school-footer { background:#e4ece5; padding:25px 0; }
+.school-footer .school-wrap { display:flex; justify-content:space-between; gap:25px; align-items:center; font-size:14px; }
+.school-footer p { margin:0; }
+/* Compact campus layout: the catalog is the primary screen. */
+.school { min-height:100vh; display:flex; flex-direction:column; }
+.school main { flex:1; }
+.school-wrap { width:94%; max-width:1800px; }
+.school-header { min-height:76px; padding:12px 3%; background:#102d30; }
+.school-header nav { font-size:13px; }
+.school-hero { padding:30px 0 20px; background:white; }
+.school-hero-grid { display:block; }
+.school-eyebrow { font-size:10px; margin:0 0 14px; padding:0; border:0; }
+.school-hero .school-overline,.school-lead,.school-hero .school-button,.school-feature,.school-help { display:none; }
+.school h1 { font-size:clamp(25px,2vw,34px); line-height:1.25; margin:0 0 8px; letter-spacing:-.02em; }
+.school-access { margin:0; font-size:12px; color:#58716b; }
+.school-tabs { display:flex; gap:12px; flex-wrap:wrap; }
+.school-tabs a { padding:7px 20px; border-radius:24px; background:#e9eceb; color:#3d615d; font-size:13px; font-weight:700; line-height:1.4; }
+.school-tabs [aria-current] { background:#007f74; color:white; }
+.school-catalog { padding:35px 0 65px; min-height:480px; }
+.school-catalog h2,.school-learning h2 { font-size:30px; line-height:1.25; margin:0 0 24px; }
+.school-filters { justify-content:flex-end; flex-wrap:wrap; gap:10px; border:0; padding:0; margin:0 0 20px; }
+.school-filters>div:first-child { flex:0 1 250px; }
+.school-filters label { font-size:11px; margin-bottom:4px; }
+.school-filters input,.school-filters select { min-height:34px; height:34px; padding:4px 26px 4px 10px; border-radius:5px; font-size:13px; }
+.school-filters select { width:190px; }
+.school-filters #school-count { order:-1; margin:0 auto 6px 0; font-size:12px; }
+.school-grid { grid-template-columns:repeat(auto-fill,minmax(235px,280px)); gap:22px; }
+.school-card { padding:9px; border-radius:7px; border-color:#ccd4d2; }
+.school-card-image img { height:146px; aspect-ratio:auto; border-radius:3px; }
+.school-card-image>span { bottom:8px; left:8px; padding:2px 7px; border-radius:3px; font-size:11px; }
+.school-card-copy { padding:12px 2px 2px; }
+.school-card .school-overline { font-size:10px; margin:0 0 6px; letter-spacing:.025em; }
+.school-card h3 { font-size:17px; line-height:1.3; margin:0 0 10px; letter-spacing:0; }
+.school-card p { font-size:12px; line-height:1.5; margin-bottom:14px; }
+.school-result,.school-tags { display:none; }
+.school-course-link { margin-top:auto; font-size:12px; padding:12px 0 2px; }
+.school-learning { background:white; color:#263d3b; padding:35px 0 65px; }
+.school-learning h2,.school-learning h3 { color:#173c3b; }
+.school-steps { max-width:1100px; gap:24px; }
+.school-steps>div { padding:24px; border:1px solid #dce5df; border-radius:5px; }
+.school-steps span { color:#007f74; }
+.school-steps h3 { font-size:21px; }
+.school-steps p { font-size:14px; }
+.school-learning-note { border-color:#dce5df; }
+.school-footer { background:#102d30; color:white; padding:28px 0 42px; }
+.school-footer .school-wrap { font-size:12px; }
+@media(max-width:1100px) { .school-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .school-hero-grid { gap:35px; } }
+@media(max-width:650px) {
+ .school-header { align-items:flex-start; } .school-header nav { gap:12px; font-size:12px; justify-content:flex-end; } .school-header img { width:85px; }
+ .school-hero { padding-block:40px; } .school-hero-grid,.school-section-head,.school-grid,.school-steps { grid-template-columns:1fr; gap:25px; }
+ .school-strip { flex-wrap:wrap; gap:10px 22px; } .school-strip strong { font-size:20px; }
+ .school-filters { flex-wrap:wrap; } .school-filters>div { width:100%; flex:auto!important; }
+ .school-help,.school-footer .school-wrap { align-items:flex-start; flex-direction:column; }
+ .school-catalog { padding-block:45px; } .school-card-copy { padding:24px; }
+}
+@media(max-width:700px) {
+ .school-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+ .school-hero { padding:26px 0 20px; }
+ .school-filters>div { flex:1 1 140px!important; } .school-filters>div:first-child { flex-basis:100%!important; }
+ .school-filters select { width:100%; } .school-filters #school-count { flex-basis:100%; }
+ .school-tabs { gap:8px; } .school-tabs a { font-size:12px; padding:7px 12px; }
+ .school-card-copy { padding:12px 2px 2px; } .school-card-image img { height:130px; }
+ .school-header { flex-wrap:wrap; gap:12px; } .school-header nav { flex-wrap:wrap; }
+}
+@media(max-width:420px) { .school-grid { grid-template-columns:1fr; } .school-card-image img { height:180px; } }

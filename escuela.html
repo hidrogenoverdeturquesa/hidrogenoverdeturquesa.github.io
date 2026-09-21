@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escuela de La República del Hidrógeno | HVT</title>
+  <meta name="description" content="Aprende con los cursos de Micro:bit, ESP32, electrolizadores y bioeconomía de la Escuela de La República del Hidrógeno. Acceso libre en esta etapa.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/escuela.css?v=campus-2">
+  <link rel="icon" href="favicon-32x32.png">
+  <script src="js/escuela.js" defer></script>
+</head>
+<body class="school">
+  <a class="school-skip" href="#catalogo">Saltar al catálogo</a>
+  <header class="school-header">
+    <a href="/" aria-label="HVT, inicio"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" width="112" height="52"></a>
+    <nav aria-label="Navegación de la Escuela"><a href="fundacion.html">Iniciativa social</a><a href="#catalogo" aria-current="page">Escuela</a><a href="laboratorio/">Laboratorio HVT</a></nav>
+  </header>
+  <main>
+    <section class="school-hero" aria-labelledby="school-title">
+      <div class="school-wrap school-hero-grid">
+        <div>
+          <p class="school-eyebrow">Startup de I+D aplicada</p>
+          <p class="school-overline">Escuela de La República del Hidrógeno</p>
+          <h1 id="school-title">Escuela de La República del Hidrógeno</h1>
+          <p class="school-lead">Refuerza lo que sabes sobre energía, tecnología y bioeconomía. Elige un curso, explora sus lecciones y lleva tus preguntas a la práctica.</p>
+          <a class="school-button" href="#catalogo">Explorar los cursos <span aria-hidden="true">↗</span></a>
+          <p class="school-access"><span aria-hidden="true">●</span> Acceso libre en esta etapa · Sin registro</p>
+        </div>
+        <aside class="school-feature" aria-label="Curso para comenzar">
+          <div class="school-feature-photo"><span>Tu primer laboratorio</span><img src="images/Microbit.png" alt="Micro:bit con botones, matriz LED y pines de conexión"></div>
+          <div class="school-feature-copy"><p class="school-overline">01 / Empieza desde lo básico</p><h2>Una pequeña tarjeta.<br>Muchas preguntas.</h2><p>Descubre cómo una lectura de luz puede convertirse en una alerta y en una pregunta sobre tu entorno.</p><a href="curso-microbit.html">Comenzar con Micro:bit <span aria-hidden="true">→</span></a></div>
+        </aside>
+      </div>
+    </section>
+    <nav class="school-tabs school-wrap" aria-label="Secciones del campus"><a href="#catalogo" data-panel="catalogo" aria-current="page">Catálogo de cursos</a><a href="#guia" data-panel="guia">Guía del estudiante</a><a href="laboratorio/">Laboratorio HVT ↗</a></nav>
+    <section class="school-wrap school-catalog" id="catalogo" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Catálogo de cursos</h2>
+      <form class="school-filters" role="search" onsubmit="return false">
+        <div><label for="school-search">Buscar un curso</label><input id="school-search" type="search" placeholder="Sensores, energía, fermentación…"></div>
+        <div><label for="school-category">Tema</label><select id="school-category"><option value="all">Todos los temas</option><option value="electronics">Electrónica y datos</option><option value="hydrogen">Hidrógeno</option><option value="bio">Bioeconomía</option></select></div>
+        <div><label for="school-level">Nivel</label><select id="school-level"><option value="all">Todos los niveles</option><option>Inicial</option><option>Básico</option><option>Técnico</option><option>Aplicado</option></select></div>
+        <p id="school-count" role="status" aria-live="polite">4 cursos disponibles</p>
+      </form>
+      <div class="school-grid">
+        <article class="school-card" data-category="electronics"><a class="school-card-image" href="curso-microbit.html" aria-label="Ver curso Micro:bit"><img src="images/Microbit.png" alt="Tarjeta Micro:bit" loading="lazy"><span>Inicial</span></a><div class="school-card-copy"><p class="school-overline">Electrónica / 6 lecciones</p><h3><a href="curso-microbit.html">Micro:bit para energía y sensores</a></h3><p>Botones, sensores, alertas y registros para dar tus primeros pasos en programación.</p><p class="school-result"><strong>Tu reto:</strong> un tablero de estado con lecturas, pruebas y una conclusión.</p><div class="school-tags"><span>Lógica</span><span>Medición</span><span>Gráficas</span></div><a class="school-course-link" href="curso-microbit.html">Entrar al curso <span aria-hidden="true">→</span></a></div></article>
+        <article class="school-card" data-category="electronics"><a class="school-card-image" href="curso-esp32.html" aria-label="Ver curso ESP32"><img src="images/Esp32.png" alt="Tarjeta ESP32" loading="lazy"><span>Básico</span></a><div class="school-card-copy"><p class="school-overline">Electrónica / 6 lecciones</p><h3><a href="curso-esp32.html">ESP32, monitoreo y datos</a></h3><p>Comprende cómo organizar lecturas, reconocer tendencias y comunicar el estado de un sistema.</p><p class="school-result"><strong>Tu reto:</strong> la propuesta de un nodo de monitoreo y su tablero de datos.</p><div class="school-tags"><span>Sensores</span><span>Datos</span><span>Promedios</span></div><a class="school-course-link" href="curso-esp32.html">Entrar al curso <span aria-hidden="true">→</span></a></div></article>
+        <article class="school-card" data-category="hydrogen"><a class="school-card-image" href="curso-electrolizadores.html" aria-label="Ver curso Electrolizadores"><img src="images/Electrolizador.png" alt="Equipo electrolizador" loading="lazy"><span>Técnico</span></a><div class="school-card-copy"><p class="school-overline">Hidrógeno / 7 lecciones</p><h3><a href="curso-electrolizadores.html">Electrolizadores y seguridad</a></h3><p>Estudia las variables, los balances y los criterios de una demostración supervisada.</p><p class="school-result"><strong>Tu reto:</strong> una ficha de evaluación con variables, controles y evidencia.</p><div class="school-tags"><span>Energía</span><span>Unidades</span><span>Seguridad</span></div><a class="school-course-link" href="curso-electrolizadores.html">Entrar al curso <span aria-hidden="true">→</span></a></div></article>
+        <article class="school-card" data-category="bio"><a class="school-card-image" href="curso-organicos-fermentacion.html" aria-label="Ver curso Orgánicos y fermentación"><img src="images/Fermentacion%20Oscura.png" alt="Representación de un sistema de fermentación oscura" loading="lazy"><span>Aplicado</span></a><div class="school-card-copy"><p class="school-overline">Bioeconomía / 6 lecciones</p><h3><a href="curso-organicos-fermentacion.html">Orgánicos, microbiología y fermentación</a></h3><p>Estudia la transformación de residuos, sus variables y el registro de cambios.</p><p class="school-result"><strong>Tu reto:</strong> una propuesta de aprovechamiento con datos y un balance simple.</p><div class="school-tags"><span>Materia</span><span>Proporciones</span><span>Bioeconomía</span></div><a class="school-course-link" href="curso-organicos-fermentacion.html">Entrar al curso <span aria-hidden="true">→</span></a></div></article>
+      </div>
+      <p class="school-empty" hidden>No encontramos cursos con esa búsqueda. Prueba otra palabra o selecciona todos los temas.</p>
+    </section>
+    <section class="school-learning" id="guia" aria-labelledby="guide-title"><div class="school-wrap"><h2 id="guide-title">Guía del estudiante</h2><p>Los cursos están abiertos sin registro. Elige un tema y recorre sus lecciones a tu ritmo.</p><div class="school-steps"><div><span>01</span><h3>Comprende</h3><p>Lee el concepto y reconoce qué pregunta ayuda a responder.</p></div><div><span>02</span><h3>Ponlo a prueba</h3><p>Desarrolla la actividad de la guía y documenta lo que observas.</p></div><div><span>03</span><h3>Explica lo aprendido</h3><p>Usa tablas, gráficas y conclusiones para presentar tu trabajo.</p></div></div><p class="school-learning-note">Guarda tus evidencias en tu propia bitácora y conserva el enlace de la lección para retomarla. Esta versión no guarda tu avance.</p></div></section>
+    <section class="school-wrap school-help"><div><p class="school-overline">Aprender juntos</p><h2>¿Vienes de un colegio<br>o una organización?</h2><p>Conoce cómo Deuterio conecta formación y experimentación con las preguntas de tu territorio.</p></div><a class="school-button" href="fundacion.html#deuterio-territorio">Conocer Deuterio <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="school-footer"><div class="school-wrap"><p>Escuela de La República del Hidrógeno<br><small>Hidrógeno Verde Turquesa S.A.S.</small></p><a href="fundacion.html">Volver a la iniciativa social →</a></div></footer>
+</body>
+</html>
