@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Observatorio Satelital de Energía y Territorio | HVT</title>
+  <meta name="description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <link rel="canonical" href="https://hidrogenoverdeturquesa.com/observatorio-satelital/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Observatorio Satelital de Energía y Territorio | HVT">
+  <meta property="og:description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <meta property="og:url" content="https://hidrogenoverdeturquesa.com/observatorio-satelital/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Observatorio Satelital de Energía y Territorio | HVT">
+  <meta name="twitter:description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/css/observatorio-satelital.css?v=20260921a">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="/js/observatorio-satelital.js?v=20260921a"></script>
+</head>
+<body>
+<a class="skip" href="#explorador">Ir al explorador</a>
+<header class="site-header">
+  <a href="/" aria-label="Hidrógeno Verde Turquesa, inicio"><img src="/images/logo-hvt.svg" width="146" height="42" alt="Hidrógeno Verde Turquesa"></a>
+  <a class="back" href="/lineas/inteligencia-territorial/">← Inteligencia Territorial</a>
+  <span class="open-badge"><i></i> Datos abiertos</span>
+</header>
+<main>
+  <section class="intro">
+    <div><p class="eyebrow">HVT / Observación de la Tierra</p><h1>La energía comienza<br>por entender el <em>territorio.</em></h1></div>
+    <div class="intro-copy"><p>Observatorio Satelital de Energía y Territorio</p><p>Una ventana a los datos abiertos del planeta. Explora tu región, observa sus cambios y encuentra información para formular proyectos energéticos.</p><a href="#metodologia">Conocer las fuentes y el alcance ↗</a></div>
+  </section>
+  <section id="explorador" class="explorer" aria-label="Explorador satelital">
+    <aside class="controls">
+      <div class="panel-heading"><span class="step">01</span><h2>Explora el territorio</h2></div>
+      <label for="region">Ir a una región</label>
+      <select id="region"><option value="boyaca">Boyacá</option><option value="tunja">Tunja</option><option value="sogamoso">Sogamoso</option><option value="duitama">Duitama</option><option value="tota">Lago de Tota</option><option value="guajira">La Guajira</option><option value="colombia">Colombia</option><option value="custom" disabled>Punto personalizado</option></select>
+      <label for="satellite">Satélite / sensor · color natural</label>
+      <select id="satellite"><option value="terra">Terra / MODIS</option><option value="aqua">Aqua / MODIS</option><option value="snpp">Suomi NPP / VIIRS</option><option value="noaa20">NOAA-20 / VIIRS</option></select>
+      <p class="hint" id="layer-description">Imágenes abiertas de NASA GIBS. Las nubes pueden ocultar la superficie.</p>
+      <label for="imagery-date">Fecha de la imagen</label><input id="imagery-date" type="date" required>
+      <div class="date-nav"><button type="button" id="previous-date" aria-label="Imagen del día anterior">← Día anterior</button><button type="button" id="next-date" aria-label="Imagen del día siguiente">Día siguiente →</button></div>
+      <label for="opacity">Visibilidad satelital <output id="opacity-value" for="opacity">85 %</output></label><input id="opacity" type="range" min="0" max="100" value="85">
+      <p class="hint">Reduce la visibilidad para ver nombres y vías del mapa base. Acercar amplía la imagen; no aumenta su detalle.</p>
+      <hr>
+      <div class="panel-heading"><span class="step">02</span><h2>Elige un punto</h2></div>
+      <p class="hint">Haz clic en el mapa o ingresa coordenadas.</p>
+      <form id="point-form"><div class="coordinate-inputs"><div><label for="latitude">Latitud</label><input id="latitude" type="number" min="-85" max="85" step="any" value="5.5353" required></div><div><label for="longitude">Longitud</label><input id="longitude" type="number" min="-180" max="180" step="any" value="-73.3678" required></div></div><button class="primary" type="submit">Consultar este punto ↗</button></form>
+    </aside>
+    <div class="map-column">
+      <div class="map-toolbar"><span><i class="live-dot"></i> <strong id="location-name">Boyacá, Colombia</strong></span><button type="button" id="reset-view">Centrar en Boyacá</button></div>
+      <div id="satellite-map" aria-label="Mapa satelital interactivo. También puedes seleccionar coordenadas en el formulario."></div>
+      <div class="map-caption"><span id="image-status" role="status">Preparando el mapa…</span><span id="point-label">5.5353, −73.3678</span></div>
+      <div class="map-note"><strong>Lectura del paisaje</strong><span>Color natural · nubes en blanco · vegetación en tonos verdes. Zonas negras o vacías pueden indicar ausencia de observación.</span></div>
+    </div>
+  </section>
+  <noscript><p class="notice">Activa JavaScript para explorar el mapa. También puedes consultar <a href="https://worldview.earthdata.nasa.gov/">NASA Worldview</a> y <a href="https://power.larc.nasa.gov/data-access-viewer/">NASA POWER</a>.</p></noscript>
+  <section class="analysis" aria-labelledby="analysis-title">
+    <div class="section-heading"><div><p class="eyebrow">Del territorio a la información</p><h2 id="analysis-title">Una primera lectura energética</h2></div><button type="button" class="download" id="download-csv" disabled>↓ Descargar datos CSV</button></div>
+    <p id="data-status" role="status">Selecciona un punto y pulsa «Consultar este punto» para cargar su climatología.</p>
+    <p class="hint" id="data-period">Los indicadores son promedios históricos de NASA POWER, independientes de la fecha y del satélite del mapa.</p>
+    <div class="metrics" id="metrics">
+      <article><span class="metric-icon">☀</span><h3>Recurso solar</h3><p class="metric-value" id="solar-value">—</p><span class="unit">kWh/m²/día</span><p>Radiación sobre una superficie horizontal. Punto de partida para estudiar energía solar.</p></article>
+      <article><span class="metric-icon">↗</span><h3>Viento a 10 m</h3><p class="metric-value" id="wind-value">—</p><span class="unit">m/s</span><p>Contexto meteorológico regional. Requiere medición a altura de buje para evaluar generación eólica.</p></article>
+      <article><span class="metric-icon">◉</span><h3>Temperatura a 2 m</h3><p class="metric-value" id="temperature-value">—</p><span class="unit">°C</span><p>Referencia para estudiar condiciones ambientales y desempeño térmico.</p></article>
+      <article><span class="metric-icon">≋</span><h3>Precipitación</h3><p class="metric-value" id="rain-value">—</p><span class="unit">mm/día</span><p>Contexto del ciclo del agua. No equivale a caudal ni a disponibilidad hídrica para un proyecto.</p></article>
+    </div>
+    <div class="seasonality" id="seasonality" hidden><div><h3>El recurso solar a lo largo del año</h3><p class="hint">Promedios mensuales históricos · kWh/m²/día</p></div><div id="solar-chart" class="solar-chart" aria-label="Radiación solar mensual"></div><details><summary>Ver tabla de los cuatro indicadores</summary><div class="table-scroll"><table><caption>Climatología mensual del punto consultado</caption><thead><tr><th scope="col">Mes</th><th scope="col">Solar (kWh/m²/día)</th><th scope="col">Viento (m/s)</th><th scope="col">Temperatura (°C)</th><th scope="col">Precipitación (mm/día)</th></tr></thead><tbody id="monthly-table"></tbody></table></div></details></div>
+  </section>
+  <section id="metodologia" class="methodology">
+    <div><p class="eyebrow">Datos con contexto</p><h2>Observar. Comparar.<br>Formular mejores preguntas.</h2><p>Este observatorio apoya la exploración inicial y la formulación de proyectos. La viabilidad de una instalación requiere además mediciones de campo, relieve, acceso a redes, restricciones ambientales y evaluación técnica.</p><a href="/#contact">Conversemos sobre tu región →</a></div>
+    <div class="sources"><details open><summary>Imágenes satelitales abiertas</summary><p>Terra y Aqua (MODIS), Suomi NPP y NOAA-20 (VIIRS), servidos por NASA GIBS. Composiciones de color natural con cobertura dependiente de cada pasada y fecha. Las imágenes tienen nubes y posibles vacíos; no representan un mosaico libre de nubes. La visualización alcanza el nivel nativo 9 de la cuadrícula web.</p><a href="https://nasa-gibs.github.io/gibs-api-docs/" target="_blank" rel="noopener noreferrer">Documentación de NASA GIBS ↗</a> · <a id="worldview-link" href="https://worldview.earthdata.nasa.gov/" target="_blank" rel="noopener noreferrer">Abrir esta vista en Worldview ↗</a></details>
+    <details><summary>Indicadores, escala y período</summary><p>NASA POWER combina observaciones satelitales y modelos de reanálisis. La radiación procede de CERES SYN1deg (cuadrícula de 1° × 1°); las variables meteorológicas, de MERRA-2 (0,5° × 0,625°). Son datos regionales: dos puntos cercanos pueden tener valores iguales. El período se muestra tal como lo entrega el proveedor. No se infiere un potencial energético de una imagen de color natural.</p><a href="https://power.larc.nasa.gov/docs/methodology/data/sources/" target="_blank" rel="noopener noreferrer">Fuentes y resolución de NASA POWER ↗</a> · <a id="power-link" href="https://power.larc.nasa.gov/data-access-viewer/" target="_blank" rel="noopener noreferrer">Consultar fuente ↗</a></details>
+    <details><summary>¿Necesitas más detalle? Sentinel y Landsat</summary><p>Para estudiar coberturas, vegetación, agua o cambios de uso del suelo, consulta los catálogos abiertos de Sentinel y Landsat. Estos catálogos se abren en sus portales; todavía no son capas integradas en este visor. Algunas descargas requieren una cuenta gratuita.</p><a href="https://browser.dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus Browser · Sentinel ↗</a><br><a href="https://earthexplorer.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS EarthExplorer · Landsat ↗</a></details></div>
+  </section>
+</main>
+<footer><span>HVT · Hidrógeno Verde Turquesa</span><a href="/lineas/inteligencia-territorial/">Inteligencia Territorial e Innovación Tecnológica ↗</a><span>Imágenes: NASA GIBS · Indicadores: NASA POWER · Cartografía: OpenStreetMap</span></footer>
+</body></html>
