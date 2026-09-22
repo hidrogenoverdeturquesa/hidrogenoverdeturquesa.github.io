@@ -14,7 +14,7 @@
             nav: 'Navegaci\u00f3n principal', menuTitle: 'Explorar HVT', menuEyebrow: 'Navegaci\u00f3n',
             languageTitle: 'Selecciona un idioma', languageEyebrow: 'Idioma', close: 'Cerrar',
             work: 'Qu\u00e9 hacemos', workLines: 'L\u00edneas de trabajo', knowledge: 'Conocimiento',
-            library: 'Biblioteca', ecosystem: 'Ecosistema', foundation: 'Fundaci\u00f3n',
+            library: 'Biblioteca', ecosystem: 'Ecosistema', foundation: 'Iniciativa social',
             logistyka: 'Logistyka', support: 'Apoyar proyectos', about: 'Nosotros',
             who: 'Qui\u00e9nes somos', careers: 'Trabaja con nosotros', contact: 'Contacto',
             heroCta: 'Explorar proyectos', quickTitle: 'Explora HVT', research: 'Investigaci\u00f3n',

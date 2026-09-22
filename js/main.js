@@ -942,7 +942,7 @@
             document.head.appendChild(mobileNavigationStyle);
 
             const mobileNavigationScript = document.createElement('script');
-            mobileNavigationScript.src = '/js/mobile-navigation.js?v=20260828a';
+            mobileNavigationScript.src = '/js/mobile-navigation.js?v=20260921-social';
             mobileNavigationScript.async = false;
             mobileNavigationScript.dataset.hvtMobileNavigation = 'true';
             document.body.appendChild(mobileNavigationScript);

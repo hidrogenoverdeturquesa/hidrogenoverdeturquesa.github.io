@@ -6,15 +6,33 @@
   <title>Escuela de La República del Hidrógeno | HVT</title>
   <meta name="description" content="Aprende con los cursos de Micro:bit, ESP32, electrolizadores y bioeconomía de la Escuela de La República del Hidrógeno. Acceso libre en esta etapa.">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/escuela.css?v=campus-3">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/escuela.css?v=campus-4">
+  <script defer src="js/fontawesome/all.min.js"></script>
   <link rel="icon" href="favicon-32x32.png">
   <script src="js/escuela.js" defer></script>
 </head>
-<body class="school">
+<body class="school" id="top">
   <a class="school-skip" href="#catalogo">Saltar al catálogo</a>
-  <header class="school-header">
-    <a href="/" aria-label="HVT, inicio"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" width="112" height="52"></a>
-    <nav aria-label="Navegación de la Escuela"><a href="fundacion.html">Iniciativa social</a><a href="#catalogo" aria-current="page">Escuela</a><a href="laboratorio/">Laboratorio HVT</a></nav>
+  <header class="s-header">
+    <div class="row">
+      <div class="s-header__logo"><a href="/"><img src="images/logo-hvt.svg" alt="Hidrógeno Verde Turquesa" style="height:40px;width:auto"></a></div>
+      <nav class="s-header__nav" id="site-navigation" aria-label="Navegación principal">
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-dropdown"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-work-menu">Qué hacemos <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-work-menu" hidden><li><a href="/#services">Líneas de trabajo</a></li><li><a href="/#portfolio">Proyectos</a></li></ul></li>
+          <li class="nav-dropdown current"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-knowledge-menu">Conocimiento <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-knowledge-menu" hidden><li><a href="/blog">Biblioteca</a></li><li><a href="/escuela" aria-current="page">Escuela</a></li><li><a href="/laboratorio/">Laboratorio HVT</a></li></ul></li>
+          <li class="nav-dropdown"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-ecosystem-menu">Ecosistema <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-ecosystem-menu" hidden><li><a href="/fundacion">Iniciativa social</a></li><li><a href="https://hidrogenoverdeturquesa.github.io/logistyka/">Logistyka</a></li><li><a href="/investors">Apoyar proyectos</a></li></ul></li>
+          <li class="nav-dropdown"><button class="nav-dropdown__toggle" type="button" aria-expanded="false" aria-controls="nav-about-menu">Nosotros <span class="nav-dropdown__chevron" aria-hidden="true"></span></button><ul class="nav-dropdown__menu" id="nav-about-menu" hidden><li><a href="/#about">Quiénes somos</a></li><li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li></ul></li>
+          <li><a href="/#contact">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="s-header__language">
+        <button class="s-header__language-toggle" type="button" aria-label="Cambiar idioma" aria-expanded="false" aria-controls="language-menu"><i class="fas fa-globe" aria-hidden="true"></i> <span class="s-header__language-current">ES</span> <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+        <ul class="s-header__language-menu" id="language-menu" hidden><li><a href="/escuela" hreflang="es" lang="es">Español</a></li><li><a href="/en/" hreflang="en" lang="en">English</a></li><li><a href="/ru/" hreflang="ru" lang="ru">Русский</a></li></ul>
+      </div>
+      <button class="s-header__menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation"><span class="s-header__menu-icon" aria-hidden="true"></span></button>
+    </div>
   </header>
   <main>
     <section class="school-hero" aria-labelledby="school-title">
@@ -54,5 +72,8 @@
     <section class="school-wrap school-help"><div><p class="school-overline">Aprender juntos</p><h2>¿Vienes de un colegio<br>o una organización?</h2><p>Conoce cómo Deuterio conecta formación y experimentación con las preguntas de tu territorio.</p></div><a class="school-button" href="fundacion.html#deuterio-territorio">Conocer Deuterio <span aria-hidden="true">↗</span></a></section>
   </main>
   <footer class="school-footer"><div class="school-wrap"><p>Escuela de La República del Hidrógeno<br><small>Hidrógeno Verde Turquesa S.A.S.</small></p><a href="fundacion.html">Volver a la iniciativa social →</a></div></footer>
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/plugins.js?v=sin-prism-20260726"></script>
+  <script src="js/main.js?v=school-navigation-20260921"></script>
 </body>
 </html>

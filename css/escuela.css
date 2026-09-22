@@ -1,6 +1,6 @@
 .school { background:#fff; color:#263d3b; }
 .school * { box-sizing:border-box; }
-.school a { color:inherit; }
+.school main a,.school-footer a { color:inherit; }
 .school [hidden] { display:none!important; }
 .school :focus-visible { outline:3px solid #007c70; outline-offset:5px; }
 .school-wrap { width:min(1320px,90%); margin-inline:auto; }
@@ -71,7 +71,7 @@
 .school-footer p { margin:0; }
 /* Compact campus layout: the catalog is the primary screen. */
 .school { min-height:100vh; display:flex; flex-direction:column; }
-.school main { flex:1; }
+.school main { flex:1; padding-top:96px; }
 .school-wrap { width:94%; max-width:1800px; }
 .school-header { min-height:76px; padding:12px 3%; background:#102d30; }
 .school-header nav { font-size:13px; }
