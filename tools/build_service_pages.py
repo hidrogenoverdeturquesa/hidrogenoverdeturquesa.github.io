@@ -140,6 +140,12 @@ def render(source: str, locale: str, code: str) -> str:
 </body>
 </html>
 '''
+    if locale == 'es' and code == '001':
+        from energy_editorial import decorate_energy_page
+        result = decorate_energy_page(result, title, summary)
+    elif locale == 'es':
+        from lines_editorial import decorate_line_page
+        result = decorate_line_page(result, code, title, summary)
     return absolute_assets(result)
 
 

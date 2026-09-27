@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://hidrogenoverdeturquesa.com/lineas/energia/">
 <meta property="og:title" content="Energía y Transición Energética Sostenible">
 <meta property="og:description" content="Desarrollamos soluciones energéticas sostenibles para hogares, empresas, industrias y territorios mediante energías renovables, eficiencia energética, hidrógeno, almacenamiento y nuevos vectores energéticos.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Energía y Transición Energética Sostenible">
 <meta name="twitter:description" content="Desarrollamos soluciones energéticas sostenibles para hogares, empresas, industrias y territorios mediante energías renovables, eficiencia energética, hidrógeno, almacenamiento y nuevos vectores energéticos.">
 
@@ -28,8 +28,13 @@
 <link rel="icon" href="/favicon.ico">
 <script src="/js/modernizr.js"></script>
 <script defer src="/js/fontawesome/all.min.js"></script>
+<link rel="stylesheet" href="/css/energy-editorial.css?v=20260927c">
+<script defer src="/js/energy-gallery.js?v=20260927c"></script>
+<meta property="og:image" content="https://hidrogenoverdeturquesa.com/images/energia/parque-eolico.webp">
+<meta property="og:image:alt" content="Parque eólico; fotografía de referencia de Arteum.ro">
+<meta name="twitter:image" content="https://hidrogenoverdeturquesa.com/images/energia/parque-eolico.webp">
 </head>
-<body id="top" class="line-page">
+<body id="top" class="line-page energy-page">
 <header class="s-header">
         <div class="row">
 
@@ -103,24 +108,77 @@
         </div> <!-- end row -->
     </header>
 <main>
-    <div class="line-page__hero">
-        <a class="line-page__back" href="/#line-detail-001"><span aria-hidden="true">←</span> Volver a esta línea en el inicio</a>
-        <p class="line-page__eyebrow">Líneas de trabajo</p>
-        <h1>Energía y Transición Energética Sostenible</h1>
-        <p class="line-page__summary">Desarrollamos soluciones energéticas sostenibles para hogares, empresas, industrias y territorios mediante energías renovables, eficiencia energética, hidrógeno, almacenamiento y nuevos vectores energéticos.</p>
-    </div>
+    <section class="line-page__hero energy-hero" aria-labelledby="energy-title" data-energy-gallery>
+        <div class="energy-hero__media" role="region" aria-label="Fotografías de energías renovables">
+            <img src="/images/energia/parque-eolico.webp" width="1600" height="1060" alt="Aerogeneradores en un campo bajo el cielo, fotografía de Arteum.ro" fetchpriority="high" class="energy-hero__image is-active" id="energy-photo-0" data-energy-photo data-credit="Eólica · Arteum.ro">
+            <img src="/images/energia/solar-territorio.webp" srcset="/images/energia/solar-territorio-800.webp 800w, /images/energia/solar-territorio.webp 1600w" sizes="100vw" width="1600" height="1200" alt="Vista aérea de paneles solares en Rockbeare, fotografía de Red Zeppelin" loading="lazy" decoding="async" id="energy-photo-1" data-energy-photo data-credit="Solar · Red Zeppelin" aria-hidden="true">
+            <img src="/images/energia/inspeccion-solar.webp" width="1200" height="800" alt="Inspección de una instalación solar, fotografía de Gustavo Fring" loading="lazy" decoding="async" id="energy-photo-2" data-energy-photo data-credit="Trabajo técnico · Gustavo Fring" aria-hidden="true">
+        </div>
+        <div class="energy-hero__inner">
+            <a class="line-page__back" href="/#line-detail-001"><span aria-hidden="true">←</span> Volver a esta línea en el inicio</a>
+            <div class="energy-hero__copy">
+                <p class="line-page__eyebrow">Hidrógeno Verde Turquesa / Líneas de trabajo</p>
+                <h1 id="energy-title"><span class="energy-title__lead">Energía</span> <span class="energy-title__rest">y Transición Energética Sostenible</span></h1>
+                <a class="energy-hero__explore" href="#enfoque">Conoce esta línea <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="energy-hero__footer">
+                <div class="energy-gallery-controls" aria-label="Seleccionar fotografía" hidden>
+                    <button type="button" data-energy-select="0" aria-controls="energy-photo-0" aria-pressed="true">Eólica</button>
+                    <button type="button" data-energy-select="1" aria-controls="energy-photo-1" aria-pressed="false">Solar</button>
+                    <button type="button" data-energy-select="2" aria-controls="energy-photo-2" aria-pressed="false">Trabajo técnico</button>
+                </div>
+                <p class="energy-hero__credit"><span data-energy-credit aria-live="polite">Eólica · Arteum.ro</span><a href="#creditos-fotograficos">Fotografías de referencia</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="energy-overview energy-wrap" id="enfoque" aria-labelledby="energy-overview-title">
+        <div class="energy-section-heading">
+            <div><p class="energy-kicker">Qué hacemos</p><h2 id="energy-overview-title">Investigación y diseño<br>de sistemas energéticos.</h2></div>
+            <div><p class="line-page__summary">Desarrollamos soluciones energéticas sostenibles para hogares, empresas, industrias y territorios mediante energías renovables, eficiencia energética, hidrógeno, almacenamiento y nuevos vectores energéticos.</p><nav class="energy-chapter-nav" aria-label="Explorar esta línea"><a href="#servicios">Nuestros servicios <span aria-hidden="true">↓</span></a><a href="#proyectos">Proyectos relacionados <span aria-hidden="true">↓</span></a></nav></div>
+        </div>
+        <div class="energy-feature">
+            <figure><img src="/images/energia/inspeccion-solar.webp" width="1200" height="800" alt="Profesionales revisando documentación frente a paneles solares; fotografía de referencia del sector" loading="lazy" decoding="async" ><figcaption>Inspección fotovoltaica. Gustavo Fring / Pexels.</figcaption></figure>
+            <div class="energy-feature__copy"><h3>Del estudio del recurso<br>al diseño del sistema.</h3><p>Evaluamos la demanda, las condiciones del lugar y las alternativas de generación, conversión y almacenamiento.</p><p>El trabajo combina formulación de proyectos, desarrollo experimental e instrumentación para verificar el desempeño.</p><a class="energy-text-link" href="#servicios">Explorar las capacidades <span aria-hidden="true">→</span></a></div>
+        </div>
+    </section>
+
     <div class="line-page__content">
         <article class="line-detail" id="line-detail-001">
-                <p class="line-detail__guide">Selecciona un servicio para conocer su función, objetivo, restricciones y formulación matemática general.</p>
-                <div class="line-detail__layout"><div><h2>Servicios</h2><div class="line-detail__services">
-                    <details class="line-service"><summary>Diagnóstico, auditoría y caracterización energética</summary><div class="line-service__body"><p><strong>Función:</strong> establecer cómo, cuándo y para qué se utiliza la energía.</p><p><strong>Objetivo:</strong> priorizar medidas que reduzcan consumos y costos sin deteriorar el servicio.</p><p><strong>Restricciones:</strong> seguridad, confort, calidad de energía, presupuesto, datos disponibles y continuidad operativa.</p><div class="line-service__equation"><span>max<sub>x</sub> ΔE(x)</span><small>sujeto a C(x) ≥ C<sub>mín</sub>, S(x) = segura, K(x) ≤ B</small></div></div></details>
-                    <details class="line-service"><summary>Estudios de recursos solar, eólico, hídrico y biomásico</summary><div class="line-service__body"><p><strong>Función:</strong> medir y caracterizar el recurso disponible en un lugar.</p><p><strong>Objetivo:</strong> identificar el emplazamiento y aprovechamiento con mayor energía útil verificable.</p><p><strong>Restricciones:</strong> incertidumbre, estacionalidad, ambiente, territorio, permisos, acceso e instrumentos.</p><div class="line-service__equation"><span>max<sub>s</sub> E<sub>útil</sub>(s)</span><small>sujeto a U(s) ≤ U<sub>máx</sub>, R<sub>amb</sub>(s) = aceptable, D(s) ≥ D<sub>mín</sub></small></div></div></details>
-                    <details class="line-service"><summary>Diseño conceptual de sistemas renovables e híbridos</summary><div class="line-service__body"><p><strong>Función:</strong> combinar fuente, conversión, red, control y almacenamiento.</p><p><strong>Objetivo:</strong> cubrir la demanda con el menor costo e impacto durante la vida útil.</p><p><strong>Restricciones:</strong> balance horario, confiabilidad, espacio, normativa, mantenimiento y disponibilidad del recurso.</p><div class="line-service__equation"><span>min<sub>x</sub> C<sub>ciclo de vida</sub>(x)</span><small>sujeto a E<sub>entregada</sub>(t,x) ≥ E<sub>demanda</sub>(t), A(x) ≥ A<sub>mín</sub></small></div></div></details>
-                    <details class="line-service"><summary>Investigación y desarrollo de prototipos de hidrógeno</summary><div class="line-service__body"><p><strong>Función:</strong> desarrollar y validar rutas de producción, acondicionamiento y uso del hidrógeno.</p><p><strong>Objetivo:</strong> maximizar rendimiento y calidad con balances verificables.</p><p><strong>Restricciones:</strong> materia prima, energía, pureza, presión, materiales, seguridad, emisiones y escala.</p><div class="line-service__equation"><span>max<sub>x</sub> Y<sub>H₂</sub>(x)</span><small>sujeto a balances de masa y energía, P<sub>H₂</sub> ≥ P<sub>mín</sub>, riesgo(x) ≤ límite</small></div></div></details>
-                    <details class="line-service"><summary>Eficiencia energética, almacenamiento y gestión de cargas</summary><div class="line-service__body"><p><strong>Función:</strong> coordinar demanda, generación y almacenamiento.</p><p><strong>Objetivo:</strong> reducir pérdidas, picos y energía externa sin afectar cargas prioritarias.</p><p><strong>Restricciones:</strong> estado de carga, potencia, degradación, horarios, autonomía y respaldo.</p><div class="line-service__equation"><span>min<sub>x(t)</sub> [E<sub>red</sub> + E<sub>pérdidas</sub>]</span><small>sujeto a SOC<sub>mín</sub> ≤ SOC(t) ≤ SOC<sub>máx</sub>, P<sub>crítica</sub>(t) cubierta</small></div></div></details>
-                    <details class="line-service"><summary>Instrumentación y verificación del desempeño</summary><div class="line-service__body"><p><strong>Función:</strong> medir el comportamiento real antes y después de una intervención.</p><p><strong>Objetivo:</strong> cuantificar resultados con la menor incertidumbre práctica.</p><p><strong>Restricciones:</strong> calibración, resolución, ubicación, cobertura temporal, trazabilidad y presupuesto.</p><div class="line-service__equation"><span>min U(R)</span><small>sujeto a cobertura ≥ cobertura<sub>mín</sub>, calibración vigente y datos válidos ≥ D<sub>mín</sub></small></div></div></details>
-                </div></div><div><h2>Proyectos relacionados</h2><div class="line-projects"><a href="/proyecto-planta-hidrogeno"><span>Proyecto principal</span><strong>Prototipo escalable de planta de hidrógeno</strong><small>Ver publicación →</small></a><a href="/proyecto-parque-solar"><span>Proyecto principal</span><strong>Parque Solar Comunitario</strong><small>Ver publicación →</small></a><a href="/proyecto-granja-eolica"><span>Proyecto principal</span><strong>Sistemas de energía del viento y del agua</strong><small>Ver publicación →</small></a><a href="/proyecto-hogares-eficientes"><span>Proyecto relacionado</span><strong>Hogares eficientes</strong><small>Ver publicación →</small></a></div></div></div>
-            </article>
+            <div class="line-detail__layout">
+                <section class="energy-services" id="servicios" aria-labelledby="energy-services-title">
+                    <p class="energy-kicker">Servicios</p><h2 id="energy-services-title">Capacidades de la línea.</h2>
+                    <p class="line-detail__guide">Selecciona un servicio para conocer su función, objetivo, restricciones y formulación matemática general.</p><div class="line-detail__services"><details class="line-service" open><summary>Diagnóstico, auditoría y caracterización energética</summary><div class="line-service__body"><p><strong>Función:</strong> establecer cómo, cuándo y para qué se utiliza la energía.</p><p><strong>Objetivo:</strong> priorizar medidas que reduzcan consumos y costos sin deteriorar el servicio.</p><p><strong>Restricciones:</strong> seguridad, confort, calidad de energía, presupuesto, datos disponibles y continuidad operativa.</p><div class="line-service__equation"><span>max<sub>x</sub> ΔE(x)</span><small>sujeto a C(x) ≥ C<sub>mín</sub>, S(x) = segura, K(x) ≤ B</small></div></div></details>
+<details class="line-service"><summary>Estudios de recursos solar, eólico, hídrico y biomásico</summary><div class="line-service__body"><p><strong>Función:</strong> medir y caracterizar el recurso disponible en un lugar.</p><p><strong>Objetivo:</strong> identificar el emplazamiento y aprovechamiento con mayor energía útil verificable.</p><p><strong>Restricciones:</strong> incertidumbre, estacionalidad, ambiente, territorio, permisos, acceso e instrumentos.</p><div class="line-service__equation"><span>max<sub>s</sub> E<sub>útil</sub>(s)</span><small>sujeto a U(s) ≤ U<sub>máx</sub>, R<sub>amb</sub>(s) = aceptable, D(s) ≥ D<sub>mín</sub></small></div></div></details>
+<details class="line-service"><summary>Diseño conceptual de sistemas renovables e híbridos</summary><div class="line-service__body"><p><strong>Función:</strong> combinar fuente, conversión, red, control y almacenamiento.</p><p><strong>Objetivo:</strong> cubrir la demanda con el menor costo e impacto durante la vida útil.</p><p><strong>Restricciones:</strong> balance horario, confiabilidad, espacio, normativa, mantenimiento y disponibilidad del recurso.</p><div class="line-service__equation"><span>min<sub>x</sub> C<sub>ciclo de vida</sub>(x)</span><small>sujeto a E<sub>entregada</sub>(t,x) ≥ E<sub>demanda</sub>(t), A(x) ≥ A<sub>mín</sub></small></div></div></details>
+<details class="line-service"><summary>Investigación y desarrollo de prototipos de hidrógeno</summary><div class="line-service__body"><p><strong>Función:</strong> desarrollar y validar rutas de producción, acondicionamiento y uso del hidrógeno.</p><p><strong>Objetivo:</strong> maximizar rendimiento y calidad con balances verificables.</p><p><strong>Restricciones:</strong> materia prima, energía, pureza, presión, materiales, seguridad, emisiones y escala.</p><div class="line-service__equation"><span>max<sub>x</sub> Y<sub>H₂</sub>(x)</span><small>sujeto a balances de masa y energía, P<sub>H₂</sub> ≥ P<sub>mín</sub>, riesgo(x) ≤ límite</small></div></div></details>
+<details class="line-service"><summary>Eficiencia energética, almacenamiento y gestión de cargas</summary><div class="line-service__body"><p><strong>Función:</strong> coordinar demanda, generación y almacenamiento.</p><p><strong>Objetivo:</strong> reducir pérdidas, picos y energía externa sin afectar cargas prioritarias.</p><p><strong>Restricciones:</strong> estado de carga, potencia, degradación, horarios, autonomía y respaldo.</p><div class="line-service__equation"><span>min<sub>x(t)</sub> [E<sub>red</sub> + E<sub>pérdidas</sub>]</span><small>sujeto a SOC<sub>mín</sub> ≤ SOC(t) ≤ SOC<sub>máx</sub>, P<sub>crítica</sub>(t) cubierta</small></div></div></details>
+<details class="line-service"><summary>Instrumentación y verificación del desempeño</summary><div class="line-service__body"><p><strong>Función:</strong> medir el comportamiento real antes y después de una intervención.</p><p><strong>Objetivo:</strong> cuantificar resultados con la menor incertidumbre práctica.</p><p><strong>Restricciones:</strong> calibración, resolución, ubicación, cobertura temporal, trazabilidad y presupuesto.</p><div class="line-service__equation"><span>min U(R)</span><small>sujeto a cobertura ≥ cobertura<sub>mín</sub>, calibración vigente y datos válidos ≥ D<sub>mín</sub></small></div></div></details></div>
+                </section>
+                <aside class="energy-study" aria-labelledby="energy-study-title">
+                    <figure><img src="/images/energia/electrolizador.jpg" width="960" height="1275" alt="Electrolizador de hidrógeno expuesto en el Science Museum de Londres; referencia tecnológica" loading="lazy" decoding="async" ><figcaption>Electrolizador · Science Museum, Londres.<br><a href="https://commons.wikimedia.org/wiki/File:Hydrogen_electrolyser_-_Science_Museum,_London.jpg">The wub</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</figcaption></figure>
+                    <h3 id="energy-study-title">Hidrógeno y conversión energética.</h3><p>Investigamos rutas de producción, acondicionamiento y uso del hidrógeno, con balances de masa y energía y criterios de seguridad.</p>
+                </aside>
+                <section class="energy-projects" id="proyectos" aria-labelledby="energy-projects-title">
+                    <div class="energy-section-heading"><div><p class="energy-kicker">Portafolio de proyectos</p><h2 id="energy-projects-title">Conoce los proyectos<br>de esta línea.</h2></div><p>Explora los diseños, los fundamentos técnicos y los cuadernillos que acompañan cada proyecto.</p></div>
+                    <div class="line-projects"><a href="/proyecto-planta-hidrogeno"><div class="energy-project__photo"><img src="/images/energia/electrolizador.jpg" width="960" height="1275" alt="Electrolizador expuesto en el Science Museum de Londres" loading="lazy" decoding="async" ></div><div class="energy-project__text"><span>Proyecto principal</span><strong>Prototipo escalable de planta de hidrógeno</strong><small>Ver publicación →</small></div></a>
+<a href="/proyecto-parque-solar"><div class="energy-project__photo"><img src="/images/energia/solar-territorio.webp" srcset="/images/energia/solar-territorio-800.webp 800w, /images/energia/solar-territorio.webp 1600w" sizes="(max-width: 600px) 100vw, 50vw" width="1600" height="1200" alt="Parque solar visto desde el aire" loading="lazy" decoding="async" ></div><div class="energy-project__text"><span>Proyecto principal</span><strong>Parque Solar Comunitario</strong><small>Ver publicación →</small></div></a>
+<a href="/proyecto-granja-eolica"><div class="energy-project__photo"><img src="/images/energia/parque-eolico.webp" width="1600" height="1060" alt="Aerogeneradores en un paisaje rural" loading="lazy" decoding="async" ></div><div class="energy-project__text"><span>Proyecto principal</span><strong>Sistemas de energía del viento y del agua</strong><small>Ver publicación →</small></div></a>
+<a href="/proyecto-hogares-eficientes"><div class="energy-project__photo"><img src="/images/energia/vivienda-solar.webp" width="1200" height="800" alt="Cubiertas de viviendas con paneles solares" loading="lazy" decoding="async" ></div><div class="energy-project__text"><span>Proyecto relacionado</span><strong>Hogares eficientes</strong><small>Ver publicación →</small></div></a></div>
+                    <p class="energy-photo-note">Fotografías de referencia de las tecnologías; no corresponden a obras ejecutadas por HVT.</p>
+                </section>
+            </div>
+        </article>
+        <details class="energy-credits" id="creditos-fotograficos"><summary>Créditos fotográficos y licencias</summary><div>
+            <p>Las fotografías son referencias del sector; las personas y las instalaciones no se presentan como equipo u obras de HVT.</p>
+            <ul>
+                <li>Solar: <a href="https://www.pexels.com/photo/solar-panels-on-a-green-field-4148472/">Red Zeppelin / Pexels</a>.</li>
+                <li>Eólica: <a href="https://unsplash.com/photos/photo-of-wind-turbines-on-green-grass-ZYu6P9-Glic">Arteum.ro / Unsplash</a>.</li>
+                <li>Vivienda solar: <a href="https://unsplash.com/photos/a-house-with-a-solar-panel-on-the-roof-_ciUqT1HEuY">Vivint Solar / Unsplash</a>.</li>
+                <li>Inspección fotovoltaica: <a href="https://www.pexels.com/photo/electricians-inspecting-the-solar-panels-4254169/">Gustavo Fring / Pexels</a>.</li>
+                <li>Electrolizador: <a href="https://commons.wikimedia.org/wiki/File:Hydrogen_electrolyser_-_Science_Museum,_London.jpg">The wub / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Reducción de Wikimedia a 960 píxeles y encuadre de presentación mediante CSS.</li>
+            </ul><p>Fotografías usadas conforme a las licencias gratuitas de <a href="https://www.pexels.com/license/">Pexels</a> y <a href="https://unsplash.com/license">Unsplash</a>. Archivos optimizados y encuadres adaptados para la web.</p>
+        </div></details>
         <div class="line-page__contact"><a href="/#contact">Hablemos de tu proyecto →</a><a href="/#services">Explorar todas las líneas →</a></div>
         <nav class="line-page__related" aria-labelledby="other-lines-title"><h2 id="other-lines-title">Otras líneas de trabajo</h2><div class="line-page__related-links"><a href="/lineas/bioeconomia/"><span>Bioeconomía y Economía Circular</span><span aria-hidden="true">→</span></a><a href="/lineas/inteligencia-territorial/"><span>Inteligencia Territorial e Innovación Tecnológica</span><span aria-hidden="true">→</span></a><a href="/lineas/infraestructura/"><span>Infraestructura Sostenible y Hábitats Regenerativos</span><span aria-hidden="true">→</span></a></div></nav>
     </div>
