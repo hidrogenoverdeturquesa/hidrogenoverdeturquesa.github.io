@@ -7658,6 +7658,22 @@ body.search-is-visible {
     margin-bottom: var(--vspace-0_5);
 }
 
+.team-member--research img {
+    object-position: 50% 35%;
+    filter: grayscale(100%);
+}
+
+.team-member--electromechanical img {
+    object-position: center top;
+    filter: grayscale(100%);
+}
+
+.team-block {
+    row-gap: var(--vspace-1);
+    scroll-margin-top: 10rem;
+    justify-content: center;
+}
+
 .team-member__name span {
     display: block;
     font-weight: 400;
@@ -7680,6 +7696,14 @@ body.search-is-visible {
 
 .team-member__social a {
     color: var(--color-text);
+}
+
+.team-member__social-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: -.125em;
 }
 
 .team-member__social a:focus, .team-member__social a:hover {
