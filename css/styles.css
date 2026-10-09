@@ -9209,6 +9209,7 @@ body.search-is-visible {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    justify-content: center;
 }
 
 .recognition-card {
