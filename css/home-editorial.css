@@ -1,0 +1,98 @@
+/* Homepage refinement: Tella's light surfaces and restrained typography.
+   Navigation, disclosures, video behavior and content remain unchanged. */
+.s-services {
+    background: #f3f4f1;
+    color: #4d5652;
+    padding-top: 8rem;
+    padding-bottom: 7rem;
+}
+.s-services .section-head h2 { color: #202925; font-weight: 500; }
+.s-services .section-head .desc { color: #006e63; }
+.s-services .lead { color: #4d5652; }
+.s-services .services-item {
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #d5dbd6;
+    box-shadow: none;
+    transform: none;
+    transition: background-color .2s ease;
+}
+.s-services .services-item:hover,
+.s-services .services-item:focus-within,
+.s-services .services-item.is-active { background: #fff; border-color: #9aa9a1; transform: none; }
+.s-services .services-item__trigger { padding: 3rem; background: transparent; }
+.s-services .service-symbol { display: none; }
+.s-services .services-item__title { color: #202925; font-weight: 500; line-height: 1.35; }
+.s-services .services-item__summary { color: #4d5652; line-height: 1.7; }
+.s-services .services-item__action {
+    color: #006e63;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: underline;
+    text-underline-offset: .5rem;
+    text-decoration-thickness: 1px;
+    padding-top: 2rem;
+}
+.s-services .services-item__action > span { display: none; }
+.s-services .services-item__trigger:focus-visible { outline: 2px solid #006e63; outline-offset: -4px; }
+.s-services .services-item.is-active { border-bottom: 2px solid #006e63; }
+.s-services .line-detail { border-top: 1px solid #aebbb3; background: #fff; animation: none; }
+.s-services .line-detail__close { border-radius: 0; border-color: #cbd2cd; }
+.s-services .line-detail__note { background: #f3f4f1; border-color: #cbd2cd; }
+/* Preserve the requested video previews. White lettering is limited to the
+   pointer/keyboard states that actually reveal a darkened video. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .s-services .services-item:hover .services-item__video,
+    .s-services .services-item:focus-within .services-item__video { opacity: 1; transform: scale(1); }
+    .s-services .services-item:hover .services-item__title,
+    .s-services .services-item:focus-within .services-item__title,
+    .s-services .services-item:hover .services-item__summary,
+    .s-services .services-item:focus-within .services-item__summary,
+    .s-services .services-item:hover .services-item__action,
+    .s-services .services-item:focus-within .services-item__action { color: #fff; }
+    .s-services .services-item__trigger::before { background: rgb(14 25 20 / 65%); }
+}
+/* This navigation is injected after page load. Explicit component scope keeps
+   these rules ahead of the older, dynamically loaded mobile stylesheet. */
+@media (max-width: 1100px) {
+    section.hvt-mobile-home-access { background: #fff; color: #202925; border-top: 0; padding: 36px 0; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__inner { width: min(calc(100% - 48px), 720px); }
+    .hvt-mobile-home-access .hvt-mobile-home-access__eyebrow { display: none; }
+    .hvt-mobile-home-access h2#hvt-mobile-home-access-title { color: #202925; font-weight: 500; font-size: 28px; margin-bottom: 22px; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__list { background: transparent; border-color: #d5dbd6; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__item {
+        display: block; min-height: 84px; height: auto; padding: 19px 0;
+        color: #202925; background: transparent; border-color: #d5dbd6;
+        box-shadow: none; text-transform: none; letter-spacing: 0;
+    }
+    .hvt-mobile-home-access .hvt-mobile-home-access__item::before,
+    .hvt-mobile-home-access .hvt-mobile-home-access__icon,
+    .hvt-mobile-home-access .hvt-mobile-home-access__action { display: none; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__content { gap: 6px; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__content strong {
+        color: #202925; font-size: 17px; font-weight: 500; line-height: 1.35;
+        text-decoration: underline; text-decoration-color: #aebbb3; text-underline-offset: 4px;
+    }
+    .hvt-mobile-home-access .hvt-mobile-home-access__description { color: #56605a; font-size: 14px; font-weight: 400; line-height: 1.5; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__item:hover { background: #f5f6f3; color: #202925; outline: none; }
+    .hvt-mobile-home-access .hvt-mobile-home-access__item:focus-visible { background: #f5f6f3; outline: 2px solid #006e63; outline-offset: 3px; }
+}
+/* Keep Mentor available without the decorative eyes or luminous floating pill. */
+.mentor .mentor__toggle {
+    min-width: 84px; width: auto; height: 44px; padding: 0 15px; gap: 0;
+    border: 1px solid #bec8c1; border-radius: 0; box-shadow: none;
+    background: #fff; color: #263d32; transform: none;
+}
+.mentor .mentor__toggle .mentor__mark { display: none; }
+.mentor .mentor__toggle-label {
+    position: static; width: auto; height: auto; margin: 0; padding: 0;
+    overflow: visible; clip: auto; font-size: 13px; font-weight: 500;
+    letter-spacing: 0; text-transform: none; white-space: normal;
+}
+.mentor .mentor__toggle:hover { background: #edf1ec; color: #263d32; border-color: #83968a; transform: none; }
+.mentor .mentor__toggle:focus-visible { background: #fff; color: #263d32; outline: 2px solid #006e63; outline-offset: 3px; transform: none; }
+@media (max-width: 600px) {
+    .s-services { padding-top: 5rem; padding-bottom: 4rem; }
+    .s-services .services-item__trigger { padding: 2.4rem; }
+}
