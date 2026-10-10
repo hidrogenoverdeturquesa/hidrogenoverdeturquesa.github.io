@@ -3,6 +3,8 @@
 Cada cuadernillo tiene una carpeta propia. Abra en TeXstudio el `.tex` de la
 publicación que quiera modificar:
 
+- Hábitat regenerativo: `casa-campestre/casa-campestre.tex`.
+- Sistema híbrido de hidrógeno para vehículo: `motor-hidrogeno/motor-hidrogeno.tex`.
 - Parque Solar: `parque-solar/parque-solar.tex`.
 - Ecoaldea Sostenible: `ecoaldea/ecoaldea.tex`.
 - Sistemas del viento y del agua: `sistemas-viento-agua/sistemas-viento-agua.tex`.

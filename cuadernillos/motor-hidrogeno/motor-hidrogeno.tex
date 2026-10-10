@@ -1,0 +1,180 @@
+% !TeX encoding = UTF-8
+% Fuente editorial del PDF y del cuadernillo web. HVT, 10 de octubre de 2026.
+\documentclass{../plantilla/hvtbook}
+\usepackage{amsmath}
+\pagestyle{plain}
+\hypersetup{pdftitle={Sistema híbrido de hidrógeno para vehículo},pdfauthor={Hidrógeno Verde Turquesa}}
+\HVTTitulo{Sistema híbrido de hidrógeno para vehículo}
+\HVTSubtitulo{Motor de combustión, almacenamiento de hidrógeno a bordo y control dinámico. Desarrollo progresivo hacia una aplicación vehicular, con validación previa en banco.}
+\HVTNivel{Ingeniería electromecánica y control}
+\HVTSerie{Publicación técnica}
+\HVTNumero{MH-01}
+\HVTAccion{Explorar capítulos}
+\HVTDescripcion{Sistema híbrido de hidrógeno para vehículo: motor de combustión, almacenamiento a bordo y control dinámico, con modelación y validación progresiva.}
+\HVTCanonical{https://hidrogenoverdeturquesa.com/proyecto-motor-hidrogeno}
+\HVTRegreso{Volver a proyectos}{/\#portfolio}
+\HVTPortada{../../images/portfolio/motor-hidrogeno.jpg}{BMW Hydrogen 7 Engine. Sachi Gahan, 2007. CC BY-SA 2.0. Referencia tecnológica, no prototipo HVT.}
+\begin{document}
+\HVTMakeTitle
+\begin{HVTPage}{Contenido}{MH-01 · Versión 1}{Controlar la respuesta, comprobar el desempeño}
+\HVTLead{Desarrollar una estrategia de control que coordine las variables del motor cuando cambia la demanda de potencia, dentro de límites de operación previamente validados.}
+\HVTText{Proyecto en formulación. El alcance reúne motor de combustión, almacenamiento de hidrógeno a bordo y control dinámico para un vehículo. El motor base, el vehículo y la capacidad del depósito están por definir. La primera etapa comprende requisitos, modelos y pruebas de control en simulación; el banco con hidrógeno será una fase posterior. No se presentan eficiencias, ahorros o emisiones medidos por HVT.}
+\begin{itemize}
+\item 1. Aplicación y alcance del proyecto.
+\item 2. Fundamentos y evidencia disponible.
+\item 3. Arquitectura funcional del sistema.
+\item 4. Qué significa control dinámico.
+\item 5. Modelación e identificación.
+\item 6. Instrumentación y calidad de datos.
+\item 7. Diseño de la campaña experimental.
+\item 8. Potencia, consumo y emisiones.
+\item 9. Protección y estados de operación.
+\item 10. Comparación de controladores.
+\item 11. Etapas de validación y escalado.
+\item 12. Recursos, decisiones y créditos.
+\end{itemize}
+\end{HVTPage}
+\begin{HVTPage}{Lámina}{Almacenamiento a bordo}{El depósito forma parte del sistema vehicular}
+\HVTImagen{../../images/portfolio/almacenamiento-hidrogeno.jpg}{Depósitos Toyota Mirai en exposición. Whoisjohngalt, 2017, CC BY-SA 4.0. Referencia de almacenamiento; no define la propulsión HVT.}
+\HVTText{El depósito se estudiará junto con masa, espacio disponible, autonomía, fijaciones, mantenimiento y protección del vehículo. La fotografía ilustra un componente existente, no una selección de equipo para este proyecto.}
+\HVTText{La denominación del proyecto es Sistema híbrido de hidrógeno para vehículo. La arquitectura de hibridación queda por definir: no se presupone un motor eléctrico, una celda de combustible ni un segundo combustible. La investigación actual se centra en combustión y almacenamiento de hidrógeno, con control dinámico.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 1}{Propósito}{Una aplicación concreta antes de elegir el motor}
+\HVTLead{El proyecto estudiará un motor de combustión interna alimentado con hidrógeno y supervisado mediante control electrónico en lazo cerrado.}
+\HVTText{La aplicación objetivo es un vehículo. El desarrollo comenzará en un banco estacionario que reproduzca demandas de conducción antes de integrar componentes a bordo. Se definirán vehículo de referencia, recorridos, carga útil y autonomía. De ellos se derivarán potencia y respuesta requerida.}
+\begin{HVTTable}{Pregunta}{Definición pendiente}{Efecto en el diseño}
+\HVTTableRow{Uso}{Vehículo, recorridos y carga útil.}{Banco de carga y secuencia de validación.}
+\HVTTableRow{Motor}{Arquitectura y sistema de alimentación.}{Modelo, actuadores y sensores requeridos.}
+\HVTTableRow{Suministro}{Origen, calidad y disponibilidad del hidrógeno.}{Costo, almacenamiento y continuidad del ensayo.}
+\HVTTableRow{Resultado}{Demostración del control o desarrollo de producto.}{Alcance, inversión y requisitos de aceptación.}
+\end{HVTTable}
+\HVTText{El estudio no presupone que una adaptación sea viable para cualquier motor. Se comprobará la compatibilidad del conjunto motor, depósito, suministro y vehículo antes de fijar una solución. La validación en banco precederá a las pruebas vehiculares; ambas tendrán criterios de aceptación propios.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 2}{Fundamentos}{Hidrógeno, combustión y límites reales}
+\HVTLead{El combustible cambia la combustión y las exigencias del control. La comparación debe incluir estabilidad, emisiones y suministro energético.}
+\HVTText{El material técnico del Departamento de Energía describe propiedades del hidrógeno y problemas de combustión anormal en motores. El proyecto utilizará estos antecedentes para elaborar sus requisitos; no tomará valores históricos de un equipo como especificaciones universales. \HVTCite{1}}
+\HVTText{La combustión de hidrógeno con aire puede producir óxidos de nitrógeno. Por ello, eliminar el carbono del combustible no permite anunciar un motor de cero emisiones. La evaluación también debe considerar lubricantes, auxiliares y el origen del hidrógeno. \HVTCite{2}}
+\HVTText{Un trabajo de 2024 sobre control basado en par propone coordinación de variables y evaluación en modelos. Otro estudio experimental examina la combustión y emisiones de un motor con inyección directa. Son antecedentes para formular comparaciones, no resultados del sistema HVT. \HVTCite{3,4}}
+\HVTHeading{Pregunta de investigación}
+\HVTText{¿Puede una estrategia dinámica reducir el error de seguimiento de carga frente a una calibración de referencia, sin deteriorar estabilidad, consumo específico ni emisiones dentro de la región ensayada? Los márgenes de aceptación se acordarán antes de las pruebas.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 3}{Arquitectura}{Separar suministro, conversión y supervisión}
+\begin{HVTTable}{Subsistema}{Función prevista}{Información para especificarlo}
+\HVTTableRow{Depósito}{Almacenar hidrógeno a bordo.}{Autonomía, masa, volumen e integración vehicular.}
+\HVTTableRow{Suministro}{Entregar combustible en condiciones controladas.}{Motor seleccionado y especificación del proveedor.}
+\HVTTableRow{Admisión}{Gestionar aire y condiciones de entrada.}{Rango de carga, dinámica y restricciones del motor.}
+\HVTTableRow{Motor}{Convertir energía química en trabajo mecánico.}{Geometría, estrategia de combustión y límites de ensayo.}
+\HVTTableRow{Carga}{Imponer y medir demanda mecánica.}{Potencia y respuesta del banco dinamométrico.}
+\HVTTableRow{Control}{Coordinar órdenes con realimentación.}{Modelos, sensores, actuadores y tiempos de ejecución.}
+\HVTTableRow{Protección}{Llevar el banco a un estado seguro.}{Análisis de riesgos independiente del optimizador.}
+\end{HVTTable}
+\HVTText{La especificación distinguirá el control del experimento, la adquisición de datos y las funciones de protección. Los componentes comerciales se seleccionarán por compatibilidad y documentación técnica. Este esquema funcional no constituye un plano de conversión ni define presiones, dosis o calibraciones de encendido.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 4}{Control dinámico}{Responder cuando la carga cambia}
+\HVTLead{El controlador compara la demanda con el estado medido y actualiza sus órdenes mientras evoluciona el motor.}
+\HVTText{HVT propone una estructura de dos niveles. Un supervisor gestiona los estados y la demanda admisible. El nivel de control coordina aire, combustible y encendido según el motor elegido. La realimentación corrige diferencias entre respuesta prevista y real, respetando límites fijados por la validación.}
+\begin{HVTTable}{Capa}{Responsabilidad}{Evidencia de funcionamiento}
+\HVTTableRow{Demanda}{Interpretar consigna de par o velocidad.}{Seguimiento sin cambios incompatibles con el banco.}
+\HVTTableRow{Regulación}{Corregir error y coordinar actuadores.}{Respuesta repetible ante perturbaciones definidas.}
+\HVTTableRow{Supervisión}{Reconocer estados y límites de operación.}{Transiciones registradas y recuperación controlada.}
+\HVTTableRow{Protección}{Actuar ante condiciones anómalas.}{Pruebas independientes de la estrategia de rendimiento.}
+\end{HVTTable}
+\HVTText{La estrategia inicial será una referencia sencilla y trazable. Se estudiará después control anticipativo o predictivo si el modelo y los datos justifican esa complejidad. No se incorporará inteligencia artificial como requisito: cada mejora tendrá que demostrar una ventaja medible frente al control de referencia.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 5}{Modelación}{Construir un modelo útil para tomar decisiones}
+\HVTLead{La simulación permitirá comprobar coordinación y límites antes de ensayar el sistema físico.}
+\HVTText{Se propone comenzar con un modelo de dinámica de velocidad, respuesta de admisión y actuación. Sus parámetros procederán de documentación verificable y, cuando exista el banco, de ensayos de identificación aprobados. Los supuestos se conservarán junto con la versión del modelo.}
+\HVTEquation{J\frac{d\omega}{dt}=T_{m}-T_{c}-T_{p}}{Balance mecánico simplificado: inercia J, velocidad angular omega, par del motor, par de carga y pérdidas.}
+\HVTText{Este balance sirve para estudiar la respuesta mecánica; no predice por sí solo combustión anormal ni NOx. Esos fenómenos necesitan modelos específicos o mediciones. El desarrollo evitará atribuir al modelo más capacidad que la demostrada con datos independientes.}
+\begin{HVTTable}{Prueba}{Separación de datos}{Decisión}
+\HVTTableRow{Ajuste}{Datos para estimar parámetros.}{Identificar sensibilidad y parámetros inciertos.}
+\HVTTableRow{Validación}{Perfiles reservados fuera del ajuste.}{Cuantificar error y dominio de uso.}
+\HVTTableRow{Robustez}{Variaciones de parámetros y retardos.}{Detectar condiciones que exigen limitar el control.}
+\end{HVTTable}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 6}{Instrumentación}{Registrar la misma historia en todas las señales}
+\HVTLead{Una comparación válida requiere señales sincronizadas, instrumentos adecuados y trazabilidad de cada ensayo.}
+\begin{HVTTable}{Señal}{Finalidad}{Control de calidad}
+\HVTTableRow{Par y velocidad}{Potencia y seguimiento de demanda.}{Calibración, cero y respuesta dinámica.}
+\HVTTableRow{Combustible}{Consumo y balance energético.}{Compatibilidad, rango e incertidumbre.}
+\HVTTableRow{Aire y temperaturas}{Condiciones de operación y perturbaciones.}{Ubicación, retardos y unidades consistentes.}
+\HVTTableRow{Combustión}{Estabilidad ciclo a ciclo, cuando se instrumente.}{Referencia angular y sincronización adecuadas.}
+\HVTTableRow{Escape}{Emisiones y condiciones de medida.}{Analizador, base de reporte y retardo de transporte.}
+\end{HVTTable}
+\HVTText{La frecuencia de adquisición se definirá por la dinámica de cada señal y la magnitud a estimar, sin imponer una tasa única. Se conservarán datos originales, conversiones, filtros y marcas de pérdida de muestras. La presión en cilindro solo se incorporará con instrumentación y montaje especializados.}
+\HVTText{Cada ensayo tendrá identificador, operador, versión del controlador, combustible, condiciones ambientales, calibraciones y eventos de protección. Si una variable crítica no puede medirse con calidad suficiente, se limitarán explícitamente las conclusiones del estudio.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 7}{Experimentos}{Comparar de forma gradual y reproducible}
+\HVTLead{La campaña empezará en simulación y progresará hacia pruebas físicas únicamente después de verificar banco, protección e instrumentación.}
+\HVTText{Se propone una matriz que cruce estrategia de control y perfiles de demanda, con bloques por condiciones iniciales y repeticiones independientes. El tamaño de campaña se decidirá a partir de la variabilidad observada y del efecto mínimo que resulte útil para la aplicación.}
+\begin{HVTTable}{Fase}{Perfil propuesto}{Qué se observa}
+\HVTTableRow{Referencia}{Puntos estabilizados en un dominio aprobado.}{Repetibilidad, sesgos y balance básico.}
+\HVTTableRow{Dinámica}{Cambios de demanda con rampas definidas.}{Error, sobrepaso y tiempo de recuperación.}
+\HVTTableRow{Perturbación}{Variaciones controladas dentro del dominio.}{Robustez y acción de restricciones.}
+\HVTTableRow{Confirmación}{Perfiles reservados fuera de la calibración.}{Transferencia de la mejora observada.}
+\end{HVTTable}
+\HVTText{Los factores físicos y sus intervalos se fijarán cuando se seleccione el motor. La matriz no autoriza explorar condiciones de combustión anormal. Los ensayos interrumpidos se conservarán como parte del registro; no se descartarán para mejorar artificialmente el promedio de desempeño.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 8}{Indicadores}{Medir trabajo útil y costo energético}
+\HVTEquation{P=T\omega}{Potencia mecánica en vatios cuando el par se expresa en N m y la velocidad angular en radianes por segundo.}
+\HVTEquation{\eta=\frac{P}{\dot{m}_{H_2}PCI}}{Eficiencia al freno: potencia útil dividida por la potencia química del hidrógeno, usando unidades coherentes y una base de poder calorífico declarada.}
+\HVTText{La eficiencia se reportará por condición y con incertidumbre. Para perfiles variables se integrarán trabajo útil y masa de combustible durante el mismo intervalo; no se promediarán eficiencias instantáneas sin ponderación. Los auxiliares se contabilizarán por separado para distinguir desempeño del motor y del sistema completo.}
+\HVTText{Las emisiones se expresarán en una base que permita comparación, documentando caudal, correcciones y condiciones del analizador. Una concentración baja en el escape no demuestra por sí sola una masa baja por unidad de trabajo. Se registrarán emisiones durante transitorios y eventos, no solamente en puntos estabilizados.}
+\HVTText{El balance ambiental incluirá el origen del hidrógeno y su acondicionamiento. No se afirmará neutralidad de carbono ni ventaja económica hasta definir la cadena de suministro y el servicio con el que se compara.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 9}{Protección}{Una lógica independiente del rendimiento}
+\HVTLead{Optimizar el seguimiento de carga no debe alterar las funciones de protección del banco.}
+\HVTText{La ingeniería de detalle incluirá análisis de riesgos, compatibilidad de materiales, ventilación, detección de fugas, gestión del escape y parada de emergencia. La instalación y los procedimientos se desarrollarán con personal competente y especificaciones de fabricantes, antes de introducir hidrógeno.}
+\begin{HVTTable}{Estado}{Condición de ingreso}{Comportamiento esperado}
+\HVTTableRow{Inactivo}{Banco sin autorización de ensayo.}{Órdenes de operación inhibidas.}
+\HVTTableRow{Verificación}{Lista de comprobación y sensores disponibles.}{Confirmar condiciones para avanzar.}
+\HVTTableRow{Ensayo}{Autorización y dominio validados.}{Control con vigilancia independiente.}
+\HVTTableRow{Fallo}{Señal crítica o pérdida de condición habilitante.}{Secuencia segura definida por ingeniería y registro del evento.}
+\end{HVTTable}
+\HVTText{Las pruebas de pérdida de sensor, comunicaciones o alimentación se realizarán primero sin combustible mediante simulación o emulación. La respuesta ante cada fallo será especificada y revisada antes de pruebas físicas; este cuadernillo no sustituye procedimientos de operación ni certificaciones de componentes.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 10}{Análisis}{Demostrar una mejora, no solo una curva atractiva}
+\HVTLead{La estrategia candidata y la referencia deben compararse con el mismo servicio, condiciones documentadas y métricas definidas previamente.}
+\begin{HVTTable}{Dimensión}{Métrica propuesta}{Condición de aceptación}
+\HVTTableRow{Respuesta}{Error de par o velocidad, sobrepaso y recuperación.}{Mejora útil frente a referencia.}
+\HVTTableRow{Energía}{Combustible por trabajo útil y auxiliares.}{Costo energético compatible con la aplicación.}
+\HVTTableRow{Emisiones}{Masa por trabajo y evolución transitoria.}{Cumplimiento de límites acordados y aplicables.}
+\HVTTableRow{Robustez}{Variación entre pruebas y eventos de restricción.}{Respuesta repetible en el dominio validado.}
+\end{HVTTable}
+\HVTText{El análisis mostrará dispersión entre repeticiones y sensibilidad a condiciones iniciales. La incertidumbre instrumental se distinguirá de la variación real del motor. Los datos de validación permanecerán separados de los utilizados para ajustar el controlador.}
+\HVTText{Si una estrategia mejora el seguimiento pero aumenta consumo o emisiones, se comunicará la compensación. El resultado podrá ser una frontera de alternativas en vez de un único ganador. La complejidad computacional y la capacidad de mantenimiento también formarán parte de la selección.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 11}{Validación}{Del modelo al banco instrumentado}
+\begin{HVTTable}{Etapa}{Entregable}{Decisión de avance}
+\HVTTableRow{Requisitos}{Aplicación, métricas y dominio previsto.}{Confirmar alcance y viabilidad de recursos.}
+\HVTTableRow{Modelo}{Planta simulada y controlador de referencia.}{Errores y supuestos documentados.}
+\HVTTableRow{Software}{Comparación de estrategias y fallos simulados.}{Comportamiento correcto en casos definidos.}
+\HVTTableRow{Hardware}{Controlador conectado a planta emulada.}{Tiempos de ejecución, señales y transiciones verificados.}
+\HVTTableRow{Banco}{Integración, puesta en marcha y campaña aprobada.}{Resultados repetibles y protección comprobada.}
+\HVTTableRow{Aplicación}{Evaluación del servicio objetivo.}{Ventaja técnica y económica demostrada para ese uso.}
+\end{HVTTable}
+\HVTText{Escalar implicará revisar suministro, refrigeración, escape, actuadores y dinámica, no solo multiplicar potencia. Los resultados de un motor no se generalizarán a otros sin validación. La durabilidad exigirá una campaña propia posterior a la prueba de concepto del control.}
+\end{HVTPage}
+\begin{HVTPage}{Capítulo 12}{Recursos}{Preparar una colaboración verificable}
+\HVTLead{El primer entregable será una especificación del banco y un modelo de control reproducible, con necesidades de instrumentación y presupuesto desglosadas.}
+\HVTText{Se buscarán capacidades en combustión, control, metrología, seguridad de instalaciones y análisis de emisiones. El presupuesto separará motor, almacenamiento a bordo, banco de carga, suministro de hidrógeno, sensores, analizadores, controlador, integración y operación de la campaña. La disponibilidad de laboratorio y especialistas condicionará la secuencia.}
+\HVTText{Los aliados podrán apoyar modelación, acceso a banco o instrumentación, con entregables y criterios de aceptación acordados. No se fijan todavía fechas de comercialización, eficiencia objetivo ni potencia. La selección del motor y la aplicación permitirán concretarlos sin convertir una aspiración en un resultado anunciado.}
+\HVTHeading{Créditos de imagen y video}
+\HVTText{Portada: BMW Hydrogen 7 Engine, Sachi Gahan, 2007, CC BY-SA 2.0, archivo sin modificación. Depósitos: Whoisjohngalt, 2017, CC BY-SA 4.0, reducción y conversión a JPEG. Video: K, Pexels 9737950, detalle de un motor convencional; extracto sin audio. Son referencias independientes, no componentes de un mismo prototipo ni equipos HVT. Las licencias de las fotos se mantienen para sus respectivas adaptaciones.}
+\end{HVTPage}
+\begin{HVTPage}{Referencias}{Bibliografía}{Antecedentes y créditos verificables}
+\begin{HVTReferences}
+\HVTReference{Departamento de Energía. Module 3: Hydrogen Use in Internal Combustion Engines}{https://www.energy.gov/sites/default/files/2014/03/f11/fcm03r0.pdf}
+\HVTReference{Departamento de Energía. Does the use of hydrogen produce air pollutants such as nitrogen oxides?}{https://www.energy.gov/cmei/fuels/does-use-hydrogen-produce-air-pollutants-such-nitrogen-oxides}
+\HVTReference{Innovative torque-based control strategy for hydrogen internal combustion engine. International Journal of Hydrogen Energy, 2024}{https://doi.org/10.1016/j.ijhydene.2024.05.481}
+\HVTReference{Experimental study on the combustion and emission performance of the hydrogen direct injection engine. International Journal of Hydrogen Energy, 2024}{https://www.sciencedirect.com/science/article/pii/S0360319924007146}
+\HVTReference{Sachi Gahan. BMW Hydrogen 7 Engine, 2007. CC BY-SA 2.0}{https://commons.wikimedia.org/wiki/File:BMW_Hydrogen_7_Engine.jpg}
+\HVTReference{Pexels. Licencia gratuita para fotografías y videos}{https://www.pexels.com/license/}
+\HVTReference{Whoisjohngalt. Hydrogen tanks for Toyota Mirai, 2017. CC BY-SA 4.0}{https://commons.wikimedia.org/wiki/File:Hydrogen_tanks_for_Toyota_Mirai.png}
+\HVTReference{K. Close-up of car engine with belt, 2021. Pexels}{https://www.pexels.com/video/close-up-of-car-engine-with-belt-9737950/}
+\HVTReference{Creative Commons. Licencia de la fotografía del motor}{https://creativecommons.org/licenses/by-sa/2.0/}
+\HVTReference{Creative Commons. Licencia de la fotografía de depósitos}{https://creativecommons.org/licenses/by-sa/4.0/}
+\end{HVTReferences}
+\HVTText{Los artículos se incluyen como antecedentes de investigación; sus resultados no se atribuyen a HVT. Consulta: octubre de 2026. El plan experimental es una propuesta por desarrollar con el motor y laboratorio seleccionados.}
+\end{HVTPage}
+\end{document}

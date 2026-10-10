@@ -1,0 +1,36 @@
+/* Cuadernillos VC-01 y MH-01: retícula editorial HVT y tipografía de la página. */
+.project-research-book { background: #f3f4f1; }
+.project-research-book .course-book__hero { background: #fff; }
+.project-research-book .course-book__hero h1 { font-size: clamp(3.4rem, 4.5vw, 6rem); line-height: 1.12; }
+.project-research-book .course-book__eyebrow,
+.project-research-book .book-page__index span { color: #006e63; }
+.project-research-book .project-status { color: #56605b; font-size: 1.5rem; }
+.project-research-book .book-cover-figure { background: transparent; border: 0; box-shadow: none; }
+.project-research-book .book-cover-figure video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #18221f; }
+.project-research-book figcaption { margin-top: 1.2rem; font-size: 1.35rem; line-height: 1.65; }
+.project-research-book .project-media-credits { margin-top: .8rem; }
+.project-research-book .project-media-credits summary { cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.project-research-book .project-media-credits p { font-size: 1.3rem; margin: 1rem 0; }
+.project-research-book #lamina .book-figure img { width: 100%; height: auto; max-height: 52rem; object-fit: contain; }
+.project-research-book .book-page { box-shadow: none; border: 1px solid #dce1dc; }
+.project-research-book .book-sheet { scroll-margin-top: 9rem; }
+.project-research-book .book-page__content a { color: #006e63; text-decoration: underline; text-underline-offset: .2em; }
+.project-research-book .project-table-wrap { max-width: 100%; overflow-x: auto; margin-bottom: 2.4rem; }
+.project-research-book .project-table-wrap table { margin-bottom: 0; }
+.project-research-book .project-equation { max-width: 100%; overflow-x: auto; border-left: 1px solid #aebcb5; background: #f2f4f0; }
+.project-research-book math { font-size: clamp(1.8rem, 2.2vw, 2.8rem); }
+.project-research-book .book-references li { scroll-margin-top: 10rem; }
+.project-research-book .project-book-end { padding-top: 5rem; padding-bottom: 5rem; }
+.project-research-book :focus-visible { outline: 2px solid #006e63; outline-offset: 4px; }
+@media (max-width: 600px) {
+  .project-research-book .project-table-wrap table { min-width: 52rem; }
+  .project-research-book .book-cover-figure { margin-top: 2.4rem; }
+  .project-research-book .book-page__index strong { font-size: 1.9rem; }
+  .project-research-book .course-book__actions .btn { white-space: normal; height: auto; min-height: 4.8rem; line-height: 1.5; padding: 1.5rem 2rem; }
+}
+@media print {
+  .project-research-book .book-sheet { height: auto !important; overflow: visible !important; break-after: auto; }
+  .project-research-book .book-page { width: 100% !important; zoom: 1; break-inside: auto; }
+  .project-research-book .project-table-wrap { overflow: visible; }
+  .project-research-book video { display: none; }
+}
