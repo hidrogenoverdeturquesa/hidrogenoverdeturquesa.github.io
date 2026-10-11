@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Observatorio Satelital de Energía y Territorio | HVT</title>
-  <meta name="description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <meta name="description" content="Explora satélites y residuos orgánicos por municipio en Boyacá: caracterizaciones, actividades de aprovechamiento, fuentes oficiales e indicadores energéticos.">
   <link rel="canonical" href="https://hidrogenoverdeturquesa.com/observatorio-satelital/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Observatorio Satelital de Energía y Territorio | HVT">
-  <meta property="og:description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <meta property="og:description" content="Explora satélites y residuos orgánicos por municipio en Boyacá: caracterizaciones, actividades de aprovechamiento, fuentes oficiales e indicadores energéticos.">
   <meta property="og:url" content="https://hidrogenoverdeturquesa.com/observatorio-satelital/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Observatorio Satelital de Energía y Territorio | HVT">
-  <meta name="twitter:description" content="Explora imágenes satelitales abiertas y consulta radiación solar, viento, temperatura y precipitación para estudiar el territorio de Boyacá y otras regiones.">
+  <meta name="twitter:description" content="Explora satélites y residuos orgánicos por municipio en Boyacá: caracterizaciones, actividades de aprovechamiento, fuentes oficiales e indicadores energéticos.">
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="/css/observatorio-satelital.css?v=20260921b">
+  <link rel="stylesheet" href="/css/observatorio-satelital.css?v=20261010a">
   <link rel="stylesheet" href="/css/observatorio-navigation.css?v=20260921b">
   <link rel="stylesheet" href="/css/mobile-navigation.css?v=20260828a">
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script defer src="/js/observatorio-satelital.js?v=20260921a"></script>
+  <script defer src="/js/observatorio-satelital.js?v=20261010a"></script>
   <script defer src="/js/fontawesome/all.min.js"></script>
   <script defer src="/js/observatorio-navigation.js?v=20260921b"></script>
   <script defer src="/js/mobile-navigation.js?v=20260828a" data-hvt-mobile-navigation></script>
+  <link rel="stylesheet" href="/css/observatorio-organicos.css?v=20261010a">
+  <script defer src="/js/observatorio-organicos.js?v=20261010a"></script>
 </head>
 <body>
 <a class="skip" href="#explorador">Ir al explorador</a>
@@ -102,11 +104,23 @@
 <main>
   <div class="observatory-context"><a href="/lineas/inteligencia-territorial/">← Inteligencia Territorial</a><span>Datos abiertos</span></div>
   <section class="intro">
-    <div><p class="eyebrow">HVT / Observación de la Tierra</p><h1>La energía comienza<br>por entender el <em>territorio.</em></h1></div>
-    <div class="intro-copy"><p>Observatorio Satelital de Energía y Territorio</p><p>Una ventana a los datos abiertos del planeta. Explora tu región, observa sus cambios y encuentra información para formular proyectos energéticos.</p><a href="#metodologia">Conocer las fuentes y el alcance ↗</a></div>
+    <div><p class="eyebrow">HVT / Observación de la Tierra</p><h1>Un territorio, <em>muchas posibilidades.</em></h1></div>
+    <div class="intro-copy"><p>Observatorio Satelital de Energía y Territorio</p><p>Explora Boyacá municipio a municipio. Cruza evidencia sobre residuos orgánicos con imágenes satelitales e información para estudiar proyectos energéticos.</p><a href="#metodologia">Conocer las fuentes y el alcance ↗</a></div>
   </section>
   <section id="explorador" class="explorer" aria-label="Explorador satelital">
     <aside class="controls">
+      <div class="layer-switch" role="group" aria-label="Modo del explorador"><button id="mode-organics" type="button" aria-pressed="true">Residuos orgánicos</button><button id="mode-satellite" type="button" aria-pressed="false">Satélites</button></div>
+      <section id="organic-panel" aria-labelledby="organic-title">
+        <div class="panel-heading"><span class="step">BOY</span><h2 id="organic-title">Residuos orgánicos</h2></div>
+        <p class="panel-lead">Lo que sabemos de cada municipio, con la fuente a la vista.</p>
+        <label for="municipality-search">Buscar municipio de Boyacá</label><input id="municipality-search" type="search" placeholder="Nombre o código DANE" autocomplete="off" disabled>
+        <label for="evidence-filter">Filtrar por evidencia disponible</label><select id="evidence-filter" disabled><option value="all">Toda la cobertura</option><option value="characterization">Caracterización de orgánicos</option><option value="activity">Actividad de aprovechamiento</option><option value="context">Solo contexto PGIRS</option><option value="missing">Sin dato integrado</option></select>
+        <label for="municipality-select">Selecciona un municipio</label><select id="municipality-select" disabled><option value="">Cargando municipios…</option></select>
+        <p id="organic-status" class="hint" role="status">Cargando fuentes municipales…</p><button id="retry-organics" type="button" hidden>Reintentar carga</button>
+        <div id="municipality-detail" class="municipality-detail"><p class="eyebrow">Tu siguiente exploración</p><h3>Selecciona un municipio</h3><p>Haz clic en una zona del mapa o busca su nombre. Verás qué información existe, de qué año es y qué falta por conocer.</p></div>
+      </section>
+      <div id="satellite-panel" hidden>
+      <label class="satellite-toggle"><input id="satellite-enabled" type="checkbox"> Mostrar imágenes satelitales</label>
       <div class="panel-heading"><span class="step">01</span><h2>Explora el territorio</h2></div>
       <label for="region">Ir a una región</label>
       <select id="region"><option value="boyaca">Boyacá</option><option value="tunja">Tunja</option><option value="sogamoso">Sogamoso</option><option value="duitama">Duitama</option><option value="tota">Lago de Tota</option><option value="guajira">La Guajira</option><option value="colombia">Colombia</option><option value="custom" disabled>Punto personalizado</option></select>
@@ -121,15 +135,23 @@
       <div class="panel-heading"><span class="step">02</span><h2>Elige un punto</h2></div>
       <p class="hint">Haz clic en el mapa o ingresa coordenadas.</p>
       <form id="point-form"><div class="coordinate-inputs"><div><label for="latitude">Latitud</label><input id="latitude" type="number" min="-85" max="85" step="any" value="5.5353" required></div><div><label for="longitude">Longitud</label><input id="longitude" type="number" min="-180" max="180" step="any" value="-73.3678" required></div></div><button class="primary" type="submit">Consultar este punto ↗</button></form>
+      </div>
     </aside>
     <div class="map-column">
-      <div class="map-toolbar"><span><i class="live-dot"></i> <strong id="location-name">Boyacá, Colombia</strong></span><button type="button" id="reset-view">Centrar en Boyacá</button></div>
-      <div id="satellite-map" aria-label="Mapa satelital interactivo. También puedes seleccionar coordenadas en el formulario."></div>
+      <div class="map-toolbar"><span><i class="live-dot"></i> <strong id="location-name">Boyacá, Colombia</strong></span><div class="map-actions"><label id="organic-background-control" class="background-toggle"><input id="organic-satellite-background" type="checkbox"> Fondo satelital</label><button type="button" id="expand-map" aria-pressed="false">Ampliar mapa</button><button type="button" id="reset-view">Centrar en Boyacá</button></div></div>
+      <div class="map-stage"><div id="satellite-map" aria-label="Mapa interactivo de evidencia municipal y satélites. También puedes usar el selector de municipios o el formulario de coordenadas."></div>
+      <div class="map-legend" id="organic-legend" aria-label="Leyenda de la capa de residuos"><strong>Evidencia municipal</strong><span><i class="legend-characterization"></i>Caracterización de orgánicos</span><span><i class="legend-activity"></i>Actividad documentada</span><span><i class="legend-context"></i>Solo contexto PGIRS</span><span><i class="legend-missing"></i>Sin dato integrado</span><small>El color indica tipo de evidencia, no cantidad de residuos.</small></div></div>
       <div class="map-caption"><span id="image-status" role="status">Preparando el mapa…</span><span id="point-label">5.5353, −73.3678</span></div>
-      <div class="map-note"><strong>Lectura del paisaje</strong><span>Color natural · nubes en blanco · vegetación en tonos verdes. Zonas negras o vacías pueden indicar ausencia de observación.</span></div>
+      <div class="map-note" id="map-reading"><strong>Cómo leer esta capa</strong><span>Los residuos proceden de documentos municipales. Sin dato no significa cero; las imágenes satelitales no miden directamente estas cantidades.</span></div>
     </div>
   </section>
   <noscript><p class="notice">Activa JavaScript para explorar el mapa. También puedes consultar <a href="https://worldview.earthdata.nasa.gov/">NASA Worldview</a> y <a href="https://power.larc.nasa.gov/data-access-viewer/">NASA POWER</a>.</p></noscript>
+  <section class="organic-inventory" aria-labelledby="inventory-title">
+    <div class="section-heading"><div><p class="eyebrow">Primera cobertura · Boyacá</p><h2 id="inventory-title">Evidencia para abrir conversaciones</h2></div><button id="download-organics" class="download" type="button" disabled>↓ Descargar inventario CSV</button></div>
+    <div class="coverage-strip" id="coverage-strip"><p>Cargando cobertura documental…</p></div>
+    <p class="inventory-note">Esta es una base documental inicial, no un inventario completo de biomasa. Un municipio puede aparecer en varias coberturas. Los porcentajes pueden corresponder a métodos y lugares de muestreo distintos. No se suman ni se convierten automáticamente en toneladas o energía.</p>
+    <details><summary>Consultar municipios, registros y fuentes</summary><div class="table-scroll inventory-scroll"><table><caption>Inventario municipal de Boyacá · Corte de revisión: 28 de septiembre de 2026. La tabla sigue el filtro del mapa; el CSV incluye los 123 municipios.</caption><thead><tr><th scope="col">Municipio</th><th scope="col">Evidencia</th><th scope="col">Orgánicos</th><th scope="col">Año / alcance</th><th scope="col">Fuente</th></tr></thead><tbody id="organic-table"></tbody></table></div></details>
+  </section>
   <section class="analysis" aria-labelledby="analysis-title">
     <div class="section-heading"><div><p class="eyebrow">Del territorio a la información</p><h2 id="analysis-title">Una primera lectura energética</h2></div><button type="button" class="download" id="download-csv" disabled>↓ Descargar datos CSV</button></div>
     <p id="data-status" role="status">Selecciona un punto y pulsa «Consultar este punto» para cargar su climatología.</p>
@@ -144,10 +166,10 @@
   </section>
   <section id="metodologia" class="methodology">
     <div><p class="eyebrow">Datos con contexto</p><h2>Observar. Comparar.<br>Formular mejores preguntas.</h2><p>Este observatorio apoya la exploración inicial y la formulación de proyectos. La viabilidad de una instalación requiere además mediciones de campo, relieve, acceso a redes, restricciones ambientales y evaluación técnica.</p><a href="/#contact">Conversemos sobre tu región →</a></div>
-    <div class="sources"><details open><summary>Imágenes satelitales abiertas</summary><p>Terra y Aqua (MODIS), Suomi NPP y NOAA-20 (VIIRS), servidos por NASA GIBS. Composiciones de color natural con cobertura dependiente de cada pasada y fecha. Las imágenes tienen nubes y posibles vacíos; no representan un mosaico libre de nubes. La visualización alcanza el nivel nativo 9 de la cuadrícula web.</p><a href="https://nasa-gibs.github.io/gibs-api-docs/" target="_blank" rel="noopener noreferrer">Documentación de NASA GIBS ↗</a> · <a id="worldview-link" href="https://worldview.earthdata.nasa.gov/" target="_blank" rel="noopener noreferrer">Abrir esta vista en Worldview ↗</a></details>
+    <div class="sources"><details open><summary>Residuos orgánicos: fuentes y vacíos</summary><p>La cartografía incluye los 123 municipios de Boyacá. La matriz de Corpoboyacá cubre 87 municipios de su jurisdicción y aporta contexto de residuos totales, sin una fracción orgánica homogénea. Se añaden caracterizaciones de Tunja y Paipa y registros de talleres y pacas digestoras de 2025. Cada ficha enlaza su documento y página o celda.</p><p>El dato de generación de la matriz no tiene un período común desagregado. No se multiplica por porcentajes de otro año ni de otro alcance. En Paipa, el tonelaje de la tabla 6 se excluye por una inconsistencia entre componentes y total. Los límites son geoestadísticos, simplificados para visualización; no sustituyen un deslinde legal.</p><p>Para estudiar biogás hace falta conocer cantidades recolectables, composición, humedad, estacionalidad, usos actuales y distancias de transporte. Esta capa ayuda a localizar evidencia y vacíos; no asigna rendimientos energéticos.</p><a href="/data/observatorio/fuentes.json" target="_blank" rel="noopener">Ver catálogo de fuentes y trazabilidad ↗</a> · <a href="https://www.corpoboyaca.gov.co/vigente/seguimiento-a-los-pgirs/" target="_blank" rel="noopener noreferrer">Seguimiento PGIRS ↗</a></details><details><summary>Imágenes satelitales abiertas</summary><p>Terra y Aqua (MODIS), Suomi NPP y NOAA-20 (VIIRS), servidos por NASA GIBS. Composiciones de color natural con cobertura dependiente de cada pasada y fecha. Las imágenes tienen nubes y posibles vacíos; no representan un mosaico libre de nubes. La visualización alcanza el nivel nativo 9 de la cuadrícula web.</p><a href="https://nasa-gibs.github.io/gibs-api-docs/" target="_blank" rel="noopener noreferrer">Documentación de NASA GIBS ↗</a> · <a id="worldview-link" href="https://worldview.earthdata.nasa.gov/" target="_blank" rel="noopener noreferrer">Abrir esta vista en Worldview ↗</a></details>
     <details><summary>Indicadores, escala y período</summary><p>NASA POWER combina observaciones satelitales y modelos de reanálisis. La radiación procede de CERES SYN1deg (cuadrícula de 1° × 1°); las variables meteorológicas, de MERRA-2 (0,5° × 0,625°). Son datos regionales: dos puntos cercanos pueden tener valores iguales. El período se muestra tal como lo entrega el proveedor. No se infiere un potencial energético de una imagen de color natural.</p><a href="https://power.larc.nasa.gov/docs/methodology/data/sources/" target="_blank" rel="noopener noreferrer">Fuentes y resolución de NASA POWER ↗</a> · <a id="power-link" href="https://power.larc.nasa.gov/data-access-viewer/" target="_blank" rel="noopener noreferrer">Consultar fuente ↗</a></details>
     <details><summary>¿Necesitas más detalle? Sentinel y Landsat</summary><p>Para estudiar coberturas, vegetación, agua o cambios de uso del suelo, consulta los catálogos abiertos de Sentinel y Landsat. Estos catálogos se abren en sus portales; todavía no son capas integradas en este visor. Algunas descargas requieren una cuenta gratuita.</p><a href="https://browser.dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus Browser · Sentinel ↗</a><br><a href="https://earthexplorer.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS EarthExplorer · Landsat ↗</a></details></div>
   </section>
 </main>
-<footer><span>HVT · Hidrógeno Verde Turquesa</span><a href="/lineas/inteligencia-territorial/">Inteligencia Territorial e Innovación Tecnológica ↗</a><span>Imágenes: NASA GIBS · Indicadores: NASA POWER · Cartografía: OpenStreetMap</span></footer>
+<footer><span>HVT · Hidrógeno Verde Turquesa</span><a href="/lineas/inteligencia-territorial/">Inteligencia Territorial e Innovación Tecnológica ↗</a><span>Imágenes: NASA GIBS · Indicadores: NASA POWER · Residuos: alcaldías y Corpoboyacá · Municipios: DANE · Mapa base: OpenStreetMap</span></footer>
 </body></html>

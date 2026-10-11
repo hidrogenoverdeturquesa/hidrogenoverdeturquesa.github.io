@@ -103,6 +103,7 @@
     if (marker) marker.setLatLng([lat,lon]);
     if (map && zoom !== undefined) map.setView([lat,lon],zoom);
     clearData();
+    root.document.dispatchEvent(new CustomEvent('hvt:point-selected', {detail:{lat,lon}}));
   }
   function updateWorldview() {
     if (!map) return;
@@ -114,6 +115,11 @@
     const key = $('satellite').value;
     const config = layers[key];
     const date = $('imagery-date').value;
+    if ($('satellite-enabled') && !$('satellite-enabled').checked) {
+      if (imagery && map) { map.removeLayer(imagery); imagery = null; }
+      if (map) status('image-status','Mapa base · Datos municipales independientes de las imágenes satelitales');
+      return;
+    }
     $('imagery-date').min = config.start;
     $('previous-date').disabled = date <= config.start;
     $('next-date').disabled = date >= today;
@@ -205,6 +211,7 @@
   });
   $('reset-view').addEventListener('click', () => { $('region').value = 'boyaca'; selectPoint(...[regions.boyaca[0],regions.boyaca[1],regions.boyaca[3],regions.boyaca[2]]); });
   $('satellite').addEventListener('change',updateImage);
+  if ($('satellite-enabled')) $('satellite-enabled').addEventListener('change',updateImage);
   $('imagery-date').addEventListener('change',updateImage);
   [['previous-date',-1],['next-date',1]].forEach(([id,offset]) => $(id).addEventListener('click', () => {
     const date = $('imagery-date').value;
@@ -238,5 +245,10 @@
     status('image-status','Mapa no disponible: revisa tu conexión y recarga la página.',true);
   }
   updateImage();
+  root.HVTObservatory = {map, selectPoint, queryPower, setSatellite(enabled) {
+    if ($('satellite-enabled')) $('satellite-enabled').checked = enabled;
+    updateImage();
+  }};
+  root.document.dispatchEvent(new CustomEvent('hvt:map-ready'));
   queryPower();
 })(typeof window !== 'undefined' ? window : globalThis);

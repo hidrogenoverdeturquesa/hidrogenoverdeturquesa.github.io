@@ -18,6 +18,7 @@ function setup(withMap=false) {
   w.fetch=(url,options)=>new Promise((resolve,reject)=>calls.push({url,options,resolve:data=>resolve({ok:true,json:async()=>data}),reject}));
   const state={tiles:[],handlers:{},zoom:8};
   if (withMap) {
+    w.document.getElementById('satellite-enabled').checked=true;
     const map={setView(p,z){state.zoom=z;return this;},getZoom(){return state.zoom;},on(name,fn){state.handlers[name]=fn;return this;},removeLayer(layer){layer.removed=true;},getBounds(){return {getWest:()=>-74,getSouth:()=>5,getEast:()=>-72,getNorth:()=>7};}};
     w.L={map:()=>map,divIcon:()=>({}),marker:()=>({addTo(){return this;},setLatLng(p){state.point=p;}}),control:{scale:()=>({addTo(){}})},tileLayer:(url,options)=>{
       const t={url,options,events:{},on(name,fn){this.events[name]=fn;return this;},addTo(){return this;},setOpacity(value){this.opacity=value;}};state.tiles.push(t);return t;
