@@ -66,7 +66,7 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/styles.css?v=recognitions-20261009a">
+    <link rel="stylesheet" href="css/styles.css?v=welcome-20261018e">
     <link rel="stylesheet" href="css/vendor.css?v=sin-prism-20260726">
 
     <link rel="stylesheet" href="css/home-editorial.css?v=20261009a">
@@ -93,7 +93,24 @@
     <!-- preloader
     ================================================== -->
     <div id="preloader">
-        <div id="loader"></div>
+        <video class="loader-welcome__background" data-welcome-background muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div id="loader" class="loader-welcome" role="dialog" aria-modal="true" aria-labelledby="loader-welcome-title" aria-describedby="loader-welcome-intro">
+            <button class="loader-welcome__close" type="button" data-loader-enter aria-label="Cerrar ventana de bienvenida" disabled>×</button>
+            <div class="loader-welcome__body">
+                <div class="loader-welcome__intro">
+                    <h2 id="loader-welcome-title" tabindex="-1">¿Qué deseas hacer hoy?</h2>
+                    <p id="loader-welcome-intro">Somos una empresa de investigación y desarrollo de proyectos sostenibles para Latinoamérica.</p>
+                </div>
+                <nav class="loader-welcome__choices" aria-label="Opciones de HVT">
+                    <div class="loader-welcome__choice"><a href="#contact" data-loader-destination="#contact">Contratar un servicio</a><p>Encuentra una solución para tu empresa.</p></div>
+                    <div class="loader-welcome__choice"><a href="#contact" data-loader-destination="#contact">Desarrollar una idea</a><p>Cuéntanos tu reto o propuesta.</p></div>
+                </nav>
+            </div>
+            <div class="loader-welcome__foot">
+                <p class="loader-welcome__status" role="status" aria-live="polite">Preparando la página…</p>
+                <button class="loader-welcome__enter" type="button" data-loader-enter disabled>Explorar nuestra página</button>
+            </div>
+        </div>
     </div>
 
 
@@ -1496,7 +1513,7 @@
     ================================================== -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js?v=sin-prism-20260726"></script>
-    <script src="js/main.js?v=service-pages-20260913a"></script>
+    <script src="js/main.js?v=welcome-20261018e"></script>
 
 <!-- work-viewer:start -->
     <dialog class="work-gallery__viewer" data-work-viewer aria-labelledby="work-viewer-title">

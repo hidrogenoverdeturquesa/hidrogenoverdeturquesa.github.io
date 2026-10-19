@@ -98,6 +98,43 @@
 
         const doc = document.documentElement;
         const loader = preloader.querySelector('#loader');
+        const welcome = loader && loader.classList.contains('loader-welcome');
+        const backgroundVideo = welcome ? preloader.querySelector('[data-welcome-background]') : null;
+        const enterButtons = welcome ? loader.querySelectorAll('[data-loader-enter]') : [];
+        const welcomeStatus = welcome ? loader.querySelector('.loader-welcome__status') : null;
+        const background = welcome ? Array.from(document.body.children).filter(function(element) {
+            return element !== preloader && element.tagName !== 'SCRIPT' && !element.inert;
+        }) : [];
+        background.forEach(function(element) { element.inert = true; });
+        if (welcome) loader.querySelector('#loader-welcome-title').focus({ preventScroll: true });
+        if (backgroundVideo) {
+            const backgrounds = [
+                { src: 'videos/portafolio/planta-investigacion.mp4', poster: 'videos/bienvenida/investigacion.jpg' },
+                { src: 'videos/portafolio/casa-campestre.mp4', poster: 'videos/bienvenida/casas-coloniales.jpg' },
+                { src: 'videos/bienvenida/auto-combustion-hidrogeno.mp4', poster: 'images/portfolio/motor-hidrogeno.jpg' }
+            ];
+            const selected = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const saveData = navigator.connection && navigator.connection.saveData;
+            backgroundVideo.poster = selected.poster;
+            backgroundVideo.dataset.selectedVideo = selected.src;
+            if (!reducedMotion && !saveData) {
+                const playBackground = function() {
+                    try {
+                        const playback = backgroundVideo.play();
+                        if (playback && playback.catch) playback.catch(function() {});
+                    } catch (error) {
+                        // Keep the selected poster when video playback is unavailable.
+                    }
+                };
+                backgroundVideo.src = selected.src;
+                playBackground();
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden) backgroundVideo.pause();
+                    else if (!revealed) playBackground();
+                });
+            }
+        }
         const pageSlug = (window.location.pathname.split('/').pop() || 'index')
             .toLowerCase()
             .replace(/\.html$/i, '');
@@ -107,6 +144,8 @@
         let minimumTimeElapsed = false;
         let resourcesReady = document.readyState === 'complete';
         let revealed = false;
+        let welcomeReady = false;
+        let pendingDestination = null;
 
         const generalFacts = [
             'El hidrógeno no es una fuente primaria de energía: es un vector capaz de almacenarla y transportarla.',
@@ -136,7 +175,7 @@
         const pageLanguage = (doc.lang || 'es').toLowerCase().split('-')[0];
         const availableFacts = localizedFacts[pageLanguage] || (pageSlug === 'pueblito-boyacense' ? pueblitoFacts : generalFacts);
 
-        if (loader && !loader.querySelector('.loader-fact')) {
+        if (loader && !welcome && !loader.querySelector('.loader-fact')) {
             const fact = document.createElement('div');
             const factLabel = document.createElement('span');
             const factText = document.createElement('p');
@@ -154,12 +193,14 @@
 
         doc.classList.add('ss-preload');
 
-        const revealPage = function(forceReveal) {
+        const closePreloader = function() {
             if (revealed) return;
-            if (!forceReveal && (!minimumTimeElapsed || !resourcesReady)) return;
             revealed = true;
+            if (backgroundVideo) backgroundVideo.pause();
+            background.forEach(function(element) { element.inert = false; });
             doc.classList.remove('ss-preload');
             doc.classList.add('ss-loaded');
+            if (welcome) document.querySelector('.s-header__logo a')?.focus({ preventScroll: true });
 
             preloader.addEventListener('transitionend', function(e) {
                 if (e.target.matches("#preloader")) {
@@ -171,6 +212,43 @@
                 preloader.style.display = 'none';
             }, 800);
         };
+
+        const revealPage = function(forceReveal) {
+            if (revealed || (!forceReveal && (!minimumTimeElapsed || !resourcesReady))) return;
+            if (!welcome) {
+                closePreloader();
+                return;
+            }
+            welcomeReady = true;
+            enterButtons.forEach(function(button) { button.disabled = false; });
+            welcomeStatus.textContent = 'La p\u00e1gina est\u00e1 lista para explorar.';
+            if (pendingDestination) {
+                const destination = pendingDestination;
+                pendingDestination = null;
+                closePreloader();
+                if (destination.charAt(0) === '#') {
+                    window.location.hash = destination;
+                    document.querySelector(destination)?.scrollIntoView();
+                } else {
+                    window.location.assign(destination);
+                }
+            }
+        };
+
+        if (welcome) {
+            enterButtons.forEach(function(button) { button.addEventListener('click', closePreloader); });
+            loader.querySelectorAll('[data-loader-destination]').forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    pendingDestination = link.getAttribute('href');
+                    if (welcomeReady) revealPage(true);
+                    else welcomeStatus.textContent = 'Abriendo cuando la p\u00e1gina est\u00e9 lista\u2026';
+                });
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && welcomeReady && !revealed) closePreloader();
+            });
+        }
 
         const elapsedTime = (window.performance && performance.now ? performance.now() : Date.now()) - loaderStartedAt;
         window.setTimeout(function() {
