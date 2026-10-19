@@ -752,11 +752,28 @@
         document.querySelectorAll('.line-service').forEach(function(service) {
             service.addEventListener('toggle', function() {
                 if (!service.open) return;
-                service.closest('.line-detail').querySelectorAll('.line-service').forEach(function(other) {
+                const group = service.closest('.line-detail, .energy-services');
+                if (!group) return;
+                group.querySelectorAll('.line-service').forEach(function(other) {
                     if (other !== service) other.open = false;
                 });
             });
         });
+
+        const openLinkedService = function() {
+            const id = decodeURIComponent(window.location.hash.slice(1));
+            if (!id.startsWith('servicio-')) return;
+            const service = document.getElementById(id);
+            if (!service || !service.classList.contains('line-service')) return;
+            const group = service.closest('.line-detail, .energy-services');
+            if (group) group.querySelectorAll('.line-service[open]').forEach(function(other) {
+                if (other !== service) other.open = false;
+            });
+            service.open = true;
+            window.requestAnimationFrame(function() { service.scrollIntoView({ block: 'start' }); });
+        };
+        window.addEventListener('hashchange', openLinkedService);
+        openLinkedService();
 
         const triggers = Array.from(document.querySelectorAll('.services-item__trigger'));
         const panels = Array.from(document.querySelectorAll('.line-detail'));

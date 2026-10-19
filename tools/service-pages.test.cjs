@@ -23,7 +23,18 @@ for (const locale of ['', 'en/', 'ru/']) {
             const card = source.querySelector(`[data-line-card="${code}"]`);
             assert.equal(d.querySelectorAll('h1').length, 1);
             assert.equal(text(d.querySelector('h1')), text(card.querySelector('.services-item__title')));
-            assert.deepEqual([...d.querySelectorAll('.line-service')].map(text), [...sourcePanel.querySelectorAll('.line-service')].map(text));
+            if (locale) {
+                assert.deepEqual([...d.querySelectorAll('.line-service')].map(text), [...sourcePanel.querySelectorAll('.line-service')].map(text));
+            } else {
+                const links = [...sourcePanel.querySelectorAll('.line-service-link')];
+                const services = [...d.querySelectorAll('#servicios .line-service')];
+                assert.equal(links.length, services.length);
+                assert.equal(sourcePanel.querySelectorAll('.line-service').length, 0);
+                for (const [i, link] of links.entries()) {
+                    assert.equal(new URL(link.getAttribute('href'), url).href, `${url}#${services[i].id}`);
+                    assert.equal(text(link.querySelector('.line-service-link__title')), text(services[i].querySelector('summary')));
+                }
+            }
             assert.deepEqual([...d.querySelectorAll('.line-projects a')].map(text), [...sourcePanel.querySelectorAll('.line-projects a')].map(text));
             assert.equal(d.querySelector('.line-detail').hidden, false);
             assert.equal(d.querySelector('[data-close-line]'), null);
@@ -101,6 +112,22 @@ test('energy editorial sections preserve navigation and service interaction', as
     await pause();
     assert.equal(first.open, false);
     assert.equal(second.open, true);
+    dom.window.close();
+});
+
+test('a service link opens its exact section on arrival', async () => {
+    const source = new JSDOM(read('index.html')).window.document;
+    const link = source.querySelector('#line-detail-001 .line-service-link:nth-child(3)');
+    const destination = new URL(link.getAttribute('href'), 'https://hidrogenoverdeturquesa.com/');
+    const dom = new JSDOM(read('lineas/energia/index.html'), {url: destination.href, runScripts: 'outside-only'});
+    const w = dom.window, d = w.document;
+    w.HTMLElement.prototype.scrollIntoView = function() {};
+    w.requestAnimationFrame = callback => callback();
+    w.eval(workLines + '\nssWorkLines();');
+    await pause();
+    const target = d.getElementById(destination.hash.slice(1));
+    assert.equal(target.open, true);
+    assert.equal(d.querySelectorAll('#servicios .line-service[open]').length, 1);
     dom.window.close();
 });
 
