@@ -8,8 +8,16 @@ const lines = ['energia', 'bioeconomia', 'inteligencia-territorial', 'infraestru
 const main = fs.readFileSync(path.join(root, 'js/main.js'), 'utf8');
 const workLines = main.slice(main.indexOf('const ssWorkLines = function()'), main.indexOf('/* impact counters'));
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const text = node => node.textContent.replace(/\s+/g, ' ').trim();
+const text = node => node.textContent.replace(/[←→↗]/g, '').replace(/\s+/g, ' ').trim();
 const pause = () => new Promise(resolve => setTimeout(resolve, 25));
+
+test('home page links and gallery controls use text without decorative arrows', () => {
+    const source = read('index.html');
+    assert.doesNotMatch(source, /[←→↗]/);
+    const d = new JSDOM(source).window.document;
+    assert.equal(d.querySelectorAll('.line-service-link').length, 25);
+    assert.ok([...d.querySelectorAll('.line-service-link, .line-projects a')].every(link => text(link)));
+});
 
 for (const locale of ['', 'en/', 'ru/']) {
     for (const [index, slug] of lines.entries()) {
