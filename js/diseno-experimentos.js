@@ -370,7 +370,7 @@
         show(target);
     }
     function invalidate() {
-        if(plan) { stale=true; $('[data-outdated]').hidden=false; $('[data-generate]').disabled=false; $('[data-generate]').textContent='Generar mi plan actualizado →'; }
+        if(plan) { stale=true; $('[data-outdated]').hidden=false; $('[data-generate]').disabled=false; $('[data-generate]').textContent='Generar mi plan actualizado'; }
         $('[data-replace-confirm]').hidden=true;
     }
     function edit(event) { if(/^(factor|repetitions$|blocking$)/.test(event.target.name||''))form.elements.feasible.checked=false; dirty=true; clearError();sync();invalidate();save();$('[data-draft-banner]').hidden=true; }
@@ -412,7 +412,7 @@
             '<td><input type="text" maxlength="600" data-note="'+i+'" aria-label="Observaciones, corrida '+r.run+'" placeholder="Incidencias o notas"></td></tr>').join('');
         $('[data-output]').hidden=false;
         $('[data-outdated]').hidden=true;$('[data-replace-confirm]').hidden=true;stale=false;
-        $('[data-generate]').disabled=true;$('[data-generate]').textContent='Plan generado ↓';
+        $('[data-generate]').disabled=true;$('[data-generate]').textContent='Plan generado';
         document.getElementById('doe-output-title').focus();
     }
     form.addEventListener('submit',event=>{

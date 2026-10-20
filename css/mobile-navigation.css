@@ -646,13 +646,6 @@
         overflow-wrap: anywhere;
     }
 
-    .hvt-mobile-sheet__group a::after {
-        content: "\2192";
-        flex: 0 0 auto;
-        color: var(--hvt-mobile-green);
-        font-size: 15px;
-    }
-
     .hvt-mobile-sheet__group a:hover,
     .hvt-mobile-sheet__group a:focus-visible {
         color: #006f66;

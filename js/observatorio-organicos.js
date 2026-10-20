@@ -34,7 +34,7 @@
   const fmt = value => value.toLocaleString('es-CO',{maximumFractionDigits:2});
   let records=[], geography, sources, selected=null, polygons=null, organicMode=true, selecting=false;
   const api = () => root.HVTObservatory;
-  const sourceLink = (key,page) => {const link=el('a',sources[key].title+' ↗');link.href=sources[key].url+(page?'#page='+page:'');link.target='_blank';link.rel='noopener noreferrer';return link;};
+  const sourceLink = (key,page) => {const link=el('a',sources[key].title+'');link.href=sources[key].url+(page?'#page='+page:'');link.target='_blank';link.rel='noopener noreferrer';return link;};
   function clearSelection() {
     selected=null; $('municipality-select').value='';
     $('municipality-detail').replaceChildren(el('p','Tu siguiente exploración','eyebrow'),el('h3','Selecciona un municipio'),el('p','Haz clic en una zona del mapa o busca su nombre. Verás qué información existe, de qué año es y qué falta por conocer.'));
@@ -64,7 +64,7 @@
       details.append(el('p',c.totalGenerationTonYear === null ? 'Sin cantidad legible de generación total en esta matriz.' : fmt(c.totalGenerationTonYear)+' t/año de residuos sólidos totales. No corresponde a toneladas de orgánicos.'),el('p','Período del promedio: no precisado. '+c.cell),sourceLink(c.source),el('p','No se combina este total con porcentajes de otros años o alcances.','hint'));panel.append(details);
     }
     panel.append(el('p','Punto de referencia municipal; no representa una planta de tratamiento.','hint'));
-    const climate=el('button','Consultar clima de este municipio ↗','primary');climate.type='button';
+    const climate=el('button','Consultar clima de este municipio','primary');climate.type='button';
     climate.addEventListener('click',()=>{syncPoint(r);api()?.queryPower();if($('expand-map').getAttribute('aria-pressed')==='true')expand(false);d.querySelector('.analysis').scrollIntoView?.({behavior:'smooth'});});panel.append(climate);
     syncPoint(r);
     if(polygons)polygons.eachLayer(layer=>{layer.setStyle(style(layer.feature));if(layer.feature.properties.code===code){layer.bringToFront();if(fit)api().map.fitBounds(layer.getBounds(),{padding:[25,25],maxZoom:11});}});

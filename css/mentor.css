@@ -29,7 +29,7 @@
 .mentor__form input { min-width:0; flex:1; height:44px; margin:0; padding:0 12px; border:0; color:var(--color-gray-15,#323333); background:transparent; font-size:12.5px; }
 .mentor__form input::placeholder { color:var(--color-gray-9,#737474); opacity:1; }
 .mentor__form input:focus { outline:0; }
-.mentor__form button { width:45px; border:0; color:#fff; background:var(--mentor-green); font-size:20px; cursor:pointer; }
+.mentor__form button { width:64px; border:0; color:#fff; background:var(--mentor-green); font-size:13px; font-weight:700; cursor:pointer; }
 .mentor__form button:hover,.mentor__form button:focus { color:#fff; background:var(--color-black,#000); }
 .mentor__privacy { margin:8px 16px 12px; flex:0 0 auto; color:var(--color-gray-12,#4f5151); font-size:9.5px; line-height:1.4; }
 .mentor__hint { position:absolute; right:0; bottom:77px; width:290px; padding:12px 14px; border:1px solid var(--color-border,#e0e0e0); border-left:4px solid var(--mentor-green); border-radius:0; color:var(--color-text,#595b5b); background:#fff; box-shadow:0 10px 30px rgba(0,0,0,.14); font-family:var(--font-1,"Roboto",sans-serif); font-size:12.5px; line-height:1.5; opacity:0; visibility:hidden; transform:translateY(8px); transition:.25s; cursor:pointer; }
@@ -53,7 +53,7 @@
     .mentor__actions button { min-height:44px; padding:8px; font-size:12px; overflow-wrap:anywhere; }
     .mentor__form { height:48px; min-height:48px; margin:0 12px; flex-basis:48px; }
     .mentor__form input { height:46px; font-size:16px; }
-    .mentor__form button { width:48px; min-width:48px; }
+    .mentor__form button { width:64px; min-width:64px; }
     .mentor__privacy { margin:8px 12px 10px; font-size:10px; }
 }
 @media (max-width:400px) {

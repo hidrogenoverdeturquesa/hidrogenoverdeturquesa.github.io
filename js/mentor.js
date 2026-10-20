@@ -152,7 +152,7 @@
             <form class="mentor__form">
                 <label class="mentor__sr" for="mentor-question">Escribe tu pregunta</label>
                 <input id="mentor-question" maxlength="240" autocomplete="off" placeholder="Escribe lo que deseas comprender…">
-                <button type="submit" aria-label="Enviar pregunta">→</button>
+                <button type="submit" aria-label="Enviar pregunta">Enviar</button>
             </form>
             <p class="mentor__privacy">Mentor utiliza únicamente tu recorrido dentro de este sitio para contextualizar sus sugerencias.</p>
         </section>

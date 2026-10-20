@@ -1033,7 +1033,7 @@
         if (!document.querySelector('script[data-hvt-mobile-navigation]')) {
             const mobileNavigationStyle = document.createElement('link');
             mobileNavigationStyle.rel = 'stylesheet';
-            mobileNavigationStyle.href = '/css/mobile-navigation.css?v=20260828a';
+            mobileNavigationStyle.href = '/css/mobile-navigation.css?v=no-arrows-20261019b';
             document.head.appendChild(mobileNavigationStyle);
 
             const mobileNavigationScript = document.createElement('script');
@@ -1052,7 +1052,7 @@
             document.head.appendChild(labStyle);
 
             const labScript = document.createElement('script');
-            labScript.src = '/js/laboratorio.js?v=mobile-navigation-20260828a';
+            labScript.src = '/js/laboratorio.js?v=no-arrows-20261019b';
             labScript.async = false;
             labScript.dataset.hvtLab = 'true';
             document.body.appendChild(labScript);
@@ -1063,11 +1063,11 @@
         if (MENTOR_ENABLED && !document.querySelector('script[data-mentor]')) {
             const mentorStyle = document.createElement('link');
             mentorStyle.rel = 'stylesheet';
-            mentorStyle.href = '/css/mentor.css?v=mobile-navigation-20260828a';
+            mentorStyle.href = '/css/mentor.css?v=no-arrows-20261019b';
             document.head.appendChild(mentorStyle);
 
             const mentorScript = document.createElement('script');
-            mentorScript.src = '/js/mentor.js?v=mobile-navigation-20260828a';
+            mentorScript.src = '/js/mentor.js?v=no-arrows-20261019b';
             mentorScript.async = false;
             mentorScript.dataset.mentor = 'true';
             document.body.appendChild(mentorScript);
