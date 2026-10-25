@@ -2,6 +2,6 @@
   "name": "hvt-experimental-tests",
   "private": true,
   "description": "Development-only scientific workspace and public designer checks",
-  "scripts": {"test": "node --test *.test.cjs", "test:visual": "node visual-check.cjs"},
+  "scripts": {"school:content": "node generate-school-content.cjs", "school:content:check": "node generate-school-content.cjs --check", "test": "npm run school:content:check && node --test *.test.cjs", "test:visual": "node visual-check.cjs"},
   "devDependencies": {"jsdom": "26.1.0", "ws": "8.18.3"}
 }

@@ -19,6 +19,9 @@
 .school-lead { font-size:19px; max-width:580px; line-height:1.65; }
 .school-button { display:inline-flex; align-items:center; justify-content:space-between; gap:32px; padding:16px 24px; background:#007f72; color:white!important; font-size:15px; font-weight:700; }
 .school-button:hover { background:#005e55; }
+.school-hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.school-button-secondary { background:transparent; border:1px solid #007f72; color:#006b61!important; }
+.school-button-secondary:hover { background:#eef7f4; }
 .school-access { font-size:13px; margin:20px 0 0; }
 .school-access span { color:#007e70; margin-right:7px; }
 .school-feature { background:white; box-shadow:0 20px 55px #183d3010; border-bottom:4px solid #008f80; }
@@ -55,6 +58,8 @@
 .school-tags { display:flex; gap:5px; flex-wrap:wrap; margin:auto 0 24px; }
 .school-tags span { font-size:11px; background:#eef5f0; color:#2c594d; padding:4px 7px; }
 .school-course-link { display:flex; justify-content:space-between; padding-top:18px; border-top:1px solid #dce6df; font-weight:700; font-size:14px; color:#007769!important; }
+.school-card-actions { margin-top:auto; }
+.school-workbook-link { margin-top:12px; }
 .school-empty { padding:32px; background:white; }
 .school-learning { background:#122e29; color:#d7e6dc; padding:65px 0; }
 .school-learning h2,.school-learning h3 { color:#fff; }
@@ -78,7 +83,7 @@
 .school-hero { padding:30px 0 20px; background:white; }
 .school-hero-grid { display:block; }
 .school-eyebrow { font-size:10px; margin:0 0 14px; padding:0; border:0; }
-.school-hero .school-overline,.school-lead,.school-hero .school-button,.school-feature,.school-help { display:none; }
+.school-hero .school-overline,.school-lead,.school-hero .school-button:not(.school-button-secondary),.school-feature,.school-help { display:none; }
 .school h1 { font-size:clamp(25px,2vw,34px); line-height:1.25; margin:0 0 8px; letter-spacing:-.02em; }
 .school-access { margin:0; font-size:12px; color:#58716b; }
 .school-tabs { display:flex; gap:12px; flex-wrap:wrap; }

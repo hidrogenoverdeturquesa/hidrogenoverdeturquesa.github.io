@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "courses": [
+    {
+      "id": "microbit-energy-sensors",
+      "order": 1,
+      "slug": "microbit",
+      "title": "Micro:bit para energía y sensores",
+      "description": "Botones, sensores, alertas y registros para dar tus primeros pasos en programación.",
+      "category": { "id": "electronics", "label": "Electrónica" },
+      "level": { "id": "initial", "label": "Inicial" },
+      "lessonCount": 6,
+      "publicPath": "/curso-microbit.html",
+      "workbookPath": "/cuadernillos/salidas/microbit.pdf",
+      "status": "published",
+      "challenge": "un tablero de estado con lecturas, pruebas y una conclusión.",
+      "tags": ["Lógica", "Medición", "Gráficas"]
+    },
+    {
+      "id": "esp32-monitoring-data",
+      "order": 2,
+      "slug": "esp32",
+      "title": "ESP32, monitoreo y datos",
+      "description": "Comprende cómo organizar lecturas, reconocer tendencias y comunicar el estado de un sistema.",
+      "category": { "id": "electronics", "label": "Electrónica" },
+      "level": { "id": "basic", "label": "Básico" },
+      "lessonCount": 6,
+      "publicPath": "/curso-esp32.html",
+      "workbookPath": "/cuadernillos/salidas/esp32.pdf",
+      "status": "published",
+      "challenge": "la propuesta de un nodo de monitoreo y su tablero de datos.",
+      "tags": ["Sensores", "Datos", "Promedios"]
+    },
+    {
+      "id": "electrolyzers-safety",
+      "order": 3,
+      "slug": "electrolyzers",
+      "title": "Electrolizadores y seguridad",
+      "description": "Estudia las variables, los balances y los criterios de una demostración supervisada.",
+      "category": { "id": "hydrogen", "label": "Hidrógeno" },
+      "level": { "id": "technical", "label": "Técnico" },
+      "lessonCount": 7,
+      "publicPath": "/curso-electrolizadores.html",
+      "workbookPath": "/cuadernillos/salidas/electrolizadores.pdf",
+      "status": "published",
+      "challenge": "una ficha de evaluación con variables, controles y evidencia.",
+      "tags": ["Energía", "Unidades", "Seguridad"]
+    },
+    {
+      "id": "organics-microbiology-fermentation",
+      "order": 4,
+      "slug": "organics-fermentation",
+      "title": "Orgánicos, microbiología y fermentación",
+      "description": "Estudia la transformación de residuos, sus variables y el registro de cambios.",
+      "category": { "id": "bio", "label": "Bioeconomía" },
+      "level": { "id": "applied", "label": "Aplicado" },
+      "lessonCount": 6,
+      "publicPath": "/curso-organicos-fermentacion.html",
+      "workbookPath": "/cuadernillos/salidas/organicos-fermentacion.pdf",
+      "status": "published",
+      "challenge": "una propuesta de aprovechamiento con datos y un balance simple.",
+      "tags": ["Materia", "Proporciones", "Bioeconomía"]
+    }
+  ]
+}
