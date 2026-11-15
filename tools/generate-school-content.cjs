@@ -20,16 +20,16 @@ for(const course of source.courses){
 source.courses.sort((a,b)=>a.order-b.order);
 
 const visuals={
- 'microbit-energy-sensors':{image:'images/Microbit.png',alt:'Tarjeta Micro:bit',aria:'Ver curso Micro:bit'},
- 'esp32-monitoring-data':{image:'images/Esp32.png',alt:'Tarjeta ESP32',aria:'Ver curso ESP32'},
- 'electrolyzers-safety':{image:'images/Electrolizador.png',alt:'Equipo electrolizador',aria:'Ver curso Electrolizadores'},
- 'organics-microbiology-fermentation':{image:'images/Fermentacion%20Oscura.png',alt:'Representación de un sistema de fermentación oscura',aria:'Ver curso Orgánicos y fermentación'}
+ 'microbit-energy-sensors':{image:'images/Microbit.png',alt:'Tarjeta Micro:bit',aria:'Ver curso Micro:bit',width:1448,height:1086},
+ 'esp32-monitoring-data':{image:'images/Esp32.png',alt:'Tarjeta ESP32',aria:'Ver curso ESP32',width:1254,height:1254},
+ 'electrolyzers-safety':{image:'images/Electrolizador.png',alt:'Equipo electrolizador',aria:'Ver curso Electrolizadores',width:1254,height:1254},
+ 'organics-microbiology-fermentation':{image:'images/Fermentacion%20Oscura.png',alt:'Representación de un sistema de fermentación oscura',aria:'Ver curso Orgánicos y fermentación',width:1536,height:1024}
 };
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const cards=source.courses.map(course=>{
  const visual=visuals[course.id];if(!visual)throw new Error(`Falta presentación pública para ${course.id}`);
  const href=course.publicPath.slice(1),tags=course.tags.map(tag=>`<span>${esc(tag)}</span>`).join('');
- return `        <article class="school-card" data-course-id="${course.id}" data-category="${course.category.id}" data-level="${course.level.id}"><a class="school-card-image" href="${href}" aria-label="${esc(visual.aria)}"><img src="${visual.image}" alt="${esc(visual.alt)}" loading="lazy"><span>${esc(course.level.label)}</span></a><div class="school-card-copy"><p class="school-overline">${esc(course.category.label)} / ${course.lessonCount} lecciones</p><h3><a href="${href}">${esc(course.title)}</a></h3><p>${esc(course.description)}</p><p class="school-result"><strong>Tu reto:</strong> ${esc(course.challenge)}</p><div class="school-tags">${tags}</div><div class="school-card-actions"><a class="school-course-link" href="${href}">Entrar al curso</a><a class="school-course-link school-workbook-link" href="${course.workbookPath.slice(1)}">Descargar cuadernillo</a></div></div></article>`;
+ return `        <article class="school-card" data-course-id="${course.id}" data-category="${course.category.id}" data-level="${course.level.id}"><a class="school-card-image" href="${href}" aria-label="${esc(visual.aria)}"><img src="${visual.image}" alt="${esc(visual.alt)}" loading="lazy" width="${visual.width}" height="${visual.height}"><span>${esc(course.level.label)}</span></a><div class="school-card-copy"><p class="school-overline">${esc(course.category.label)} / ${course.lessonCount} lecciones</p><h3><a href="${href}">${esc(course.title)}</a></h3><p>${esc(course.description)}</p><p class="school-result"><strong>Tu reto:</strong> ${esc(course.challenge)}</p><div class="school-tags">${tags}</div><div class="school-card-actions"><a class="school-course-link" href="${href}">Entrar al curso</a><a class="school-course-link school-workbook-link" href="${course.workbookPath.slice(1)}">Descargar cuadernillo</a></div></div></article>`;
 }).join('\n');
 const block=`<!-- SCHOOL_COURSES:START -->\n${cards}\n        <!-- SCHOOL_COURSES:END -->`;
 const html=fs.readFileSync(htmlPath,'utf8');
